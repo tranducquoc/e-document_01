@@ -20,6 +20,29 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  devise:
+    sessions:
+      new:
+        log_in: "Log in"
+    registrations:
+      new:
+        sign_up: "Sign Up"
+      edit:
+        update: "Update"
+        cancel_my_account: "Cancel my account"
+        unhappy: "Unhappy"
+        back: "Back"
+        we_need: "(we need your current password to confirm your changes)"
+        leave_blank: "(leave blank if you don't want to change it)"
+        waiting: "Currently waiting confirmation for: "
+        edit: "Edit"
+        are_you_sure: "Are you sure ? "
+    shared:
+      links:
+        log_in: "Log in"
+        sign_up: "Sign up"
+        forgot_your_password: "Forgot your password"
+        did_not_receiver_confirm: "Didn't receive confirmation instructions?"
   hello: "Hello world"
   e_document_01: "EDocument01"
   layouts:
