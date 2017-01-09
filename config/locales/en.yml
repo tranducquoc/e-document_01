@@ -59,9 +59,18 @@ en:
       the: "The"
       by: "by"
   static_pages:
+    users: "Users"
     home:
       home: "Home"
     help:
       help: "Help"
     about:
       about: "About"
+  views:
+    users: 
+      stt: "STT"
+      name: "Name"
+      email: "Email"
+      place_holder: "enter name or email"    
+      all_users: "All Users"
+      noname: "No Name"

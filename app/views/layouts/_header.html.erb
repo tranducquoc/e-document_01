@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="navc"><%= link_to t(".home"), root_path %></li>
-        <li class="navc"><%= link_to t(".help"), "/help" %></li>
+        <li class="navc"><%= link_to t(".users"), users_path %></li>
         <li class="navc"><%= link_to t(".about"), "/about" %></li>
         <% if user_signed_in? %>
           <li class="dropdown navc">

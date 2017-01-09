@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  paginates_per Setting.per_page
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
   has_many :documents, class_name: Document.name, foreign_key: :user_id
