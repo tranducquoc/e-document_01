@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable
   has_many :documents, class_name: Document.name, foreign_key: :user_id
   has_many :downloads, class_name: Download.name, foreign_key: :user_id
   has_many :favorites, class_name: Favorite.name, foreign_key: :user_id
