@@ -1,0 +1,13 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "variables";
+
+footer.footer{
+  margin-top: 25px;
+  border-top: solid 1px $gray_footer;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 12px;
+}

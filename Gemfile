@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 gem "rails", "~> 5.0.1"
 gem "rubocop", require: false
+gem "bootstrap-sass", "3.3.6"
+gem "font-awesome-sass", "~> 4.7.0"
 gem "sqlite3"
 gem "puma", "~> 3.0"
 gem "sass-rails", "~> 5.0"
