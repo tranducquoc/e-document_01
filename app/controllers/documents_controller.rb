@@ -1,6 +1,12 @@
 class DocumentsController < ApplicationController
   before_action :verify_user
 
+  def index
+    @categories = Category.all
+    @documents = Document.in_category(params[:categories_id])
+      .page(params[:page]).per Settings.categories.per_page
+  end
+
   def new
     @document = Document.new
   end
