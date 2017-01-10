@@ -82,3 +82,11 @@ en:
   datetime:
     formats:
       default: "%B  %d  %Y"
+  users:
+    index:
+      please_log_in: "Please log in !"
+    user:
+      follow: "Add Friend"
+      unfollow: "Remove Friend"
+
+
