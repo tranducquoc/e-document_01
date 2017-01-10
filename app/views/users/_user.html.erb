@@ -1,9 +1,9 @@
 <table class="table table-hover" id="list_user">
   <thead class="title_table">
-    <th><%= t "views.users.stt" %></th>
-    <th class="user_name"><b><%= t "views.users.name" %></b></th>
-    <th class="user_email"><b><%= t "views.users.email" %></b></th>
-    <th></th>
+    <th class="col-md-1"><%= t "views.users.stt" %></th>
+    <th class="user_name col-md-2"><b><%= t "views.users.name" %></b></th>
+    <th class="user_email col-md-3"><b><%= t "views.users.email" %></b></th>
+    <th class="col-md-3"></th>
   </thead>
   <tbody>
     <% @users.each_with_index do |user, index| %>
@@ -11,6 +11,34 @@
       	<td><%= index + 1 %></td>
         <td><b><%= link_to user.name, user %></b></td>
         <td><b><%= user.email %></b></td>
+        <td>
+          <% if current_user == user  %>
+          <% else %>
+            <div id="follow_form">
+              <% if current_user.friendlist? user %>
+                <%= form_for current_user.active_relationships
+                  .find_by(user_two_id: user.id),
+                  html: {method: :delete} do |f| %>
+                  <%= f.submit t(".unfollow"),id: "nut-#{user.id}",
+                    class: "btn btn-default form-control" %>
+                <% end %>
+              <% elsif user.friendlist? current_user %>
+                <%= form_for user.active_relationships
+                  .find_by(user_two_id: current_user.id),
+                  html: {method: :delete} do |f| %>
+                  <%= f.submit t(".unfollow"),id: "nut-#{user.id}",
+                    class: "btn btn-default form-control" %>
+                <% end %>
+              <% else %>
+                <%= form_for current_user.active_relationships.build do |f| %>
+                  <div><%= hidden_field_tag :user_two_id, user.id %></div>
+                  <%= f.submit t(".follow"),id: "nut-#{user.id}",
+                    class: "btn btn-primary form-control" %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
