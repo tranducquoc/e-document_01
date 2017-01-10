@@ -7,3 +7,7 @@
     password: password,
     password_confirmation: password)
 end
+3.times do |_n|
+  name = Faker::Name.name
+  Category.create!(name: name)
+end

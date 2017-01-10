@@ -37,11 +37,12 @@ ActiveRecord::Schema.define(version: 20170109073920) do
   create_table "documents", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "status"
+    t.string   "attachment"
+    t.integer  "status",      default: 0
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "downloads", force: :cascade do |t|
