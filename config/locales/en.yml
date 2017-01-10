@@ -60,17 +60,25 @@ en:
       by: "by"
   static_pages:
     users: "Users"
+    categories: "Categories"
     home:
       home: "Home"
     help:
       help: "Help"
     about:
       about: "About"
+  categories: "Category"
   views:
-    users: 
+    users:
       stt: "STT"
       name: "Name"
       email: "Email"
-      place_holder: "enter name or email"    
+      place_holder: "enter name or email"
       all_users: "All Users"
       noname: "No Name"
+    categories:
+      place_holder: "enter category's title"
+      list: "List categories"
+  datetime:
+    formats:
+      default: "%B  %d  %Y"

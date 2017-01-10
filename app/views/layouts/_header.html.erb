@@ -13,12 +13,21 @@
           <%= t ".framgia" %>
         </p>
       </a>
+      <ul class="nav navbar-nav">
+        <li>
+          <div class="col-md-4">
+            <%= select_tag :category, options_for_select(load_categories.collect {|c|
+              [c.name, c.id]}),
+              {class: "btn btn-default", id: "category_select",
+              include_blank: t(".categories")} %>
+          </div>
+        </li>
+      </ul>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="navc"><%= link_to t(".home"), root_path %></li>
         <li class="navc"><%= link_to t(".users"), users_path %></li>
-        <li class="navc"><%= link_to t(".about"), "/about" %></li>
         <% if user_signed_in? %>
           <li class="dropdown navc">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -37,6 +46,7 @@
               </li>
             </ul>
           </li>
+          <li class="navc"><%= link_to t(".categories"), categories_path %></li>
         <% else %>
           <li class="navc"><%= link_to t(".login"),
             new_user_session_path %></li>

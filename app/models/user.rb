@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  paginates_per Setting.per_page
+  paginates_per Settings.per_page
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
   has_many :documents, class_name: Document.name, foreign_key: :user_id
@@ -15,4 +15,8 @@ class User < ApplicationRecord
     foreign_key: :user_two, dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+  def current_user? user
+    user == current_user
+  end
 end
