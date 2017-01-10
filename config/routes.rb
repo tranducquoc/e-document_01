@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/:page/*page", to: "static_pages#show"
 
   resources :users
+  resources :categories
 end
