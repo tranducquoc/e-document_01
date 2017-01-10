@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 gem "rails", "~> 5.0.1"
 gem "devise"
+gem "carrierwave", "~> 1.0"
 gem "rubocop", require: false
 gem "bootstrap-sass", "3.3.6"
 gem "font-awesome-sass", "~> 4.7.0"

@@ -3,7 +3,8 @@ class CreateDocuments < ActiveRecord::Migration[5.0]
     create_table :documents do |t|
       t.string :name
       t.string :description
-      t.integer :status
+      t.string  :attachment
+      t.integer :status, default: 0
       t.integer :category_id
       t.integer :user_id
 

@@ -26,7 +26,10 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="navc"><%= link_to t(".home"), root_path %></li>
+        <li class="navc">
+          <%= link_to t(".upload"),
+            new_document_path, class: "fa fa-upload" %>
+        </li>
         <li class="navc"><%= link_to t(".users"), users_path %></li>
         <% if user_signed_in? %>
           <li class="dropdown navc">
@@ -50,9 +53,9 @@
         <% else %>
           <li class="navc"><%= link_to t(".login"),
             new_user_session_path %></li>
+          <li class="navc"><%= link_to t(".signup"),
+            new_user_registration_path %></li>
         <% end %>
-        <li class="navc"><%= link_to t(".signup"),
-          new_user_registration_path %></li>
       </ul>
     </div>
   </div>

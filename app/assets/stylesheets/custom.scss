@@ -11,3 +11,35 @@ footer.footer{
   padding-bottom: 15px;
   font-size: 12px;
 }
+.btn.btn-default {
+  border: solid 2px $dark-blue;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.btn.btn-default:hover {
+  background: $dark-blue;
+  color: white;
+}
+h2.text-center {
+  color: $dark-blue;
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: 4px 1px 1px lightblue;
+  margin-bottom: 30px;
+}
+h2.tittle {
+  text-align: center;
+  font-size: 3em;
+  color: $violet_title;
+}
+form#new_document .btn {
+  transform: translateY(10px);
+  width: 16.5%;
+}
+select#document_category_id {
+  padding: 6px;
+  background: white;
+  transform: translateY(19px);
+  width: 50%;
+}
