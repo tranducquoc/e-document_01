@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  before_save :downcase_email
   paginates_per Settings.per_page
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
@@ -44,5 +45,17 @@ class User < ApplicationRecord
 
   def is_friend? other_user
     self.friends.include? other_user
+  end
+
+  class << self
+    def send_mail_if_not_login
+      user_ids = User.where("last_sign_in_at < ?", Time.now - 1.hours).pluck(:id)
+      User.where(id: user_ids)
+    end
+  end
+
+  private
+  def downcase_email
+    self.email = email.downcase
   end
 end
