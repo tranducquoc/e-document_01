@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "home#index"
+    resources :categories, :documents, :users
   end
 
   get "/:page", to: "static_pages#show"
