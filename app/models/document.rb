@@ -9,7 +9,7 @@ class Document < ApplicationRecord
   mount_uploader :attachment, AttachmentUploader
   validates :name, presence: true, length: {maximum: Settings.content_size_max}
 
-  enum status: [:processing, :delivering, :delivered, :cancelled]
+  enum status: [:Wating, :Checked, :Cancelled]
 
   scope :in_category, ->category_id do
     where category_id: category_id if category_id.present?

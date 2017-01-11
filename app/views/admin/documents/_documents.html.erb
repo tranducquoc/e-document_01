@@ -1,0 +1,40 @@
+<div id="documents-list-admin">
+  <table class="cart table table-hover new-order">
+    <thead>
+      <tr class="info row">
+        <th class="col-md-1"><%= t ".id" %></th>
+        <th class="col-md-2"><%= t ".category" %></th>
+        <th class="col-md-2">
+          <span class="product-cart-description">
+            <%= t ".content" %>
+          </span>
+        </th>
+        <th class="col-md-2"><%= t ".status" %></th>
+        <th class="col-md-1"><%= t ".user_id" %></th>
+        <th class="col-md-2"><%= t ".user_name" %></th>
+        <th class="col-md-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% documents.each do |document|%>
+        <tr class="row">
+          <td class="col-md-1"><%= document.id %></td>
+          <td class="col-md-2">
+            <%= document.category.name %></td>
+          <td class="col-md-2"><%= document.description %></td>
+          <td class="col-md-2"><%= document.status %></td>
+          <td class="col-md-1"><%= document.user_id %></td>
+          <td class="col-md-2"><%= document.user.name %></td>
+          <th class="col-md-2 option-product-admin">
+            <%= link_to "#", class: "btn btn-default button-1" do %>
+              <i class="fa fa-check"></i>
+            <% end %>
+            <%= link_to "#", class: "btn btn-default button-1" do %>
+              <i class="fa fa-ban"></i>
+            <% end %>
+          </th>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

@@ -8,7 +8,7 @@ class Api::DocumentsController < ApplicationController
     end
     respond_to do |format|
       format.html do
-        render partial: "/documents/document",
+        render partial: "admin/documents/documents",
         locals: {documents: @documents}
       end
     end

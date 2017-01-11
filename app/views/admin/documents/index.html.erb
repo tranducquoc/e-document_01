@@ -1,0 +1,14 @@
+<div class="col-md-12 admin-document">
+  <div class="row">
+    <div class="col-md-4">
+      <%= select_tag :category, options_for_select(@categories.collect {|c|
+        [c.name, c.id]}), {class: "btn document", id: "doc_select",
+        include_blank: t(".documents")}%>
+    </div>
+  </div>
+  <h2 class="text-left"><%= t ".list_documents" %></h2>
+  <div id="table-documents-admin">
+    <%= render partial: "/admin/documents/documents",
+      locals: {documents: @documents} %>
+  </div>
+</div
