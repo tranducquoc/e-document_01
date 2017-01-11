@@ -75,6 +75,9 @@ en:
       author: "Bui Quy Hoat & Le Tu Anh"
       the: "The"
       by: "by"
+    admin:
+      admin: "Admin"
+      page: "Page"
   static_pages:
     users: "Users"
     categories: "Categories"
