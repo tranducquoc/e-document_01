@@ -8,6 +8,12 @@
     password_confirmation: password)
 end
 
+User.create!(name: "buiquyhoat",
+  email: "buiquyhoat@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  role: 1)
+
 3.times do |_n|
   name = Faker::Name.name
   Category.create!(name: name)

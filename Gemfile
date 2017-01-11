@@ -12,6 +12,8 @@ gem "bootstrap-sass", "3.3.6"
 gem "i18n-js", ">= 3.0.0.rc11"
 gem "delayed_job"
 gem "delayed_job_active_record"
+gem "cancancan"
+gem "paranoia", "~> 2.2"
 gem "font-awesome-sass", "~> 4.7.0"
 gem "sqlite3"
 gem "puma", "~> 3.0"
@@ -26,7 +28,7 @@ gem "ransack", "~> 1.7"
 gem "kaminari"
 gem "faker", "1.4.2"
 gem "sidekiq", "~> 4.2", ">= 4.2.7"
-gem "whenever", :require => false
+gem "whenever", require: false
 group :development, :test do
   gem "byebug", platform: :mri
 end

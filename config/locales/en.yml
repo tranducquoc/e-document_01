@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  access_denied: "Access Denied"
   upload_success: "EDocument System notice upload success"
   upload_document: "EDocument System"
   document_mailer:
@@ -70,6 +71,10 @@ en:
       about: "About"
       login: "Login"
       signup: "Sign up"
+      account: "Account"
+      profile: "Profile"
+      settings: "Settings"
+      log_out: "Log Out"
     footer:
       f_exam: "F-Document"
       author: "Bui Quy Hoat & Le Tu Anh"
@@ -110,3 +115,20 @@ en:
       unfollow: "Remove Friend"
   send_mail: "Warning"
   warning: "User not login system in three days!"
+  admin:
+    documents:
+      update:
+        update_success: "Update successfully !!!"
+        update_error: "Update error !!!"
+      destroy:
+        destroy_success: "Destroy successfully !!!"
+        delete_error: "Update error !!!"
+      documents:
+        id: "ID"
+        category: "Category"
+        content: "Description"
+        status: "Status"
+        user_id: "User ID"
+        user_name: "User Name"
+        check_confirm: "Do you want to check ?"
+        delete_confirm: "Do you want to delete ?"
