@@ -11,5 +11,9 @@ Rails.application.routes.draw do
     resources :documents, only: :index
   end
 
+  namespace :admin do
+    root "home#index"
+  end
+
   get "/:page", to: "static_pages#show"
 end
