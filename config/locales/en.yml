@@ -20,6 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  upload_success: "EDocument System notice upload success"
+  upload_document: "EDocument System"
+  document_mailer:
+    upload_document:
+      your_name: "Your name"
+      your_document_name: "Document Name Upload"
+      your_document_attachment: "Document Attachment"
+      your_document_description: "Description"
+      status: "Status"
   documents:
     new:
       please_log_in: "Please log in !"

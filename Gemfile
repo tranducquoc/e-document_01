@@ -9,6 +9,8 @@ gem "devise"
 gem "carrierwave", "~> 1.0"
 gem "rubocop", require: false
 gem "bootstrap-sass", "3.3.6"
+gem "delayed_job"
+gem "delayed_job_active_record"
 gem "font-awesome-sass", "~> 4.7.0"
 gem "sqlite3"
 gem "puma", "~> 3.0"
