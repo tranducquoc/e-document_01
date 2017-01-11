@@ -7,9 +7,10 @@ class Api::DocumentsController < ApplicationController
       @documents = Document.where(category_id: category.id)
     end
     respond_to do |format|
-      format.html{render partial: "/documents/document",
+      format.html do
+        render partial: "/documents/document",
         locals: {documents: @documents}
-      }
+      end
     end
   end
 end

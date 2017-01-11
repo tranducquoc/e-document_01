@@ -15,6 +15,7 @@ class DocumentsController < ApplicationController
     @document = current_user.documents.build document_params
     if @document.save
       flash[:success] = t ".create_success"
+      DocumentMailer.delay.upload_document(@document, current_user)
       redirect_to root_path
     else
       render :new

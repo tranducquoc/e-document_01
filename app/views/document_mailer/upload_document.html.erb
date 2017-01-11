@@ -1,0 +1,31 @@
+<h2 class="text-center"><%= t ".upload_success" %></h2>
+<div>
+  <table class="table-bordered table-hover">
+    <thead>
+      <tr>
+        <td><%= t ".your_name" %></td>
+        <td><%= t ".your_document_name" %></td>
+        <td><%= t ".your_document_attachment" %></td>
+        <td><%= t ".your_document_description" %></td>
+        <td><%= t ".status" %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @user.name %></td>
+        <td>
+          <span><%= @document.name %></span>
+        </td>
+        <td>
+          <span><%= @document.attachment %></span>
+        </td>
+        <td>
+          <span><%= @document.description %></span>
+        </td>
+        <td>
+          <span><%= @document.status %></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
