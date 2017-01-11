@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
   root "static_pages#home"
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :documents
   resources :relationships, only: [:create, :destroy]
+
+  mount Sidekiq::Web => "/sidekiq"
 
   namespace :api do
     resources :documents, only: :index

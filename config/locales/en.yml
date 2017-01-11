@@ -108,5 +108,5 @@ en:
     user:
       follow: "Add Friend"
       unfollow: "Remove Friend"
-
-
+  send_mail: "Warning"
+  warning: "User not login system in three days!"

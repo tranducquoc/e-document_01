@@ -25,6 +25,8 @@ gem "config", "~> 1.0"
 gem "ransack", "~> 1.7"
 gem "kaminari"
 gem "faker", "1.4.2"
+gem "sidekiq", "~> 4.2", ">= 4.2.7"
+gem "whenever", :require => false
 group :development, :test do
   gem "byebug", platform: :mri
 end
