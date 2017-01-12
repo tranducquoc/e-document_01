@@ -44,6 +44,12 @@ en:
     index:
       new_documents: "New Documents"
       own_documents: "Your Documents"
+    show:
+      share_by: "Shared by: "
+      dash: "|"
+      date: "Date: "
+      documents: "documents"
+      favorite: "Favorite"
   devise:
     sessions:
       new:

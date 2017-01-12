@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.select(:id, :name, :role).order(updated_at: :desc).page(params[:page])
-     .per Settings.users.per_page
+      .per Settings.users.per_page
   end
 
   def update

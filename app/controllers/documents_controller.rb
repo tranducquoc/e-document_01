@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
-  before_action :verify_user
-  before_action :load_document, only: [:update, :destroy]
+  before_action :verify_user, only: [:new, :create]
+  before_action :load_document, only: [:update, :destroy, :show]
 
   def index
     @categories = Category.all
@@ -19,6 +19,15 @@ class DocumentsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def show
+    @document.update_attributes view: @document.view+1
+    if user_signed_in?
+      read = current_user.reads.build
+      read.document = @document
+      read.save
     end
   end
 
