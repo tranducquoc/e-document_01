@@ -1,4 +1,12 @@
-3.times do |n|
+User.create(
+  name: "letuanh",
+  email: "letuanh@gmail.com",
+  address: "ha noi",
+  password: "123456",
+  phone_number: "0987654321",
+  role: 1)
+
+20.times do |n|
   name  = Faker::Name.name
   email = "example-#{n + 1}@gmail.com"
   password = "123456"
@@ -14,7 +22,7 @@ User.create!(name: "buiquyhoat",
   password_confirmation: "123456",
   role: 1)
 
-3.times do |_n|
+10.times do |_n|
   name = Faker::Name.name
   Category.create!(name: name)
 end
