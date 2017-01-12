@@ -3,7 +3,7 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations",
     sessions: "sessions"}
-  root "static_pages#home"
+  root "documents#index"
 
   resources :users
   resources :categories

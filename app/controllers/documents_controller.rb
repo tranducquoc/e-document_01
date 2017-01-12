@@ -1,10 +1,10 @@
 class DocumentsController < ApplicationController
   before_action :verify_user
+  before_action :load_document, only: [:update, :destroy]
 
   def index
     @categories = Category.all
-    @documents = Document.in_category(params[:categories_id])
-      .page(params[:page]).per Settings.categories.per_page
+    @document_support = Supports::DocumentSupport.new
   end
 
   def new
@@ -26,5 +26,13 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit :name, :description, :attachment,
       :category_id
+  end
+
+  def load_document
+    @document = Document.find_by id: params[:id]
+    unless @document
+      flash.now[:warning] = t "document.not_found"
+      render_404
+    end
   end
 end
