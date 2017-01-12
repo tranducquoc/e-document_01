@@ -1,6 +1,13 @@
 <div class="col-md-12 admin-document">
   <h2 class="text-left"><%= t ".list_users" %></h2>
-  <div id="table-documents-admin">
-    <%= render "user" %>
+  <div>
+  <%= form_tag admin_users_path, method: :get, id: "search-user" do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", name: nil %>
+    <% end %>
+  <div id="table-users-admin">
+    <%= render partial: "/admin/users/users",
+      locals: {users: @users} %>
   </div>
-</div
+  </div>
+</div>
