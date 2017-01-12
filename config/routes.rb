@@ -1,7 +1,8 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: {registrations: "registrations"}
+  devise_for :users, controllers: {registrations: "registrations",
+    sessions: "sessions"}
   root "static_pages#home"
 
   resources :users
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root "home#index"
+    root "admins#index", as: :root
     resources :categories, :documents, :users
   end
 

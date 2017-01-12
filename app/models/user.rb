@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :user_two
   has_many :followers, through: :passive_relationships, source: :user_one
 
+  enum role: [:member, :admin]
+
   def current_user? user
     user == current_user
   end
@@ -49,7 +51,7 @@ class User < ApplicationRecord
 
   class << self
     def send_mail_if_not_login
-      user_ids = User.where("last_sign_in_at < ?", Time.now - 1.hours).pluck(:id)
+      user_ids = User.where("last_sign_in_at < ?", Time.now - 1.hour).pluck(:id)
       User.where(id: user_ids)
     end
   end

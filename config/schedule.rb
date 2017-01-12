@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :day, :at => "12:20am" do
+every :day, at: "12:20am" do
   rake "my_namespace:send_email"
 end

@@ -26,15 +26,21 @@
           <td class="col-md-1"><%= document.user_id %></td>
           <td class="col-md-2"><%= document.user.name %></td>
           <th class="col-md-2 option-product-admin">
-            <%= link_to "#", class: "btn btn-default button-1" do %>
-              <i class="fa fa-check"></i>
+          <% unless document.Checked? || document.Cancelled? %>
+            <%= link_to admin_document_path(document), method: :patch,
+              class: "btn btn-default", data: {confirm: t(".check_confirm")} do %>
+              <span class="fa fa-check"></span>
             <% end %>
-            <%= link_to "#", class: "btn btn-default button-1" do %>
-              <i class="fa fa-ban"></i>
+          <% end %>
+          <%= link_to admin_document_path(document), method: :delete,
+              class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
+              <span class="fa fa-ban"></span>
             <% end %>
           </th>
         </tr>
         <% end %>
+        <%= paginate documents %>
     </tbody>
   </table>
 </div>
+
