@@ -1,22 +1,14 @@
-<div class="row" id="filter_documents">
-  <%= form_tag documents_path, id: "form-submit", method: :get do %>
-    <center><h2><%= t ".document" %></h2></center>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-4">
-        <%= select_tag :category, options_for_select(load_categories.collect {|c|
-          [c.name, c.id]}),
-          {class: "btn btn-default cate", id: "cateajax",
-          include_blank: t(".categories")} %>
+<div class="top2">
+  <div class="container">
+    <h2 class="text-center"><%= t ".new_documents" %></h2>
+    <div class="row newest-product">
+      <%= render @document_support.newest_documents %>
+    </div>
+    <% if user_signed_in? %>
+      <h2 class="best-sl text-center"><%= t ".own_documents" %></h2>
+      <div class="row best-product">
+        <%= render @document_support.own_documents current_user %>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6"></div>
-    </div>
-  <% end %>
-</div>
-<div id="documents-list">
-  <%= render partial: "/documents/document",
-    locals: {documents: @documents} %>
+    <% end %>
+  </div>
 </div>

@@ -38,6 +38,12 @@ en:
       upload: "Upload"
     create:
       create_success: "Upload successfully!"
+    document:
+      downloads: "downloads"
+      views: "views"
+    index:
+      new_documents: "New Documents"
+      own_documents: "Your Documents"
   devise:
     sessions:
       new:
@@ -65,7 +71,7 @@ en:
   e_document_01: "EDocument01"
   layouts:
     header:
-      framgia: "Framgia Document"
+      framgia: "F-Document"
       home: "Home"
       help: "Help"
       about: "About"
@@ -75,11 +81,6 @@ en:
       profile: "Profile"
       settings: "Settings"
       log_out: "Log Out"
-    footer:
-      f_exam: "F-Document"
-      author: "Bui Quy Hoat & Le Tu Anh"
-      the: "The"
-      by: "by"
     admin:
       admin: "Admin"
       page: "Page"
@@ -142,4 +143,5 @@ en:
         action_upgrade_user: "Upgrade admin"
         action_delete_user: "Delete User"
       stt: "STT"
-
+  footer:
+    designby: "Design by Bui Quy Hoat & Le Tu Anh"
