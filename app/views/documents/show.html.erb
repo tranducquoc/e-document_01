@@ -1,0 +1,51 @@
+<div class="view-document col-md-10 col-md-offset-1 text-center">
+  <div class="row">
+    <h2 class="text-center"><%= @document.name %></h2>
+  </div>
+  <div class="row view-two">
+    <div class="col-md-8 text-left">
+      <p class="author_info">
+        <span><%= t ".share_by" %></span>
+        <span class="user_name"><%= @document.user.name %></span>
+        <span><%= t ".dash" %></span>
+        <span><%= t ".date" %></span>
+        <span class="document_date">
+          <%= @document.created_at.strftime(Settings.format_date) %>
+        </span>
+        <span><%= t ".dash" %></span>
+        <span class="document_size"><%= @document.user.documents.size %></span>
+        <span><%= t ".documents" %></span>
+      </p>
+      <p class="favorite_document">
+        <span class="fav">
+          <%= link_to "#", class: "btn btn-default button-1" do %>
+            <i class="fa fa-gratipay"></i>
+            <span class="fafa"><%= t ".favorite" %></span>
+          <% end %>
+        </span>
+        <span class="fav-count">
+          <%= @document.favorites.size %>
+        </span>
+      </p>
+    </div>
+    <div class="col-md-4 text-center benphai">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="views_count"><%= @document.downloads.size %></p>
+          <p><%= t ".dowloads" %></p>
+        </div>
+        <div class="col-md-6">
+          <p class="views_count"><%= @document.view %></p>
+          <p><%= t ".views" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if @document.attachment.url.blank? %>
+    <h2><%= t ".document_blank" %></h2>
+  <% else %>
+    <iframe src="<%= @document.attachment.url %>" style="width:800px; height:700px;"
+      frameborder="0">
+    </iframe>
+  <% end %>
+</div>

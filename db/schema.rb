@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170111115627) do
     t.integer  "status",      default: 0
     t.integer  "category_id"
     t.integer  "user_id"
+    t.integer  "view",        default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.datetime "deleted_at"

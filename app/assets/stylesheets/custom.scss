@@ -164,7 +164,6 @@ p.logo_f {
 }
 
 .top2 {
-  padding-top: 120px;
   background:rgba(245, 243, 243, 0.27);
 }
 
@@ -259,4 +258,72 @@ nav.navbar.navbar-default.navbar-fixed-top span {
 
 #footer div ul li #pinterest:hover {
   background-position: -44px -132px;
+}
+
+.container.main-body {
+  min-height: 505px;
+  padding-top: 120px;
+}
+
+.view-document h2.text-center {
+  float: left;
+  padding-left: 75px;
+  font-size: 28px;
+}
+
+.view-document {
+  background: rgba(245, 243, 243, 0.27);
+}
+
+p.author_info {
+  font-weight: 700;
+  padding-left: 60px;
+}
+
+p.favorite_document {
+  padding-left: 90px;
+}
+
+span.user_name {
+  color: red;
+}
+
+span.document_date, span.document_size {
+  color: blue;
+}
+
+a.fa.fa-gratipay.btn.btn-default {
+  border: solid 1px;
+  font-size: 15px;
+}
+
+.fav a.btn.btn-default.button-1 {
+  border: solid 1px;
+}
+
+i.fa.fa-gratipay {
+  color: red;
+  font-size: 20px;
+}
+
+span.fav-count {
+  border: solid 1px black;
+  padding: 7px 11px;
+  font-weight: 700;
+  color: white;
+  border-radius: 50%;
+  background: black;
+}
+
+.col-md-4.text-center.benphai {
+  padding-right: 67px;
+}
+
+p.views_count {
+  color: red;
+  font-size: 17px;
+}
+
+.row.view-two {
+  padding-bottom: 50px;
 }
