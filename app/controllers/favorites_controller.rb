@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
-  before_action :verify_user
+  before_action :authenticate_user!
+  load_and_authorize_resource except: [:update, :destroy]
 
   def create
     @document = Document.find_by id: params[:document_id]

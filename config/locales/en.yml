@@ -53,6 +53,15 @@ en:
       date: "Date: "
       documents: "documents"
       favorite: "Favorite"
+      please_click: "Please click"
+      here: "here"
+      to_login: " to login"
+      write_your_comment: "Write your comment"
+      compose_new_comment: "Compose new comment ... "
+      submit: "Post"
+      comment: "Comment"
+      open: "("
+      close: ")"
     favorite:
       favorite: "Favorite"
   devise:
@@ -160,3 +169,7 @@ en:
       stt: "STT"
   footer:
     designby: "Design by Bui Quy Hoat & Le Tu Anh"
+  comments:
+    comment:
+      comment_at: "Commented at "
+      ago: " ago."

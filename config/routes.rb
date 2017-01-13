@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :categories
-  resources :documents
+  resources :documents do
+    resources :comments
+  end
   resources :favorites, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 

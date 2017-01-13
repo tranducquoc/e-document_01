@@ -344,3 +344,62 @@ span#fav_count {
 i.fa.fa-thumbs-o-down {
   font-size: 20px;
 }
+
+ul#comments {
+  list-style: none;
+}
+
+ul#comments img.img-responsive {
+  width: 39%;
+  height: 38%;
+  margin: auto;
+}
+
+ul#comments li {
+  margin: 20px 0px;
+}
+
+.col-md-9.right-comment {
+  transform: translateX(-10%);
+}
+
+.right-comment .row.comment-body {
+  padding-left: 4%;
+  padding-top: 1%;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+span.time.col-md-5 {
+  transform: translateX(-14%);
+  font-size: 11px;
+  padding-top: 2px;
+  color: $gray_footer;
+}
+
+input.btn.btn-default.btn_comment {
+  width: 15%;
+  border: solid 1px;
+}
+
+form#new_comment {
+  margin-left: 6%;
+}
+
+div#comment, div#full_description {
+  background: white;
+  min-height: 200px;
+}
+
+textarea#comment_content {
+  border: solid 1px;
+  border-radius: 0;
+  margin-top: 58px;
+  margin-bottom: 20px;
+}
+
+.list-comment {
+  clear: both;
+  margin-top: 75px;
+}

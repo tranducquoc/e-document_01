@@ -20,7 +20,7 @@ class Document < ApplicationRecord
 
   class << self
     def own_documents user
-      user.documents.where(status: 1).order(created_at: :desc)
+      user.documents.where(status: :Checked).order(created_at: :desc)
         .limit(Settings.document.limit)
     end
 
