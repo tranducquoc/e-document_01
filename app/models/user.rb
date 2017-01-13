@@ -49,6 +49,10 @@ class User < ApplicationRecord
     self.friends.include? other_user
   end
 
+  def self.search params_search
+    users = User.all.where("name LIKE ?","%#{params_search}%")
+  end
+
   class << self
     def send_mail_if_not_login
       user_ids = User.where("last_sign_in_at < ?", Time.now - 1.hour).pluck(:id)

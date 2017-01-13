@@ -3,8 +3,13 @@ class Admin::UsersController < ApplicationController
   before_action :load_user, only: [:update, :destroy]
 
   def index
-    @users = User.select(:id, :name, :role).order(updated_at: :desc).page(params[:page])
-      .per Settings.users.per_page
+    if params[:search].present?
+      @users = User.search(params[:search]).order(updated_at: :desc).page(params[:page])
+        .per Settings.users.per_page
+    else
+      @users = User.all.order(updated_at: :desc).page(params[:page])
+        .per Settings.users.per_page
+    end
   end
 
   def update
