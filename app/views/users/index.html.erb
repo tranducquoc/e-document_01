@@ -1,6 +1,22 @@
-<center><h2><%= t "views.users.all_users" %></h2></center>
-<div class="row", id="form_search">
-  <%= render "form_search" %>
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a data-toggle="tab" href="#alluser"><%= t ".users.all_users" %></a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#friends"><%= t ".users.friends" %></a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div id="alluser" class="tab-pane fade in active">
+    <div class="row", id="form_search">
+      <%= render "form_search" %>
+    </div>
+    <%= render "user" %>
+    <%= paginate @users %>
+  </div>
+  <div id="friends" class="tab-pane fade">
+    <div class="row", id="form_search">
+    </div>
+    <%= render "friends" %>
+  </div>
 </div>
-<%= render "user" %>
-<%= paginate @users %>

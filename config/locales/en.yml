@@ -108,6 +108,10 @@ en:
       place_holder: "enter name or email"
       all_users: "All Users"
       noname: "No Name"
+      friends: "Friends"
+    friends:
+      unfollow: "Unfriend"
+      follow: "Add Friend"
     categories:
       place_holder: "enter category's title"
       list: "List categories"
