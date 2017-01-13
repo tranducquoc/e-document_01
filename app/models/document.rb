@@ -5,7 +5,7 @@ class Document < ApplicationRecord
   belongs_to :category, class_name: Category.name
   has_many :comments, class_name: Comment.name
   has_many :reads
-  has_many :favorites, class_name: Favorite.name
+  has_many :favorites
   has_many :downloads, class_name: Download.name
 
   mount_uploader :attachment, AttachmentUploader

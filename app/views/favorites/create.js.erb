@@ -1,0 +1,2 @@
+$('#favorite_form').html('<%= escape_javascript(render("documents/unfavorite")) %>');
+$('#fav_count').html('<%= @document.favorites.count%>');

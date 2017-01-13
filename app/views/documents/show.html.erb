@@ -16,17 +16,22 @@
         <span class="document_size"><%= @document.user.documents.size %></span>
         <span><%= t ".documents" %></span>
       </p>
-      <p class="favorite_document">
-        <span class="fav">
-          <%= link_to "#", class: "btn btn-default button-1" do %>
-            <i class="fa fa-gratipay"></i>
-            <span class="fafa"><%= t ".favorite" %></span>
-          <% end %>
-        </span>
-        <span class="fav-count">
-          <%= @document.favorites.size %>
-        </span>
-      </p>
+      <div class="row">
+        <div class="col-md-3">
+          <p class="favorite_document">
+            <span>
+              <%= render "favorite_form" if user_signed_in? %>
+            </span>
+          </p>
+        </div>
+        <div class="col-md-9">
+          <p class="text-left">
+            <span class="fav-count pull-left" id="fav_count">
+              <%= @document.favorites.count %>
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
     <div class="col-md-4 text-center benphai">
       <div class="row">
@@ -44,8 +49,7 @@
   <% if @document.attachment.url.blank? %>
     <h2><%= t ".document_blank" %></h2>
   <% else %>
-    <iframe src="<%= @document.attachment.url %>" style="width:800px; height:700px;"
-      frameborder="0">
+    <iframe src="<%= @document.attachment.url %>" style="width:800px; height:700px;" frameborder="0">
     </iframe>
   <% end %>
 </div>

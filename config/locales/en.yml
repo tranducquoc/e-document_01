@@ -30,6 +30,9 @@ en:
       your_document_attachment: "Document Attachment"
       your_document_description: "Description"
       status: "Status"
+  user_mailer:
+    send_email:
+      send_mail_not_login: "Send Email when you not login 3 days"
   documents:
     new:
       please_log_in: "Please log in !"
@@ -49,6 +52,8 @@ en:
       dash: "|"
       date: "Date: "
       documents: "documents"
+      favorite: "Favorite"
+    favorite:
       favorite: "Favorite"
   devise:
     sessions:
