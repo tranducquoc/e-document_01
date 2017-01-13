@@ -4,8 +4,8 @@ class Admin::UsersController < ApplicationController
 
   def index
     if params[:search].present?
-      @users = User.search(params[:search]).order(updated_at: :desc).page(params[:page])
-        .per Settings.users.per_page
+      @users = User.search(params[:search]).order(updated_at: :desc)
+        .page(params[:page]).per Settings.users.per_page
     else
       @users = User.all.order(updated_at: :desc).page(params[:page])
         .per Settings.users.per_page

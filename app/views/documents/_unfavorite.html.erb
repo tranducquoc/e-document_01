@@ -1,0 +1,7 @@
+<%= form_for(current_user.favorites.find_by(document_id: @document.id),
+  html: {method: :delete}, remote: true) do |f| %>
+  <%= button_tag "", class: "btn btn-default button-2", id: "btn_unfavorite" do %>
+    <i class="fa fa-thumbs-o-down"></i>
+    <span><%= t ".dislike" %></span>
+  <% end %>
+<% end %>

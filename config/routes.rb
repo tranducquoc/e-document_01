@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :categories
   resources :documents
+  resources :favorites, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
   mount Sidekiq::Web => "/sidekiq"

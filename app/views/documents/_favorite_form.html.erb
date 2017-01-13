@@ -1,0 +1,7 @@
+<div id="favorite_form">
+  <% if @document_fav.nil? %>
+    <%= render "favorite" %>
+  <% else %>
+    <%= render "unfavorite" %>
+  <% end %>
+</div>

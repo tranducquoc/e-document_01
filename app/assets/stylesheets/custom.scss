@@ -308,7 +308,7 @@ i.fa.fa-gratipay {
 
 span.fav-count {
   border: solid 1px black;
-  padding: 7px 11px;
+  padding: 7px 13px;
   font-weight: 700;
   color: white;
   border-radius: 50%;
@@ -326,4 +326,21 @@ p.views_count {
 
 .row.view-two {
   padding-bottom: 50px;
+}
+
+div#favorite_form {
+  padding-left: 60px;
+}
+
+#favorite_form .button-2 {
+  border: solid 1px;
+}
+
+span#fav_count {
+  margin-top: 10px;
+  margin-left: 26px;
+}
+
+i.fa.fa-thumbs-o-down {
+  font-size: 20px;
 }
