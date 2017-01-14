@@ -52,4 +52,33 @@
     <iframe src="<%= @document.attachment.url %>" style="width:800px; height:700px;" frameborder="0">
     </iframe>
   <% end %>
+  <hr>
+  <div id="comment" class="col-md-10 col-md-offset-1">
+    <h3 class="tittle-comment text-left">
+      <i class="fa fa-comments-o"></i><%= t ".comment" %>
+      <%= t ".open" %><span class="comment-count"><%= @document.comments.count %></span><%= t ".close" %>
+    </h3>
+    <% if user_signed_in? %>
+      <span class="header-comment pull-left">
+        <%= t ".write_your_comment" %>
+      </span>
+      <div class="form-group">
+        <%= form_for [@document, @document.comments.new], remote: true do |f| %>
+          <%= f.text_area :content, class: "form-control",
+            placeholder: t(".compose_new_comment"), class: "form-control",
+            rows: Settings.rows, required: true %>
+          <%= f.submit t(".submit"), class: "btn btn-default btn_comment pull-right",
+            id: "comment-btn" %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= t ".please_click" %>
+      <%= link_to t(".here"), new_user_session_path %><%= t ".to_login" %>
+    <% end %>
+    <div class="list-comment">
+      <ul id="comments">
+        <%= render @comments %>
+      </ul>
+    </div>
+  </div>
 </div>

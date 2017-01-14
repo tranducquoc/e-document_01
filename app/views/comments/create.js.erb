@@ -1,0 +1,3 @@
+$('#comments').prepend('<%= escape_javascript(render @comment) %>');
+$('#comment_content').val('');
+$('.comment-count').html(<%= @comment.document.comments.count %>);

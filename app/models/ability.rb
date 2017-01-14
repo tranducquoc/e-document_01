@@ -1,14 +1,17 @@
 class Ability
   include CanCan::Ability
 
-  def initialize user, controller_namespace
-    case controller_namespace
-    when "Admin"
-      can :manage, :all if user.admin?
+  def initialize user
+    user ||= User.new
+    case user.role
+    when "admin"
+      can :manage, :all
+    when "member"
+      can :read, :all
+      can :create, [Favorite, Document, Comment]
+      can :destroy, [Favorite, Document], user_id: user.id
     else
       can :read, :all
-      can :manage, User
-      can [:create], Document
     end
   end
 end

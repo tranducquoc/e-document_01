@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
-  before_action :verify_user, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  load_and_authorize_resource except: [:update, :destroy]
   before_action :load_document, only: [:update, :destroy, :show]
 
   def index
@@ -23,10 +24,11 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    @document_fav = Favorite.find_by document_id: @document.id,
-      user_id: current_user.id
-    @document.update_attributes view: @document.view + 1
+    @comments = @document.comments.newest
     if user_signed_in?
+      @document_fav = Favorite.find_by document_id: @document.id,
+        user_id: current_user.id
+      @document.update_attributes view: @document.view + 1
       read = current_user.reads.build
       read.document = @document
       read.save
