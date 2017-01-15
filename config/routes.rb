@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :favorites, only: [:create, :destroy]
+  resources :downloads, only: :create
   resources :relationships, only: [:create, :destroy]
 
   mount Sidekiq::Web => "/sidekiq"

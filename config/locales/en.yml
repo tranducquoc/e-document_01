@@ -62,6 +62,7 @@ en:
       comment: "Comment"
       open: "("
       close: ")"
+      download: "Download"
     favorite:
       favorite: "Favorite"
   devise:
@@ -171,5 +172,7 @@ en:
     designby: "Design by Bui Quy Hoat & Le Tu Anh"
   comments:
     comment:
+      open: "("
+      close: ")"
       comment_at: "Commented at "
       ago: " ago."

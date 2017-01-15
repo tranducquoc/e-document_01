@@ -360,7 +360,7 @@ ul#comments li {
 }
 
 .col-md-9.right-comment {
-  transform: translateX(-10%);
+  transform: translateX(-17%);
 }
 
 .right-comment .row.comment-body {
@@ -402,4 +402,13 @@ textarea#comment_content {
 .list-comment {
   clear: both;
   margin-top: 75px;
+}
+
+.comment-body {
+  margin-left: -50%;
+  margin-top: 10px;
+}
+
+button#btn_download {
+  margin-left: 25%;
 }
