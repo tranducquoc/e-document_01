@@ -30,14 +30,26 @@
               <%= @document.favorites.count %>
             </span>
           </p>
+          <% if user_signed_in? %>
+            <%= form_for current_user.downloads.build do |f| %>
+              <%= f.hidden_field :document_id, value: @document.id %>
+              <%= button_tag "", class: "btn btn-default button-2",
+                id: "btn_download" do %>
+                <i class="fa fa-download"></i>
+                <span><%= t ".download" %></span>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
     <div class="col-md-4 text-center benphai">
       <div class="row">
         <div class="col-md-6">
-          <p class="views_count"><%= @document.downloads.size %></p>
-          <p><%= t ".dowloads" %></p>
+          <p class="views_count" id="download_count">
+            <%= @document.downloads.size %>
+          </p>
+          <p><%= t ".download" %></p>
         </div>
         <div class="col-md-6">
           <p class="views_count"><%= @document.view %></p>
