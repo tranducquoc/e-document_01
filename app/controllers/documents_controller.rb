@@ -23,6 +23,16 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = @document.user
+    if @document.destroy
+      flash[:success] = t ".destroy_success"
+    else
+      flash[:danger] = t ".destroy_error"
+    end
+    redirect_to user_path(@user)
+  end
+
   def show
     @comments = @document.comments.newest
     if user_signed_in?

@@ -1,0 +1,43 @@
+<div id="doc-user">
+  <% @documents.each do |document|%>
+    <div class="row document-user">
+      <div class="col-md-10">
+        <div class="row">
+           <div class="col-md-3">
+            <%= image_tag Settings.image, class: "img-responsive" %>
+          </div>
+          <div class="col-md-9">
+            <h4><%= document.name %></h4>
+            <p>
+              <i class="fa fa-tag">
+                <span>
+                  <%= link_to document.category.name, "#" %>
+                </span>
+                <span class="time">
+                  <%= document.created_at.strftime(Settings.format_date) %>
+              </span>
+              </i>
+            </p>
+            <h5><%= t ".short_description" %></h5>
+            <p><%= document.description %></p>
+            <p>
+              <% load_categories.each do |category| %>
+                <i class="fa fa-tags"></i>
+                <span><%= link_to category.name, "#" %></span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <%= link_to document_path(document), method: :delete,
+          class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
+          <span class="fa fa-trash-o"></span>
+        <% end %>
+      </div>
+    </div>
+    <hr class="hr">
+  <% end %>
+  <%= paginate @documents %>
+</div>
+

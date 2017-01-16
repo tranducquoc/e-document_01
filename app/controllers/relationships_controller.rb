@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
-  before_action :verify_user
+  before_action :authenticate_user!
+  load_and_authorize_resource except: [:update, :destroy]
 
   def create
     @user = User.find_by id: params[:user_two_id]

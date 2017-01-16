@@ -66,8 +66,14 @@ en:
       open: "("
       close: ")"
       download: "Download"
+      delete_confirm: "Are you sure delete ?"
+      destroy_success: "Destroy successfully !!!"
+      delete_error: "Update error !!!"
     favorite:
       favorite: "Favorite"
+    destroy:
+      destroy_success: "Destroy successfully !"
+      destroy_error: "Destroy error !"
   devise:
     sessions:
       new:
@@ -105,6 +111,9 @@ en:
       profile: "Profile"
       settings: "Settings"
       log_out: "Log Out"
+      users: "Friends"
+      upload: "Upload"
+      documents: "Documents"
     admin:
       admin: "Admin"
       page: "Page"
@@ -142,6 +151,8 @@ en:
     user:
       follow: "Add Friend"
       unfollow: "Remove Friend"
+    document:
+      delete_confirm: "Are you sure delete ?"
   send_mail: "Warning"
   warning: "User not login system in three days!"
   admin:
