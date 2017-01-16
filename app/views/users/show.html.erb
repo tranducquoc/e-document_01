@@ -1,0 +1,11 @@
+<div class="top2 user-doc">
+  <div class="container">
+    <% if user_signed_in? %>
+      <h2 class="best-sl text-center"><%= t ".your_documents" %></h2>
+      <hr class="hr">
+      <div class="row best-product">
+        <%= render partial: "/users/document" %>
+      </div>
+    <% end %>
+  </div>
+</div>
