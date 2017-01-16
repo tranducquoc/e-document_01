@@ -23,6 +23,9 @@ en:
   access_denied: "Access Denied"
   upload_success: "EDocument System notice upload success"
   upload_document: "EDocument System"
+  eng: "English"
+  viet: "Vietnamese"
+  language: "Language"
   document_mailer:
     upload_document:
       your_name: "Your name"

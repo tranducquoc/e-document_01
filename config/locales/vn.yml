@@ -1,0 +1,160 @@
+vn:
+  access_denied: "Truy cập bị từ chối"
+  upload_success: "Upload thành công !"
+  upload_document: "Upload tài liệu"
+  eng: "Tiếng Anh"
+  viet: "Tiếng Việt"
+  language: "Ngôn ngữ"
+  document_mailer:
+    upload_document:
+      your_name: "Tên bạn"
+      your_document_name: "Tên tài liệu upload"
+      your_document_attachment: "Tập tin đính kèm"
+      your_document_description: "Mô tả"
+      status: "Trạng thái"
+  user_mailer:
+    send_email:
+      send_mail_not_login: "Gửi email khi không đăng nhập 3 ngày liên tiếp"
+  documents:
+    new:
+      please_log_in: "Xin đăng nhập !"
+      upload_file: "Upload tài liệu"
+      compose_description: "Ghi mô tả về tài liệu của bạn ..."
+      upload: "Upload"
+    create:
+      create_success: "Upload thành công!"
+    document:
+      downloads: "lượt tải về"
+      views: "lượt xem"
+    index:
+      new_documents: "Tài liệu mới"
+      own_documents: "Tài liệu của bạn"
+    show:
+      share_by: "Chia sẻ bởi: "
+      dash: "|"
+      date: "ngày: "
+      documents: "tài liệu"
+      favorite: "Thích"
+      please_click: "Xin hãy ấn"
+      here: "vào đây"
+      to_login: " để đăng nhập"
+      write_your_comment: "Viết bình luận"
+      compose_new_comment: "Bình luận ... "
+      submit: "Gửi"
+      comment: "Bình luận"
+      open: "("
+      close: ")"
+      download: "Tải về"
+    favorite:
+      favorite: "Yêu thích"
+  devise:
+    sessions:
+      new:
+        log_in: "Đăng nhập"
+    registrations:
+      new:
+        sign_up: "Đăng ký"
+      edit:
+        update: "Cập nhật"
+        cancel_my_account: "Xóa tài khoản của bạn"
+        unhappy: "Không hạnh phúc"
+        back: "Quay lại"
+        we_need: "(Bạn cần điền mật khẩu cũ đề tiếp tục)"
+        leave_blank: "(Không điền gì nếu bạn không muốn thay đổi nó)"
+        waiting: "Chờ đợi:  "
+        edit: "Sửa: "
+        are_you_sure: "Bạn có chắc ? "
+    shared:
+      links:
+        log_in: "Đăng nhập"
+        sign_up: "Đăng ký"
+        forgot_your_password: "Quên mật khẩu"
+        did_not_receiver_confirm: "Không nhận được email xác nhận ?"
+  hello: "Xin chào"
+  e_document_01: "EDocument01"
+  layouts:
+    header:
+      framgia: "F-Document"
+      home: "Trang chủ"
+      help: "Trợ giúp"
+      about: "Về chúng tôi"
+      login: "Đăng nhập"
+      signup: "Đăng ký"
+      account: "Tài khoản"
+      profile: "Hồ sơ"
+      settings: "Cài đặt"
+      log_out: "Đăng xuất"
+    admin:
+      admin: "Admin"
+      page: "Page"
+  static_pages:
+    users: "Người dùng"
+    categories: "Thể loại"
+    home:
+      home: "Trang chủ"
+    help:
+      help: "Trợ giúp"
+    about:
+      about: "Về chúng tôi"
+  categories: "Thể loại"
+  views:
+    users:
+      stt: "STT"
+      name: "Tên"
+      email: "Email"
+      place_holder: "điền tên hoặc email"
+      all_users: "Người dùng"
+      noname: "không tên"
+      friends: "Bạn bè"
+    friends:
+      unfollow: "Hủy kết bạn"
+      follow: "Thêm bạn"
+    categories:
+      place_holder: "điền tên thể loại"
+      list: "Danh sách thể loại"
+  datetime:
+    formats:
+      default: "%B  %d  %Y"
+  users:
+    index:
+      please_log_in: "Xin hãy đăng nhập !"
+    user:
+      unfollow: "Hủy kết bạn"
+      follow: "Thêm bạn"
+  send_mail: "Cảnh báo"
+  warning: "Người dùng không đăng nhập hệ thống 3 ngày"
+  admin:
+    documents:
+      update:
+        update_success: "Cập nhật thành công !"
+        update_error: "Cập nhật lỗi !!!"
+      destroy:
+        destroy_success: "Xóa thành công !!!"
+        delete_error: "Xóa lỗi !!!"
+      documents:
+        id: "ID"
+        category: "Thể loại"
+        content: "Mô tả"
+        status: "Trạng thái"
+        user_id: "Mã người dùng"
+        user_name: "Tên người dùng"
+        check_confirm: "Bạn chắc chắn ?"
+        delete_confirm: "Bạn chắc chắn xóa ?"
+    users:
+      update:
+        update_success: "Cập nhật thành công !!!"
+        update_confirm: "Bạn chắc muốn chuyển quyền của người dùng?"
+      delete:
+        delete_confirm: "Bạn chắc chắn xóa?"
+      action:
+        action_upgrade_user: "Chuyển admin"
+        action_delete_user: "Xóa người dùng"
+      stt: "STT"
+  footer:
+    designby: "Design by Bui Quy Hoat & Le Tu Anh"
+  comments:
+    comment:
+      open: "("
+      close: ")"
+      comment_at: "Bình luận vào:  "
+      ago: " trước"
