@@ -6,4 +6,8 @@ module ApplicationHelper
   def load_categories
     @categories = Category.all
   end
+
+  def active_class_locale locale
+    locale == I18n.locale ? "active" : ""
+  end
 end

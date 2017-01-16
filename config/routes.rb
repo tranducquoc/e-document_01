@@ -3,28 +3,30 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations",
     sessions: "sessions"}
-  root "documents#index"
-
-  resources :users
-  resources :categories
-  resources :documents do
-    resources :comments
-  end
-  resources :favorites, only: [:create, :destroy]
-  resources :downloads, only: :create
-  resources :relationships, only: [:create, :destroy]
-
   mount Sidekiq::Web => "/sidekiq"
 
-  namespace :api do
-    resources :documents, only: :index
+  scope "(:locale)", locale: /en|vn/ do
+    root "documents#index"
+
     resources :users
-  end
+    resources :categories
+    resources :documents do
+      resources :comments
+    end
+    resources :favorites, only: [:create, :destroy]
+    resources :downloads, only: :create
+    resources :relationships, only: [:create, :destroy]
 
-  namespace :admin do
-    root "admins#index", as: :root
-    resources :categories, :documents, :users
-  end
+    namespace :api do
+      resources :documents, only: :index
+      resources :users
+    end
 
-  get "/:page", to: "static_pages#show"
+    namespace :admin do
+      root "admins#index", as: :root
+      resources :categories, :documents, :users
+    end
+
+    get "/:page", to: "static_pages#show"
+  end
 end

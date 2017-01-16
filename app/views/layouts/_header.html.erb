@@ -55,6 +55,25 @@
           <li class="navc"><%= link_to t(".signup"),
             new_user_registration_path %></li>
         <% end %>
+        <li class="dropdown navc language">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= t("language") %><b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="<%= active_class_locale :en %>">
+              <%= link_to locale: :en do %>
+                <span class = "fa fa-globe"></span>
+                <%= t "eng" %>
+              <% end %>
+            </li>
+            <li class="<%= active_class_locale :vn %>">
+              <%= link_to locale: :vn do %>
+                <span class = "fa fa-th-large"></span>
+                <%= t "viet" %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
