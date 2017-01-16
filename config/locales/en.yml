@@ -171,6 +171,20 @@ en:
         action_upgrade_user: "Upgrade admin"
         action_delete_user: "Delete User"
       stt: "STT"
+    statistic:
+      index:
+        upload_count: "Upload count"
+        customer_download: "Download count"
+        spline: "spline"
+        column: "column"
+  value_upload: "{value} uploads"
+  weekly_statistics: "Weekly Statistics"
+  total_upload: "Total upload"
+  value_downloads: "{value} downloads"
+  customer_downloads: "Total download"
+  vertical: "vertical"
+  right: "right"
+  middle: "middle"
   footer:
     designby: "Design by Bui Quy Hoat & Le Tu Anh"
   comments:

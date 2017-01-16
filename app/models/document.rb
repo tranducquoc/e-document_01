@@ -18,6 +18,10 @@ class Document < ApplicationRecord
     where category_id: category_id if category_id.present?
   end
 
+  scope :upload_count, ->date_time do
+    where("date(created_at) = '#{date_time}'").count
+  end
+
   class << self
     def own_documents user
       user.documents.where(status: :Checked).order(created_at: :desc)

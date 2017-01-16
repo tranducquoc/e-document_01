@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def self.search params_search
-    users = User.all.where("name LIKE ?", "%#{params_search}%")
+    User.all.where("name LIKE ?", "%#{params_search}%")
   end
 
   class << self

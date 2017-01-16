@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :verify_user
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
   def index
     @q = User.ransack params[:q]
     @users = @q.result(distinct: true).order("created_at DESC")
