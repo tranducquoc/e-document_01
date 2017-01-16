@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root "admins#index", as: :root
-      resources :categories, :documents, :users
+      resources :categories, :documents, :users, :statistic
     end
 
     get "/:page", to: "static_pages#show"
