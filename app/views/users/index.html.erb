@@ -6,12 +6,14 @@
     <a data-toggle="tab" href="#friends"><%= t ".users.friends" %></a>
   </li>
 </ul>
-<div class="tab-content">
+<div class="tab-content col-md-10 col-md-offset-1 list-user-1">
   <div id="alluser" class="tab-pane fade in active">
     <div class="row", id="form_search">
       <%= render "form_search" %>
     </div>
-    <%= render "user" %>
+    <div class="row">
+      <%= render "user" %>
+    </div>
     <%= paginate @users %>
   </div>
   <div id="friends" class="tab-pane fade">

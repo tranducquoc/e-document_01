@@ -29,6 +29,19 @@ vn:
     index:
       new_documents: "Tài liệu mới"
       own_documents: "Tài liệu của bạn"
+      question: "Bạn có câu hỏi ?"
+      phone: "+84 975 811 855"
+      mail: "buiquyhoat@gmail.com"
+      fa: "Fa|"
+      medic: "document"
+      home: "Trang chủ"
+      help: "Trợ giúp"
+      about: "Về chúng tôi"
+      contact: "Liên hệ"
+      thoudrand: "1000++"
+      file: "tài liệu được tải lên"
+      know: "Chúng tôi hiểu điều bạn muốn ? Upload và Dowload tài liệu miễn phí"
+      register: "Đăng ký ngay !"
     show:
       share_by: "Chia sẻ bởi: "
       dash: "|"
@@ -45,8 +58,14 @@ vn:
       open: "("
       close: ")"
       download: "Tải về"
+      delete_confirm: "Bạn chắc muốn xóa ?"
+      destroy_success: "Xóa thành công !!!"
+      delete_error: "Xóa lỗi !!!"
     favorite:
       favorite: "Yêu thích"
+      destroy:
+      destroy_success: "Xóa thành công !"
+      destroy_error: "Xóa lỗi !"
   devise:
     sessions:
       new:
@@ -84,6 +103,9 @@ vn:
       profile: "Hồ sơ"
       settings: "Cài đặt"
       log_out: "Đăng xuất"
+      users: "Bạn bè"
+      upload: "Tải lên"
+      documents: "Tài liệu"
     admin:
       admin: "Admin"
       page: "Page"
@@ -106,6 +128,8 @@ vn:
       all_users: "Người dùng"
       noname: "không tên"
       friends: "Bạn bè"
+      un_friend: "Hủy kết bạn"
+      add_friend: "Kết bạn"
     friends:
       unfollow: "Hủy kết bạn"
       follow: "Thêm bạn"
@@ -121,6 +145,13 @@ vn:
     user:
       unfollow: "Hủy kết bạn"
       follow: "Thêm bạn"
+      stt: "STT"
+      name: "Tên"
+      email: "Email"
+      place_holder: "điền tên ..."
+      all_users: "Tất cả người dùng"
+      noname: "No Name"
+      friends: "Bạn bè"
   send_mail: "Cảnh báo"
   warning: "Người dùng không đăng nhập hệ thống 3 ngày"
   admin:
