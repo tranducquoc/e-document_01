@@ -1,0 +1,17 @@
+<%= provide :title, t(".messenger") %>
+<h2><%= t "messenger.created_conversation" %></h2>
+<ul>
+  <%= render partial: "available",
+    locals: {availables: current_user.active_conversations} %>
+</ul>
+<hr>
+<h2><%= t "messenger.added_conversation" %></h2>
+<ul>
+  <%= render partial: "available",
+    locals: {availables: current_user.passive_conversations} %>
+</ul>
+<hr>
+<h2><%= t "messenger.friends_list" %></h2>
+<ul id="followings">
+  <%= render partial: "following", locals: {friends: current_user.followings} %>
+</ul>
