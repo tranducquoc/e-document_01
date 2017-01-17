@@ -1,3 +1,60 @@
+<div class="header">
+  <div class="container-fluid">
+    <div class="img-back">
+      <%= image_tag Settings.image_2, class: "img-responsive" %>
+    </div>
+    <div class="contact">
+      <p><%= t ".question" %>
+        <i class="fa fa-phone"></i>
+        <a href="#"><%= t ".phone" %></a>
+        <i class="fa fa-envelope-o"></i>
+        <a href="#"><%= t ".mail" %></a>
+      </p>
+
+    </div>
+    <div class="slide-header">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span class="char-1">
+              <%= t ".fa" %></span><span class="char-2"><%= t ".medic" %></span>
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+              <li ><a href="#"><%= t ".home" %></a></li>
+              <li><a href="#"><%= t ".help" %></a></li>
+              <li><a href="#"><%= t ".about" %></a></li>
+              <li><a href="#"><%= t ".contact" %></a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+      </nav>
+    </div>
+    <div class="header-info">
+      <div class="row">
+        <div class="col-md-5 col-md-offset-1 text-center">
+          <h1>
+            <span class="one-p"><%= t ".thoudrand" %></span>
+            <span class="two-p"><%= t ".file" %></span>
+          </h1>
+          <h3><%= t ".know" %></h3>
+          <a href="#" class="btn btn-default nut1"><%= t ".register" %></a>
+        </div>
+        <div class="col-md-5 bacsi">
+          <%= image_tag Settings.image_1, class: "img-responsive" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="top2">
   <div class="container">
     <h2 class="text-center"><%= t ".new_documents" %></h2>

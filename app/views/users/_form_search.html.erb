@@ -1,4 +1,9 @@
-<%= search_form_for @q do |f| %>
-  <%= f.text_field :name_or_email_cont, placeholder: t("views.users.place_holder")%>
-  <%= f.submit %>
-<% end %>
+<div class="col-md-8 text-search">
+  <%= search_form_for @q do |f| %>
+    <%= f.text_field :name_or_email_cont,
+      placeholder: t("views.users.place_holder"), class: "form-control input-lg" %>
+    <div class="button-tag">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

@@ -1,17 +1,21 @@
-<table class="table table-hover" id="list_user">
-  <thead class="title_table">
-    <th class="col-md-1"><%= t "views.users.stt" %></th>
-    <th class="user_name col-md-2"><b><%= t "views.users.name" %></b></th>
-    <th class="user_email col-md-3"><b><%= t "views.users.email" %></b></th>
-    <th class="col-md-3"></th>
+<table class="cart table table-hover new-order">
+  <thead>
+    <tr class="info row">
+      <th class="col-md-1"></th>
+      <th class="col-md-2"><%= t ".stt" %></th>
+      <th class="col-md-3"><%= t ".name" %></th>
+      <th class="col-md-4"><%= t ".email" %></th>
+      <th class="col-md-2"></th>
+    </tr>
   </thead>
   <tbody>
     <% @users.each_with_index do |user, index| %>
-      <tr>
-      	<td><%= index + 1 %></td>
-        <td><b><%= link_to user.name, user %></b></td>
-        <td><b><%= user.email %></b></td>
-        <td>
+      <tr class="row">
+        <th class="col-md-1"></th>
+      	<td class="col-md-2"><%= index + 1 %></td>
+        <td class="col-md-3"><b><%= link_to user.name, user %></b></td>
+        <td class="col-md-4"><b><%= user.email %></b></td>
+        <td class="col-md-2">
           <% if current_user == user  %>
           <% else %>
             <div id="follow_form">
@@ -19,21 +23,30 @@
                 <%= form_for current_user.active_relationships
                   .find_by(user_two_id: user.id),
                   html: {method: :delete} do |f| %>
-                  <%= f.submit t(".unfollow"),id: "nut-#{user.id}",
-                    class: "btn btn-default form-control" %>
+                  <%= button_tag "", class: "btn btn-default button-2",
+                    id: "btn_favorite" do %>
+                    <i class="fa fa-user-times"></i>
+                    <span><%= t ".un_friend" %></span>
+                  <% end %>
                 <% end %>
               <% elsif user.friendlist? current_user %>
                 <%= form_for user.active_relationships
                   .find_by(user_two_id: current_user.id),
                   html: {method: :delete} do |f| %>
-                  <%= f.submit t(".unfollow"),id: "nut-#{user.id}",
-                    class: "btn btn-default form-control" %>
+                  <%= button_tag "", class: "btn btn-default button-2",
+                    id: "btn_favorite" do %>
+                    <i class="fa fa-user-times"></i>
+                    <span><%= t ".un_friend" %></span>
+                  <% end %>
                 <% end %>
               <% else %>
                 <%= form_for current_user.active_relationships.build do |f| %>
                   <div><%= hidden_field_tag :user_two_id, user.id %></div>
-                  <%= f.submit t(".follow"),id: "nut-#{user.id}",
-                    class: "btn btn-primary form-control" %>
+                  <%= button_tag "", class: "btn btn-default button-2",
+                    id: "btn_favorite" do %>
+                    <i class="fa fa-user-plus"></i>
+                    <span><%= t ".add_friend" %></span>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>

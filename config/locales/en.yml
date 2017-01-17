@@ -45,11 +45,24 @@ en:
     create:
       create_success: "Upload successfully!"
     document:
-      downloads: "downloads"
+      downloads: "downs"
       views: "views"
     index:
       new_documents: "New Documents"
       own_documents: "Your Documents"
+      question: "Have any question ?"
+      phone: "+84 975 811 855"
+      mail: "buiquyhoat@gmail.com"
+      fa: "Fa|"
+      medic: "document"
+      home: "Home"
+      help: "Help"
+      about: "About"
+      contact: "Contact"
+      thoudrand: "1000++"
+      file: "File uploaded"
+      know: "We know what you needed ? Upload and Download free"
+      register: "Register Now !"
     show:
       share_by: "Shared by: "
       dash: "|"
@@ -151,6 +164,15 @@ en:
     user:
       follow: "Add Friend"
       unfollow: "Remove Friend"
+      stt: "STT"
+      name: "Name"
+      email: "Email"
+      place_holder: "enter name or email"
+      all_users: "All Users"
+      noname: "No Name"
+      friends: "Friends"
+      un_friend: "Unfriend"
+      add_friend: "Add Friend"
     document:
       delete_confirm: "Are you sure delete ?"
   send_mail: "Warning"

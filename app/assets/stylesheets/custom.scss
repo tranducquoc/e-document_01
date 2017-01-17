@@ -61,6 +61,8 @@ h2.best-sl.text-center {
 h3.product_name {
   font-weight: 700;
   color: black;
+  max-height: 30px;
+  min-height: 30px;
 }
 
 .product img.img-responsive, .detail-product img.img-responsive {
@@ -454,7 +456,7 @@ div#doc-user a {
 }
 
 #doc-user a.btn.btn-default {
-  color: #30415b;
+  color: $color_green_tea;
 }
 
 #doc-user a.btn.btn-default:hover {
@@ -464,4 +466,275 @@ div#doc-user a {
 a.btn.btn-default.delete-doc {
   margin-left: 60px;
   margin-top: -55px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.col-md-5.bacsi {
+  position: absolute;
+  top: 100px;
+  left: 56%;
+  z-index: 2;
+  overflow: hidden;
+  height: 603px;
+  opacity: 0;
+  -webkit-animation-name:effectimage;
+  -webkit-animation-duration:0.5s;
+  -webkit-animation-delay:2.3s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-fill-mode:forwards;
+}
+
+ .header a.btn.btn-default.nut1 {
+  border-radius: 0px;
+  padding: 10px;
+  color: white;
+  background: $color_green;
+  margin-top: 50px;
+  border: none;
+}
+
+.header ul.nav.navbar-nav li a {
+  border-right: solid 1px $gray_footer;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.header ul.nav.navbar-nav li:hover {
+  color: $color_green;
+  border-top: solid 3px $color_green;
+  margin-top: -17px;
+  padding-top: 14px;
+}
+
+.header ul.nav.navbar-nav li a:hover {
+  color: $color_green;
+}
+
+.header span.char-2 {
+  font-size: 28px;
+}
+
+.header span.char-1 {
+  color: #13bfb1;
+  font-size: 28px;
+}
+
+.header nav.navbar.navbar-default {
+  border: none;
+  background: white;
+  border-radius: 0px;
+  height: 80px;
+  padding-top: 14px;
+  margin-top: 20px;
+  opacity: 0;
+  position: relative;
+  z-index: 3;
+  -webkit-animation-name:effectnav;
+  -webkit-animation-duration:0.4s;
+  -webkit-animation-delay:2.8s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-fill-mode:forwards;
+}
+
+.header a {
+  color: #13bfb1;
+}
+
+.header p {
+  color: white;
+}
+
+.contact p {
+  position: relative;
+  opacity: 0;
+  -webkit-animation-name:effectchar;
+  -webkit-animation-duration:0.3s;
+  -webkit-animation-delay:2s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-fill-mode:forwards;
+}
+
+.header a:hover {
+  color: $color_red;
+}
+
+.header{
+  padding-top: 20px;
+  position: relative;
+  height: 700px;
+}
+
+.img-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  -webkit-animation-name:effectbackground;
+  -webkit-animation-duration:2s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-fill-mode:forwards;
+}
+@-webkit-keyframes effectbackground{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@-webkit-keyframes effectchar{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@-webkit-keyframes effectimage{
+  0%{
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@-webkit-keyframes effectnav{
+  0%{
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.thanhtruot {
+  width: 100%;
+  height: 30px;
+  border: solid 1px #ccc;
+  margin-bottom: 32px;
+  margin-top: 20px;
+
+}
+
+.domau{
+  height: 30px;
+  background: brown;
+  -webkit-animation-name : effect;
+  -webkit-animation-duration : 5s;
+  -webkit-animation-timing-function : linear;
+}
+
+@-webkit-keyframes effect{
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+a.nut{
+  -webkit-animation-name : effectbutton;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-delay:5s;
+  -webkit-animation-fill-mode:forwards;
+  opacity: 0;
+}
+
+@-webkit-keyframes effectbutton{
+  0%{
+    transform: translateY(300px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.header {
+  font-family: 'Montserrat', sans-serif;
+}
+
+span.one-p {
+  color: $color_yellow;
+  margin-right: 10px;
+}
+
+.header-info h1{
+  margin-bottom: 39px;
+  opacity: 0;
+  -webkit-animation-name:effectnav;
+  -webkit-animation-duration:0.4s;
+  -webkit-animation-delay:3.2s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-fill-mode:forwards;
+}
+.header-info h3{
+  margin-bottom: 39px;
+  opacity: 0;
+  -webkit-animation-name:effectnav;
+  -webkit-animation-duration:0.4s;
+  -webkit-animation-delay:3.6s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-fill-mode:forwards;
+}
+.header-info .nut1{
+  margin-bottom: 39px;
+  opacity: 0;
+  -webkit-animation-name:effectnav;
+  -webkit-animation-duration:0.4s;
+  -webkit-animation-delay:4.0s;
+  -webkit-animation-timing-function:linear;
+  -webkit-animation-fill-mode:forwards;
+}
+
+.img-back img {
+  height: 100%;
+}
+
+.header .navbar-default .navbar-nav > li > a {
+  color: $gray_mail_p;
+}
+
+.col-md-8.text-search i.fa.fa-search {
+  position: absolute;
+  top: 28%;
+  left: 5%;
+  font-size: 15px;
+  color: black;
+}
+.col-md-8.text-search {
+  position: relative;
+}
+.button-tag input[type="submit"] {
+  display: none;
+}
+.input-lg {
+  height: 40px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  padding-left: 43px;
+  padding-right: 43px;
+  border-radius: 23px;
+  border: solid 1px $dark-blue;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+div#alluser a {
+  color: $color_violet;
 }
