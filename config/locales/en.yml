@@ -127,6 +127,7 @@ en:
       users: "Friends"
       upload: "Upload"
       documents: "Documents"
+      messenger: "Messenger"
     admin:
       admin: "Admin"
       page: "Page"
@@ -142,7 +143,7 @@ en:
   categories: "Category"
   views:
     users:
-      stt: "STT"
+      stt: "Ordinal Number"
       name: "Name"
       email: "Email"
       place_holder: "enter name or email"
@@ -164,7 +165,7 @@ en:
     user:
       follow: "Add Friend"
       unfollow: "Remove Friend"
-      stt: "STT"
+      stt: "Ordinal Number"
       name: "Name"
       email: "Email"
       place_holder: "enter name or email"
@@ -226,3 +227,8 @@ en:
       close: ")"
       comment_at: "Commented at "
       ago: " ago."
+  messenger:
+    friends_list: "List your friends: "
+    created_conversation: "You created conversations :"
+    added_conversation: "You are added to those conversations: "
+    send: "Send"

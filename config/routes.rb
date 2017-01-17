@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
     resources :downloads, only: :create
     resources :relationships, only: [:create, :destroy]
+    resources :messages, only: [:index]
+    resources :chatrooms
+    mount ActionCable.server => "/cable"
 
     namespace :api do
       resources :documents, only: :index

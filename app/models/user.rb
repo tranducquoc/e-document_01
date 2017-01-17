@@ -16,6 +16,11 @@ class User < ApplicationRecord
     foreign_key: :user_two_id, dependent: :destroy
   has_many :followings, through: :active_relationships, source: :user_two
   has_many :followers, through: :passive_relationships, source: :user_one
+  has_many :active_conversations, class_name: Chatroom.name,
+    foreign_key: :host_id, dependent: :destroy
+  has_many :passive_conversations, class_name: Chatroom.name,
+    foreign_key: :guest_id, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   enum role: [:member, :admin]
 
@@ -45,12 +50,16 @@ class User < ApplicationRecord
     relationships << passive_relationships
   end
 
-  def is_friend? other_user
+  def is_friendpassive_conversations? other_user
     self.friends.include? other_user
   end
 
   def self.search params_search
     User.all.where("name LIKE ?", "%#{params_search}%")
+  end
+
+  def had_conversation? other_user
+    self.active_conversations.collect(&:guest).flatten.uniq.include? other_user
   end
 
   class << self
