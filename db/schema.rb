@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111115627) do
+ActiveRecord::Schema.define(version: 20170117014724) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string  "title"
+    t.integer "host_id"
+    t.integer "guest_id"
+    t.index ["guest_id"], name: "index_chatrooms_on_guest_id"
+    t.index ["host_id", "guest_id"], name: "index_chatrooms_on_host_id_and_guest_id", unique: true
+    t.index ["host_id"], name: "index_chatrooms_on_host_id"
   end
 
   create_table "coins", force: :cascade do |t|
@@ -79,11 +88,13 @@ ActiveRecord::Schema.define(version: 20170111115627) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string   "content"
-    t.string   "user_one"
-    t.string   "user_two"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "chatroom_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reads", force: :cascade do |t|
