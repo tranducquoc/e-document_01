@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_many :passive_conversations, class_name: Chatroom.name,
     foreign_key: :guest_id, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :buycoins
 
   enum role: [:member, :admin]
 
