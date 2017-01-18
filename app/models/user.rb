@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   before_save :downcase_email
@@ -23,6 +25,13 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   enum role: [:member, :admin]
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :email]
+    ]
+  end
 
   def current_user? user
     user == current_user

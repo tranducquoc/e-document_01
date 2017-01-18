@@ -4,7 +4,7 @@ class Admin::DocumentsController < ApplicationController
   before_action :load_document, only: [:update, :destroy]
 
   def index
-    @documents = Document.all.page params[:page]
+    @documents = Document.all.order(updated_at: :desc).page params[:page]
     @categories = Category.all
   end
 
@@ -12,6 +12,8 @@ class Admin::DocumentsController < ApplicationController
     params[:status] = :Checked
     if @document.update_attributes document_params
       flash[:success] = t ".update_success"
+      @user = @document.user
+      @user.update_attributes point: @user.point + Settings.coin_down
     else
       flash[:danger] = t ".update_error"
     end

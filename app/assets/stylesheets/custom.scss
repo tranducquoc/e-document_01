@@ -738,3 +738,19 @@ span.one-p {
 div#alluser a {
   color: $color_violet;
 }
+
+.row.best-product .status {
+  padding-left: 20px;
+}
+
+.row.best-product i.fa.fa-pause {
+  color: yellow;
+}
+
+.row.best-product i.fa.fa-check-circle-o {
+  color: green;
+}
+
+.row.best-product i.fa.fa-ban {
+  color: red;
+}

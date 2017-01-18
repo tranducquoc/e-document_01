@@ -176,6 +176,7 @@ en:
       add_friend: "Add Friend"
     document:
       delete_confirm: "Are you sure delete ?"
+      status: "Status: "
   send_mail: "Warning"
   warning: "User not login system in three days!"
   admin:
