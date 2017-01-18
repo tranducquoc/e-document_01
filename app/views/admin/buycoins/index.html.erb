@@ -1,0 +1,35 @@
+<div class="col-md-12 admin-product">
+  <h2 class="text-center"><%= t ".request_buycoin" %></h2>
+  <table class="cart table table-hover new-order">
+    <thead>
+      <tr class="info row">
+        <th class="col-md-2"><%= t ".name" %></th>
+        <th class="col-md-2"><%= t ".email" %></th>
+        <th class="col-md-2"><%= t ".address" %></th>
+        <th class="col-md-2"><%= t ".coin_value" %></th>
+        <th class="col-md-2"><%= t ".created_at" %></th>
+        <th class="col-md-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @buycoins.each_with_index do |buycoin|%>
+        <tr class="row">
+          <td class="col-md-2"><%= buycoin.user.name %></td>
+          <td class="col-md-2"><%= buycoin.user.email %></td>
+          <td class="col-md-2"><%= buycoin.user.address %></td>
+          <td class="col-md-2"><%= buycoin.coin.value %></td>
+          <td class="col-md-2"><%= buycoin.created_at.strftime("%v") %></td>
+          <th class="col-md-2 option-product-admin">
+            <%= link_to admin_buycoin_path(buycoin), method: :patch,
+              class: "btn btn-default", data: {confirm: t(".check_confirm")} do %>
+              <span class="fa fa-check"></span>
+            <% end %>
+          </th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="col-md-12 pagi">
+    <%= paginate @buycoins %>
+  </div>
+</div>
