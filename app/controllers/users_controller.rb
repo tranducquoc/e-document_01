@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
-  before_action :load_document, only: [:show, :destroy]
+  load_and_authorize_resource find_by: :slug
 
   def index
     @q = User.ransack params[:q]
@@ -11,14 +10,5 @@ class UsersController < ApplicationController
 
   def show
     @documents = @user.documents.order(created_at: :desc).page params[:page]
-  end
-
-  private
-  def load_document
-    @user = User.find_by id: params[:id]
-    unless @user
-      flash.now[:warning] = t "user.not_found"
-      render_404
-    end
   end
 end

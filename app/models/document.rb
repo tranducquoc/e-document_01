@@ -12,7 +12,7 @@ class Document < ApplicationRecord
   validates :name, presence: true, length: {maximum: Settings.content_size_max}
 
   enum status: [:Wating, :Checked, :Cancelled]
-  paginates_per Settings.users.per_page
+  paginates_per Settings.document_per_page
 
   scope :in_category, ->category_id do
     where category_id: category_id if category_id.present?

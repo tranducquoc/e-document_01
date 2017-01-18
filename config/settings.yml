@@ -8,6 +8,7 @@ users:
 document:
   limit: 8
 per_page: 10
+document_per_page: 2
 categories:
   per_page: 10
 image: "image1.png"
@@ -20,4 +21,6 @@ number_seven_1: 518400
 format_date: "%Y-%m-%d"
 format_date_show: "%d-%m-%Y"
 time_delay: 8
+coin_down: 10
+coin_up: 1
 priority: 1

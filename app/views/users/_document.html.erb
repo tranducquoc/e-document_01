@@ -3,7 +3,7 @@
     <div class="row document-user">
       <div class="col-md-10">
         <div class="row">
-           <div class="col-md-3">
+          <div class="col-md-3">
             <%= image_tag Settings.image, class: "img-responsive" %>
           </div>
           <div class="col-md-9">
@@ -15,7 +15,23 @@
                 </span>
                 <span class="time">
                   <%= document.created_at.strftime(Settings.format_date) %>
-              </span>
+                </span>
+                <span class="status">
+                  <%= t ".status" %>
+                  <% if document.Checked? %>
+                    <span class="document-check">
+                      <i class="fa fa-check-circle-o"></i>
+                    </span>
+                  <% elsif document.Wating? %>
+                    <span class="document-pause">
+                      <i class="fa fa-pause"></i>
+                    </span>
+                  <% else %>
+                    <span class="document-ban">
+                      <i class="fa fa-ban"></i>
+                    </span>
+                  <% end %>
+                </span>
               </i>
             </p>
             <h5><%= t ".short_description" %></h5>

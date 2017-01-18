@@ -152,6 +152,9 @@ vn:
       all_users: "Tất cả người dùng"
       noname: "No Name"
       friends: "Bạn bè"
+    document:
+      delete_confirm: "Bạn chắc muốn xóa ?"
+      status: "Trạng thái: "
   send_mail: "Cảnh báo"
   warning: "Người dùng không đăng nhập hệ thống 3 ngày"
   admin:
