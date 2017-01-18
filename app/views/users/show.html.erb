@@ -1,11 +1,20 @@
-<div class="top2 user-doc">
-  <div class="container">
-    <% if user_signed_in? %>
-      <h2 class="best-sl text-center"><%= t ".your_documents" %></h2>
-      <hr class="hr">
-      <div class="row best-product">
-        <%= render partial: "/users/document" %>
-      </div>
-    <% end %>
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a data-toggle="tab" href="#document"><%= t ".users.document" %></a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#activity"><%= t ".users.activity" %></a>
+  </li>
+</ul>
+<div class="tab-content col-md-10">
+  <div id="document" class="tab-pane fade in active">
+    <div class="row">
+      <%= render "document" %>
+    </div>
+  </div>
+  <div id="activity" class="tab-pane fade">
+    <div class="row", id="activity">
+    </div>
+    <%= render "activity" %>
   </div>
 </div>

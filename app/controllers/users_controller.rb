@@ -10,5 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @documents = @user.documents.order(created_at: :desc).page params[:page]
+    @activities = PublicActivity::Activity.all.where(owner_id: @user.id)
+      .order(created_at: :desc).page(params[:page]).per Settings.users.per_page
   end
 end

@@ -6,8 +6,7 @@ class Document < ApplicationRecord
   has_many :comments, class_name: Comment.name
   has_many :reads
   has_many :favorites
-  has_many :downloads, class_name: Download.name
-
+  has_many :downloads
   mount_uploader :attachment, AttachmentUploader
   validates :name, presence: true, length: {maximum: Settings.content_size_max}
 
