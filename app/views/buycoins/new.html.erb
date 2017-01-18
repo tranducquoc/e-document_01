@@ -1,20 +1,100 @@
-<h2 class="tittle text-center">
-  <i class="fa fa-gg-circle"></i> <%= t ".buy_coin" %>
-</h2>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3 text-center">
-    <%= form_for @buycoin do |f| %>
-    <%= render "shared/error_messages", object: f.object %>
-      <%= label_tag :value %>
-      <select name="value_coin" id="value_coin" class= "btn btn-default">
-        <% load_value_coin.each do |value_coin| %>
-          <option value="<%= value_coin %>">
-            <%= value_coin %>
-            <%= t ".coin" %>
-          </option>
-        <% end %>
-      </select>
-      <%= f.submit t(".buy_coin"), class: "btn btn-default" %>
-    <% end %>
+<div class="content-animation">
+  <h2 class="tittle text-center">
+    <span><i class="fa fa-gg-circle letter"></i></span>
+    <span class="letter"><%= t ".b" %></span>
+    <span class="letter"><%= t ".u" %></span>
+    <span class="letter"><%= t ".yi" %></span>
+    <span class="letter"><%= t ".c" %></span>
+    <span class="letter"><%= t ".o" %></span>
+    <span class="letter"><%= t ".i" %></span>
+    <span class="letter"><%= t ".ni" %></span>
+  </h2>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center one-div">
+      <div class="one-div-title">
+        <i class="fa fa-address-book"></i>
+        <%= t ".about_coin" %>
+        <i class="fa fa-angle-down"></i>
+      </div>
+      <div class="one-div-content">
+        <div class="dress-info">
+          <div class="span span1">
+            <p class="left"><%= t ".coin_now" %></p>
+            <p class="right"><%= current_user.point %>
+              <i class="fa fa-money"></i></%></p>
+            <div class="clearfix"></div>
+          </div>
+          <div class="span span1">
+            <p class="left"><%= t ".download" %></p>
+            <p class="right">
+              <i class="fa fa-check"></i>
+              <%= t ".rule_download_1" %>
+              <div class="clearfix"></div>
+            </p>
+          </div>
+          <div class="span span1">
+            <p class="left"><%= t ".upload" %></p>
+            <p class="right">
+              <i class="fa fa-check"></i>
+              <%= t ".rule_upload_1" %>
+              <div class="clearfix"></div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3 text-center one-div buy-coin">
+      <div class="one-div-title">
+        <i class="fa fa-shopping-cart"></i>
+        <%= t ".buy_coin" %>
+        <i class="fa fa-angle-down"></i>
+      </div>
+      <div class="one-div-content">
+        <div class="dress-info">
+          <div class="span span1">
+            <p class="left"><%= t ".select_value" %></p>
+            <p class="right">
+              <%= form_for @buycoin do |f| %>
+                <%= render "shared/error_messages", object: f.object %>
+                <%= label_tag :value %>
+                <select name="value_coin" id="value_coin" class= "btn btn-default">
+                  <% load_value_coin.each do |value_coin| %>
+                    <option value="<%= value_coin %>">
+                      <%= value_coin %>
+                      <%= t ".coin" %>
+                    </option>
+                  <% end %>
+                </select>
+                <%= f.submit t(".buy_coin"), class: "btn btn-default" %>
+              <% end %>
+            </p>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3 text-center one-div enter-code">
+      <div class="one-div-title">
+        <i class="fa fa-calculator"></i>
+        <%= t ".enter_code" %>
+        <i class="fa fa-angle-down"></i>
+      </div>
+      <div class="one-div-content">
+        <div class="dress-info">
+          <div class="span span1">
+            <p class="left"><%= t ".fill_code" %></p>
+            <p class="right">
+              <%= form_tag "/users/#{current_user.slug}", method: :patch do %>
+                <%= render "shared/error_messages", object: current_user %>
+                <%= label_tag :code %>
+                <%= text_field_tag :code %>
+                <%= submit_tag t(".enter_code"), class: "btn btn-default" %>
+              <% end %>
+            </p>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -39,13 +39,13 @@ User.create!(name: "buiquyhoat",
   password_confirmation: "123456",
   role: :admin)
 
-10.times do |_n|
+10.times do |n|
   name = Faker::Name.name
   Category.create!(name: name)
 end
 
-20.times do |_n|
-  name = Faker::Name.name
+20.times do |n|
+  name = "Document-#{n}"
   category_id = rand(Category.all.size) + 1
   user_id = rand(User.all.size) + 1
   Document.create!(name: name,
