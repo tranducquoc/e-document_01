@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
         namespace :admin do
           root "admins#index", as: :root
-          resources :categories, :documents, :users, :statistic
+          resources :categories, :documents, :users, :statistic, :buycoins
         end
 
         resources :buycoins

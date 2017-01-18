@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118020020) do
+ActiveRecord::Schema.define(version: 20170118075535) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(version: 20170118020020) do
     t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
   end
-  
+
   create_table "buycoins", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "coin_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: fals
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "categories", force: :cascade do |t|

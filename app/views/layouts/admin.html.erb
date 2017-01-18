@@ -34,14 +34,20 @@
             <li>
               <%= link_to admin_documents_path do %>
                 <i class="fa fa-file-text-o"></i>
-                <%= t ".list_file_upload" %>
+                <%= t ".file_upload" %>
               <% end %>
+            </li>
             <li>
               <%= link_to admin_users_path do %>
-                <i class="fa fa-file-text-o"></i>
+                <i class="fa fa-user-circle-o"></i>
                 <%= t ".list_user" %>
               <% end %>
             </li>
+            <li>
+              <%= link_to admin_buycoins_path do %>
+                <i class="fa fa-product-hunt"></i>
+                <%= t ".request_coin" %>
+              <% end %>
             </li>
           </ul>
         </div>

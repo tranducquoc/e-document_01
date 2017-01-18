@@ -132,6 +132,10 @@ en:
     admin:
       admin: "Admin"
       page: "Page"
+      dashboard: "Dashboard"
+      file_upload: "File Upload"
+      list_user: "List User"
+      request_coin: "Request Coin"
   static_pages:
     users: "Users"
     categories: "Categories"
@@ -213,6 +217,15 @@ en:
         customer_download: "Download count"
         spline: "spline"
         column: "column"
+    buycoins:
+      index:
+        request_buycoin: "Request Buy Coin"
+        name: "Name"
+        email: "Email"
+        address: "Address"
+        coin_value: "Coin Value"
+        created_at: "Created At"
+        check_confirm: "Are you sure ? "
   value_upload: "{value} uploads"
   weekly_statistics: "Weekly Statistics"
   total_upload: "Total upload"
@@ -239,4 +252,12 @@ en:
     new:
       buy_coin: "Buy Coin"
     create:
-      create_success: "Buy successfully !"
+      create_success: "Buy successfully. Your code coin will be send to your email !"
+  update_success: "Update successfully !!!"
+  update_error: "Update error"
+  send_code: "Send code"
+  buycoin_mailer:
+    code_coin:
+      code_coin: "We send you the code for your order"
+      code: "Your code: "
+      value: "Code value: "

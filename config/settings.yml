@@ -24,3 +24,5 @@ time_delay: 8
 coin_down: 10
 coin_up: 1
 priority: 1
+buycoins:
+  per_page: 5
