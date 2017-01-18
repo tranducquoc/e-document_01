@@ -24,6 +24,9 @@ class User < ApplicationRecord
     foreign_key: :guest_id, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :buycoins
+  scope :email_admin, -> () {
+    self.select(:id, :email).where(role: :admin)
+  }
 
   enum role: [:member, :admin]
 
@@ -76,6 +79,15 @@ class User < ApplicationRecord
     def send_mail_if_not_login
       user_ids = User.where("last_sign_in_at < ?", Time.now - 1.hour).pluck(:id)
       User.where(id: user_ids)
+    end
+
+    def get_hot_user
+      date = Time.now - 5.day
+      user_ids = "SELECT downloads.user_id, COUNT(*) as Total
+        FROM downloads where (date(downloads.created_at)) > '#{date}'
+        GROUP BY downloads.user_id
+        ORDER BY Total DESC "
+      User.where("id IN (#{user_ids})")
     end
   end
 
