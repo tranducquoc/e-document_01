@@ -1,0 +1,20 @@
+<h2 class="tittle text-center">
+  <i class="fa fa-gg-circle"></i> <%= t ".buy_coin" %>
+</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 text-center">
+    <%= form_for @buycoin do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+      <%= label_tag :value %>
+      <select name="value_coin" id="value_coin" class= "btn btn-default">
+        <% load_value_coin.each do |value_coin| %>
+          <option value="<%= value_coin %>">
+            <%= value_coin %>
+            <%= t ".coin" %>
+          </option>
+        <% end %>
+      </select>
+      <%= f.submit t(".buy_coin"), class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>

@@ -17,6 +17,22 @@ User.create(
     password_confirmation: password)
 end
 
+10.times do |n|
+  code  = "code-#{n + 1}"
+  value = 10
+  Coin.create!(code: code,
+    value: value,
+    status: :available)
+end
+
+10.times do |n|
+  code  = "code-#{n + 11}"
+  value = 20
+  Coin.create!(code: code,
+    value: value,
+    status: :available)
+end
+
 User.create!(name: "buiquyhoat",
   email: "buiquyhoat@gmail.com",
   password: "123456",

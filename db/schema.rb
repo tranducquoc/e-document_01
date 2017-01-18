@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20170118020020) do
     t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
   end
+  
+  create_table "buycoins", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "coin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: fals
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -46,10 +53,10 @@ ActiveRecord::Schema.define(version: 20170118020020) do
   create_table "coins", force: :cascade do |t|
     t.string   "code"
     t.integer  "value"
-    t.integer  "buyer_id"
-    t.integer  "used_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "comments", force: :cascade do |t|

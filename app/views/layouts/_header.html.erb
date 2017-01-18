@@ -55,8 +55,11 @@
               </li>
             </ul>
           </li>
-           <li class="navc">
+          <li class="navc">
             <%= link_to t(".documents"), user_path(current_user), class: "fa fa-book" %>
+          </li>
+          <li class="navc">
+            <%= link_to t(".coins"), new_buycoin_path, class: "fa fa-money" %>
           </li>
         <% else %>
           <li class="navc"><%= link_to t(".login"),

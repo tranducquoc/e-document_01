@@ -7,6 +7,10 @@ module ApplicationHelper
     @categories = Category.all
   end
 
+  def load_value_coin
+    @list_value = Coin.pluck("DISTINCT value")
+  end
+
   def active_class_locale locale
     locale == I18n.locale ? "active" : ""
   end
