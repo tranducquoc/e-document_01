@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :documents do
       resources :comments
     end
+    resources :activites
     resources :favorites, only: [:create, :destroy]
     resources :downloads, only: :create
     resources :relationships, only: [:create, :destroy]

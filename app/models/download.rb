@@ -1,6 +1,9 @@
 class Download < ApplicationRecord
-  belongs_to :user, class_name: User.name
-  belongs_to :document, class_name: Document.name
+  include PublicActivity::Model
+  tracked owner: Proc.new {|controller, model| controller.current_user},
+    recipient: :document
+  belongs_to :user
+  belongs_to :document
 
   scope :download_count, ->date_time do
     where("date(created_at) = '#{date_time}'").count

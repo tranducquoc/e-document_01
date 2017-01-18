@@ -1,0 +1,11 @@
+<% @activities.each do |activity| %>
+  <% if activity.trackable_type.include?("Download") %>
+    <div class="row">
+      <div class="action_activity">
+        <%= link_to activity.owner.name, activity.owner %>
+        <%= t "download" %>
+        <%= link_to activity.recipient.name, activity.recipient %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -14,4 +14,5 @@
 <h2><%= t "messenger.friends_list" %></h2>
 <ul id="followings">
   <%= render partial: "following", locals: {friends: current_user.followings} %>
+  <%= render partial: "following", locals: {friends: current_user.followers} %>
 </ul>
