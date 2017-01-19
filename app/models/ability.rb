@@ -10,6 +10,7 @@ class Ability
       can :read, :all
       can :create, [Favorite, Document, Comment, Download]
       can :destroy, [Favorite, Document], user_id: user.id
+      can :manage, Relationship
     else
       can :read, :all
     end
