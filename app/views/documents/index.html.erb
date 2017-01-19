@@ -10,7 +10,6 @@
         <i class="fa fa-envelope-o"></i>
         <a href="#"><%= t ".mail" %></a>
       </p>
-
     </div>
     <div class="slide-header">
       <nav class="navbar navbar-default" role="navigation">
@@ -57,12 +56,41 @@
 </div>
 <div class="top2">
   <div class="container">
-    <h2 class="text-center"><%= t ".new_documents" %></h2>
+    <h2 class="text-center">
+      <span><i class="fa fa-book letter"></i></span>
+      <span class="letter"><%= t ".ni" %></span>
+      <span class="letter"><%= t ".e" %></span>
+      <span class="letter"><%= t ".w" %></span>
+      <span class="letter"><%= t ".d" %></span>
+      <span class="letter"><%= t ".o" %></span>
+      <span class="letter"><%= t ".c" %></span>
+      <span class="letter"><%= t ".u" %></span>
+      <span class="letter"><%= t ".m" %></span>
+      <span class="letter"><%= t ".e" %></span>
+      <span class="letter"><%= t ".ni" %></span>
+      <span class="letter"><%= t ".t" %></span>
+      <span class="letter"><%= t ".s" %></span>
+    </h2>
     <div class="row newest-product">
       <%= render @document_support.newest_documents %>
     </div>
     <% if user_signed_in? %>
-      <h2 class="best-sl text-center"><%= t ".own_documents" %></h2>
+      <h2 class="text-center">
+        <span><i class="fa fa-file-o letter"></i></span>
+        <span class="letter"><%= t ".yi" %></span>
+        <span class="letter"><%= t ".o" %></span>
+        <span class="letter"><%= t ".u" %></span>
+        <span class="letter"><%= t ".r" %></span>
+        <span class="letter"><%= t ".d" %></span>
+        <span class="letter"><%= t ".o" %></span>
+        <span class="letter"><%= t ".c" %></span>
+        <span class="letter"><%= t ".u" %></span>
+        <span class="letter"><%= t ".m" %></span>
+        <span class="letter"><%= t ".e" %></span>
+        <span class="letter"><%= t ".ni" %></span>
+        <span class="letter"><%= t ".t" %></span>
+        <span class="letter"><%= t ".s" %></span>
+      </h2>
       <div class="row best-product">
         <%= render @document_support.own_documents current_user %>
       </div>
