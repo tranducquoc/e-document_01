@@ -51,7 +51,7 @@ en:
       ni: "N"
       e: "E"
       w: "W"
-      d: " D"
+      d: "D"
       o: "O"
       c: "C"
       u: "U"
@@ -313,3 +313,4 @@ en:
       s: "S"
       yi: "Y"
       r: "R"
+  space: " "

@@ -245,3 +245,30 @@ i.fa.fa-ban {
   height: 400px;
   margin: 0 auto
 }
+
+.col-md-8.text-search i.fa.fa-search {
+  position: absolute;
+  top: 28%;
+  left: 5%;
+  font-size: 15px;
+  color: black;
+}
+.col-md-8.text-search {
+  position: relative;
+}
+.button-tag input[type="submit"] {
+  display: none;
+}
+.input-lg {
+  height: 40px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  padding-left: 43px;
+  padding-right: 43px;
+  border-radius: 23px;
+  border: solid 1px $dark-blue;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

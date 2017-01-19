@@ -1,13 +1,26 @@
 <div class="col-md-12 admin-document">
   <h2 class="text-left"><%= t ".list_users" %></h2>
   <div>
-  <%= form_tag admin_users_path, method: :get, id: "search-user" do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", name: nil %>
-    <% end %>
-  <div id="table-users-admin">
-    <%= render partial: "/admin/users/users",
-      locals: {users: @users} %>
-  </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-search">
+        <%= form_tag admin_users_path, method: :get, id: "search-user" do %>
+          <%= text_field_tag :search, params[:search], class: "form-control input-lg" %>
+          <div class="button-tag">
+            <%= submit_tag "" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div id="table-users-admin">
+        <%= render partial: "/admin/users/users",
+          locals: {users: @users} %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <%= paginate @users %>
+      </div>
+    </div>
   </div>
 </div>
