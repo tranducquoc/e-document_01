@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   constraints subdomain: /.*e-document/ do
     constraints subdomain: false do
       devise_for :users, controllers: {registrations: "registrations",
-        sessions: "sessions"}
+        sessions: "sessions", omniauth_callbacks: "omniauth_callbacks"}
       mount Sidekiq::Web => "/sidekiq"
 
       scope "(:locale)", locale: /en|vn/ do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
         resources :buycoins
 
         get "/:page", to: "static_pages#show"
-      end  
+      end
     end
   end
 end
