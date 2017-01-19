@@ -66,6 +66,11 @@
             new_user_session_path %></li>
           <li class="navc"><%= link_to t(".signup"),
             new_user_registration_path %></li>
+          <li class="navc">
+            <%= link_to user_facebook_omniauth_authorize_path do %>
+              <%= t "login_facebook" %>
+            <% end %>
+          </li>
         <% end %>
         <li class="dropdown navc language">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
