@@ -36,6 +36,9 @@ class DocumentsController < ApplicationController
   end
 
   def show
+    current_date = Time.now - Settings.number_seven_2
+    @download_free = Download.get_download_free current_user,
+      current_date.strftime(Settings.format_date)
     @comments = @document.comments.newest
     if user_signed_in?
       @document_fav = Favorite.find_by document_id: @document.id,

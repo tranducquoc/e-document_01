@@ -18,11 +18,16 @@ format_date: "%d-%m-%Y"
 number_one: 1
 number_seven: 7
 number_seven_1: 518400
+number_seven_2: 2505600
 format_date: "%Y-%m-%d"
 format_date_show: "%d-%m-%Y"
 time_delay: 8
 coin_down: 10
+coin_free: 0
 coin_up: 1
 priority: 1
 buycoins:
   per_page: 5
+count_free_download: 3
+coin_when_free: 0
+coin_when_nonfree: 10

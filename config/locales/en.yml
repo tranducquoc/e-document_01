@@ -83,6 +83,8 @@ en:
       please_click: "Please click"
       here: "here"
       to_login: " to login"
+      to_buycoin: " to buy coins"
+      please_click_1: "You aren't enought coin to download. Please click"
       write_your_comment: "Write your comment"
       compose_new_comment: "Compose new comment ... "
       submit: "Post"
@@ -93,6 +95,7 @@ en:
       delete_confirm: "Are you sure delete ?"
       destroy_success: "Destroy successfully !!!"
       delete_error: "Update error !!!"
+      coins: "Coins"
     favorite:
       favorite: "Favorite"
     destroy:
@@ -269,7 +272,7 @@ en:
       i: "I"
       ni: "N"
       buy_coin: "Buy Coin"
-      about_coin: "Abount Coin"
+      about_coin: "About Coin"
       enter_code: "Enter Code"
       download: "Download"
       rule_download_1: "A month: 3 times the maximum down load free (- 0 coin),
@@ -294,3 +297,4 @@ en:
   coin_used: "Coin used !!!"
   coin_use_success: "Coin using successfully !!!"
   coin_unavailable: "Coin is unavailable !!!"
+  login_facebook: "Login FB"

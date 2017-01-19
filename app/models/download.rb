@@ -8,4 +8,10 @@ class Download < ApplicationRecord
   scope :download_count, ->date_time do
     where("date(created_at) = '#{date_time}'").count
   end
+
+  class << self
+    def get_download_free user, date_time
+      user.downloads.where("date(created_at) >= '#{date_time}'").count
+    end
+  end
 end
