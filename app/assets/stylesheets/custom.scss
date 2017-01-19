@@ -340,7 +340,6 @@ div#favorite_form {
 
 span#fav_count {
   margin-top: 10px;
-  margin-left: 26px;
 }
 
 i.fa.fa-thumbs-o-down {
@@ -991,4 +990,23 @@ input#code {
 
 .top2 h2 {
   padding-top: 25px;
+}
+
+a.ssb-icon.ssb-facebook {
+  transform: translateY(25px);
+}
+
+p.tags {
+  text-align: left;
+  margin: 0px 55px;
+}
+
+p.tags a {
+  color: gray;
+}
+
+p.not_enought_coin {
+  color: red;
+  width: 60%;
+  margin-left: 20%;
 }
