@@ -31,5 +31,14 @@ class Document < ApplicationRecord
       Document.where(status: :Checked).order(created_at: :desc)
         .limit(Settings.document.limit)
     end
+
+    def get_hot_document
+      date = Time.now - 5.day
+      document_ids = "SELECT downloads.document_id, COUNT(*) as Total
+        FROM downloads where (date(downloads.created_at)) > '#{date}'
+        GROUP BY downloads.document_id
+        ORDER BY Total DESC "
+      Document.where("id IN (#{document_ids})")
+    end
   end
 end

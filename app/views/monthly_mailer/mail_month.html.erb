@@ -1,0 +1,11 @@
+<h2><%= t "statistic_admin_end_month" %></h2>
+<% @hot_document.each do |document| %>
+  <ul>
+    <li><%= t "hot_document_in_month"%>: <%= document.name %></li>
+  </ul>
+<% end %>
+<% @hot_user.each do |user| %>
+  <ul>
+    <li><%= t "hot_user_in_month" %>: <%= user.name %></li>
+  </ul>
+<% end %>

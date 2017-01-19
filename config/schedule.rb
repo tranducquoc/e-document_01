@@ -21,3 +21,7 @@
 every :day, at: "12:20am" do
   rake "my_namespace:send_email"
 end
+
+every "0 0 27-31 * *" do
+  rake "job:mailmonth"
+end
