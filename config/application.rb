@@ -7,6 +7,6 @@ module EDocument01
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
     config.action_view.embed_authenticity_token_in_remote_forms = true
-    config.active_job.queue_adapter = :delayed_job
+    # config.active_job.queue_adapter = :delayed_job
   end
 end

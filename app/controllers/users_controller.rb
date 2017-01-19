@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @q = User.ransack params[:q]
     @users = @q.result(distinct: true).order("created_at DESC")
       .page(params[:page]).per Settings.users.per_page
+    @friend_list = current_user.followings.order("created_at DESC")
+      .page(params[:page]).per Settings.users.per_page
+    @index = params[:page].nil? ? 0 :
+      ((params[:page].to_i - 1) * (Settings.users.per_page))
   end
 
   def show

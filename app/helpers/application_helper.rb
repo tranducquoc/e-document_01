@@ -18,11 +18,12 @@ module ApplicationHelper
   def generate_conversation message
     user = message.user
     host = message.chatroom.host
-    end_html = "<span class='username'>#{user.name}</span>: #{message.body}</div>"
-    end_right_html = "#{message.body} :<span class='username'>#{user.name}
-      </span></div>"
+    end_html = "</span><span class='userhost'>#{user.name}</span>:
+      <span class='content_host'>#{message.body}</span></div>"
+    end_right_html = "<span class='content_gest'>#{message.body}</span>
+    :<span class='usergest'>#{user.name}</span></div>"
 
-    user != host ? "<div class='message left'>" +
-      end_html : "<div class='message right'>" + end_right_html
+    user != host ? "<div class='message-left'>" +
+      end_html : "<div class='message-right'>" + end_right_html
   end
 end
