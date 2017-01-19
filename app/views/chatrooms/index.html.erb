@@ -1,18 +1,55 @@
-<%= provide :title, t(".messenger") %>
-<h2><%= t "messenger.created_conversation" %></h2>
-<ul>
-  <%= render partial: "available",
-    locals: {availables: current_user.active_conversations} %>
-</ul>
-<hr>
-<h2><%= t "messenger.added_conversation" %></h2>
-<ul>
-  <%= render partial: "available",
-    locals: {availables: current_user.passive_conversations} %>
-</ul>
-<hr>
-<h2><%= t "messenger.friends_list" %></h2>
-<ul id="followings">
-  <%= render partial: "following", locals: {friends: current_user.followings} %>
-  <%= render partial: "following", locals: {friends: current_user.followers} %>
-</ul>
+<div class="content-animation">
+  <h2 class="tittle text-center">
+    <span><i class="fa fa-gg-circle letter"></i></span>
+    <span class="letter"><%= t ".m" %></span>
+    <span class="letter"><%= t ".e" %></span>
+    <span class="letter"><%= t ".s" %></span>
+    <span class="letter"><%= t ".s" %></span>
+    <span class="letter"><%= t ".e" %></span>
+    <span class="letter"><%= t ".n" %></span>
+    <span class="letter"><%= t ".g" %></span>
+    <span class="letter"><%= t ".e" %></span>
+    <span class="letter"><%= t ".r" %></span>
+  </h2>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center one-div">
+      <div class="one-div-title">
+        <h2><%= t "messenger.created_conversation" %></h2>
+      </div>
+      <div class="one-div-content">
+        <div class="dress-info">
+          <div class="span span1">
+            <%= render partial: "available",
+              locals: {availables: current_user.active_conversations} %>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3 text-center one-div one-div">
+      <div class="one-div-title">
+        <h2><%= t "messenger.added_conversation" %></h2>
+      </div>
+      <div class="one-div-content">
+        <div class="dress-info">
+          <div class="span span1">
+            <%= render partial: "available",
+              locals: {availables: current_user.passive_conversations} %>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3 text-center one-div enter-code">
+      <div class="one-div-title">
+        <h2><%= t "messenger.friends_list" %></h2>
+      </div>
+      <div class="one-div-content">
+        <div class="dress-info">
+          <%= render partial: "following", locals: {friends: current_user.followings} %>
+          <%= render partial: "following", locals: {friends: current_user.followers} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

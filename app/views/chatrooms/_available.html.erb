@@ -1,3 +1,7 @@
 <% availables.each do |thing| %>
-  <li><%= link_to thing.title, chatroom_path(thing) %></li>
+    <p class="left"><%= t "room" %></p>
+    <p class="right">
+    <%= link_to thing.title, chatroom_path(thing) %>
+  </p>
+  <br />
 <% end %>

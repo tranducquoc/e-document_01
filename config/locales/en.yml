@@ -257,9 +257,9 @@ en:
       comment_at: "Commented at "
       ago: " ago."
   messenger:
-    friends_list: "List your friends: "
-    created_conversation: "You created conversations :"
-    added_conversation: "You are added to those conversations: "
+    friends_list: "List your friends"
+    created_conversation: "Created conversations"
+    added_conversation: "Added to those conversations"
     send: "Send"
   download: "Downloaded"
   buycoins:
@@ -298,3 +298,4 @@ en:
   coin_use_success: "Coin using successfully !!!"
   coin_unavailable: "Coin is unavailable !!!"
   login_facebook: "Login FB"
+  start_chatting: "Create chatroom"
