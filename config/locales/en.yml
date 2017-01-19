@@ -299,3 +299,17 @@ en:
   coin_unavailable: "Coin is unavailable !!!"
   login_facebook: "Login FB"
   start_chatting: "Create chatroom"
+  categories:
+    show:
+      ni: "N"
+      e: "E"
+      w: "W"
+      d: " D"
+      o: "O"
+      c: "C"
+      u: "U"
+      m: "M"
+      t: "T"
+      s: "S"
+      yi: "Y"
+      r: "R"

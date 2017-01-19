@@ -20,8 +20,8 @@ module ApplicationHelper
     host = message.chatroom.host
     end_html = "</span><span class='userhost'>#{user.name}</span>:
       <span class='content_host'>#{message.body}</span></div>"
-    end_right_html = "<span class='content_gest'>#{message.body}</span>
-    :<span class='usergest'>#{user.name}</span></div>"
+    end_right_html = "<span class='usergest'>#{user.name}</span>:
+    <span class='content_gest'>#{message.body}</span></div>"
 
     user != host ? "<div class='message-left'>" +
       end_html : "<div class='message-right'>" + end_right_html

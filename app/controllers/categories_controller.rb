@@ -1,12 +1,17 @@
 class CategoriesController < ApplicationController
+  before_action :load_category, only: [:update, :destroy, :show]
+
   def show
-    @documents = @category.document.page(params[:page])
-      .per Settings.document.per_page
+    @documents = @category.documents.where(status: :Checked).page(params[:page])
+      .per Settings.doc_per_page_1
   end
 
-  def index
-    @q = Category.search params[:q]
-    @categories = @q.result(distinct: true).order("created_at DESC")
-      .page(params[:page]).per Settings.categories.per_page
+  private
+  def load_category
+    @category = Category.find_by id: params[:id]
+    unless @category
+      flash.now[:warning] = t "category.not_found"
+      render_404
+    end
   end
 end
