@@ -31,6 +31,7 @@ gem "faker", "1.4.2"
 gem "friendly_id", "~> 5.1.0"
 gem "sidekiq", "~> 4.2", ">= 4.2.7"
 gem "public_activity", "~> 1.5"
+gem "social-share-button"
 gem "whenever", require: false
 group :development, :test do
   gem "byebug", platform: :mri

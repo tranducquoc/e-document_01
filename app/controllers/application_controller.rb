@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |_exception|
     flash[:alert] = t "access_denied"
-    redirect_to new_user_session
+    redirect_to new_user_session_path
   end
 
   def render_404
