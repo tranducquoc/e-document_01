@@ -29,7 +29,7 @@ class Document < ApplicationRecord
 
     def newest
       Document.where(status: :Checked).order(created_at: :desc)
-        .limit(Settings.document.limit)
+        .limit(Settings.document.limit_1)
     end
 
     def get_hot_document
@@ -39,6 +39,12 @@ class Document < ApplicationRecord
         GROUP BY downloads.document_id
         ORDER BY Total DESC "
       Document.where("id IN (#{document_ids})")
+    end
+
+    def get_read_document user
+      document_ids = user.reads.order(created_at: :desc)
+        .pluck("DISTINCT document_id")
+      Document.where(id: document_ids).limit(Settings.document.limit_1)
     end
   end
 end

@@ -76,7 +76,7 @@
     </div>
     <% if user_signed_in? %>
       <h2 class="text-center">
-        <span><i class="fa fa-file-o letter"></i></span>
+        <span class="letter"><i class="fa fa-address-book"></i></span>
         <span class="letter"><%= t ".yi" %></span>
         <span class="letter"><%= t ".o" %></span>
         <span class="letter"><%= t ".u" %></span>
@@ -93,6 +93,25 @@
       </h2>
       <div class="row best-product">
         <%= render @document_support.own_documents current_user %>
+      </div>
+      <h2 class="text-center">
+        <span class="letter"><i class="fa fa-bookmark"></i></span>
+        <span class="letter"><%= t ".r" %></span>
+        <span class="letter"><%= t ".e" %></span>
+        <span class="letter"><%= t ".a" %></span>
+        <span class="letter"><%= t ".d" %></span>
+        <span class="letter"><%= t ".d" %></span>
+        <span class="letter"><%= t ".o" %></span>
+        <span class="letter"><%= t ".c" %></span>
+        <span class="letter"><%= t ".u" %></span>
+        <span class="letter"><%= t ".m" %></span>
+        <span class="letter"><%= t ".e" %></span>
+        <span class="letter"><%= t ".ni" %></span>
+        <span class="letter"><%= t ".t" %></span>
+        <span class="letter"><%= t ".s" %></span>
+      </h2>
+      <div class="row best-product">
+        <%= render @document_support.read_documents current_user %>
       </div>
     <% end %>
   </div>
