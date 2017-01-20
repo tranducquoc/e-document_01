@@ -7,13 +7,9 @@
             <%= image_tag Settings.image, class: "img-responsive" %>
           </div>
           <div class="col-md-9">
-            <% if document.Checked? %>
-              <h4>
-                <%= link_to document.name, document_path(document) %>
-              </h4>
-            <% else %>
-              <h4><%= document.name %></h4>
-            <% end %>
+            <h4>
+              <%= link_to document.name, document_path(document) %>
+            </h4>
             <p>
               <i class="fa fa-tag">
                 <span>
@@ -52,15 +48,14 @@
         </div>
       </div>
       <div class="col-md-2">
-        <% if document.user == current_user %>
-          <%= link_to document_path(document), method: :delete,
-            class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
-            <span class="fa fa-trash-o"></span>
-          <% end %>
-        <% end %>
       </div>
     </div>
     <hr class="hr">
   <% end %>
-  <%= paginate @documents %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%= paginate @documents %>
+    </div>
+  </div>
+
 </div>
