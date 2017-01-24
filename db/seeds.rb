@@ -52,15 +52,11 @@ end
   Category.create!(name: name)
 end
 
-20.times do |n|
-  name = "Document-#{n}"
-  category_id = rand(Category.all.size) + 1
-  user_id = rand(User.all.size) + 1
-  Document.create!(name: name,
-    category_id: category_id,
-    user_id: user_id, status: :checked)
-end
-
-Relationship.create!(
-  user_one_id: 1,
-  user_two_id: 23)
+# 20.times do |n|
+#   name = "Document-#{n}"
+#   category_id = rand(Category.all.size) + 1
+#   user_id = rand(User.all.size) + 1
+#   Document.create!(name: name,
+#     category_id: category_id,
+#     user_id: user_id, status: :checked)
+# end

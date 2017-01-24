@@ -1,6 +1,6 @@
 class BuycoinsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @buycoin = Buycoin.new
   end

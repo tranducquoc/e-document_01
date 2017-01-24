@@ -11,6 +11,7 @@ class Document < ApplicationRecord
   validates :name, presence: true, length: {maximum: Settings.document_length}
 
   enum status: [:waiting, :checked, :cancelled]
+
   paginates_per Settings.document_per_page
 
   scope :in_category, ->category_id do
