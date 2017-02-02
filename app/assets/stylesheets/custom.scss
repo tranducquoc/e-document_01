@@ -1140,3 +1140,18 @@ p.not_enought_coin {
   padding-top: 20px;
   padding-left: 20px;
 }
+
+@media(max-width: 767px){
+  .bottom_wrapper {
+    bottom: -90px;
+  }
+  .bottom_wrapper .send_message {
+    transform: translateX(-10px);
+  }
+  .bottom_wrapper .message_input_wrapper {
+    width: 69%;
+  }
+  button.navbar-toggle {
+    transform: translateY(30px);
+  }
+}

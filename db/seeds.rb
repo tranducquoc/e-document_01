@@ -50,5 +50,5 @@ end
   user_id = rand(User.all.size) + 1
   Document.create!(name: name,
     category_id: category_id,
-    user_id: user_id, status: :Checked)
+    user_id: user_id, status: :checked)
 end

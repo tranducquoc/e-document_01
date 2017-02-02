@@ -1,15 +1,10 @@
 class Admin::UsersController < ApplicationController
   layout "admin"
-  before_action :load_user, only: [:update, :destroy]
+  before_action :authenticate_user!, :verify_admin
+  load_and_authorize_resource find_by: :slug
 
   def index
-    if params[:search].present?
-      @users = User.search(params[:search]).order(updated_at: :desc)
-        .page(params[:page]).per Settings.users.per_page
-    else
-      @users = User.all.order(updated_at: :desc).page(params[:page])
-        .per Settings.users.per_page
-    end
+    @users = User.all.order(updated_at: :desc)
   end
 
   def update
@@ -34,13 +29,5 @@ class Admin::UsersController < ApplicationController
   private
   def user_params
     params.permit :role
-  end
-
-  def load_user
-    @user = User.find_by id: params[:id]
-    unless @user
-      flash.now[:warning] = t "user.not_found"
-      render_404
-    end
   end
 end

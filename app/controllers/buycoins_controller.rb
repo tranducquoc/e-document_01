@@ -1,8 +1,6 @@
 class BuycoinsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
-  before_action :load_buycoin, only: :update
-
+  
   def new
     @buycoin = Buycoin.new
   end
@@ -18,14 +16,5 @@ class BuycoinsController < ApplicationController
       render :new
     end
     redirect_to root_path
-  end
-
-  private
-  def load_buycoin
-    @buycoin = Buycoin.find_by id: params[:id]
-    unless @buycoin
-      flash.now[:warning] = t "buycoin.not_found"
-      render_404
-    end
   end
 end

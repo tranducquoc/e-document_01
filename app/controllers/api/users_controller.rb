@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = params[:search].present? ? User.all : User.search(params[:search])
+    @users = params[:user_name].present? ? User.all : User.search(params[:user_name])
     respond_to do |format|
       format.html do
         render partial: "admin/users/users",

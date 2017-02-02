@@ -37,10 +37,10 @@ class DocumentsController < ApplicationController
 
   def show
     current_date = Time.now - Settings.number_seven_2
-    @download_free = Download.get_download_free current_user,
-      current_date.strftime(Settings.format_date)
     @comments = @document.comments.newest
     if user_signed_in?
+      @download_free = Download.get_download_free current_user,
+        current_date.strftime(Settings.format_date)
       @document_fav = Favorite.find_by document_id: @document.id,
         user_id: current_user.id
       @document.update_attributes view: @document.view + 1
@@ -58,7 +58,7 @@ class DocumentsController < ApplicationController
 
   def load_document
     @document = Document.find_by id: params[:id]
-    unless @document
+    if @document.nil? || @document.waiting?
       flash.now[:warning] = t "document.not_found"
       render_404
     end

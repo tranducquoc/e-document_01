@@ -7,7 +7,7 @@
             <%= image_tag Settings.image, class: "img-responsive" %>
           </div>
           <div class="col-md-9">
-            <% if document.Checked? %>
+            <% if document.checked? %>
               <h4>
                 <%= link_to document.name, document_path(document) %>
               </h4>
@@ -24,11 +24,11 @@
                 </span>
                 <span class="status">
                   <%= t ".status" %>
-                  <% if document.Checked? %>
+                  <% if document.checked? %>
                     <span class="document-check">
                       <i class="fa fa-check-circle-o"></i>
                     </span>
-                  <% elsif document.Wating? %>
+                  <% elsif document.waiting? %>
                     <span class="document-pause">
                       <i class="fa fa-pause"></i>
                     </span>

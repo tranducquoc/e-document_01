@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     render file: "#{Rails.root}/public/404.html", layout: false, status: 404
   end
 
+  def verify_admin
+    redirect_to root_url unless current_user.admin?
+  end
+
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

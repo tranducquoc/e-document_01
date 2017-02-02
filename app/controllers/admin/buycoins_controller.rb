@@ -1,7 +1,6 @@
 class Admin::BuycoinsController < ApplicationController
   layout "admin"
-  before_action :authenticate_user!
-  load_and_authorize_resource except: [:update, :destroy]
+  before_action :authenticate_user!, :verify_admin
   before_action :load_buycoin, only: :update
 
   def index

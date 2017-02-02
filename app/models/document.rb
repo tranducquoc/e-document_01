@@ -10,7 +10,7 @@ class Document < ApplicationRecord
   mount_uploader :attachment, AttachmentUploader
   validates :name, presence: true, length: {maximum: Settings.content_size_max}
 
-  enum status: [:Wating, :Checked, :Cancelled]
+  enum status: [:waiting, :checked, :cancelled]
   paginates_per Settings.document_per_page
 
   scope :in_category, ->category_id do
@@ -23,12 +23,12 @@ class Document < ApplicationRecord
 
   class << self
     def own_documents user
-      user.documents.where(status: :Checked).order(created_at: :desc)
+      user.documents.where(status: :checked).order(created_at: :desc)
         .limit(Settings.document.limit)
     end
 
     def newest
-      Document.where(status: :Checked).order(created_at: :desc)
+      Document.where(status: :checked).order(created_at: :desc)
         .limit(Settings.document.limit_1)
     end
 
