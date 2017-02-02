@@ -17,7 +17,7 @@
             <p>
               <i class="fa fa-tag">
                 <span>
-                  <%= link_to document.category.name, category_path(document.category) %>
+                  <%= link_to document.category.name, category_path(document.category) if document.category.present? %>
                 </span>
                 <span class="time">
                   <%= document.created_at.strftime(Settings.format_date) %>

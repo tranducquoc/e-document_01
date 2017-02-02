@@ -20,7 +20,7 @@
         <tr class="row">
           <td class="col-md-1"><%= document.id %></td>
           <td class="col-md-2">
-            <%= document.category.name %></td>
+            <%= document.category.name if document.category.present? %></td>
           <td class="col-md-2"><%= document.description %></td>
           <td class="col-md-2"><%= document.status %></td>
           <td class="col-md-1"><%= document.user_id %></td>

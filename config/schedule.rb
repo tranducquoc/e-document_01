@@ -18,10 +18,10 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :day, at: "12:20am" do
+every 40.seconds do
   rake "my_namespace:send_email"
 end
 
-every "0 0 27-31 * *" do
+every 2.minutes do
   rake "job:mailmonth"
 end

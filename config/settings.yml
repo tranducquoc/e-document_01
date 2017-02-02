@@ -33,3 +33,5 @@ count_free_download: 3
 coin_when_free: 0
 coin_when_nonfree: 10
 doc_per_page_1: 2
+five_per_page: 5
+four_per_page: 4
