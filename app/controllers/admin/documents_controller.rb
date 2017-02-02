@@ -1,6 +1,6 @@
 class Admin::DocumentsController < ApplicationController
-  load_and_authorize_resource
   layout "admin"
+  before_action :authenticate_user!, :verify_admin
   before_action :load_document, only: [:update, :destroy]
 
   def index
@@ -9,7 +9,7 @@ class Admin::DocumentsController < ApplicationController
   end
 
   def update
-    params[:status] = :Checked
+    params[:status] = :checked
     if @document.update_attributes document_params
       flash[:success] = t ".update_success"
       @user = @document.user

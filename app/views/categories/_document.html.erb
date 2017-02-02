@@ -20,11 +20,11 @@
                 </span>
                 <span class="status">
                   <%= t ".status" %>
-                  <% if document.Checked? %>
+                  <% if document.checked? %>
                     <span class="document-check">
                       <i class="fa fa-check-circle-o"></i>
                     </span>
-                  <% elsif document.Wating? %>
+                  <% elsif document.waiting? %>
                     <span class="document-pause">
                       <i class="fa fa-pause"></i>
                     </span>

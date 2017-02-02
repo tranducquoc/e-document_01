@@ -1,6 +1,6 @@
 $( document ).on('turbolinks:load', function() {
-  $('#search-user').keyup(function() {
-    var user_name = $('#search-user').val();
+  $('#search_user').keyup(function() {
+    var user_name = $('#search_user_ajax').val();
     load_users(user_name);
   });
 });

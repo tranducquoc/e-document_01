@@ -26,7 +26,7 @@
           <td class="col-md-1"><%= document.user_id %></td>
           <td class="col-md-2"><%= document.user.name %></td>
           <th class="col-md-2 option-product-admin">
-          <% unless document.Checked? || document.Cancelled? %>
+          <% unless document.checked? || document.cancelled? %>
             <%= link_to admin_document_path(document), method: :patch,
               class: "btn btn-default", data: {confirm: t(".check_confirm")} do %>
               <span class="fa fa-check"></span>

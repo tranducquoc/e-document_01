@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource except: [:update, :destroy]
+  load_and_authorize_resource
 
   def create
     @document = Document.find_by id: params[:document_id]
