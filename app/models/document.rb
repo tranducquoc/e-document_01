@@ -33,7 +33,7 @@ class Document < ApplicationRecord
     end
 
     def get_hot_document
-      date = Time.now - 5.day
+      date = Time.now - Settings.five_per_page.day
       document_ids = "SELECT downloads.document_id, COUNT(*) as Total
         FROM downloads where (date(downloads.created_at)) > '#{date}'
         GROUP BY downloads.document_id

@@ -1,14 +1,20 @@
-User.create(
-  name: "letuananh",
-  email: "letuananh@gmail.com",
-  address: "ha noi",
+User.create!(name: "buiquyhoat",
+  email: "buiquyhoat@gmail.com",
   password: "123456",
-  phone_number: "0987654321",
-  role: :admin
-)
-
+  password_confirmation: "123456",
+  role: :admin)
+User.create!(name: "hoat",
+  email: "buiquyhoat1@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  role: :member)
+User.create!(name: "tuanh",
+  email: "letuanh821993@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  role: :member)
 20.times do |n|
-  name  = Faker::Name.name
+  name  = "name-#{n + 1}"
   email = "example-#{n + 1}@gmail.com"
   password = "123456"
   User.create!(name: name,
@@ -33,13 +39,15 @@ end
     status: :available)
 end
 
-User.create!(name: "buiquyhoat",
-  email: "buiquyhoat@gmail.com",
-  password: "123456",
-  password_confirmation: "123456",
-  role: :admin)
-
 10.times do |n|
+  code  = "code-#{n + 22}"
+  value = 30
+  Coin.create!(code: code,
+    value: value,
+    status: :available)
+end
+
+5.times do |n|
   name = Faker::Name.name
   Category.create!(name: name)
 end

@@ -92,11 +92,15 @@
       <div class="row">
         <div class="col-md-6">
           <p class="views_count" id="download_count">
+          <% if user_signed_in? %>
             <% if @download_free >= Settings.count_free_download %>
               <%= Settings.coin_when_nonfree %>
             <% else %>
               <%= Settings.coin_when_free %>
             <% end %>
+          <% else %>
+            <%= Settings.coin_when_free %>
+          <% end %>
           </p>
           <p><%= t ".coins" %></p>
         </div>
@@ -117,7 +121,7 @@
   <p class="tags">
     <% load_categories.each do |category| %>
       <i class="fa fa-tags"></i>
-      <span><%= link_to category.name, "#" %></span>
+      <span><%= link_to category.name, category_path(category) %></span>
     <% end %>
   </p>
   <hr>

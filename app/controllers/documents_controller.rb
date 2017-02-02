@@ -58,6 +58,7 @@ class DocumentsController < ApplicationController
 
   def load_document
     @document = Document.find_by id: params[:id]
+    
     if @document.nil? || @document.waiting?
       flash.now[:warning] = t "document.not_found"
       render_404

@@ -73,7 +73,7 @@ en:
       thoudrand: "1000++"
       file: "File uploaded"
       know: "We know what you needed ? Upload and Download free"
-      register: "Register Now !"
+      register: "Upload Now !"
     show:
       share_by: "Shared by: "
       dash: "|"
@@ -225,6 +225,12 @@ en:
         action_upgrade_user: "Upgrade admin"
         action_delete_user: "Delete User"
       stt: "STT"
+      destroy: 
+        destroy_success: "Destroy successfully!!"
+      users:
+        update_success: "Update successfully !!!"
+        update_confirm: "Do you want to upgrade this user?"
+        delete_confirm: "Do you want to delete this user?"
     statistic:
       index:
         upload_count: "Upload count"
@@ -293,10 +299,10 @@ en:
       code_coin: "We send you the code for your order"
       code: "Your code: "
       value: "Code value: "
-  coin_not_found: "Coin not found !!!"
-  coin_used: "Coin used !!!"
-  coin_use_success: "Coin using successfully !!!"
-  coin_unavailable: "Coin is unavailable !!!"
+  coin_not_found: "Code not found !!!"
+  coin_used: "Code used !!!"
+  coin_use_success: "Code using successfully !!!"
+  coin_unavailable: "Code is unavailable !!!"
   login_facebook: "Login FB"
   start_chatting: "Create chatroom"
   categories:
@@ -314,3 +320,4 @@ en:
       yi: "Y"
       r: "R"
   space: " "
+  statistic_order_admin_end_month: "Static download and upload in this month"
