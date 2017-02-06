@@ -257,3 +257,6 @@ vn:
       yi: "Y"
       r: "R"
   space: " "
+  sessions:
+    create:
+      invalid_email_password: "Sai tên tài khoản hoặc mật khẩu !"

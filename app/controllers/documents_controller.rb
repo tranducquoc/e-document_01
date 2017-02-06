@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
-  load_and_authorize_resource except: [:create, :update, :destroy]
-  before_action :load_document, only: [:update, :destroy, :show]
+  load_and_authorize_resource except: [:create, :update]
+  before_action :load_document, only: [:update, :show]
 
   def index
     @categories = Category.all
@@ -58,7 +58,6 @@ class DocumentsController < ApplicationController
 
   def load_document
     @document = Document.find_by id: params[:id]
-    
     if @document.nil? || @document.waiting?
       flash.now[:warning] = t "document.not_found"
       render_404

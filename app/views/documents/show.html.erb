@@ -13,7 +13,9 @@
     <div class="col-md-8 text-left">
       <p class="author_info">
         <span><%= t ".share_by" %></span>
-        <span class="user_name"><%= @document.user.name %></span>
+        <span class="user_name">
+          <%= link_to @document.user.name, @document.user %>
+        </span>
         <span><%= t ".dash" %></span>
         <span><%= t ".date" %></span>
         <span class="document_date">
