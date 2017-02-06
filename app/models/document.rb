@@ -8,7 +8,7 @@ class Document < ApplicationRecord
   has_many :favorites
   has_many :downloads
   mount_uploader :attachment, AttachmentUploader
-  validates :name, presence: true, length: {maximum: Settings.content_size_max}
+  validates :name, presence: true, length: {maximum: Settings.document_length}
 
   enum status: [:waiting, :checked, :cancelled]
   paginates_per Settings.document_per_page

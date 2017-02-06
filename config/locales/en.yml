@@ -321,3 +321,6 @@ en:
       r: "R"
   space: " "
   statistic_order_admin_end_month: "Static download and upload in this month"
+  sessions:
+    create:
+      invalid_email_password: "Invalid email or password"

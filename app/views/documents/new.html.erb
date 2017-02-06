@@ -4,7 +4,8 @@
     <%= form_for @document, html: {multipart: true} do |f| %>
     <%= render "shared/error_messages", object: f.object %>
       <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control", required: "true" %>
+      <%= f.text_field :name, class: "form-control", required: "true",
+        maxlength: Settings.document_length %>
       <%= f.label :description %>
       <%= f.text_area :description, placeholder:
         t(".compose_description"), class: "form-control",

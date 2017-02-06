@@ -7,14 +7,13 @@
 
       <div class="form-group">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true,
-          class: "form-control", required: "true" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control",required: "true", maxlength: Settings.email_length %>
       </div>
 
       <div class="form-group">
         <%= f.label :name %><br />
         <%= f.text_field :name, autocomplete: false, class: "form-control",
-          required: "true" %>
+          required: "true", maxlength: Settings.name_size_max %>
       </div>
 
       <div class="form-group">
@@ -31,13 +30,12 @@
 
       <div class="form-group">
         <%= f.label :address %><br />
-        <%= f.text_field :address, class: "form-control", required: "true" %>
+        <%= f.text_field :address, class: "form-control" %>
       </div>
 
       <div class="form-group">
         <%= f.label :phone_number %><br />
-        <%= f.text_field :phone_number, class: "form-control",
-          required: "true" %>
+        <%= f.text_field :phone_number, class: "form-control" %>
       </div>
 
       <div class="actions">
