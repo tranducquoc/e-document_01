@@ -48,7 +48,7 @@ end
 end
 
 5.times do |n|
-  name = Faker::Name.name
+  name = FFaker::Name.name
   Category.create!(name: name)
 end
 
