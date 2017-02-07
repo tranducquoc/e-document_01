@@ -32,15 +32,6 @@ class Document < ApplicationRecord
         .limit(Settings.document.limit_1)
     end
 
-    def get_hot_document
-      date = Time.now - Settings.five_per_page.day
-      document_ids = "SELECT downloads.document_id, COUNT(*) as Total
-        FROM downloads where (date(downloads.created_at)) > '#{date}'
-        GROUP BY downloads.document_id
-        ORDER BY Total DESC "
-      Document.where("id IN (#{document_ids})")
-    end
-
     def get_read_document user
       document_ids = user.reads.order(created_at: :desc)
         .pluck("DISTINCT document_id")
