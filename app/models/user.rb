@@ -42,10 +42,6 @@ class User < ApplicationRecord
     ]
   end
 
-  def current_user? user
-    user == current_user
-  end
-
   def add_friend other_user
     active_relationships.create user_two_id: other_user.id
   end
@@ -71,14 +67,6 @@ class User < ApplicationRecord
     self.active_conversations.collect(&:guest).flatten.uniq.include? other_user
   end
 
-  def self.new_with_session params, session
-    super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
-      end
-    end
-  end
-
   def self.from_omniauth auth
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -89,8 +77,7 @@ class User < ApplicationRecord
 
   class << self
     def send_mail_if_not_login
-      user_ids = User.where("last_sign_in_at < ?", Time.now - 1.hour).pluck(:id)
-      User.where(id: user_ids)
+      User.where("last_sign_in_at < ?", Time.now - 1.hour)
     end
   end
 

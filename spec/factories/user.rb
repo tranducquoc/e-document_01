@@ -5,8 +5,9 @@ FactoryGirl.define do
     name{FFaker::Name.name}
     email{FFaker::Internet.email}
     phone_number{FFaker::PhoneNumber.phone_number}
-    password "123456"
-    password_confirmation "123456"
+    password "password"
+    password_confirmation "password"
+    last_sign_in_at "2017-01-07 06:21:10.460110"
   end
 
   trait :admin do

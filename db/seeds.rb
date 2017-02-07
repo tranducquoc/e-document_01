@@ -60,3 +60,7 @@ end
     category_id: category_id,
     user_id: user_id, status: :checked)
 end
+
+Relationship.create!(
+  user_one_id: 1,
+  user_two_id: 23)

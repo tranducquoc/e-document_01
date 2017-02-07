@@ -1,7 +1,7 @@
 RSpec.configure do |config|
 
   config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation, {except: %w[users]}
+    DatabaseCleaner.clean_with :truncation, {:except => %w[users relationships]}
   end
 
   config.before(:each) do
