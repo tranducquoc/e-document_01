@@ -27,7 +27,6 @@ gem "jbuilder", "~> 2.5"
 gem "config", "~> 1.0"
 gem "ransack", "~> 1.7"
 gem "kaminari"
-gem "faker", "1.4.2"
 gem "friendly_id", "~> 5.1.0"
 gem "sidekiq", "~> 4.2", ">= 4.2.7"
 gem "public_activity", "~> 1.5"
@@ -43,6 +42,9 @@ group :development, :test do
   gem "database_cleaner"
   gem "capybara"
   gem "factory_girl_rails"
+  gem "ffaker"
+  gem "simplecov"
+  gem "rails-controller-testing"
 end
 
 group :development do

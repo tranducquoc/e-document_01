@@ -63,15 +63,6 @@ class User < ApplicationRecord
     friends << followings
   end
 
-  def relationships
-    relationships = active_relationships.compact
-    relationships << passive_relationships
-  end
-
-  def is_friendpassive_conversations? other_user
-    self.friends.include? other_user
-  end
-
   def self.search params_search
     User.all.where("name LIKE ?", "%#{params_search}%")
   end
@@ -100,15 +91,6 @@ class User < ApplicationRecord
     def send_mail_if_not_login
       user_ids = User.where("last_sign_in_at < ?", Time.now - 1.hour).pluck(:id)
       User.where(id: user_ids)
-    end
-
-    def get_hot_user
-      date = Time.now - 5.day
-      user_ids = "SELECT downloads.user_id, COUNT(*) as Total
-        FROM downloads where (date(downloads.created_at)) > '#{date}'
-        GROUP BY downloads.user_id
-        ORDER BY Total DESC "
-      User.where("id IN (#{user_ids})")
     end
   end
 
