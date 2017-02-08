@@ -92,8 +92,7 @@
         <span class="letter"><%= t ".s" %></span>
       </h2>
       <div class="row best-product">
-        <%= render @document_support.own_documents current_user if
-          @document_support.own_documents.present? %>
+        <%= render @document_support.own_documents(current_user) if @document_support.own_documents.present? %>
       </div>
       <h2 class="text-center">
         <span class="letter"><i class="fa fa-bookmark"></i></span>
@@ -112,8 +111,7 @@
         <span class="letter"><%= t ".s" %></span>
       </h2>
       <div class="row best-product">
-        <%= render @document_support.read_documents current_user if
-          @document_support.read_documents.present? %>
+        <%= render @document_support.read_documents(current_user) if @document_support.read_documents.present? %>
       </div>
     <% end %>
   </div>
