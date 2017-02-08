@@ -1,13 +1,17 @@
 class Document < ApplicationRecord
   acts_as_paranoid
   paginates_per Settings.users.per_page
+
   belongs_to :user, class_name: User.name
   belongs_to :category, class_name: Category.name
+
   has_many :comments, class_name: Comment.name
   has_many :reads
   has_many :favorites
   has_many :downloads
+
   mount_uploader :attachment, AttachmentUploader
+
   validates :name, presence: true, length: {maximum: Settings.document_length}
 
   enum status: [:waiting, :checked, :cancelled]
