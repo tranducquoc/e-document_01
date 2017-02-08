@@ -8,8 +8,7 @@
         maxlength: Settings.document_length %>
       <%= f.label :description %>
       <%= f.text_area :description, placeholder:
-        t(".compose_description"), class: "form-control",
-          rows: Settings.rows, required: "true" %>
+        t(".compose_description"), class: "form-control", rows: Settings.rows %>
       <div class="row">
         <div class="col-md-6">
           <%= f.label :attachment %>

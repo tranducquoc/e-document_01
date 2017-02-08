@@ -1,5 +1,5 @@
-User.create!(name: "buiquyhoat",
-  email: "buiquyhoat@gmail.com",
+User.create!(name: "Framgia Admin",
+  email: "framgia.document@gmail.com",
   password: "123456",
   password_confirmation: "123456",
   role: :admin)
@@ -13,15 +13,6 @@ User.create!(name: "tuanh",
   password: "123456",
   password_confirmation: "123456",
   role: :member)
-20.times do |n|
-  name  = "name-#{n + 1}"
-  email = "example-#{n + 1}@gmail.com"
-  password = "123456"
-  User.create!(name: name,
-    email: email,
-    password: password,
-    password_confirmation: password)
-end
 
 10.times do |n|
   code  = "code-#{n + 1}"
@@ -47,10 +38,16 @@ end
     status: :available)
 end
 
-5.times do |n|
-  name = FFaker::Name.name
-  Category.create!(name: name)
-end
+Category.create!(name: "Ruby on Rails")
+Category.create!(name: "Android")
+Category.create!(name: "IOS")
+Category.create!(name: "Java")
+Category.create!(name: "Natural Language Processing")
+
+# 5.times do |n|
+#   name = FFaker::Name.name
+#   Category.create!(name: name)
+# end
 
 # 20.times do |n|
 #   name = "Document-#{n}"
