@@ -1,4 +1,5 @@
-  source "https://rubygems.org"
+source "https://rubygems.org"
+ruby "2.3.0"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -7,6 +8,7 @@ end
 gem "rails", "~> 5.0.1"
 gem "devise"
 gem "carrierwave", "~> 1.0"
+gem "fog"
 gem "rubocop", require: false
 gem "bootstrap-sass", "3.3.6"
 gem "i18n-js", ">= 3.0.0.rc11"
@@ -16,7 +18,6 @@ gem "daemons"
 gem "cancancan"
 gem "paranoia", "~> 2.2"
 gem "font-awesome-sass", "~> 4.7.0"
-gem "sqlite3"
 gem "puma", "~> 3.0"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
@@ -43,9 +44,9 @@ group :development, :test do
   gem "capybara"
   gem "factory_girl_rails"
   gem "ffaker"
-  gem "simplecov"
   gem "rails-controller-testing"
   gem "simplecov", require: false
+  gem "sqlite3"
 end
 
 group :development do
@@ -54,4 +55,9 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
 end
+
+group :production do
+  gem "pg"
+end
+
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
