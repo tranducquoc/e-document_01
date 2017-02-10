@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
-  load_and_authorize_resource except: [:create, :update]
+  load_and_authorize_resource except: [:create, :update, :show]
   before_action :load_document, only: [:update, :show]
 
   def index
@@ -19,10 +19,10 @@ class DocumentsController < ApplicationController
       Delayed::Job.enqueue upload_document, Settings.priority,
         Settings.time_delay.seconds.from_now
       flash[:success] = t ".create_success"
+      redirect_to root_path
     else
       render :new
     end
-    redirect_to root_path
   end
 
   def destroy
