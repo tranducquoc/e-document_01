@@ -36,3 +36,4 @@ coin_when_nonfree: 10
 doc_per_page_1: 2
 five_per_page: 5
 four_per_page: 4
+jpg: ".jpg"

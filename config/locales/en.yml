@@ -209,7 +209,7 @@ en:
       documents:
         id: "ID"
         category: "Category"
-        content: "Description"
+        filename: "File Name"
         status: "Status"
         user_id: "User ID"
         user_name: "User Name"

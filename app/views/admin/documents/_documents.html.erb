@@ -4,12 +4,12 @@
       <tr class="info row">
         <th class="col-md-1"><%= t ".id" %></th>
         <th class="col-md-2"><%= t ".category" %></th>
-        <th class="col-md-2">
+        <th class="col-md-3">
           <span class="product-cart-description">
-            <%= t ".content" %>
+            <%= t ".filename" %>
           </span>
         </th>
-        <th class="col-md-2"><%= t ".status" %></th>
+        <th class="col-md-1"><%= t ".status" %></th>
         <th class="col-md-1"><%= t ".user_id" %></th>
         <th class="col-md-2"><%= t ".user_name" %></th>
         <th class="col-md-2"></th>
@@ -21,8 +21,8 @@
           <td class="col-md-1"><%= document.id %></td>
           <td class="col-md-2">
             <%= document.category.name if document.category.present? %></td>
-          <td class="col-md-2"><%= document.description %></td>
-          <td class="col-md-2"><%= document.status %></td>
+          <td class="col-md-3"><%= document.attachment.file.filename %></td>
+          <td class="col-md-1"><%= document.status %></td>
           <td class="col-md-1"><%= document.user_id %></td>
           <td class="col-md-2"><%= document.user.name %></td>
           <th class="col-md-2 option-product-admin">
