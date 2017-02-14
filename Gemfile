@@ -35,6 +35,7 @@ gem "social-share-button"
 gem "omniauth-facebook"
 gem "figaro"
 gem "whenever", require: false
+gem "rmagick", "~> 2.15", ">= 2.15.4"
 
 group :development, :test do
   gem "byebug", platform: :mri

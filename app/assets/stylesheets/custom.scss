@@ -67,7 +67,9 @@ h3.product_name {
 }
 
 .product img.img-responsive, .detail-product img.img-responsive {
-  height: 204px;
+  height: 280px;
+  width: 94%;
+  padding-top: 2%;
 }
 
 .product .description.text-center {
@@ -83,11 +85,11 @@ h3.product_name {
   position: absolute;
   color: white;
   width: 97%;
-  height: 208px;
+  height: 280px;
   background: rgba(0, 0, 0, 0.7);
   text-align: center;
   padding-top: 60px;
-  top: -208px;
+  top: -280px;
   transition: all ease 0.8s;
 }
 
@@ -100,6 +102,7 @@ h3.product_name {
   padding: 12px;
   margin-left: 10px;
   border: solid 1px;
+  margin-top: 20%;
   border-radius: 50%;
 }
 

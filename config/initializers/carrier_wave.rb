@@ -1,4 +1,5 @@
 if Rails.env.production?
+  require "carrierwave/processing/rmagick"
   CarrierWave.configure do |config|
     config.fog_credentials = {
       # Configuration for Amazon S3

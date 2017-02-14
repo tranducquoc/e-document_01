@@ -5,7 +5,11 @@
         <a href="#"><i class="fa fa-link"></i></a>
         <a href="<%= document_path(document) %>"><i class="fa fa-search"></i></a>
       </div>
-      <%= image_tag Settings.image, class: "img-responsive" %>
+      <% if document.attachment? %>
+        <%= image_tag document.attachment.preview.url, class: "img-responsive" %>
+      <% else %>
+        <%= image_tag Settings.image, class: "img-responsive" %>
+      <% end %>
       <div class="caption">
         <h3 class="product_name text-center"><%= document.name %></h3>
         <hr>
