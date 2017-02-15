@@ -20,6 +20,20 @@ class ApplicationController < ActionController::Base
     redirect_to root_url unless current_user.admin?
   end
 
+  def validate_permission_for_read_document document
+    if document.individual? && current_user != document.user
+      flash.now[:warning] = t "document.not_found"
+      render_404
+    end
+  end
+
+  def validate_permission_for_document_status document
+    if document.waiting? || document.nil?
+      flash.now[:warning] = t "document.not_found"
+      render_404
+    end
+  end
+
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

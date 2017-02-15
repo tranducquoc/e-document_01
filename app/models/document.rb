@@ -16,6 +16,8 @@ class Document < ApplicationRecord
   validates :name, presence: true, length: {maximum: Settings.document_length}
 
   enum status: [:waiting, :checked, :cancelled]
+  enum status_upload: [:global, :shared, :individual]
+
 
   paginates_per Settings.document_per_page
 

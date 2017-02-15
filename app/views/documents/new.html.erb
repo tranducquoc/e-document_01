@@ -20,6 +20,16 @@
               {class: "btn btn-default", include_blank: t(".all")} %>
         </div>
       </div>
+      <div class="row status_upload">
+        <div class="col-md-12">
+          <%= f.radio_button :status_upload, Settings.value_global, checked: true %> 
+          <%= f.label :status_upload, Settings.global, value: Settings.value_global %>
+          <%= f.radio_button :status_upload, Settings.value_shared %> 
+          <%= f.label :status_upload, Settings.shared, value: Settings.value_shared %>
+          <%= f.radio_button :status_upload, Settings.value_individual %> 
+          <%= f.label :status_upload, Settings.individual, value: Settings.value_individual %>
+        </div>
+      </div>
       <%= f.submit t(".upload"), class: "btn btn-default" %>
     <% end %>
   </div>

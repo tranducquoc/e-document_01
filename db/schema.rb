@@ -87,12 +87,13 @@ ActiveRecord::Schema.define(version: 20170214043316) do
     t.string   "name"
     t.string   "description"
     t.string   "attachment"
-    t.integer  "status",      default: 0
+    t.integer  "status",        default: 0
     t.integer  "category_id"
     t.integer  "user_id"
-    t.integer  "view",        default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "view",          default: 0
+    t.integer  "status_upload", default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_documents_on_deleted_at"
   end
