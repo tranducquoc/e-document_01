@@ -43,3 +43,9 @@ star_off: "/assets/star-off.png"
 star_half: "/assets/star-half.png"
 number_star: 5
 round: 1
+global: "Global"
+shared: "Shared"
+individual: "Individual"
+value_global: 0
+value_shared: 1
+value_individual: 2

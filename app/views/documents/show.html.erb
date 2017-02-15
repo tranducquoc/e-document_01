@@ -181,10 +181,12 @@
       </h3>
       <p class="notice_review"><%= t ".please_give_me_your_review" %></p>
       <p>
-        <% if @review.id.nil? %>
-          <% @button = t("documents.add_review") %>
-        <% else %>
-          <% @button = t("documents.update_review") %>
+        <% if @review.present? %>
+          <% if @review.id.nil? %>
+            <% @button = t("documents.add_review") %>
+          <% else %>
+            <% @button = t("documents.update_review") %>
+          <% end %>
         <% end %>
         <div id="button_create" class="btn-review-1">
           <a type="button" class="btn btn-default mynewreview pull-right"

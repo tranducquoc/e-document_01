@@ -1,7 +1,11 @@
 class DocumentsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :destroy]
-  load_and_authorize_resource except: [:create, :update, :show]
-  before_action :load_document, only: [:update, :show]
+  before_action :authenticate_user!, except: :index
+  load_and_authorize_resource
+
+  before_action only: :show do
+    validate_permission_for_read_document @document
+    validate_permission_for_document_status @document
+  end
 
   def index
     @categories = Category.all
@@ -14,6 +18,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build document_params
+    @document.status_upload = params[:document][:status_upload].to_i
     if @document.save
       upload_document = UploadDocument.new @document, current_user
       Delayed::Job.enqueue upload_document, Settings.priority,
@@ -52,13 +57,5 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit :name, :description, :attachment,
       :category_id
-  end
-
-  def load_document
-    @document = Document.find_by id: params[:id]
-    if @document.nil? || @document.waiting?
-      flash.now[:warning] = t "document.not_found"
-      render_404
-    end
   end
 end
