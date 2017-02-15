@@ -37,3 +37,9 @@ doc_per_page_1: 2
 five_per_page: 5
 four_per_page: 4
 jpg: ".jpg"
+reivews: ["bad", "poor", "regular", "good", "gorgeous"]
+star_on: "/assets/star-on.png"
+star_off: "/assets/star-off.png"
+star_half: "/assets/star-half.png"
+number_star: 5
+round: 1

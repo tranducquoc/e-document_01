@@ -25,7 +25,6 @@ $(document).on('turbolinks:load', function(){
 
   $('#review-btn').on('click', function(event){
     var method = $(this).val();
-    console.log(method);
     var id = $('#review_id').val();
     var url = '/reviews';
     if (method == 'Update review'){

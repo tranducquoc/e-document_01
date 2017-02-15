@@ -36,13 +36,11 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    current_date = Time.now - Settings.number_seven_2
-    @comments = @document.comments.newest
-    if user_signed_in?
-      @download_free = Download.get_download_free current_user,
-        current_date.strftime(Settings.format_date)
-      @document_fav = Favorite.find_by document_id: @document.id,
+    @document_sp = Supports::DocumentSupport.new
+    if current_user.present?
+      @review = Review.find_by document_id: @document.id,
         user_id: current_user.id
+      @review = current_user.reviews.build if @review.nil?
       @document.update_attributes view: @document.view + 1
       read = current_user.reads.build
       read.document = @document

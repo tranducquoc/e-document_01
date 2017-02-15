@@ -1,4 +1,4 @@
-<div class="view-document col-md-10 col-md-offset-1 text-center">
+<div class="view-document col-md-9 text-center">
   <div class="row">
   <div class="col-md-4">
     <h2 class="text-center"><%= @document.name %></h2>
@@ -40,6 +40,7 @@
             </span>
           </p>
           <% if user_signed_in? %>
+            <% @download_free = @document_sp.get_download_free(current_user) %>
             <% if @document.user == current_user %>
               <%= form_for current_user.downloads.build do |f| %>
                 <%= f.hidden_field :document_id, value: @document.id %>
@@ -127,32 +128,78 @@
     <% end %>
   </p>
   <hr>
-  <div id="comment" class="col-md-10 col-md-offset-1">
-    <h3 class="tittle-comment text-left">
-      <i class="fa fa-comments-o"></i><%= t ".comment" %>
-      <%= t ".open" %><span class="comment-count"><%= @document.comments.count %></span><%= t ".close" %>
-    </h3>
-    <% if user_signed_in? %>
-      <span class="header-comment pull-left">
-        <%= t ".write_your_comment" %>
-      </span>
-      <div class="form-group">
-        <%= form_for [@document, @document.comments.new], remote: true do |f| %>
-          <%= f.text_area :content, class: "form-control",
-            placeholder: t(".compose_new_comment"), class: "form-control",
-            rows: Settings.rows, required: true %>
-          <%= f.submit t(".submit"), class: "btn btn-default btn_comment pull-right",
-            id: "comment-btn" %>
-        <% end %>
+  <div class="tab-content">
+    <div id="comment">
+      <h3 class="tittle-comment text-left">
+        <i class="fa fa-comments-o"></i><%= t ".comment" %>
+        <%= t ".open" %><span class="comment-count"><%= @document.comments.count %></span><%= t ".close" %>
+      </h3>
+      <% if user_signed_in? %>
+        <span class="header-comment pull-left">
+          <%= t ".write_your_comment" %>
+        </span>
+        <div class="form-group">
+          <%= form_for [@document, @document.comments.new], remote: true do |f| %>
+            <%= f.text_area :content, class: "form-control",
+              placeholder: t(".compose_new_comment"), class: "form-control",
+              rows: Settings.rows, required: true %>
+            <%= f.submit t(".submit"), class: "btn btn-default btn_comment pull-right",
+              id: "comment-btn" %>
+          <% end %>
+        </div>
+      <% else %>
+        <%= t ".please_click" %>
+        <%= link_to t(".here"), new_user_session_path %><%= t ".to_login" %>
+      <% end %>
+      <div class="list-comment">
+        <ul id="comments">
+          <%= render @document_sp.list_comments @document %>
+        </ul>
       </div>
-    <% else %>
-      <%= t ".please_click" %>
-      <%= link_to t(".here"), new_user_session_path %><%= t ".to_login" %>
-    <% end %>
-    <div class="list-comment">
-      <ul id="comments">
-        <%= render @comments %>
-      </ul>
     </div>
   </div>
 </div>
+<div class="col-md-3 review-document">
+  <div class="header-review">
+    <h3 class="text-left rss">
+      <i class="fa fa-rss"></i><%= t ".review" %>
+    </h3>
+    <% if @document.rate_average.present? %>
+      <% rate_average = @document.rate_average.round(Settings.round) %>
+    <% else %>
+      <% rate_average = 0 %>
+    <% end %>
+    <div class="star_rewview_document <%= t "hidden" if rate_average.nil? %>">
+      <h3>
+        <span><%= t "documents.star" %></span>
+        <strong id="star_rewview_document" class="stat">
+          <% if rate_average.present? %>
+            <%= rate_average %>
+          <% end %>
+        </strong>
+        <i class="fa fa-star-o"></i>
+      </h3>
+      <p class="notice_review"><%= t ".please_give_me_your_review" %></p>
+      <p>
+        <% if @review.id.nil? %>
+          <% @button = t("documents.add_review") %>
+        <% else %>
+          <% @button = t("documents.update_review") %>
+        <% end %>
+        <div id="button_create" class="btn-review-1">
+          <a type="button" class="btn btn-default mynewreview pull-right"
+            data-toggle="modal" data-target="#mynewreview"
+            ><%= @button %></a>
+        </div>
+      </p>
+    </div>
+  </div>
+  <div class="reviews-index">
+    <% @document_sp.list_reviews(@document).each do |review| %>
+      <%= render partial: "reviews/review", object: review %>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <%= render "form_review" %>
+  <% end %>
+</div> 

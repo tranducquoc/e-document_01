@@ -36,6 +36,7 @@ gem "omniauth-facebook"
 gem "figaro"
 gem "whenever", require: false
 gem "rmagick", "~> 2.15", ">= 2.15.4"
+gem "simple_form"
 
 group :development, :test do
   gem "byebug", platform: :mri

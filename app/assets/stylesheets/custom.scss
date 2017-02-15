@@ -322,7 +322,8 @@ span.fav-count {
 }
 
 .col-md-4.text-center.benphai {
-  padding-right: 67px;
+  transform: translateX(-4%);
+  padding-top: 3.5%;
 }
 
 p.views_count {
@@ -344,6 +345,7 @@ div#favorite_form {
 
 span#fav_count {
   margin-top: 10px;
+  margin-left: 2%;
 }
 
 i.fa.fa-thumbs-o-down {
@@ -381,6 +383,7 @@ span.time.col-md-5 {
   font-size: 11px;
   padding-top: 2px;
   color: $gray_footer;
+  padding-left: 9%;
 }
 
 input.btn.btn-default.btn_comment {
@@ -410,8 +413,9 @@ textarea#comment_content {
 }
 
 .comment-body {
-  margin-left: -50%;
-  margin-top: 10px;
+  margin-top: 4px;
+  padding-left: 5%;
+  font-size: 18px;
 }
 
 button#btn_download {
@@ -1157,4 +1161,47 @@ p.not_enought_coin {
   button.navbar-toggle {
     transform: translateY(30px);
   }
+}
+.col-md-9.right-comment {
+  text-align: left;
+  font-size: 13px;
+  padding-left: 6%;
+}
+.col-md-9.right-comment a {
+  font-size: 14px;
+}
+.review-index {
+  background: $green_babana;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.btn-review-1 {
+  float: left;
+}
+.review-document h2.text-center {
+  font-size: 28px;
+}
+.review-document {
+  position: relative;
+  overflow: scroll;
+  max-height: 600px;
+}
+.header-review {
+  background: $pink_green;
+  padding: 10px 20px;
+  margin-bottom: 27px;
+  padding-bottom: 65px;
+  color: #30415b;
+}
+.rating-content {
+  padding: 20px;
+}
+h3.text-left.rss {
+  background: $dark-blue;
+  color: white;
+  padding: 15px;
+}
+.star_rewview_document h3 {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
