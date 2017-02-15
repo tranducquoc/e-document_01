@@ -37,6 +37,16 @@ en:
     send_email:
       send_mail_not_login: "Send Email when you not login 3 days"
   documents:
+    add_review: "Add reivew"
+    update_review: "Update review"
+    edit_review: "Edit review"
+    updated_review_success: "Updated review success"
+    updated_review_error: "Updated review error"
+    created_review_success: "Created review success"
+    created_review_error: "Created review error"
+    destroy_review_success: "Destroy review success"
+    destroy_review_fail: "Destroy review error"
+    star: "Star: "
     new:
       please_log_in: "Please log in !"
       upload_file: "Upload File"
@@ -96,11 +106,15 @@ en:
       destroy_success: "Destroy successfully !!!"
       delete_error: "Update error !!!"
       coins: "Coins"
+      review: "Review"
+      please_give_me_your_review: "Please give me your review"
     favorite:
       favorite: "Favorite"
     destroy:
       destroy_success: "Destroy successfully !"
       destroy_error: "Destroy error !"
+    form_review:
+      save: "Save"
   devise:
     sessions:
       new:

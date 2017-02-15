@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :reads
   has_many :comments, class_name: Comment.name, foreign_key: :user_id
+  has_many :reviews
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :user_one_id, dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,

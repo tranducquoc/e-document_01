@@ -9,6 +9,7 @@ class Document < ApplicationRecord
   has_many :reads
   has_many :favorites
   has_many :downloads
+  has_many :reviews
 
   mount_uploader :attachment, AttachmentUploader
 
@@ -26,6 +27,10 @@ class Document < ApplicationRecord
     where("date(created_at) = '#{date_time}'").count
   end
 
+  def rate_average
+    reviews.average(:rating).to_f if reviews.any?
+  end
+
   class << self
     def own_documents user
       user.documents.where(status: :checked).order(created_at: :desc)
@@ -41,6 +46,10 @@ class Document < ApplicationRecord
       document_ids = user.reads.order(created_at: :desc)
         .pluck("DISTINCT document_id")
       Document.where(id: document_ids).limit(Settings.document.limit_1)
+    end
+
+    def rate_average document
+      document.reviews.average(:rating).to_f
     end
   end
 end
