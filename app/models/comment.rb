@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :user, class_name: User.name
-  belongs_to :document, class_name: Document.name
+  belongs_to :user
+  belongs_to :document
   validates :content, presence: true
   class << self
     def newest

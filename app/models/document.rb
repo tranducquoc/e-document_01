@@ -2,10 +2,10 @@ class Document < ApplicationRecord
   acts_as_paranoid
   paginates_per Settings.users.per_page
 
-  belongs_to :user, class_name: User.name
-  belongs_to :category, class_name: Category.name
+  belongs_to :user
+  belongs_to :category
 
-  has_many :comments, class_name: Comment.name
+  has_many :comments
   has_many :reads
   has_many :favorites
   has_many :downloads
@@ -35,12 +35,12 @@ class Document < ApplicationRecord
 
   class << self
     def own_documents user
-      user.documents.where(status: :checked).order(created_at: :desc)
+      user.documents.checked.order(created_at: :desc)
         .limit(Settings.document.limit)
     end
 
     def newest
-      Document.where(status: :checked).order(created_at: :desc)
+      Document.checked.order(created_at: :desc)
         .limit(Settings.document.limit_1)
     end
 
@@ -48,10 +48,6 @@ class Document < ApplicationRecord
       document_ids = user.reads.order(created_at: :desc)
         .pluck("DISTINCT document_id")
       Document.where(id: document_ids).limit(Settings.document.limit_1)
-    end
-
-    def rate_average document
-      document.reviews.average(:rating).to_f
     end
   end
 end

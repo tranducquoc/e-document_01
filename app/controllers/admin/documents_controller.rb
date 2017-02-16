@@ -1,7 +1,7 @@
 class Admin::DocumentsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!, :verify_admin
-  before_action :load_document, only: [:update, :destroy]
+  load_and_authorize_resource
 
   def index
     @documents = Document.all.order(updated_at: :desc).page params[:page]
@@ -32,13 +32,5 @@ class Admin::DocumentsController < ApplicationController
   private
   def document_params
     params.permit :status
-  end
-
-  def load_document
-    @document = Document.find_by id: params[:id]
-    unless @document
-      flash.now[:warning] = t "document.not_found"
-      render_404
-    end
   end
 end
