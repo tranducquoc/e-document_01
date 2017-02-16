@@ -8,11 +8,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:facebook]
-  has_many :documents, class_name: Document.name, foreign_key: :user_id
-  has_many :downloads, class_name: Download.name, foreign_key: :user_id
+  has_many :documents
+  has_many :downloads
   has_many :favorites
   has_many :reads
-  has_many :comments, class_name: Comment.name, foreign_key: :user_id
+  has_many :comments
   has_many :reviews
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :user_one_id, dependent: :destroy
