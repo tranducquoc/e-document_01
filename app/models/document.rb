@@ -5,11 +5,15 @@ class Document < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
-  has_many :comments
-  has_many :reads
-  has_many :favorites
-  has_many :downloads
-  has_many :reviews
+  has_many :comments, dependent: :destroy
+  has_many :reads, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :downloads, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :shares, dependent: :destroy, inverse_of: :document
+  
+  accepts_nested_attributes_for :shares, allow_destroy: true,
+    reject_if: proc{|attributes| attributes["user_id"].blank?}
 
   mount_uploader :attachment, AttachmentUploader
 

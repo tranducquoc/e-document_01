@@ -14,7 +14,7 @@
           <%= f.label :attachment %>
           <%= f.file_field :attachment %>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 category_doc_upload">
           <%= f.select :category_id, options_for_select(load_categories.collect{
               |category| [category.name, category.id]}),
               {class: "btn btn-default", include_blank: t(".all")} %>

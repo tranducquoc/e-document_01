@@ -1,0 +1,12 @@
+<a class="btn btn-default btn-share-1" data-toggle="tooltip" title="<%= t "share" %>">
+  <span class="fa fa-share-square-o"></span>
+</a>
+<div class="share-content-1">
+  <%= form_for @document do |f| %>
+    <%= hidden_field_tag :document_id, @document.id %>
+    <%= f.hidden_field :status_upload, value: :shared %>
+    <%= select_tag "document[shares_attributes]", options_for_select(
+    load_user_will_be_shared_by_document(@document).map {|user| [user.name, user.id]}),multiple: true, size: Settings.size_share, class: "select-share-document"%>
+  <%= f.submit t(".send"), class: "btn btn-default" %>
+  <% end %>
+</div>

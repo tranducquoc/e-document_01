@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  share: "Share for your friend !!!"
   access_denied: "Access Denied"
   upload_success: "EDocument System notice upload success"
   upload_document: "EDocument System"
@@ -116,6 +117,12 @@ en:
       destroy_error: "Destroy error !"
     form_review:
       save: "Save"
+    update:
+      share_success: "Share successfully !!!"
+      share_failure: "Share failure !!!"
+      user_shared_cannot_blank: "User shared cann't blank !!!"
+    form_share:
+      send: "Send"
   devise:
     sessions:
       new:
@@ -211,6 +218,7 @@ en:
     document:
       delete_confirm: "Are you sure delete ?"
       status: "Status: "
+      send: "Send"
   send_mail: "Warning"
   warning: "User not login system in three days!"
   admin:
@@ -367,3 +375,6 @@ en:
     delete:
       delete: "Delete"
       success: "Team was deleted!"
+  shares:
+    create:
+      create_success: "Shared successfully !!!"

@@ -46,9 +46,10 @@ round: 1
 global: "Global"
 shared: "Shared"
 individual: "Individual"
-value_global: 0
-value_shared: 1
-value_individual: 2
 organization:
   name:
     max_length: 100
+value_global: "global"
+value_shared: "shared"
+value_individual: "individual"
+size_share: 10

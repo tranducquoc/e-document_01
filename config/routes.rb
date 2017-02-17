@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         resources :organizations do
           resources :teams
         end
+        resources :shares
         mount ActionCable.server => "/cable"
 
         namespace :api do
