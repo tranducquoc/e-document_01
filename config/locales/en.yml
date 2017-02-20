@@ -58,6 +58,7 @@ en:
       downloads: "downs"
       views: "views"
     index:
+      organization: "Organization"
       ni: "N"
       e: "E"
       w: "W"
@@ -338,3 +339,18 @@ en:
   sessions:
     create:
       invalid_email_password: "Invalid email or password"
+
+  organizations:
+    create:
+      organization_was_added: "Organization was added!"
+    new:
+      add_organization: "Add organization"
+    edit:
+      edit_organization: "Edit organization"
+    update:
+      organization_was_edited: "Organization was edited!"
+    destroy:
+      organization_was_deleted: "Organization was deleted!"
+    show:
+      are_you_sure: "Are you sure?"
+      delete: "Delete"

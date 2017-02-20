@@ -49,3 +49,6 @@ individual: "Individual"
 value_global: 0
 value_shared: 1
 value_individual: 2
+organization:
+  name:
+    max_length: 100

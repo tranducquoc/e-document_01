@@ -27,6 +27,7 @@ vn:
       downloads: "lượt tải về"
       views: "lượt xem"
     index:
+      organization: "Tổ chức"
       new_documents: "Tài liệu mới"
       ni: "N"
       e: "E"
@@ -260,3 +261,18 @@ vn:
   sessions:
     create:
       invalid_email_password: "Sai tên tài khoản hoặc mật khẩu !"
+
+  organizations:
+    create:
+      organization_was_added: "Tổ chức đã được thêm thành công!"
+    new:
+      add_organization: "Thêm tổ chức"
+    edit:
+      edit_organization: "Sửa"
+    update:
+      organization_was_edited: "Tổ chức đã được sửa thành công!"
+    destroy:
+      organization_was_deleted: "Tổ chức đã được xóa thành công!"
+    show:
+      are_you_sure: "Bạn chắc chứ?"
+      delete: "Xóa"

@@ -3,9 +3,9 @@ class CreateGroupMembers < ActiveRecord::Migration[5.0]
     create_table :group_members do |t|
       t.integer :user_id
       t.integer :group_id
-      t.string :group_type
-      t.string :role
-      t.binary :confirm
+      t.integer :group_type
+      t.integer :role
+      t.boolean :confirm
 
       t.timestamps
     end

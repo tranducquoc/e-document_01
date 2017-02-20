@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220032851) do
+ActiveRecord::Schema.define(version: 20170220065823) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -112,6 +112,16 @@ ActiveRecord::Schema.define(version: 20170220032851) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "group_members", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "group_type"
+    t.integer  "role"
+    t.boolean  "confirm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -120,14 +130,6 @@ ActiveRecord::Schema.define(version: 20170220032851) do
     t.datetime "updated_at",  null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "organization_members", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "organization_id"
-    t.binary   "role"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -156,15 +158,6 @@ ActiveRecord::Schema.define(version: 20170220032851) do
     t.float    "rating"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "team_members", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
-    t.binary   "role"
-    t.binary   "confirm"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
