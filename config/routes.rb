@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+
   constraints subdomain: /^pay(\.|$)/ do
     constraints subdomain: false do
       devise_for :users, controllers: {registrations: "registrations",

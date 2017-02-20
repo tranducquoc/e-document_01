@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214043316) do
+ActiveRecord::Schema.define(version: 20170220032851) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -122,6 +122,20 @@ ActiveRecord::Schema.define(version: 20170214043316) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "organization_members", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.binary   "role"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reads", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "document_id"
@@ -142,6 +156,23 @@ ActiveRecord::Schema.define(version: 20170214043316) do
     t.float    "rating"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.binary   "role"
+    t.binary   "confirm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_teams_on_organization_id"
   end
 
   create_table "users", force: :cascade do |t|
