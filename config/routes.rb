@@ -23,7 +23,9 @@ Rails.application.routes.draw do
         resources :messages, only: [:index]
         resources :chatrooms
         resources :reviews
-        resources :organizations
+        resources :organizations do
+          resources :teams
+        end
         mount ActionCable.server => "/cable"
 
         namespace :api do
