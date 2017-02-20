@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:facebook]
+  has_many :group_members
   has_many :documents
   has_many :downloads
   has_many :favorites
