@@ -4,14 +4,16 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     storage :fog
   else
     storage :file
-    def store_dir
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end
 
     def extension_white_list
       %w(pdf doc htm html docx)
     end
   end
+
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
   def cover
     manipulate! do |frame, index|
       frame if index.zero? # take only the first page of the file
