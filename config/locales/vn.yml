@@ -261,7 +261,6 @@ vn:
   sessions:
     create:
       invalid_email_password: "Sai tên tài khoản hoặc mật khẩu !"
-
   organizations:
     create:
       organization_was_added: "Tổ chức đã được thêm thành công!"
@@ -276,3 +275,17 @@ vn:
     show:
       are_you_sure: "Bạn chắc chứ?"
       delete: "Xóa"
+  team:
+    submit: "Tạo"
+    edit: "Lưu"
+    delete: "Bạn có chắc không?"
+    created: "Đã tạo"
+    new: Tạo một Team mới
+    create:
+      success: "Đã tạo Team  thành công!"
+    edit:
+      edit: "Sửa"
+      success: "Cập nhật Team thành công!"
+    delete:
+      delete: "xóa"
+      success: "Đã xóa Team!"

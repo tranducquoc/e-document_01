@@ -240,7 +240,7 @@ en:
         action_upgrade_user: "Upgrade admin"
         action_delete_user: "Delete User"
       stt: "STT"
-      destroy: 
+      destroy:
         destroy_success: "Destroy successfully!!"
       users:
         update_success: "Update successfully !!!"
@@ -339,7 +339,6 @@ en:
   sessions:
     create:
       invalid_email_password: "Invalid email or password"
-
   organizations:
     create:
       organization_was_added: "Organization was added!"
@@ -354,3 +353,17 @@ en:
     show:
       are_you_sure: "Are you sure?"
       delete: "Delete"
+  team:
+    submit: "Create"
+    edit: "Save"
+    delete: "Are you sure?"
+    created: "Created"
+    new: Create a new Team
+    create:
+      success: "Team was added!"
+    edit:
+      edit: "Edit"
+      success: "Team was updated!"
+    delete:
+      delete: "Delete"
+      success: "Team was deleted!"
