@@ -18,6 +18,11 @@ User.create!(name: "thaibm",
   password: "123456",
   password_confirmation: "123456",
   role: :member)
+User.create!(name: "tuan",
+  email: "tuan@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  role: :member)
 
 10.times do |n|
   code  = "code-#{n + 1}"

@@ -1,0 +1,7 @@
+<div id="member_form">
+  <% if @team_exist.nil? %>
+    <%= render "join" %>
+  <% else %>
+    <%= render "leave" %>
+  <% end %>
+</div>

@@ -24,8 +24,12 @@ Rails.application.routes.draw do
         resources :chatrooms
         resources :reviews
         resources :organizations do
-          resources :teams
+          resources :teams do
+            resources :group_members, only: [:create, :destroy, :update]
+          end
         end
+        resources :group_members, only: [:create, :destroy, :update]
+
         resources :shares
         mount ActionCable.server => "/cable"
 

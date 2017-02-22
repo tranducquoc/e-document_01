@@ -4,6 +4,27 @@
       <h1>
         <%= @team.name %>
       </h1>
+      <div class="stats">
+        <% if @team.has_member? current_user %>
+          <div class="col-md-4">
+            <strong id="member_count">
+              <span><%= @team.group_members.team_user.member.length %></span>
+            </strong>
+            <%= t "team.members" %>
+            <%= render "members" %>
+          </div>
+          <div class="col-md-4">
+            <strong>
+              <span><%= @team.group_members.team_user.request.length %></span>
+            </strong>
+            <%= t "team.request" %>
+            <%= render "requests" %>
+          </div>
+        <% end %>
+      </div>
     </section>
+  </aside>
+  <aside class="col-md-2">
+    <%= render "join_form" %>
   </aside>
 </div>

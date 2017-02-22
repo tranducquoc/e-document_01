@@ -2,15 +2,6 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
 
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
   def create
     @organization = Organization.new organization_params
     if @organization.save

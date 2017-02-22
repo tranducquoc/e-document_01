@@ -1,0 +1,15 @@
+<li>
+  <p><%= link_to user.name, user %></p>
+  <div class="col-sm-4">
+    <% if @team.has_admin? current_user %>
+      <%= form_for member do |f| %>
+        <%= f.hidden_field :id, value: member.id %>
+        <span><%= f.submit t("team.accept"), class: "btn btn-primary" %></span>
+      <% end %>
+      <button class="btn">
+        <%= link_to t("team.decline"), member, method: :delete, data:
+          {confirm: t("team.delete.delete")} %>
+      </button>
+    <% end %>
+  </div>
+</li>
