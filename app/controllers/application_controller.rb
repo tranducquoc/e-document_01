@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_permission_for_read_document document
-    if document.individual? && current_user != document.user
+    if current_user != document.user && (document.individual? || document.shared? &&
+      !current_user.has_permission?(document))
       flash.now[:warning] = t "document.not_found"
       render_404
     end

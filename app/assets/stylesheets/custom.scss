@@ -424,6 +424,7 @@ button#btn_download {
 
 div#doc-user img {
   width: 50%;
+  height: 145px;
   padding-top: 9px;
   margin-left: 120px;
 }
@@ -446,8 +447,8 @@ div#doc-user img {
 
 hr.hr {
   border: solid 1px gray;
-  width: 80%;
-  margin-left: 10%;
+  width: 86%;
+  margin-left: 7%;
 }
 
 div#doc-user a.btn {
@@ -1207,4 +1208,24 @@ h3.text-left.rss {
 }
 .row.status_upload {
   margin-top: 15px;
+}
+.category_doc_upload {
+  margin-top: 20px;
+}
+.share-content {
+  margin-left: -190px;
+  margin-top: 16px;
+  margin-bottom: -25px;
+  border: solid 1px;
+  padding: 25px;
+  margin-right: 128px;
+}
+.share-content-1 {
+  margin-top: 16px;
+  margin-bottom: -25px;
+  border: solid 1px;
+  padding: 25px;
+}
+a.btn.btn-default.btn-share-1 {
+  margin-top: 25px;
 }

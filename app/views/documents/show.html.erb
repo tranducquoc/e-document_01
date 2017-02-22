@@ -159,49 +159,56 @@
     </div>
   </div>
 </div>
-<div class="col-md-3 review-document">
-  <div class="header-review">
-    <h3 class="text-left rss">
-      <i class="fa fa-rss"></i><%= t ".review" %>
-    </h3>
-    <% if @document.rate_average.present? %>
-      <% rate_average = @document.rate_average.round(Settings.round) %>
-    <% else %>
-      <% rate_average = 0 %>
-    <% end %>
-    <div class="star_rewview_document <%= t "hidden" if rate_average.nil? %>">
-      <h3>
-        <span><%= t "documents.star" %></span>
-        <strong id="star_rewview_document" class="stat">
-          <% if rate_average.present? %>
-            <%= rate_average %>
-          <% end %>
-        </strong>
-        <i class="fa fa-star-o"></i>
+<div class="col-md-3">
+  <div class="row review-document">
+    <div class="header-review">
+      <h3 class="text-left rss">
+        <i class="fa fa-rss"></i><%= t ".review" %>
       </h3>
-      <p class="notice_review"><%= t ".please_give_me_your_review" %></p>
-      <p>
-        <% if @review.present? %>
-          <% if @review.id.nil? %>
-            <% @button = t("documents.add_review") %>
-          <% else %>
-            <% @button = t("documents.update_review") %>
+      <% if @document.rate_average.present? %>
+        <% rate_average = @document.rate_average.round(Settings.round) %>
+      <% else %>
+        <% rate_average = 0 %>
+      <% end %>
+      <div class="star_rewview_document <%= t "hidden" if rate_average.nil? %>">
+        <h3>
+          <span><%= t "documents.star" %></span>
+          <strong id="star_rewview_document" class="stat">
+            <% if rate_average.present? %>
+              <%= rate_average %>
+            <% end %>
+          </strong>
+          <i class="fa fa-star-o"></i>
+        </h3>
+        <p class="notice_review"><%= t ".please_give_me_your_review" %></p>
+        <p>
+          <% if @review.present? %>
+            <% if @review.id.nil? %>
+              <% @button = t("documents.add_review") %>
+            <% else %>
+              <% @button = t("documents.update_review") %>
+            <% end %>
           <% end %>
-        <% end %>
-        <div id="button_create" class="btn-review-1">
-          <a type="button" class="btn btn-default mynewreview pull-right"
-            data-toggle="modal" data-target="#mynewreview"
-            ><%= @button %></a>
-        </div>
-      </p>
+          <div id="button_create" class="btn-review-1">
+            <a type="button" class="btn btn-default mynewreview pull-right"
+              data-toggle="modal" data-target="#mynewreview"
+              ><%= @button %></a>
+          </div>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="reviews-index">
-    <% @document_sp.list_reviews(@document).each do |review| %>
-      <%= render partial: "reviews/review", object: review %>
+    <div class="reviews-index">
+      <% @document_sp.list_reviews(@document).each do |review| %>
+        <%= render partial: "reviews/review", object: review %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <%= render "form_review" %>
     <% end %>
   </div>
-  <% if user_signed_in? %>
-    <%= render "form_review" %>
-  <% end %>
+  <div class="row">
+    <% if user_signed_in? && @document.user == current_user %>
+      <%= render "form_share" %>
+    <% end %>
+  </div>
 </div> 

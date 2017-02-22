@@ -11,7 +11,7 @@ class Ability
       can :create, [Favorite, Document, Comment, Download, Coin, Review, Organization, GroupMember]
       can :destroy, [Favorite, Document, Review, GroupMember], user_id: user.id
       can :manage, [Relationship, Team, Organization]
-      can :update, [Review, Buycoin, Organization, GroupMember], user_id: user.id
+      can :update, [Review, Buycoin, GroupMember, Document], user_id: user.id
     else
       can :read, :all
     end

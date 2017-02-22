@@ -11,6 +11,11 @@ module ApplicationHelper
     @list_value = Coin.pluck("DISTINCT value")
   end
 
+  def load_user_will_be_shared_by_document document
+    ids = Share.where(document_id: document.id).pluck("DISTINCT user_id") + [document.user.id]
+    User.where.not(id: ids)
+  end
+
   def active_class_locale locale
     locale == I18n.locale ? "active" : ""
   end

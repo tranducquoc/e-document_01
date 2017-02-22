@@ -160,6 +160,13 @@ ActiveRecord::Schema.define(version: 20170220065823) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "shares", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "document_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.integer  "organization_id"

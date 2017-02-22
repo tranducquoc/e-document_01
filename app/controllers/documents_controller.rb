@@ -18,7 +18,6 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build document_params
-    @document.status_upload = params[:document][:status_upload].to_i
     if @document.save
       upload_document = UploadDocument.new @document, current_user
       Delayed::Job.enqueue upload_document, Settings.priority,
@@ -28,6 +27,21 @@ class DocumentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    if params[:document][:shares_attributes].nil?
+      flash[:warning] = t ".user_shared_cannot_blank"
+    else
+      shares_attributes = []
+      convert_to_hash shares_attributes
+      if @document.update_attributes document_params
+        flash[:success] = t ".share_success"
+      else
+        flash[:warning] = t ".share_failure"
+      end
+    end
+    redirect_to :back
   end
 
   def destroy
@@ -56,6 +70,15 @@ class DocumentsController < ApplicationController
   private
   def document_params
     params.require(:document).permit :name, :description, :attachment,
-      :category_id
+      :category_id, :status_upload, shares_attributes: [:user_id, :document_id]
+  end
+
+  def convert_to_hash shares_attributes
+    params[:document][:shares_attributes].each do |user_id|
+      shares_hash = Hash.new
+      shares_hash[:user_id] = user_id
+      shares_attributes.push shares_hash
+    end
+    params[:document][:shares_attributes] = shares_attributes
   end
 end
