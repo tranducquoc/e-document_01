@@ -10,6 +10,10 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     end
   end
 
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -28,5 +32,12 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     def full_filename (for_file = model.source.file)
       super.chomp(File.extname(super)) + Settings.jpg
     end
+  end
+
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var,
+      SecureRandom.uuid)
   end
 end
