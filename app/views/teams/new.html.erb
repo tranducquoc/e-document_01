@@ -1,4 +1,4 @@
-<% if @organization.has_member? current_user %>
+<% if @organization.is_admin? current_user %>
   <div class="row">
     <div class="col-md-8 ">
       <%= form_for [@team.organization, @team] do |f| %>

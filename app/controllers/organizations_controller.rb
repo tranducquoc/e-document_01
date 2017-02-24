@@ -13,9 +13,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @organization.is_admin? current_user && @organization.update_attributes(organization_params)
       flash[:success] = t ".organization_was_edited"

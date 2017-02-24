@@ -1,6 +1,6 @@
-<% if @support.requests(@team).any? %>
-  <% @support.requests(@team).each do |member| %>
-    <ol class="">
+<% if @support.requests.any? %>
+  <% @support.requests.each do |member| %>
+    <ol class="list-group">
       <%= render "group_members/team_requests", user: member.user, member: member %>
     </ol>
   <% end %>

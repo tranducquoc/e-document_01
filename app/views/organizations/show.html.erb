@@ -1,5 +1,10 @@
-<%= @organization.name %>
+<h1><%= @organization.name %></h1>
 <% if @organization.is_admin?(current_user) %>
-  <%= link_to (t ".edit"), edit_organization_path %>
-  <%= link_to (t ".delete"), @organization, method: :delete, data: {confirm: (t ".are_you_sure")} %>
+  <div class="row">
+  <button class="btn btn-primary">
+    <%= link_to (t ".edit"), edit_organization_path %>
+  </button>
+  <button class="btn">
+    <%= link_to (t ".delete"), @organization, method: :delete, data: {confirm: (t ".are_you_sure")} %>
+  </button>
 <% end %>

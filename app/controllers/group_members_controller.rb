@@ -17,7 +17,7 @@ class GroupMembersController < ApplicationController
     if @group_member.save
       flash[:success] = t "team.admin.add"
     else
-      flash[:danger] = t "t.admin.add_fail"
+      flash[:danger] = t "team.admin.add_fail"
     end
     redirect_to :back
   end
