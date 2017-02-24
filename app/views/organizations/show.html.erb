@@ -1,2 +1,5 @@
 <%= @organization.name %>
-<%= link_to (t ".delete"), @organization, method: :delete, data: {confirm: (t ".are_you_sure")}  %>
+<% if @organization.is_admin?(current_user) %>
+  <%= link_to (t ".edit"), edit_organization_path %>
+  <%= link_to (t ".delete"), @organization, method: :delete, data: {confirm: (t ".are_you_sure")} %>
+<% end %>

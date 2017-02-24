@@ -356,11 +356,14 @@ en:
       edit_organization: "Edit organization"
     update:
       organization_was_edited: "Organization was edited!"
+      can_not_edit: "Can not edit!"
     destroy:
       organization_was_deleted: "Organization was deleted!"
+      can_not_delete: "Can not delete!"
     show:
       are_you_sure: "Are you sure?"
       delete: "Delete"
+      edit: "Edit"
   team:
     submit: "Create"
     edit: "Save"

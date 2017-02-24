@@ -1,6 +1,6 @@
 class Organization < ApplicationRecord
   has_many :teams, dependent: :destroy
-  has_many :group_members,foreign_key: :group_id, dependent: :destroy
+  has_many :group_members, foreign_key: :group_id, dependent: :destroy
 
   accepts_nested_attributes_for :group_members
 
@@ -19,5 +19,9 @@ class Organization < ApplicationRecord
 
   def has_member? user
     GroupMember.organization_user.member.find_by user_id: user.id, group_id: self.id
+  end
+
+  def is_admin? user
+    GroupMember.organization_user.admin.find_by user_id: user.id, group_id: self.id
   end
 end

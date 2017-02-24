@@ -270,11 +270,14 @@ vn:
       edit_organization: "Sửa"
     update:
       organization_was_edited: "Tổ chức đã được sửa thành công!"
+      can_not_edit: "Không sửa được!"
     destroy:
       organization_was_deleted: "Tổ chức đã được xóa thành công!"
+      can_not_delete: "Không xóa được!"
     show:
       are_you_sure: "Bạn chắc chứ?"
       delete: "Xóa"
+      edit: "Sửa"
   team:
     submit: "Tạo"
     edit: "Lưu"

@@ -17,18 +17,23 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    if @organization.update_attributes organization_params
+    if @organization.is_admin? current_user && @organization.update_attributes(organization_params)
       flash[:success] = t ".organization_was_edited"
       redirect_to @organization
     else
-      render :edit
+      flash[:danger] = t ".can_not_edit!"
+      redirect_to @organization
     end
   end
 
   def destroy
-    @organization.destroy
-    flash[:success] = t ".organization_was_deleted"
-    redirect_to organizations_path
+    if @organization.is_admin? current_user && @organization.destroy
+      flash[:success] = t ".organization_was_deleted"
+      redirect_to organizations_path
+    else
+      flash[:danger] = t ".can_not_delete"
+      redirect_to @organization
+    end
   end
 
   private
