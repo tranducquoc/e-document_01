@@ -6,7 +6,6 @@ class Team < ApplicationRecord
 
   enum group_type: [:organization, :team]
   enum role: [:member, :admin]
-  enum confirm: [:true, :false]
 
   validates :name, presence: :true
 
@@ -16,7 +15,26 @@ class Team < ApplicationRecord
       group_id: self.id,
       group_type: Team.group_types[:team],
       role: Team.roles[:admin],
-      confirm: Team.confirms[:true]
+      confirm: true
     )
+  end
+
+  def create_team_request user
+    GroupMember.create!(
+      user_id: user.id,
+      group_id: self.id,
+      group_type: Team.group_types[:team],
+      role: Team.roles[:member],
+      confirm: false
+    )
+  end
+
+  def has_member? user
+    GroupMember.team_user.member.find_by user_id: user.id, group_id: self.id
+  end
+
+  def has_admin? user
+    GroupMember.find_by user_id: user.id, group_id: self.id,
+      group_type: Team.group_types[:team], role: Team.roles[:admin]
   end
 end

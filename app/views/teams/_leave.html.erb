@@ -1,0 +1,11 @@
+<%= form_for([@organization, @team, @support.find_team_member(@team)],
+  html: {method: :delete}, remote: true) do |f| %>
+  <%= button_tag "", class: "btn btn-default button-2" do %>
+    <i class="fa fa-thumbs-o-down"></i>
+    <% unless @team_exist.confirm? %>
+      <span><%= t "team.unrequest" %></span>
+    <% else %>
+      <span><%= t "team.leave" %></span>
+    <% end %>
+  <% end %>
+<% end %>

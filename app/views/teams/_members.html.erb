@@ -1,0 +1,7 @@
+<% if @support.members(@team).any? %>
+  <% @support.members(@team).each do |member| %>
+    <ol class="">
+      <%= render "group_members/team_members", member: member, user: member.user %>
+    </ol>
+  <% end %>
+<% end %>

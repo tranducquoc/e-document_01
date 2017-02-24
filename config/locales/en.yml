@@ -367,6 +367,8 @@ en:
     delete: "Are you sure?"
     created: "Created"
     new: Create a new Team
+    members: "Members"
+    requests: "Requests"
     create:
       success: "Team was added!"
     edit:
@@ -375,6 +377,17 @@ en:
     delete:
       delete: "Delete"
       success: "Team was deleted!"
+    join: "Join"
+    unrequest: "Undo Request"
+    leave: "Leave"
+    accept: "Accept"
+    decline: "Decline"
+    admin:
+      add_fail: "Update fail"
+      create: "Sent request"
+      add: "Updated"
+      destroy: "Declined"
+
   shares:
     create:
       create_success: "Shared successfully !!!"

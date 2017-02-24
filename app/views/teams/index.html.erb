@@ -11,31 +11,35 @@
           <th class="col-md-5"></th>
         </tr>
       </thead>
-      <tbody>
-        <% @teams.each_with_index do |team, index| %>
-          <tr class="row">
-            <th class="col-md-1"></th>
-            <td class="col-md-2"><%= index + 1 %></td>
-            <td class="col-md-3"><b><%= link_to team.name,
-              [team.organization, team] %></b></td>
-            <td class="col-md-4">
-              <b><%= team.created_at.strftime("%b %d, %Y") %></b>
-            </td>
-            <td class="col-md-5">
-              <b>
-                <%= link_to t("edit"),
-                  edit_organization_team_path(team.organization, team) %>
-              </b>
-            </td>
-            <td class="col-md-5">
-              <b>
-                <%= link_to t("delete"), [team.organization, team],
-                  method: :delete, data: {confirm: t("team.delete.delete")} %>
-              </b>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
+        <tbody>
+        <% if @organization.has_member? current_user %>
+          <% @teams.each_with_index do |team, index| %>
+            <tr class="row">
+              <th class="col-md-1"></th>
+              <td class="col-md-2"><%= index + 1 %></td>
+              <td class="col-md-3"><b><%= link_to team.name,
+                [team.organization, team] %></b></td>
+              <td class="col-md-4">
+                <b><%= team.created_at.strftime("%b %d, %Y") %></b>
+              </td>
+              <% if team.has_admin? current_user %>
+                <td class="col-md-5">
+                  <b>
+                    <%= link_to t("edit"),
+                      edit_organization_team_path(team.organization, team) %>
+                  </b>
+                </td>
+                <td class="col-md-5">
+                  <b>
+                    <%= link_to t("delete"), [team.organization, team],
+                      method: :delete, data: {confirm: t("team.delete.delete")} %>
+                  </b>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
     </table>
   </div>
 </div>

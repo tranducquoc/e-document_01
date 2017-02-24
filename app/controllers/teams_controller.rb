@@ -3,6 +3,11 @@ class TeamsController < ApplicationController
   load_resource :organization
   load_and_authorize_resource through: :organization
 
+  def show
+    @team_exist = @team.group_members.find_by user_id: current_user.id
+    @support = Supports::TeamSupport.new
+  end
+
   def create
     @team = @organization.teams.build team_params
     if @team.save
@@ -35,6 +40,6 @@ class TeamsController < ApplicationController
   private
   def team_params
     params.required(:team).permit :name,
-      team_members_attributes[:user_id, :group_id, :group_type, :role]
+      group_members_attributes: [:user_id, :group_id, :group_type, :role]
   end
 end

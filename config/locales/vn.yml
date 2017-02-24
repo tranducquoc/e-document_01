@@ -281,6 +281,18 @@ vn:
     delete: "Bạn có chắc không?"
     created: "Đã tạo"
     new: Tạo một Team mới
+    join: "Tham gia"
+    unrequest: "Hủy yêu cầu tham gia"
+    leave: "Rời khỏi nhóm"
+    members: "Thành viên"
+    requests: "Yêu cầu gia nhập"
+    accept: "Chấp nhận"
+    decline: "Không chấp nhận"
+    admin:
+      create: "Đã gửi yêu cầu"
+      add_fail: "Cập nhật không thành công"
+      add: "Cập nhật thành công"
+      destroy: "Đã hủy"
     create:
       success: "Đã tạo Team  thành công!"
     edit:
