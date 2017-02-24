@@ -5,22 +5,26 @@ class TeamsController < ApplicationController
 
   def show
     @team_exist = @team.group_members.find_by user_id: current_user.id
-    @support = Supports::TeamSupport.new
+    @support = Supports::TeamSupport.new @team
   end
 
   def create
-    @team = @organization.teams.build team_params
-    if @team.save
-      @team.create_team_owner current_user
-      flash[:success] = t "team.create.success"
-      redirect_to [@team.organization, @team]
+    if @organization.is_admin? current_user
+      @team = @organization.teams.build team_params
+      if @team.save
+        @team.create_team_owner current_user
+        flash[:success] = t "team.create.success"
+        redirect_to [@team.organization, @team]
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to root_url
     end
   end
 
   def update
-    if @team.update_attributes team_params
+    if @team.has_admin? current_user && @team.update_attributes(team_params)
       flash[:success] = t "team.edit.success"
       redirect_to [@team.organization, @team]
     else
@@ -29,7 +33,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    if @team.destroy
+    if @team.has_admin?(current_user) && @team.destroy
       flash[:success] = t "team.delete.success"
       redirect_to organization_teams_url
     else

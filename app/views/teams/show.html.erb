@@ -5,7 +5,7 @@
         <%= @team.name %>
       </h1>
       <div class="stats">
-        <% if @team.has_member? current_user %>
+        <% if @team.has_admin? current_user %>
           <div class="col-md-4">
             <strong id="member_count">
               <span><%= @team.group_members.team_user.member.length %></span>

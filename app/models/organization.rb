@@ -6,14 +6,11 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: Settings.organization.name.max_length}
 
-  enum group_type: [:organization, :team]
-  enum role: [:member, :admin]
-
   def create_organization_owner user
     GroupMember.create!(user_id: user.id,
       group_id: self.id,
-      group_type: Organization.group_types[:organization],
-      role: Organization.roles[:admin],
+      group_type: GroupMember.group_types[:organization],
+      role: GroupMember.roles[:admin],
       confirm: true)
   end
 

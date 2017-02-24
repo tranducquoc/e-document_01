@@ -13,8 +13,8 @@ class Team < ApplicationRecord
     GroupMember.create!(
       user_id: user.id,
       group_id: self.id,
-      group_type: Team.group_types[:team],
-      role: Team.roles[:admin],
+      group_type: GroupMember.group_types[:team],
+      role: GroupMember.roles[:admin],
       confirm: true
     )
   end
@@ -23,8 +23,8 @@ class Team < ApplicationRecord
     GroupMember.create!(
       user_id: user.id,
       group_id: self.id,
-      group_type: Team.group_types[:team],
-      role: Team.roles[:member],
+      group_type: GroupMember.group_types[:team],
+      role: GroupMember.roles[:member],
       confirm: false
     )
   end
@@ -35,6 +35,6 @@ class Team < ApplicationRecord
 
   def has_admin? user
     GroupMember.find_by user_id: user.id, group_id: self.id,
-      group_type: Team.group_types[:team], role: Team.roles[:admin]
+      group_type: GroupMember.group_types[:team], role: GroupMember.roles[:admin]
   end
 end

@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+
   include ApplicationHelper
   include PublicActivity::StoreController
   def default_url_options

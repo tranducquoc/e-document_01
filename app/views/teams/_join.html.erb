@@ -1,4 +1,4 @@
-<%= form_for([@organization, @team, @support.build_team_member(@team)],
+<%= form_for([@organization, @team, @support.build_member],
   remote: true) do |f| %>
   <div><%= hidden_field_tag :id, current_user.id %></div>
   <%= button_tag "", class: "btn btn-default button-2" do %>
