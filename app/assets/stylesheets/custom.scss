@@ -1229,3 +1229,6 @@ h3.text-left.rss {
 a.btn.btn-default.btn-share-1 {
   margin-top: 25px;
 }
+viewer-pdf-toolbar#toolbar {
+  z-index: -9999;
+}
