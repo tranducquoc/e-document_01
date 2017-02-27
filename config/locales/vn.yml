@@ -262,8 +262,14 @@ vn:
     create:
       invalid_email_password: "Sai tên tài khoản hoặc mật khẩu !"
   organizations:
+    join:
+      join: "Gia nhập"
+    leave:
+      unrequest: "Hủy yêu cầu"
+      leave: "Rời tổ chức"
     create:
       organization_was_added: "Tổ chức đã được thêm thành công!"
+      sent_request: "Yêu cầu của bạn đã được gửi đi, vui lòng chờ admin chấp thuận"
     new:
       add_organization: "Thêm tổ chức"
     edit:

@@ -1,0 +1,12 @@
+<div id="join_request">
+  <% if @member.present? %>
+    <%= render partial: "leave", locals: {
+      organization: @organization,
+      member: @member,
+      support: @support} %>
+  <% else %>
+    <%= render partial: "join", locals: {
+      organization: @organization,
+      support: @support} %>
+  <% end %>
+</div>
