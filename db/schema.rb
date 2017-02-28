@@ -141,8 +141,9 @@ ActiveRecord::Schema.define(version: 20170220065823) do
   create_table "reads", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "document_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "read_count",  default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "relationships", force: :cascade do |t|

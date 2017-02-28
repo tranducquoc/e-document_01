@@ -34,6 +34,12 @@
           <%= link_to t(".users"), users_path, class: "fa fa-users" %>
         </li>
         <% if user_signed_in? %>
+          <li class="navc">
+            <%= link_to t(".documents"), user_path(current_user), class: "fa fa-book" %>
+          </li>
+          <li class="navc">
+            <%= link_to t(".coins"), new_buycoin_path, class: "fa fa-money" %>
+          </li>
           <li class="dropdown navc">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-user-circle"></i>
@@ -55,12 +61,6 @@
               </li>
             </ul>
           </li>
-          <li class="navc">
-            <%= link_to t(".documents"), user_path(current_user), class: "fa fa-book" %>
-          </li>
-          <li class="navc">
-            <%= link_to t(".coins"), new_buycoin_path, class: "fa fa-money" %>
-          </li>
         <% else %>
           <li class="navc"><%= link_to t(".login"),
             new_user_session_path %></li>
@@ -75,7 +75,6 @@
         <li class="dropdown navc language">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-globe"></i>
-            <%= t("language") %><b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
             <li class="<%= active_class_locale :en %>">
