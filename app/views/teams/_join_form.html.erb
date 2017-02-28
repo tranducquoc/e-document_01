@@ -1,7 +1,14 @@
-<div id="member_form">
-  <% if @team_exist.nil? %>
-    <%= render "join" %>
+<div id="join_member_form">
+  <% if @member.present? %>
+    <%= render partial: "leave", locals: {
+      organization: @organization,
+      team: @team,
+      member: @member,
+      support: @support} %>
   <% else %>
-    <%= render "leave" %>
+    <%= render partial: "join", locals: {
+      organization: @organization,
+      team: @team,
+      support: @support} %>
   <% end %>
 </div>

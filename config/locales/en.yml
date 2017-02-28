@@ -402,12 +402,25 @@ en:
     leave: "Leave"
     accept: "Accept"
     decline: "Decline"
+    assign: "Assign become Admin"
+    remove: "Remove"
     admin:
       add_fail: "Update fail"
       create: "Sent request"
       add: "Updated"
       destroy: "Declined"
-
+    has_only_admin: "You have to assign a member become a Admin before leaving
+      this team"
+    list_requests: "List Requests"
+    list_members: "List Members"
+    show:
+      documents: "Documents"
+      requests: "Requests"
+      members: "Members"
+      add_member: "Add more members"
+      email: "Email"
+      address: "Address"
+    add: "Add"
   shares:
     create:
       create_success: "Shared successfully !!!"

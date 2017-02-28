@@ -291,6 +291,7 @@ vn:
       requests: "Yêu cầu gia nhập"
       accept: "Cháp nhận"
 
+  confirm: "Bạn có chắc chắn không ?"
   team:
     submit: "Tạo"
     edit: "Lưu"
@@ -304,6 +305,8 @@ vn:
     requests: "Yêu cầu gia nhập"
     accept: "Chấp nhận"
     decline: "Không chấp nhận"
+    assign: "Chỉ định làm Admin"
+    remove: "Xóa"
     admin:
       create: "Đã gửi yêu cầu"
       add_fail: "Cập nhật không thành công"
@@ -315,5 +318,16 @@ vn:
       edit: "Sửa"
       success: "Cập nhật Team thành công!"
     delete:
-      delete: "xóa"
+      delete: "Xóa"
       success: "Đã xóa Team!"
+    has_only_admin: "Bạn phải chỉ định ai đó làm admin trước khi thoát khỏi nhóm"
+    list_requests: "Danh sách yêu cầu tham gia"
+    list_members: "Danh sách nthanhf viên"
+    show:
+      documents: "Tài liệu"
+      requests: "Yêu cầu tham gia"
+      members: "Thành viên"
+      add_member: "Thêm thành viên"
+      email: "Thư điện tử"
+      address: "Địa chỉ"
+    add: "Thêm"

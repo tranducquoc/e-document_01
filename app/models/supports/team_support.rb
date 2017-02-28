@@ -21,4 +21,11 @@ class Supports::TeamSupport
     GroupMember.find_by user_id: user.id, group_id: team.id,
       group_type: GroupMember.group_types[:team]
   end
+
+  def add_member organization
+    organization_ids = GroupMember.organization_user.member.select(:id).where(group_id: organization.id)
+    team_ids = GroupMember.team_user.select(:id).where(group_id: team.id)
+    ids = organization_ids - team_ids
+    User.where(id: ids)
+  end
 end

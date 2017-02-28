@@ -1,7 +1,0 @@
-<% if @support.members.any? %>
-  <% @support.members.each do |member| %>
-    <ol class="list-group">
-      <%= render "group_members/team_members", member: member, user: member.user %>
-    </ol>
-  <% end %>
-<% end %>
