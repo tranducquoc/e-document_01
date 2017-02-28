@@ -2,6 +2,11 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
 
+  def show
+    @member = @organization.group_members.find_by user_id: current_user.id
+    @support = Supports::OrganizationSupport.new @organization
+  end
+
   def create
     @organization = Organization.new organization_params
     if @organization.save
@@ -13,22 +18,36 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    if @organization.is_admin? current_user && @organization.update_attributes(organization_params)
-      flash[:success] = t ".organization_was_edited"
-      redirect_to @organization
+    if @organization.is_admin? current_user
+      if @organization.update_attributes organization_params
+        flash[:success] = t ".organization_was_edited"
+        redirect_to @organization
+      else
+        flash[:danger] = t ".can_not_edit"
+        render :edit
+      end
     else
-      flash[:danger] = t ".can_not_edit!"
+      flash[:danger] = t ".do_not_have_permission!"
       redirect_to @organization
     end
+
   end
 
   def destroy
-    if @organization.is_admin? current_user && @organization.destroy
-      flash[:success] = t ".organization_was_deleted"
-      redirect_to organizations_path
+    if @organization.is_admin? current_user
+      if @organization.destroy
+        flash[:success] = t ".organization_was_deleted"
+        redirect_to organizations_path
+      else
+        flash[:danger] = t ".can_not_delete"
+        redirect_to @organization
+      end
     else
-      flash[:danger] = t ".can_not_delete"
+      flash[:danger] = t ".do_not_have_permission!"
       redirect_to @organization
     end
   end

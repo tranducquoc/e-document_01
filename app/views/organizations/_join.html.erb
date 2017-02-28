@@ -1,0 +1,5 @@
+<%= form_for([organization, support.build_member]) do |f| %>
+  <%= button_tag "", id: "btn-join", class: "btn btn-default btn-join" do %>
+    <span><%= t ".join" %></span>
+  <% end %>
+<% end %>

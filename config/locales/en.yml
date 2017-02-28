@@ -348,8 +348,14 @@ en:
     create:
       invalid_email_password: "Invalid email or password"
   organizations:
+    join:
+      join: "Join"
+    leave:
+      unrequest: "Unrequest"
+      leave: "Leave"
     create:
       organization_was_added: "Organization was added!"
+      sent_request: "Request was sent! Please wait admin confirm!"
     new:
       add_organization: "Add organization"
     edit:

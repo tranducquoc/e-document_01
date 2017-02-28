@@ -67,3 +67,11 @@ Category.create!(name: "Natural Language Processing")
 #     category_id: category_id,
 #     user_id: user_id, status: :checked)
 # end
+
+Organization.create!(name: "Framgia 1")
+Organization.create!(name: "Framgia 2")
+Organization.create!(name: "Framgia 3")
+
+GroupMember.create!(user_id: 1, group_id: 1, group_type: "organization", role: "admin", confirm: true)
+GroupMember.create!(user_id: 1, group_id: 2, group_type: "organization", role: "admin", confirm: true)
+GroupMember.create!(user_id: 1, group_id: 3, group_type: "organization", role: "admin", confirm: true)
