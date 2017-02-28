@@ -49,9 +49,9 @@ class Document < ApplicationRecord
     end
 
     def get_read_document user
-      document_ids = user.reads.order(created_at: :desc)
-        .pluck("DISTINCT document_id")
-      Document.where(id: document_ids).limit(Settings.document.limit_1)
+      document_ids = user.reads.pluck(:document_id)
+      Document.where(id: document_ids).order(updated_at: :desc)
+        .limit(Settings.document.limit_1)
     end
   end
 end

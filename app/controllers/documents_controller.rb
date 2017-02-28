@@ -61,9 +61,7 @@ class DocumentsController < ApplicationController
         user_id: current_user.id
       @review = current_user.reviews.build if @review.nil?
       @document.update_attributes view: @document.view + 1
-      read = current_user.reads.build
-      read.document = @document
-      read.save
+      update_read @document
     end
   end
 
@@ -80,5 +78,17 @@ class DocumentsController < ApplicationController
       shares_attributes.push shares_hash
     end
     params[:document][:shares_attributes] = shares_attributes
+  end
+
+  def update_read document
+    read = Read.find_by user_id: current_user.id, document_id: document.id
+    if read.present?
+      read.update_attributes read_count: read.read_count + 1
+    else
+      read = current_user.reads.build
+      read.read_count = 1
+      read.document = document
+      read.save!
+    end
   end
 end
