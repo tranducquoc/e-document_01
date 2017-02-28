@@ -1,12 +1,77 @@
 <h1><%= @organization.name %></h1>
 <%= render "join_request" %>
 <% if @organization.is_admin?(current_user) %>
-  <div class="row">
-    <button class="btn btn-primary">
+  <div class="">
+    <button class="btn btn-default">
       <%= link_to (t ".edit"), edit_organization_path %>
     </button>
-    <button class="btn">
+    <button class="btn btn-default">
       <%= link_to (t ".delete"), @organization, method: :delete, data: {confirm: (t ".are_you_sure")} %>
     </button>
   </div>
 <% end %>
+<ul class="nav nav-tabs">
+  <li>
+    <a data-toggle="tab" href="#documents"><%= t "organizations.show.documents" %></a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#members"><%= t "organizations.show.members" %></a>
+  </li>
+  <% if @organization.is_admin? current_user %>
+    <li class="active">
+      <a data-toggle="tab" href="#requests"><%= t "organizations.show.requests" %></a>
+    </li>
+  <% end %>
+</ul>
+
+<div class="tab-content">
+  <div id="documents" class="tab-pane fade">
+    <h3><%= t "organizations.show.documents" %></h3>
+  </div>
+  <div id="members" class="tab-pane fade ">
+    <h3><%= t "organizations.show.members" %></h3>
+    <table class="table table-hover">
+      <thead>
+        <th><%= t "organizations.show.name" %></th>
+        <th><%= t "organizations.show.email" %></th>
+        <th><%= t "organizations.show.address" %></th>
+      </thead>
+      <tbody>
+      <% @support.members.each do |member| %>
+        <tr>
+          <td><%= member.user.name %></td>
+          <td><%= member.user.email %></td>
+          <td><%= member.user.address %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% if @organization.is_admin? current_user %>
+    <div id="requests" class="tab-pane fade in active">
+      <h3><%= t "organizations.show.requests" %></h3>
+      <table class="table table-hover">
+        <thead>
+        <th><%= t "organizations.show.name" %></th>
+        <th><%= t "organizations.show.email" %></th>
+        <th><%= t "organizations.show.address" %></th>
+        <th><%= t "organizations.show.confirm" %></th>
+        </thead>
+        <tbody>
+        <% @support.requests.each do |request| %>
+          <tr id="accept-request-<%= request.id %>">
+            <td><%= request.user.name %></td>
+            <td><%= request.user.email %></td>
+            <td><%= request.user.address %></td>
+            <td>
+              <button id="<%= request.id %>" class="btn btn-accept btn-default">
+                <%= t "organizations.show.accept" %>
+              </button>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

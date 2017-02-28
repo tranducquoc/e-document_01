@@ -363,6 +363,8 @@ en:
     update:
       organization_was_edited: "Organization was edited!"
       can_not_edit: "Can not edit!"
+      confirm: "Confirm!"
+      cannot_confirm: "Can not confirm!"
     destroy:
       organization_was_deleted: "Organization was deleted!"
       can_not_delete: "Can not delete!"
@@ -370,6 +372,15 @@ en:
       are_you_sure: "Are you sure?"
       delete: "Delete"
       edit: "Edit"
+      documents: "Documents"
+      members: "Members"
+      requests: "Requests"
+      accept: "Accept"
+      name: "Name"
+      email: "Email"
+      address: "Address"
+      confirm: "Confirm"
+      manage: "Manage"
   team:
     submit: "Create"
     edit: "Save"

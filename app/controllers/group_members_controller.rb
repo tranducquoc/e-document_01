@@ -17,10 +17,16 @@ class GroupMembersController < ApplicationController
     @group_member.confirm = true
     if @group_member.save
       flash[:success] = t "team.admin.add"
+      status = t "organizations.update.confirm"
     else
       flash[:danger] = t "team.admin.add_fail"
+      status = t "organizations.update.cannot_confirm"
     end
-    redirect_to :back
+    respond_to do |format|
+      format.json do
+        render json: {status: status}
+      end
+    end
   end
 
   def destroy
