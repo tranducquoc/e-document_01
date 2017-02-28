@@ -277,6 +277,8 @@ vn:
     update:
       organization_was_edited: "Tổ chức đã được sửa thành công!"
       can_not_edit: "Không sửa được!"
+      confirm: "Phê duyệt thành công!"
+      cannot_confirm: "Phê duyệt thất bại!"
     destroy:
       organization_was_deleted: "Tổ chức đã được xóa thành công!"
       can_not_delete: "Không xóa được!"
@@ -284,6 +286,11 @@ vn:
       are_you_sure: "Bạn chắc chứ?"
       delete: "Xóa"
       edit: "Sửa"
+      documents: "Tài liệu"
+      members: "Thành viên"
+      requests: "Yêu cầu gia nhập"
+      accept: "Cháp nhận"
+
   team:
     submit: "Tạo"
     edit: "Lưu"
