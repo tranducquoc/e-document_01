@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   load_and_authorize_resource through: :organization
 
   def show
-    @team_exist = @team.group_members.find_by user_id: current_user.id
+    @member = @team.group_members.find_by user_id: current_user.id
     @support = Supports::TeamSupport.new @team
   end
 
@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
   end
 
   def update
-    if @team.has_admin? current_user && @team.update_attributes(team_params)
+    if @team.has_admin?(current_user) && @team.update_attributes(team_params)
       flash[:success] = t "team.edit.success"
       redirect_to [@team.organization, @team]
     else

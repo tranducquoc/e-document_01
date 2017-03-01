@@ -7,7 +7,7 @@ class Team < ApplicationRecord
   enum group_type: [:organization, :team]
   enum role: [:member, :admin]
 
-  validates :name, presence: :true
+  validates :name, presence: :true, uniqueness: true
 
   def create_team_owner user
     GroupMember.create!(
@@ -29,12 +29,21 @@ class Team < ApplicationRecord
     )
   end
 
+  def add_member user
+    GroupMember.create!(
+      user_id: user.id,
+      group_id: self.id,
+      group_type: GroupMember.group_types[:team],
+      role: GroupMember.roles[:member],
+      confirm: true
+    )
+  end
+
   def has_member? user
     GroupMember.team_user.member.find_by user_id: user.id, group_id: self.id
   end
 
   def has_admin? user
-    GroupMember.find_by user_id: user.id, group_id: self.id,
-      group_type: GroupMember.group_types[:team], role: GroupMember.roles[:admin]
+    GroupMember.team_user.admin.find_by user_id: user.id, group_id: self.id
   end
 end
