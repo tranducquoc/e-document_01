@@ -11,9 +11,9 @@ class Document < ApplicationRecord
   has_many :downloads, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :shares, dependent: :destroy, inverse_of: :document
-  
+
   accepts_nested_attributes_for :shares, allow_destroy: true,
-    reject_if: proc{|attributes| attributes["user_id"].blank?}
+    reject_if: proc{|attributes| attributes[:share_id].blank?}
 
   mount_uploader :attachment, AttachmentUploader
 

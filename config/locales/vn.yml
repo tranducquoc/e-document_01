@@ -1,4 +1,5 @@
 vn:
+  add: "Thêm"
   access_denied: "Truy cập bị từ chối"
   upload_success: "Upload thành công !"
   upload_document: "Upload tài liệu"

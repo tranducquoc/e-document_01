@@ -14,14 +14,14 @@
   </div>
 <% end %>
 <ul class="nav nav-tabs">
-  <li>
+  <li class="active">
     <a data-toggle="tab" href="#team-documents"><%= t "team.show.documents" %></a>
   </li>
   <li>
     <a data-toggle="tab" href="#team-members"><%= t "team.show.members" %></a>
   </li>
   <% if @team.has_admin? current_user %>
-    <li class="active">
+    <li>
       <a data-toggle="tab" href="#team-requests"><%= t "team.show.requests" %></a>
     </li>
     <li>
@@ -31,7 +31,7 @@
 </ul>
 
 <div class="tab-content">
-  <div id="team-documents" class="tab-pane fade">
+  <div id="team-documents" class="tab-pane fade in active">
     <h3><%= t "team.show.documents" %></h3>
   </div>
   <div id="team-members" class="tab-pane fade ">
@@ -73,7 +73,7 @@
     </table>
   </div>
   <% if @team.has_admin? current_user %>
-    <div id="team-requests" class="tab-pane fade in active">
+    <div id="team-requests" class="tab-pane fade">
       <h3>
         <%= t "team.show.requests" %>
         (<%= @team.group_members.team_user.request.length %>)

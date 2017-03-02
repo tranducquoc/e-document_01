@@ -68,13 +68,14 @@ class DocumentsController < ApplicationController
   private
   def document_params
     params.require(:document).permit :name, :description, :attachment,
-      :category_id, :status_upload, shares_attributes: [:user_id, :document_id]
+      :category_id, :status_upload, shares_attributes: [:share_id, :share_type, :document_id]
   end
 
   def convert_to_hash shares_attributes
     params[:document][:shares_attributes].each do |user_id|
       shares_hash = Hash.new
-      shares_hash[:user_id] = user_id
+      shares_hash[:share_id] = user_id
+      shares_hash[:share_type] = Share.share_types[:user]
       shares_attributes.push shares_hash
     end
     params[:document][:shares_attributes] = shares_attributes

@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  add: "Add"
   share: "Share for your friend !!!"
   access_denied: "Access Denied"
   upload_success: "EDocument System notice upload success"
