@@ -6,9 +6,10 @@ class GroupMember < ApplicationRecord
 
   GroupMember.group_types.keys.each do |type|
     eval "belongs_to :#{type}, ->{where group_type: #{type}}"
-    eval "scope :#{type}_user, ->{where group_type: #{type}}"
   end
 
+  scope :team_user, ->{where group_type: GroupMember.group_types[:team]}
+  scope :organization_user, ->{where group_type: GroupMember.group_types[:organization]}
   scope :admin, ->{where role: GroupMember.roles[:admin]}
   scope :member, ->{where confirm: true}
   scope :request, ->{where confirm: false}

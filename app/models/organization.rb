@@ -22,6 +22,13 @@ class Organization < ApplicationRecord
       confirm: false)
   end
 
+  def share_document document
+    Share.create!( share_id: self.id,
+      share_type: Share.share_types[:organization],
+      document_id: document.id
+      )
+  end
+
   def has_member? user
     GroupMember.organization_user.member.find_by user_id: user.id, group_id: self.id
   end

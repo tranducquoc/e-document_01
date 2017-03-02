@@ -291,6 +291,16 @@ vn:
       members: "Thành viên"
       requests: "Yêu cầu gia nhập"
       accept: "Cháp nhận"
+      tab: "Tài liệu"
+      tab1: "Thêm"
+    upload:
+      upload_file: "Chia sẻ tài liệu"
+      compose_description: "mô tả"
+      all: "Tất cả"
+      upload: "Tải lên"
+    document:
+      status: "Trạng thái"
+      short_description: "Mô tả ngắn"
 
   confirm: "Bạn có chắc chắn không ?"
   team:

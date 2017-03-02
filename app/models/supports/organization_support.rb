@@ -21,4 +21,13 @@ class Supports::OrganizationSupport
     GroupMember.find_by user_id: user.id, group_id: organization.id,
       group_type: GroupMember.group_types[:organization]
   end
+
+  def document
+    Document.new
+  end
+
+  def documents
+    ids = Share.select(:document_id).share_organization.where(share_id: organization.id)
+    Document.where(id: ids).order(created_at: :desc)
+  end
 end
