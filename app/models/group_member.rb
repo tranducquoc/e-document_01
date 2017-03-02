@@ -1,13 +1,14 @@
 class GroupMember < ApplicationRecord
-  belongs_to :team, -> {where group_type: GroupMember.group_types[:team]}
-  belongs_to :organization, -> {where group_type: GroupMember.group_types[:organization]}
   belongs_to :user
 
   enum group_type: [:organization, :team]
   enum role: [:member, :admin]
 
-  scope :team_user, ->{where group_type: GroupMember.group_types[:team]}
-  scope :organization_user, ->{where group_type: GroupMember.group_types[:organization]}
+  GroupMember.group_types.keys.each do |type|
+    eval "belongs_to :#{type}, ->{where group_type: #{type}}"
+    eval "scope :#{type}_user, ->{where group_type: #{type}}"
+  end
+
   scope :admin, ->{where role: GroupMember.roles[:admin]}
   scope :member, ->{where confirm: true}
   scope :request, ->{where confirm: false}

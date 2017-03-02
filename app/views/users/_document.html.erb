@@ -65,8 +65,8 @@
             <%= f.hidden_field :status_upload, value: :shared %>
             <%= select_tag "document[shares_attributes]", options_for_select(
             load_user_will_be_shared_by_document(document).map {|user| [user.name, user.id]}),multiple: true, size: Settings.size_share, class: "select-share-document"%>
-          <%= f.submit t(".send"), class: "btn btn-default" %>
-  <% end %>
+            <%= f.submit t(".send"), class: "btn btn-default" %>
+          <% end %>
         </div>
         <% if document.user == current_user %>
           <%= link_to document_path(document), method: :delete,

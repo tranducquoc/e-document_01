@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :reads
   has_many :comments
   has_many :reviews
-  has_many :shares
+  has_many :shares, foreign_key: :share_id
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :user_one_id, dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
@@ -71,7 +71,8 @@ class User < ApplicationRecord
   end
 
   def has_permission? document
-    Share.find_by user_id: self.id, document_id: document.id
+    Share.find_by share_id: self.id, share_type: Share.share_types[:user],
+      document_id: document.id
   end
 
   def self.from_omniauth auth

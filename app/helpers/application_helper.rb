@@ -12,7 +12,8 @@ module ApplicationHelper
   end
 
   def load_user_will_be_shared_by_document document
-    ids = Share.where(document_id: document.id).pluck("DISTINCT user_id") + [document.user.id]
+    ids = Share.share_user.select(:share_id).where(document_id: document.id) +
+      [document.user.id]
     User.where.not(id: ids)
   end
 
