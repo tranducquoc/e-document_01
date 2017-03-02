@@ -4,9 +4,6 @@ class Team < ApplicationRecord
 
   accepts_nested_attributes_for :group_members
 
-  enum group_type: [:organization, :team]
-  enum role: [:member, :admin]
-
   validates :name, presence: :true, uniqueness: true
 
   def create_team_owner user

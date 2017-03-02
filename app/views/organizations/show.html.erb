@@ -10,68 +10,90 @@
     </button>
   </div>
 <% end %>
-<ul class="nav nav-tabs">
-  <li>
-    <a data-toggle="tab" href="#documents"><%= t "organizations.show.documents" %></a>
-  </li>
-  <li>
-    <a data-toggle="tab" href="#members"><%= t "organizations.show.members" %></a>
-  </li>
-  <% if @organization.is_admin? current_user %>
+<% if @organization.has_member? current_user %>
+  <ul class="nav nav-tabs">
     <li class="active">
-      <a data-toggle="tab" href="#requests"><%= t "organizations.show.requests" %></a>
+      <a data-toggle="tab" href="#documents"><%= t "organizations.show.documents" %></a>
     </li>
-  <% end %>
-</ul>
+    <li>
+      <a data-toggle="tab" href="#members"><%= t "organizations.show.members" %></a>
+    </li>
+    <% if @organization.is_admin? current_user %>
+      <li>
+        <a data-toggle="tab" href="#requests"><%= t "organizations.show.requests" %></a>
+      </li>
+    <% end %>
+  </ul>
 
-<div class="tab-content">
-  <div id="documents" class="tab-pane fade">
-    <h3><%= t "organizations.show.documents" %></h3>
-  </div>
-  <div id="members" class="tab-pane fade ">
-    <h3><%= t "organizations.show.members" %></h3>
-    <table class="table table-hover">
-      <thead>
-        <th><%= t "organizations.show.name" %></th>
-        <th><%= t "organizations.show.email" %></th>
-        <th><%= t "organizations.show.address" %></th>
-      </thead>
-      <tbody>
-      <% @support.members.each do |member| %>
-        <tr>
-          <td><%= member.user.name %></td>
-          <td><%= member.user.email %></td>
-          <td><%= member.user.address %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-  <% if @organization.is_admin? current_user %>
-    <div id="requests" class="tab-pane fade in active">
-      <h3><%= t "organizations.show.requests" %></h3>
+  <div class="tab-content">
+    <div id="documents" class="tab-pane fade in active">
+      <h3><%= t "organizations.show.documents" %></h3>
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#organization_docs"><%= t ".tab" %></a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#upload_document"><%= t ".tab1" %></a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="organization_docs" class="tab-pane fade in active">
+          <div class="row">
+            <%= render "document" %>
+          </div>
+        </div>
+        <div id="upload_document" class="tab-pane">
+          <div class="row">
+            <%= render "upload" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="members" class="tab-pane fade">
+      <h3><%= t "organizations.show.members" %></h3>
       <table class="table table-hover">
         <thead>
-        <th><%= t "organizations.show.name" %></th>
-        <th><%= t "organizations.show.email" %></th>
-        <th><%= t "organizations.show.address" %></th>
-        <th><%= t "organizations.show.confirm" %></th>
+          <th><%= t "organizations.show.name" %></th>
+          <th><%= t "organizations.show.email" %></th>
+          <th><%= t "organizations.show.address" %></th>
         </thead>
         <tbody>
-        <% @support.requests.each do |request| %>
-          <tr id="accept-request-<%= request.id %>">
-            <td><%= request.user.name %></td>
-            <td><%= request.user.email %></td>
-            <td><%= request.user.address %></td>
-            <td>
-              <button id="<%= request.id %>" class="btn btn-accept btn-default">
-                <%= t "organizations.show.accept" %>
-              </button>
-            </td>
+        <% @support.members.each do |member| %>
+          <tr>
+            <td><%= member.user.name %></td>
+            <td><%= member.user.email %></td>
+            <td><%= member.user.address %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
     </div>
-  <% end %>
-</div>
+    <% if @organization.is_admin? current_user %>
+      <div id="requests" class="tab-pane fade">
+        <h3><%= t "organizations.show.requests" %></h3>
+        <table class="table table-hover">
+          <thead>
+          <th><%= t "organizations.show.name" %></th>
+          <th><%= t "organizations.show.email" %></th>
+          <th><%= t "organizations.show.address" %></th>
+          <th><%= t "organizations.show.confirm" %></th>
+          </thead>
+          <tbody>
+          <% @support.requests.each do |request| %>
+            <tr id="accept-request-<%= request.id %>">
+              <td><%= request.user.name %></td>
+              <td><%= request.user.email %></td>
+              <td><%= request.user.address %></td>
+              <td>
+                <button id="<%= request.id %>" class="btn btn-accept btn-default">
+                  <%= t "organizations.show.accept" %>
+                </button>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+<% end %>

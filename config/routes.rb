@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         resources :reviews
         resources :organizations do
           resources :group_members
+          resources :documents
           resources :teams do
             resources :group_members, only: [:create, :destroy, :update]
           end

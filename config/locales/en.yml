@@ -382,6 +382,16 @@ en:
       address: "Address"
       confirm: "Confirm"
       manage: "Manage"
+      tab: "Documents"
+      tab1: "Upload Document"
+    upload:
+      upload_file: "Upload Document"
+      compose_description: "this is description"
+      all: "All"
+      upload: "Upload"
+    document:
+      status: "Status"
+      short_description: "Short Description"
   team:
     submit: "Create"
     edit: "Save"

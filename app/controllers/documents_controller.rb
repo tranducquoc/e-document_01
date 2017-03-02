@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
+  load_resource :organization
 
   before_action only: :show do
     validate_permission_for_read_document @document
@@ -19,11 +20,14 @@ class DocumentsController < ApplicationController
   def create
     @document = current_user.documents.build document_params
     if @document.save
+      if @organization.present?
+        @organization.share_document @document
+      end
       upload_document = UploadDocument.new @document, current_user
       Delayed::Job.enqueue upload_document, Settings.priority,
         Settings.time_delay.seconds.from_now
       flash[:success] = t ".create_success"
-      redirect_to root_path
+      @organization.present? ? (redirect_to :back) : (redirect_to root_url)
     else
       render :new
     end
@@ -34,7 +38,7 @@ class DocumentsController < ApplicationController
       flash[:warning] = t ".user_shared_cannot_blank"
     else
       shares_attributes = []
-      convert_to_hash shares_attributes
+      convert_to_hash shares_attributes, Share.share_types[:user]
       if @document.update_attributes document_params
         flash[:success] = t ".share_success"
       else
@@ -71,11 +75,11 @@ class DocumentsController < ApplicationController
       :category_id, :status_upload, shares_attributes: [:share_id, :share_type, :document_id]
   end
 
-  def convert_to_hash shares_attributes
+  def convert_to_hash shares_attributes, share_type
     params[:document][:shares_attributes].each do |user_id|
       shares_hash = Hash.new
       shares_hash[:share_id] = user_id
-      shares_hash[:share_type] = Share.share_types[:user]
+      shares_hash[:share_type] = share_type
       shares_attributes.push shares_hash
     end
     params[:document][:shares_attributes] = shares_attributes
