@@ -1,4 +1,4 @@
-<h2 class="tittle text-center"><%= t ".upload_file" %></h2>
+<h4 class="tittle text-center"><%= t ".upload_file" %></h4>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for [@organization, @support.document],html: {multipart: true} do |f| %>
@@ -25,8 +25,11 @@
           <%= f.label :status_upload, Settings.global, value: Settings.value_global %>
           <%= f.radio_button :status_upload, Settings.value_shared %>
           <%= f.label :status_upload, Settings.shared, value: Settings.value_shared %>
-          <%= f.radio_button :status_upload, Settings.value_individual %>
-          <%= f.label :status_upload, Settings.individual, value: Settings.value_individual %>
+          <% if @organization.is_admin? current_user %>
+            <%= f.radio_button :status_upload, Settings.value_individual %>
+            <%= f.label :status_upload, Settings.individual,
+              value: Settings.value_individual %>
+          <% end %>
         </div>
       </div>
       <%= f.submit t(".upload"), class: "btn btn-default" %>

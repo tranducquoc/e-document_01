@@ -5,11 +5,13 @@
         <div class="col-md-10">
           <div class="row">
             <div class="col-md-3" id="image_document">
-              <% if document.attachment? %>
-                <%= image_tag document.attachment.preview.url, class: "img-responsive" %>
-              <% else %>
-                <%= image_tag Settings.image, class: "img-responsive" %>
-              <% end %>
+              <a href="<%= document_path(document) %>">
+                <% if document.attachment? %>
+                  <%= image_tag document.attachment.preview.url, class: "img-responsive" %>
+                <% else %>
+                  <%= image_tag Settings.image, class: "img-responsive" %>
+                <% end %>
+              </a>
             </div>
             <div class="col-md-9">
               <% if document.checked? %>

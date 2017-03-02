@@ -392,6 +392,8 @@ en:
     document:
       status: "Status"
       short_description: "Short Description"
+    team:
+      index: "Index"
   team:
     submit: "Create"
     edit: "Save"

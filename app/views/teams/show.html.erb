@@ -1,5 +1,4 @@
-
-  <h1 class="col-md-2"><%= @team.name %></h1>
+<h1 class="col-md-2"><%= @team.name %></h1>
   <%= render "join_form" %>
 
 <% if @team.has_admin?(current_user) %>

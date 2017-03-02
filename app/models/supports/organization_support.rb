@@ -30,4 +30,8 @@ class Supports::OrganizationSupport
     ids = Share.select(:document_id).share_organization.where(share_id: organization.id)
     Document.where(id: ids).order(created_at: :desc)
   end
+
+  def teams
+    Team.where(organization_id: organization.id)
+  end
 end

@@ -301,6 +301,8 @@ vn:
     document:
       status: "Trạng thái"
       short_description: "Mô tả ngắn"
+    team:
+      index: "Stt"
 
   confirm: "Bạn có chắc chắn không ?"
   team:
