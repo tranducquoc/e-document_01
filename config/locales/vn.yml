@@ -284,6 +284,8 @@ vn:
       organization_was_deleted: "Tổ chức đã được xóa thành công!"
       can_not_delete: "Không xóa được!"
     show:
+      select_user: "Thêm thành viên"
+      add_member: "Thêm thành viên"
       are_you_sure: "Bạn chắc chứ?"
       delete: "Xóa"
       edit: "Sửa"
@@ -291,13 +293,21 @@ vn:
       members: "Thành viên"
       requests: "Yêu cầu gia nhập"
       accept: "Cháp nhận"
+      teams: "Teams"
+      name: "Tên"
+      email: "Email"
+      address: "Địa chỉ"
+      action: "Xử lý"
+      manage: "Quản lý"
       tab: "Tài liệu"
       tab1: "Thêm"
-    upload:
-      upload_file: "Chia sẻ tài liệu"
-      compose_description: "mô tả"
-      all: "Tất cả"
-      upload: "Tải lên"
+      added_member: "Thêm thanh viên thành công!"
+    show_tpl:
+      upload:
+        upload_file: "Chia sẻ tài liệu"
+        compose_description: "mô tả"
+        all: "Tất cả"
+        upload: "Tải lên"
     document:
       status: "Trạng thái"
       short_description: "Mô tả ngắn"

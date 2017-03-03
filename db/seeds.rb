@@ -100,12 +100,9 @@ GroupMember.create!(user_id: 1, group_id: 3, group_type: "organization", role: "
 GroupMember.create!(user_id: 4, group_id: 4, group_type: "organization", role: "admin", confirm: true)
 GroupMember.create!(user_id: 5, group_id: 4, group_type: "organization", role: "admin", confirm: true)
 
-GroupMember.create!(user_id: 1, group_id: 4, group_type: "organization", role: "member", confirm: false)
-GroupMember.create!(user_id: 2, group_id: 4, group_type: "organization", role: "member", confirm: true)
-GroupMember.create!(user_id: 3, group_id: 4, group_type: "organization", role: "member", confirm: true)
-GroupMember.create!(user_id: 6, group_id: 4, group_type: "organization", role: "member", confirm: true)
-GroupMember.create!(user_id: 7, group_id: 4, group_type: "organization", role: "member", confirm: true)
-GroupMember.create!(user_id: 8, group_id: 4, group_type: "organization", role: "member", confirm: true)
+GroupMember.create!(user_id: 6, group_id: 4, group_type: "organization", role: "member", confirm: false)
+GroupMember.create!(user_id: 7, group_id: 4, group_type: "organization", role: "member", confirm: false)
+GroupMember.create!(user_id: 8, group_id: 4, group_type: "organization", role: "member", confirm: false)
 
 GroupMember.create!(user_id: 5, group_id: 1, group_type: "team", role: "admin", confirm: true)
 GroupMember.create!(user_id: 5, group_id: 2, group_type: "team", role: "admin", confirm: true)

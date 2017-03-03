@@ -17,6 +17,12 @@ module ApplicationHelper
     User.where.not(id: ids)
   end
 
+  def user_not_in_organization organization
+    user_ids = GroupMember.select(:user_id).where(group_id: organization.id,
+      group_type: :organization)
+    User.where.not(id: user_ids)
+  end
+
   def active_class_locale locale
     locale == I18n.locale ? "active" : ""
   end

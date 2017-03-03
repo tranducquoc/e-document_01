@@ -68,7 +68,16 @@ class GroupMembersController < ApplicationController
   end
 
   def create_organization_member support
-    if @organization.join_organization current_user
+    if @organization.is_admin? current_user
+      user = User.find_by id: params[:user_id]
+      @organization.add_member user
+      status = t "organizations.show.added_member"
+      respond_to do |format|
+        format.json do
+          render json: {status: status}
+        end
+      end
+    elsif @organization.join_organization current_user
       member = @organization.group_members.find_by user_id: current_user.id
       flash[:success] = t "organizations.create.sent_request"
       respond_to do |format|
