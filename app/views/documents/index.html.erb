@@ -1,7 +1,34 @@
 <div class="header">
   <div class="container-fluid">
-    <div class="img-back">
-      <%= image_tag Settings.image_2, class: "img-responsive" %>
+    <div class="img-back row-fluid">
+      <div id="my_carousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#my_carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#my_carousel" data-slide-to="1"></li>
+          <li data-target="#my_carousel" data-slide-to="2"></li>
+          <li data-target="#my_carousel" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <% load_image.each do |image| %>
+            <div class="item">
+              <% if image.image.present? %>
+                <%= image_tag image.image.url, class: "img-responsive" %>
+              <% else %>
+                <%= image_tag Setting.image, class: "img-responsive" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="#my_carousel" role="button"
+          data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only"><%= t ".previous" %></span>
+        </a>
+        <a class="right carousel-control" href="#my_carousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only"><%= t ".next" %></span>
+        </a>
+      </div>
     </div>
     <div class="contact">
       <p><%= t ".question" %>
@@ -33,6 +60,9 @@
               <li><a href="#"><%= t ".about" %></a></li>
               <li><a href="#"><%= t ".contact" %></a></li>
               <li><%= link_to (t ".organization"), organizations_path %></li>
+              <% if current_user.present? && current_user.admin? %>
+                <li><%= link_to (t ".admin_site"), admin_root_path %></li>
+              <% end %>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -48,8 +78,7 @@
           <h3><%= t ".know" %></h3>
           <a href="#" class="btn btn-default nut1"><%= t ".register" %></a>
         </div>
-        <div class="col-md-5 bacsi">
-          <%= image_tag Settings.image_1, class: "img-responsive" %>
+        <div class="col-md-5">
         </div>
       </div>
     </div>

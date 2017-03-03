@@ -13,7 +13,7 @@ per_page: 10
 document_per_page: 5
 categories:
   per_page: 10
-image: "image1.png"
+image: "image_framgia.jpg"
 image_1: "doctor.png"
 image_2: "background.jpg"
 format_date: "%d-%m-%Y"

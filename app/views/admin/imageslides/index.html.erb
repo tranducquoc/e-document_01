@@ -1,0 +1,24 @@
+<div class="col-md-12 admin-document">
+  <h2 class="text-left"><%= t ".list_images" %></h2>
+  <div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-search">
+        <%= form_tag admin_imageslides_path, method: :get, id: "search_image" do %>
+          <%= text_field_tag :search, params[:search], class: "form-control input-lg", id: "search_image_ajax" %>
+          <div class="button-tag">
+            <%= submit_tag "" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="btn-add-image">
+        <%= link_to "", new_admin_imageslide_path, class: "fa fa-plus btn btn-default" %>
+      </div>
+      <div id="table-images-admin">
+        <%= render partial: "/admin/imageslides/imageslides",
+          locals: {imageslides: @imageslides} %>
+      </div>
+    </div>
+  </div>
+</div>

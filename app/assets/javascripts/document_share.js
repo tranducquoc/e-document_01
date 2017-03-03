@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  $('.carousel-inner .item').first().addClass('active');
   $('#document_category_id').select2();
   $('.select-share-document').select2();
   $('.share-content').hide();

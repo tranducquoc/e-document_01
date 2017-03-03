@@ -36,13 +36,13 @@ Rails.application.routes.draw do
         mount ActionCable.server => "/cable"
 
         namespace :api do
-          resources :documents, only: :index
-          resources :users
+          resources :documents, :users, :imageslides, only: :index
         end
 
         namespace :admin do
           root "admins#index", as: :root
-          resources :categories, :documents, :users, :statistic, :buycoins
+          resources :categories, :documents, :users, :statistic, :buycoins,
+            :imageslides
         end
 
         resources :buycoins

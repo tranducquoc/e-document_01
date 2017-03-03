@@ -1,0 +1,38 @@
+<div id="images-list-admin">
+  <table class="cart table table-hover new-order">
+    <thead>
+      <tr class="info row">
+        <th class="col-md-2"><%= t ".stt" %></th>
+        <th class="col-md-2"><%= t ".image_name" %></th>
+        <th class="col-md-4"></th>
+        <th class="col-md-2"><%= t ".action_enable_image" %></th>
+        <th class="col-md-2"><%= t ".action_disable_image" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @imageslides.each_with_index do |imageslide, index|%>
+        <tr class="row">
+          <td class="col-md-2"><%= index + 1 %></td>
+          <td class="col-md-2"><%= imageslide.image.file.filename if imageslide.image.present? %></td>
+          <td class="col-md-4">
+            <%= image_tag imageslide.image.url, class: "img-responsive slide" %>
+          </td>
+          <th class="col-md-2 option-product-admin">
+            <% unless imageslide.enable? %>
+              <%= link_to admin_imageslide_path(imageslide), method: :patch,class: "btn btn-default", data: {confirm: t(".you_sure")} do %>
+                <span class="fa fa-check"></span>
+              <% end %>
+            <% end %>
+          </th>
+          <th>
+            <% unless imageslide.disable? %>
+              <%= link_to admin_imageslide_path(imageslide), method: :patch,class: "btn btn-default", data: {confirm: t(".you_sure")} do %>
+                <span class="fa fa-ban"></span>
+              <% end %>
+            <% end %>
+          </th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -20,7 +20,7 @@
     </em>
   </p>
   <p>
-    <% if can? :update, review %>
+    <% if user_signed_in? && review.user == current_user %>
       <a type="button" class="btn btn-default" data-toggle="modal"
         data-target="#mynewreview" data-whatever="@fat">
         <%= t"documents.edit_review" %>
