@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).on('turbolinks:load', function(){
   $('#join_request').submit(function () {
     event.preventDefault();
     var action = $(this).find('form').attr('action');

@@ -1,0 +1,25 @@
+<h3><%= t "organizations.show.requests" %></h3>
+<table class="table table-hover">
+  <thead>
+  <th><%= t "organizations.show.name" %></th>
+  <th><%= t "organizations.show.email" %></th>
+  <th><%= t "organizations.show.address" %></th>
+  <th><%= t "organizations.show.action" %></th>
+  </thead>
+  <tbody>
+  <% group_members.each do |member| %>
+    <tr id="accept-request-<%= member.id %>">
+      <td><%= member.name %></td>
+      <td><%= member.email %></td>
+      <td><%= member.address %></td>
+      <td>
+        <% unless member.confirm? %>
+          <button id="<%= member.id %>" class="btn btn-accept btn-default">
+            <%= t "organizations.show.accept" %>
+          </button>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

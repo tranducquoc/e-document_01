@@ -49,6 +49,7 @@ individual: "Individual"
 organization:
   name:
     max_length: 100
+  select_box_size: 15
 value_global: "global"
 value_shared: "shared"
 value_individual: "individual"

@@ -5,6 +5,9 @@ class OrganizationsController < ApplicationController
   def show
     @member = @organization.group_members.find_by user_id: current_user.id
     @support = Supports::OrganizationSupport.new @organization
+    if params[:tab_id].present?
+      show_tab @support
+    end
   end
 
   def create
@@ -57,5 +60,20 @@ class OrganizationsController < ApplicationController
   def organization_params
     params.require(:organization).permit :name,
       group_member_attributes: [:user_id, :group_id, :group_type, :role, :confirm]
+  end
+
+  def show_tab support
+    case params[:tab_id]
+    when "members"
+      members = support.members
+    when "requests"
+      members = support.requests
+    end
+    respond_to do |format|
+      format.html do
+        render partial: "organizations/show_tpl/members",
+          locals: {group_members: members}
+      end
+    end
   end
 end

@@ -1,6 +1,8 @@
 class GroupMember < ApplicationRecord
   belongs_to :user
 
+  delegate :name, :email, :address, to: :user
+
   enum group_type: [:organization, :team]
   enum role: [:member, :admin]
 
@@ -13,4 +15,5 @@ class GroupMember < ApplicationRecord
   scope :admin, ->{where role: GroupMember.roles[:admin]}
   scope :member, ->{where confirm: true}
   scope :request, ->{where confirm: false}
+
 end
