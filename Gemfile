@@ -8,6 +8,7 @@ end
 gem "rails", "~> 5.0.1"
 gem "devise"
 gem "carrierwave", "~> 1.0"
+gem "mini_magick",  "4.5.1"
 gem "fog"
 gem "rubocop", require: false
 gem "bootstrap-sass", "3.3.6"

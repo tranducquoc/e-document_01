@@ -20,6 +20,28 @@
             <span><%= t ".admin" %><%= t(".page") %></span>
           </a>
         </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right site-admin">
+            <% if user_signed_in? %>
+              <li class="dropdown navc">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-user-circle"></i>
+                  <%= current_user.name %><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu admin">
+                  <li>
+                    <%= link_to t(".client_site"), root_path %>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to t(".log_out"),
+                      destroy_user_session_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container-fluid">

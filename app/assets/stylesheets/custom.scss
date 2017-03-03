@@ -133,19 +133,18 @@ p.document-user-name {
   color: white;
   font-weight: 400;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 nav.navbar.navbar-default.navbar-fixed-top {
-  height: 108px;
+  height: 73px;
   background: $black-smooth;
   border: none;
 }
 
 ul.nav.navbar-nav li.navc {
   border-top: 5px solid transparent;
-  padding-top: 27px;
-  padding-bottom: 27px;
+  padding-top: 10px;
   padding-left: 0px;
   padding-right: 0px;
   margin-left: 25px;
@@ -163,10 +162,10 @@ ul.nav.navbar-nav li.navc a:hover {
 
 p.logo_f {
   color: white;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
   text-shadow: 3px 1px 0.5px $gray_mail_p;
-  transform: translateY(29px);
+  transform: translateY(12px);
 }
 
 .top2 {
@@ -180,95 +179,14 @@ li.dropdown.navc.open .dropdown-toggle {
 
 nav.navbar.navbar-default.navbar-fixed-top span {
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   margin-left: 24px;
 }
 
-#footer {
-  background: $black-smooth;
-  margin: 0;
-  padding: 36px 0 42px;
-  transform: translateY(69px);
-}
-
-#footer div {
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 0;
-  width: 960px;
-}
-
-#footer div p {
-  color: white;
-  float: left;
-  line-height: 44px;
-  margin: 0 0 0 10px;
-  padding: 0;
-}
-
-#footer div ul {
-  display: block;
-  float: right;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  width: 256px;
-}
-
-#footer div ul li {
-  display: block;
-  float: left;
-  list-style: none;
-  margin: 0 10px;
-  padding: 0;
-  width: 44px;
-}
-
-#footer div ul li a {
-  background: url("icons.jpg") no-repeat 0 0;
-  display: block;
-  height: 44px;
-  margin: 0;
-  padding: 0;
-  text-indent: -99999px;
-  width: 44px;
-}
-
-#footer div ul li #twitter {
-  background-position: 0 0;
-}
-
-#footer div ul li #twitter:hover {
-  background-position: -44px 0;
-}
-
-#footer div ul li #facebook {
-  background-position: 0 -44px;
-}
-
-#footer div ul li #facebook:hover {
-  background-position: -44px -44px;
-}
-
-#footer div ul li #googleplus {
-  background-position: 0 -88px;
-}
-
-#footer div ul li #googleplus:hover {
-  background-position: -44px -88px;
-}
-
-#footer div ul li #pinterest {
-  background-position: 0 -132px;
-}
-
-#footer div ul li #pinterest:hover {
-  background-position: -44px -132px;
-}
-
 .container.main-body {
-  min-height: 505px;
-  padding-top: 120px;
+  min-height: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .view-document h2.text-center {
@@ -570,10 +488,13 @@ a.btn.btn-default.delete-doc {
   color: $color_red;
 }
 
-.header{
+.header {
   padding-top: 20px;
   position: relative;
   height: 700px;
+  margin-top: 73px;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .img-back {
@@ -692,6 +613,7 @@ span.one-p {
 .header-info h3{
   margin-bottom: 39px;
   opacity: 0;
+  color: white;
   -webkit-animation-name:effectnav;
   -webkit-animation-duration:0.4s;
   -webkit-animation-delay:3.6s;
@@ -998,7 +920,7 @@ input#code {
 }
 
 .top2 h2 {
-  padding-top: 25px;
+  padding-top: 5%;
 }
 
 a.ssb-icon.ssb-facebook {
@@ -1229,7 +1151,146 @@ h3.text-left.rss {
 a.btn.btn-default.btn-share-1 {
   margin-top: 25px;
 }
-paper-icon-button#download {
-  position: absolute;
-  z-index: -999999;
+#footer-distributed {
+  background-color: $gray_black;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  padding: 50px;
+  display:block;
+}
+#footer-distributed .footer-left, #footer-distributed .footer-center, #footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+#footer-distributed .footer-left {
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+}
+#footer-distributed h3 {
+  color: white;
+  font: normal 36px "Cookie", cursive;
+  margin: 0;
+}
+#footer-distributed h3 span {
+  color: $blue_sky_blur;
+}
+#footer-distributed .footer-links {
+  color: white;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+#footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+#footer-distributed .footer-company-name {
+  color: $gray_small;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+#footer-distributed .footer-center {
+  width: 35%;
+}
+#footer-distributed .footer-right {
+  padding-left: 5%;
+  width: 20%;
+}
+.footer-icon {
+  display: flex;
+}
+#footer-distributed .footer-center i {
+  background-color: $gray_tea;
+  color: white;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+#footer-distributed .footer-center p {
+  display: inline-block;
+  color: white;
+  vertical-align: middle;
+  margin: 0;
+}
+#footer-distributed .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+#footer-distributed .footer-company-about {
+  line-height: 20px;
+  color: $gray_tea_blur;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+#footer-distributed .footer-company-about span {
+  display: block;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+#footer-distributed .footer-icons {
+  margin-top: 25px;
+}
+#footer-distributed .footer-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: $gray_tea;
+  border-radius: 2px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+body {
+  height: 100%;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: $white_face;
+    border-left: 1px solid $gray_footer;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $gray_footer;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: $gray_face;
+}
+.carousel-inner img {
+  width: 100%;
+}
+html,body {
+  height:100%;
+}
+.carousel,.item,.active {
+  height:100%;
+}
+.carousel-inner {
+  height:100%;
+}
+.fill {
+  width:100%;
+  height:100%;
+  background-position:center;
+  background-size:cover;
 }

@@ -7,6 +7,10 @@ module ApplicationHelper
     @categories = Category.all
   end
 
+  def load_image
+    @images = Imageslide.all.enable
+  end
+
   def load_value_coin
     @list_value = Coin.pluck("DISTINCT value")
   end

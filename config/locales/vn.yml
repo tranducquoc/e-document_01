@@ -56,6 +56,7 @@ vn:
       file: "tài liệu được tải lên"
       know: "Chúng tôi hiểu điều bạn muốn ? Upload và Dowload tài liệu miễn phí"
       register: "Upload ngay !"
+      admin_site: "Trang Admin"
     show:
       share_by: "Chia sẻ bởi: "
       dash: "|"
@@ -125,6 +126,22 @@ vn:
     admin:
       admin: "Admin"
       page: "Page"
+    footer:
+      framgia_vn: "FramgiaVietNam"
+      home: "Home |"
+      blog: "Blog |"
+      about: "About |"
+      faq: "Faq |"
+      contact: "Contact"
+      copyright: "Copyright 2016 Bui Quy Hoat, Inc. All rights reserved."
+      address: "13F Keangnam Landmark 72 Tower, Plot E6,
+        Pham Hung Road, Nam Tu Liem, Ha Noi, Viet Nam"
+      phone_number: "84-4-3795-5417"
+      hr_team: "hr_team@framgia.com"
+      about_fr: "About Framgia Viet Nam"
+      info: "Framgia Vietnam is a company 100% Japan funded specializing in
+        design, development applications such as mobile phone software, games,
+        social and website applications."
   static_pages:
     users: "Người dùng"
     categories: "Thể loại"

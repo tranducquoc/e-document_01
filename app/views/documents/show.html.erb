@@ -117,7 +117,7 @@
   <% if @document.attachment.url.blank? %>
     <h2><%= t ".document_blank" %></h2>
   <% else %>
-    <iframe src="<%= @document.attachment.url %>" style="width:800px; height:700px;" frameborder="0">
+    <iframe src="<%= @document.attachment.url %>" style="width:800px; height:700px;" frameborder="0" id="iframe">
     </iframe>
   <% end %>
   <hr>

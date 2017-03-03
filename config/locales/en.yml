@@ -87,6 +87,7 @@ en:
       file: "File uploaded"
       know: "We know what you needed ? Upload and Download free"
       register: "Upload Now !"
+      admin_site: "Admin site"
     show:
       share_by: "Shared by: "
       dash: "|"
@@ -173,6 +174,24 @@ en:
       file_upload: "File Upload"
       list_user: "List User"
       request_coin: "Request Coin"
+      client_site: "Client site"
+      log_out: "Log out"
+    footer:
+      framgia_vn: "FramgiaVietNam"
+      home: "Home |"
+      blog: "Blog |"
+      about: "About |"
+      faq: "Faq |"
+      contact: "Contact"
+      copyright: "Copyright 2016 Bui Quy Hoat, Inc. All rights reserved."
+      address: "13F Keangnam Landmark 72 Tower, Plot E6,
+        Pham Hung Road, Nam Tu Liem, Ha Noi, Viet Nam"
+      phone_number: "84-4-3795-5417"
+      hr_team: "hr_team@framgia.com"
+      about_fr: "About Framgia Viet Nam"
+      info: "Framgia Vietnam is a company 100% Japan funded specializing in
+        design, development applications such as mobile phone software, games,
+        social and website applications."
   static_pages:
     users: "Users"
     categories: "Categories"
@@ -270,6 +289,22 @@ en:
         coin_value: "Coin Value"
         created_at: "Created At"
         check_confirm: "Are you sure ? "
+    imageslides:
+      new:
+        save: "Save"
+      create:
+        create_success: "Create successfully !!!"
+      index:
+        list_images: "List Image"
+        stt: "STT"
+        image_name: "Image Name"
+      imageslides:
+        you_sure: "Are you sure ?"
+        action_enable_image: "Enable Image"
+        action_disable_image: "Disable Image"
+      update:
+        enable_success: "Enable successfully !!!"
+        disable_success: "Disable successfully !!!"
   value_upload: "{value} uploads"
   weekly_statistics: "Weekly Statistics"
   total_upload: "Total upload"
