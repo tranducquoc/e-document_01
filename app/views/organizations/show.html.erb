@@ -13,49 +13,49 @@
 <% if @organization.has_member? current_user %>
   <ul class="nav nav-tabs">
     <li class="active">
-      <a data-toggle="tab" href="#documents"><%= t "organizations.show.documents" %></a>
+      <a data-toggle="tab" href="#documents"><%= t ".documents" %></a>
     </li>
     <li>
-      <a data-toggle="tab" href="#members"><%= t "organizations.show.members" %></a>
+      <a data-toggle="tab" href="#upload_documents"><%= t ".tab1" %></a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#teams"><%= t ".teams" %></a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#members"><%= t ".members" %></a>
     </li>
     <% if @organization.is_admin? current_user %>
       <li>
-        <a data-toggle="tab" href="#requests"><%= t "organizations.show.requests" %></a>
+        <a data-toggle="tab" href="#requests"><%= t ".requests" %></a>
       </li>
     <% end %>
   </ul>
 
   <div class="tab-content">
     <div id="documents" class="tab-pane fade in active">
-      <h3><%= t "organizations.show.documents" %></h3>
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a data-toggle="tab" href="#organization_docs"><%= t ".tab" %></a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#upload_document"><%= t ".tab1" %></a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div id="organization_docs" class="tab-pane fade in active">
-          <div class="row">
-            <%= render "document" %>
-          </div>
-        </div>
-        <div id="upload_document" class="tab-pane">
-          <div class="row">
-            <%= render "upload" %>
-          </div>
-        </div>
+      <h3><%= t ".documents" %></h3>
+      <div class="row">
+        <%= render "document" %>
+      </div>
+    </div>
+    <div id="upload_documents" class="tab-pane fade">
+      <div class="row">
+        <%= render "upload" %>
+      </div>
+    </div>
+    <div id="teams" class="tab-pane fade">
+      <h3><%= t ".team" %></h3>
+      <div class="row">
+        <%= render "team" %>
       </div>
     </div>
     <div id="members" class="tab-pane fade">
-      <h3><%= t "organizations.show.members" %></h3>
+      <h3><%= t ".members" %></h3>
       <table class="table table-hover">
         <thead>
-          <th><%= t "organizations.show.name" %></th>
-          <th><%= t "organizations.show.email" %></th>
-          <th><%= t "organizations.show.address" %></th>
+          <th><%= t ".name" %></th>
+          <th><%= t ".email" %></th>
+          <th><%= t ".address" %></th>
         </thead>
         <tbody>
         <% @support.members.each do |member| %>
@@ -70,13 +70,13 @@
     </div>
     <% if @organization.is_admin? current_user %>
       <div id="requests" class="tab-pane fade">
-        <h3><%= t "organizations.show.requests" %></h3>
+        <h3><%= t ".requests" %></h3>
         <table class="table table-hover">
           <thead>
-          <th><%= t "organizations.show.name" %></th>
-          <th><%= t "organizations.show.email" %></th>
-          <th><%= t "organizations.show.address" %></th>
-          <th><%= t "organizations.show.confirm" %></th>
+          <th><%= t ".name" %></th>
+          <th><%= t ".email" %></th>
+          <th><%= t ".address" %></th>
+          <th><%= t ".confirm" %></th>
           </thead>
           <tbody>
           <% @support.requests.each do |request| %>
@@ -86,7 +86,7 @@
               <td><%= request.user.address %></td>
               <td>
                 <button id="<%= request.id %>" class="btn btn-accept btn-default">
-                  <%= t "organizations.show.accept" %>
+                  <%= t ".accept" %>
                 </button>
               </td>
             </tr>

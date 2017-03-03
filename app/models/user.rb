@@ -71,8 +71,13 @@ class User < ApplicationRecord
   end
 
   def has_permission? document
-    Share.find_by share_id: self.id, share_type: Share.share_types[:user],
-      document_id: document.id
+    return true if Share.find_by share_id: self.id, document_id: document.id,
+      share_type: Share.share_types[:user]
+    shares = Share.select(:share_id, :share_type).where(document_id: document.id)
+    shares.each do |share|
+      return true if eval "in_#{share.share_type}? #{share.share_id}"
+    end
+    return false
   end
 
   def self.from_omniauth auth
@@ -81,6 +86,16 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name
     end
+  end
+
+  def in_team? team_id
+    GroupMember.find_by(user_id: self.id, group_id: team_id,
+      group_type: GroupMember.group_types[:team], confirm: true)
+  end
+
+  def in_organization? organization_id
+    GroupMember.find_by(user_id: self.id, group_id:organization_id,
+      group_type: GroupMember.group_types[:organization], confirm: true)
   end
 
   class << self
