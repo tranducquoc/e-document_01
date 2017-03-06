@@ -1,22 +1,30 @@
-$(document).ready(function () {
-  $('#join_member_form').submit(function () {
-    event.preventDefault();
-    var action = $(this).find('form').attr('action');
-    button = $(this).find('button#btn-join-team');
-    if (button.hasClass('btn-join-team')) {
-      var method = 'POST';
-    } else {
-      var method = 'DELETE';
-    }
+$(document).on('turbolinks:load', function(){
+  $('#join-team-request').on('click', function () {
+    var group_id = $(this).find('button').attr('data-group-id');
+    var group_type = $(this).find('button').attr('data-group-type');
+    var url = window.location.pathname + '/group_members/';
     $.ajax({
-      method: method,
-      url: action,
-      dataType: 'html',
-      success: function (result) {
-        if ($('#join_member_form').find('form') !== null) {
-          $('#join_member_form').find('form').remove();
-        }
-        $('#join_member_form').append(result);
+      url: url,
+      method: 'POST',
+      data: {group_members: {group_id: group_id, group_type: group_type}},
+      success: function (data) {
+        $('#join-team-request').empty();
+        $('#leave-team-request').html(data);
+      }
+    });
+  });
+  $('#leave-team-request').on('click', function () {
+    var group_id = $(this).find('button').attr('data-group-id');
+    var group_type = $(this).find('button').attr('data-group-type');
+    var url = window.location.pathname + '/group_members/' + group_id;
+
+    $.ajax({
+      url: url,
+      method: 'DELETE',
+      data: {group_members: {group_id: group_id, group_type: group_type}},
+      success: function (data) {
+        $('#leave-team-request').empty();
+        $('#join-team-request').html(data);
       }
     });
   });

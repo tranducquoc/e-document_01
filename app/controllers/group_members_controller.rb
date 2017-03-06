@@ -5,11 +5,22 @@ class GroupMembersController < ApplicationController
   load_resource :team
 
   def create
-    if @team.present?
-      create_team_member
-    elsif @organization.present?
-      support = Supports::OrganizationSupport.new @organization
-      create_organization_member support
+    @group_member = current_user.group_members.build group_member_params
+    if @group_member.save
+      case params[:group_members][:group_type]
+        when "organization"
+          member = @organization.group_members.find_by user_id: current_user.id
+        when "team"
+          member = @team.group_members.find_by user_id: current_user.id
+      end
+      respond_to do |format|
+        format.html do
+          render partial: "shared/leave",
+            locals: {
+              member: member
+            }
+        end
+      end
     end
   end
 
@@ -22,29 +33,23 @@ class GroupMembersController < ApplicationController
   end
 
   def destroy
-    if @team.present?
-      destroy_team_member
-    elsif @organization.present?
-      destroy_organization_member
+    if @group_member.destroy
+      object = eval "@#{params[:group_members][:group_type]}"
+      respond_to do |format|
+        format.html do
+          render partial: "shared/join",
+            locals: {
+             object: object
+            }
+        end
+      end
     end
   end
 
   private
 
-  def create_team_member
-    if @team.has_admin? current_user
-      user = User.find_by id: params[:user_id]
-      @team.add_member user
-      respond_to do |format|
-        format.json do
-          render json: {status: status}
-        end
-      end
-    elsif
-      @team.create_team_request current_user
-      flash[:success] = t "team.admin.create"
-      redirect_to :back
-    end
+  def group_member_params
+    params.require(:group_members).permit :group_id, :group_type
   end
 
   def update_team_member
@@ -67,32 +72,6 @@ class GroupMembersController < ApplicationController
     end
   end
 
-  def create_organization_member support
-    if @organization.is_admin? current_user
-      user = User.find_by id: params[:user_id]
-      @organization.add_member user
-      status = t "organizations.show.added_member"
-      respond_to do |format|
-        format.json do
-          render json: {status: status}
-        end
-      end
-    elsif @organization.join_organization current_user
-      member = @organization.group_members.find_by user_id: current_user.id
-      flash[:success] = t "organizations.create.sent_request"
-      respond_to do |format|
-        format.html do
-          render partial: "organizations/leave",
-          locals: {organization: @organization,
-            member: member,
-            support: support}
-        end
-      end
-    else
-      redirect_to @organization
-    end
-  end
-
   def update_organization_member
     @group_member.confirm = true
     if @group_member.save
@@ -109,36 +88,4 @@ class GroupMembersController < ApplicationController
     end
   end
 
-  def destroy_team_member
-    if @group_member.destroy
-      flash[:success] = t "team.admin.destroy"
-      if @team.has_admin? current_user
-        respond_to do |format|
-          format.json do
-            render json: {status: status}
-          end
-        end
-      else
-        redirect_to :back
-      end
-    end
-  end
-
-  def destroy_organization_member
-    if @group_member.destroy
-      flash[:success] = t "team.admin.destroy"
-      support = Supports::OrganizationSupport.new @organization
-      respond_to do |format|
-        format.html do
-          render partial: "organizations/join",
-            locals: {
-              organization: @organization,
-              support: support}
-        end
-      end
-    else
-      flash[:danger] = t "organizations.destroy.can_not_delete"
-      redirect_to :back
-    end
-  end
 end
