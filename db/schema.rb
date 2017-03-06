@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20170309071111) do
   create_table "group_members", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
-    t.integer  "group_type", default: 1
+    t.integer  "group_type", default: 0
     t.integer  "role",       default: 0
     t.boolean  "confirm",    default: false
     t.datetime "created_at",                 null: false

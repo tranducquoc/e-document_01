@@ -14,14 +14,6 @@ class Organization < ApplicationRecord
       confirm: true)
   end
 
-  def join_organization user
-    GroupMember.create!(user_id: user.id,
-      group_id: self.id,
-      group_type: GroupMember.group_types[:organization],
-      role: GroupMember.roles[:member],
-      confirm: false)
-  end
-
   def add_member user
     GroupMember.create!(
       user_id: user.id,
