@@ -24,14 +24,16 @@ Rails.application.routes.draw do
         resources :chatrooms
         resources :reviews
         resources :organizations do
-          resources :admin_add_members, only [:create, destroy]
+          resources :admin_add_members, only: [:create, :destroy]
           resources :group_members do
-            resources :admin_add_members, only [:create, destroy]
+            resources :admin_add_members, only: [:create, :destroy]
           end
           resources :documents
           resources :teams do
-            resources :admin_add_members, only [:create, destroy]
-            resources :group_members, only: [:create, :destroy, :update]
+            resources :admin_add_members, only: [:create, :destroy]
+            resources :group_members, only: [:create, :destroy, :update] do
+              resources :admin_add_members, only: [:create, :destroy]
+            end
           end
         end
         resources :group_members, only: [:create, :destroy, :update]

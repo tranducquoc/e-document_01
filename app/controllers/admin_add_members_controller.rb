@@ -18,6 +18,10 @@ class AdminAddMembersController < ApplicationController
   end
 
   def destroy
+    if @group_member.organization?
+      @group_members = GroupMember.member_team_organization(
+        @group_member.user_id, @group_member.group_id).destroy_all
+    end
     if @organization.is_admin?(current_user) && @group_member.destroy
       respond_to do |format|
         format.json do

@@ -122,7 +122,9 @@
               <td><%= user.email %></td>
               <td><%= user.address %></td>
               <td>
-                <button id="<%= user.id %>" class="btn btn-team-add btn-default">
+                <button id="<%= user.id %>" class="btn btn-team-add btn-default"
+                  data-group-id="<%= @team.id %>"
+                  data-group-type="<%= @team.class.name.downcase %>">
                   <span class="fa fa-check"></span>
                 </button>
               </td>

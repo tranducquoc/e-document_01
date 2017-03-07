@@ -6,6 +6,9 @@ class Team < ApplicationRecord
 
   validates :name, presence: :true, uniqueness: true
 
+  scope :team_in_organization, ->(organization_id){
+    where organization_id: organization_id}
+
   def create_team_owner user
     GroupMember.create!(
       user_id: user.id,
