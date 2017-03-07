@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function(){
   $('.btn-team-decline').on('click', function () {
     event.preventDefault();
     var id = $(this).attr('id');
-    var url = window.location.pathname + '/group_members/' + id;
+    var url = window.location.pathname + '/group_members/' + id + '/admin_add_members/' + id;
 
     $.ajax({
       method: 'DELETE',
@@ -66,7 +66,7 @@ $(document).on('turbolinks:load', function(){
   $('.btn-team-remove').on('click', function () {
     event.preventDefault();
     var id = $(this).attr('id');
-    var url = window.location.pathname + '/group_members/' + id;
+    var url = window.location.pathname + '/group_members/' + id + '/admin_add_members/' + id;
 
     $.ajax({
       method: 'DELETE',
@@ -99,16 +99,18 @@ $(document).on('turbolinks:load', function(){
 
   $('.btn-team-add').on('click', function () {
     event.preventDefault();
-    var id = $(this).attr('id');
-    var url = window.location.pathname + '/group_members/';
-
+    var user_id = $(this).attr('id');
+    var url = window.location.pathname + '/admin_add_members/';
+    var group_id = $(this).attr('data-group-id');
+    var group_type = $(this).attr('data-group-type');
     $.ajax({
       method: 'POST',
       url: url,
       dataType: 'json',
-      data: {user_id: id},
+      data: {group_members: {user_id: user_id,
+        group_id: group_id, group_type: group_type, confirm: true}},
       success: function () {
-        var request_item = '#accept-team-add-'+id;
+        var request_item = '#accept-team-add-' + user_id;
         if($(request_item) !== null){
           $(request_item).remove();
         }

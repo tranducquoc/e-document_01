@@ -13,7 +13,11 @@
       <td><%= member.email %></td>
       <td><%= member.address %></td>
       <td>
-        <% unless member.confirm? %>
+        <% if member.confirm? %>
+          <a id="<%= member.id %>" class="icon-decline">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </a>
+        <% else %>
           <a id="<%= member.id %>" class="icon-accept">
             <i class="fa fa-check" aria-hidden="true"></i>
           </a>
