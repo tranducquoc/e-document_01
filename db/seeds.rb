@@ -137,3 +137,8 @@ GroupMember.create!(user_id: 3, group_id: 4, group_type: "team", role: "member",
 GroupMember.create!(user_id: 5, group_id: 4, group_type: "team", role: "member", confirm: false)
 GroupMember.create!(user_id: 6, group_id: 4, group_type: "team", role: "member", confirm: false)
 
+Serie.create!(name: "serie 1")
+Serie.create!(name: "serie 2")
+Serie.create!(name: "serie 3")
+Serie.create!(name: "serie 4")
+Serie.create!(name: "serie 5")

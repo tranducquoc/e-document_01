@@ -211,4 +211,18 @@
       <%= render "form_share" %>
     <% end %>
   </div>
-</div> 
+  <div class="row">
+    <h3><%= @document.serie.name %></h3>
+    <% @document_sp.load_documents_in_series(@document).each do |document| %>
+      <div class="row docs-serie">
+        <h4>
+          <% if @document.id == document.id %>
+            <%= link_to document.name, document, class: "docs-serie" %>
+          <% else %>
+            <%= link_to document.name, document %>
+          <% end %>
+        </h4>
+      </div>
+    <% end %>
+  </div>
+</div>

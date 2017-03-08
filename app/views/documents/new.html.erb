@@ -10,24 +10,32 @@
       <%= f.text_area :description, placeholder:
         t(".compose_description"), class: "form-control", rows: Settings.rows %>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <%= f.label :attachment %>
           <%= f.file_field :attachment %>
         </div>
+      </div>
+      <div class="row">
         <div class="col-md-6 category_doc_upload">
+        <p><%= t ".category" %></p>
           <%= f.select :category_id, options_for_select(load_categories.collect{
-              |category| [category.name, category.id]}),
-              {class: "btn btn-default", include_blank: t(".all")} %>
+            |category| [category.name, category.id]}),
+            {class: "btn btn-default", include_blank: t(".all")} %>
+        </div>
+        <div class="col-md-6 serie_doc_upload">
+          <p><%= t ".serie" %></p>
+          <%= f.select :serie_id, options_for_select(load_series.collect{
+            |serie| [serie.name, serie.id]}),
+            {class: "btn btn-default", include_blank: t(".all")} %>
         </div>
       </div>
       <div class="row status_upload">
         <div class="col-md-12">
-          <%= f.radio_button :status_upload, Settings.value_global, checked: true %> 
-          <%= f.label :status_upload, Settings.global, value: Settings.value_global %>
-          <%= f.radio_button :status_upload, Settings.value_shared %> 
-          <%= f.label :status_upload, Settings.shared, value: Settings.value_shared %>
-          <%= f.radio_button :status_upload, Settings.value_individual %> 
-          <%= f.label :status_upload, Settings.individual, value: Settings.value_individual %>
+          <% Document.status_uploads.keys.each do |status| %>
+            <%= f.radio_button :status_upload, status,
+            checked: status == Settings.value_global %>
+            <%= f.label :status_upload, status, value: status %>
+          <% end %>
         </div>
       </div>
       <%= f.submit t(".upload"), class: "btn btn-default" %>
