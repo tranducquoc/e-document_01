@@ -28,4 +28,9 @@ class Supports::TeamSupport
     team_ids = GroupMember.team_user.select(:user_id).where(group_id: team.id)
     User.where(id: organization_ids).where.not(id: team_ids)
   end
+
+  def documents organization
+    ids = Share.select(:document_id).share_organization.where(share_id: organization.id)
+    Document.where(id: ids).order(created_at: :desc)
+  end
 end

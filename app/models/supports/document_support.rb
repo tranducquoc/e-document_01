@@ -32,4 +32,8 @@ class Supports::DocumentSupport
     Favorite.find_by document_id: document.id,
       user_id: user.id
   end
+
+  def load_documents_in_series document
+    Document.where(serie_id: document.serie_id).order(created_at: :desc)
+  end
 end

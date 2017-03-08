@@ -72,7 +72,8 @@ class DocumentsController < ApplicationController
   private
   def document_params
     params.require(:document).permit :name, :description, :attachment,
-      :category_id, :status_upload, shares_attributes: [:share_id, :share_type, :document_id]
+      :category_id, :status_upload, :serie_id,
+      shares_attributes: [:share_id, :share_type, :document_id]
   end
 
   def convert_to_hash shares_attributes, share_type

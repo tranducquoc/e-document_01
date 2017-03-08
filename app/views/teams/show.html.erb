@@ -32,6 +32,7 @@
 <div class="tab-content">
   <div id="team-documents" class="tab-pane fade in active">
     <h3><%= t "team.show.documents" %></h3>
+    <%= render "documents" %>
   </div>
   <div id="team-members" class="tab-pane fade ">
      <h3>
@@ -112,7 +113,6 @@
         <thead>
           <th><%= t "team.show.name" %></th>
           <th><%= t "team.show.email" %></th>
-          <th><%= t "team.show.address" %></th>
           <th><%= t ".add" %></th>
         </thead>
         <tbody>
@@ -120,7 +120,6 @@
             <tr id="accept-team-add-<%= user.id %>">
               <td><%= link_to user.name, user %></td>
               <td><%= user.email %></td>
-              <td><%= user.address %></td>
               <td>
                 <button id="<%= user.id %>" class="btn btn-team-add btn-default"
                   data-group-id="<%= @team.id %>"

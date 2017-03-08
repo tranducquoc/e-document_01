@@ -7,6 +7,10 @@ module ApplicationHelper
     @categories = Category.all
   end
 
+  def load_series
+    @series = Serie.all
+  end
+
   def load_image
     @images = Imageslide.all.enable
   end
