@@ -18,7 +18,9 @@ class DocumentsController < ApplicationController
   end
 
   def create
+    serie = Serie.create!(name: params[:series_name]) if params[:series_name].present?
     @document = current_user.documents.build document_params
+    @document.serie_id = serie.id if serie.present?
     if @document.save
       if @organization.present?
         @organization.share_document @document

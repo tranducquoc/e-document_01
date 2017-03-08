@@ -54,6 +54,10 @@ en:
       upload_file: "Upload File"
       compose_description: "Compose Description About Your Document..."
       upload: "Upload"
+      create_serie: "Or add a new one"
+    series:
+      new_serie: "Create a new series"
+      create: "Create"
     create:
       create_success: "Upload successfully!"
     document:
@@ -429,6 +433,7 @@ en:
         compose_description: "this is description"
         all: "All"
         upload: "Upload"
+        create_serie: "Or create a new one"
     document:
       status: "Status"
       short_description: "Short Description"
@@ -477,3 +482,6 @@ en:
   shares:
     create:
       create_success: "Shared successfully !!!"
+  serie:
+    create:
+      success: "Create successfully !!!"

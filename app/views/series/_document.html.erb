@@ -1,0 +1,61 @@
+<div id="doc-user" class="doc-user">
+  <% @documents.each do |document|%>
+    <div class="row document-user">
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-3" id="image_document">
+            <%= image_tag Settings.image, class: "img-responsive" %>
+          </div>
+          <div class="col-md-9">
+            <h4>
+              <%= link_to document.name, document_path(document) %>
+            </h4>
+            <p>
+              <i class="fa fa-tag">
+                <span>
+                  <%= link_to document.category.name, category_path(document.category) %>
+                </span>
+                <span class="time">
+                  <%= document.created_at.strftime(Settings.format_date) %>
+                </span>
+                <span class="status">
+                  <%= t ".status" %>
+                  <% if document.checked? %>
+                    <span class="document-check">
+                      <i class="fa fa-check-circle-o"></i>
+                    </span>
+                  <% elsif document.waiting? %>
+                    <span class="document-pause">
+                      <i class="fa fa-pause"></i>
+                    </span>
+                  <% else %>
+                    <span class="document-ban">
+                      <i class="fa fa-ban"></i>
+                    </span>
+                  <% end %>
+                </span>
+              </i>
+            </p>
+            <h5><%= t ".short_description" %></h5>
+            <p><%= document.description %></p>
+            <p>
+              <% load_categories.each do |category| %>
+                <i class="fa fa-tags"></i>
+                <span><%= link_to category.name, category_path(category) %></span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+    <hr class="hr">
+  <% end %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%= paginate @documents %>
+    </div>
+  </div>
+
+</div>

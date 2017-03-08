@@ -22,6 +22,10 @@ vn:
       upload_file: "Upload tài liệu"
       compose_description: "Ghi mô tả về tài liệu của bạn ..."
       upload: "Upload"
+      create_serie: "Tạo một chuỗi bài viết mới"
+    series:
+      new_serie: "Tạo mới"
+      create: "Tạo"
     create:
       create_success: "Upload thành công!"
     document:
@@ -325,6 +329,7 @@ vn:
         compose_description: "mô tả"
         all: "Tất cả"
         upload: "Tải lên"
+        create_serie: "hoặc tạo mới"
     document:
       status: "Trạng thái"
       short_description: "Mô tả ngắn"
@@ -371,3 +376,6 @@ vn:
       email: "Thư điện tử"
       address: "Địa chỉ"
     add: "Thêm"
+  serie:
+    create:
+      success: "Tạo thành công"
