@@ -89,9 +89,9 @@ $(document).on('turbolinks:load', function(){
       method: 'PUT',
       url: url,
       success: function () {
-        var request_item = '#accept-team-member-'+id;
-        if($(request_item) !== null){
-          $(request_item).remove();
+        var member_item = '.action-member-'+id;
+        if($(member_item) !== null){
+          $(member_item).remove();
         }
       }
     });

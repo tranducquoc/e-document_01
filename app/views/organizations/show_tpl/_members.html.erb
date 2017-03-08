@@ -3,7 +3,6 @@
   <thead>
   <th><%= t "organizations.show.name" %></th>
   <th><%= t "organizations.show.email" %></th>
-  <th><%= t "organizations.show.address" %></th>
   <th><%= t "organizations.show.action" %></th>
   </thead>
   <tbody>
@@ -11,7 +10,6 @@
     <tr id="accept-request-<%= member.id %>">
       <td><%= member.name %></td>
       <td><%= member.email %></td>
-      <td><%= member.address %></td>
       <td>
         <% if member.confirm? %>
           <a id="<%= member.id %>" class="icon-decline">

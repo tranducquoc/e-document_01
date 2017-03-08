@@ -55,12 +55,12 @@
           <td><%= member.user.email %></td>
           <td><%= member.user.address %></td>
           <% if @team.has_admin?(current_user) && !@team.has_admin?(member.user) %>
-            <td>
+            <td class="action-member-<%= member.id %>">
               <button id="<%= member.id %>" class="btn btn-team-assign btn-default">
                 <span class="fa fa-check"></span>
               </button>
             </td>
-            <td>
+            <td class="action-member-<%= member.id %>">
               <button id="<%= member.id %>" class="btn btn-team-remove btn-default">
                 <span class="fa fa-ban"></span>
               </button>

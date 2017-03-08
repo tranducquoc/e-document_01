@@ -88,7 +88,7 @@ $(document).on('turbolinks:load', function() {
     allowClear: true,
     width: 200
   });
-  
+
   $('#add-organization-member-btn').on('click', function () {
     var url = window.location.pathname + '/admin_add_members/';
     var user_id = $('#organization-select-user').val();
