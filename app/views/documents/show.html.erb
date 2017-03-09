@@ -212,7 +212,7 @@
     <% end %>
   </div>
   <div class="row">
-    <h3><%= @document.serie.name %></h3>
+    <h3><%= link_to @document.serie.name, @document.serie %></h3>
     <% @document_sp.load_documents_in_series(@document).each do |document| %>
       <div class="row docs-serie">
         <h4>

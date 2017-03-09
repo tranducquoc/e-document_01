@@ -12,4 +12,16 @@ $(document).on('turbolinks:load', function() {
   $('.btn-default.btn-share-1').click(function(){
     $('.share-content-1').slideToggle(500);
   });
+  $('#create-series-area').hide();
+  $('#create-series').click(function(){
+    $('#create-series-area').slideToggle(200);
+    $('#choose-series').hide();
+  });
+  $('#series-current').click(function(){
+    $('#create-series-area').hide();
+    $('#create-series-area').each(function(){
+      $(this).val('');
+    })
+    $('#choose-series').slideToggle(200);
+  });
 });

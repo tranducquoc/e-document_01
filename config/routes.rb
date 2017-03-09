@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         resources :relationships, only: [:create, :destroy]
         resources :messages, only: [:index]
         resources :chatrooms
+        resources :series
         resources :reviews
         resources :organizations do
           resources :admin_add_members, only: [:create, :destroy]
