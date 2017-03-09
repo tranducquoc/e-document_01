@@ -434,6 +434,8 @@ en:
         all: "All"
         upload: "Upload"
         create_serie: "Or create a new one"
+      documents:
+        send: "Share"
     document:
       status: "Status"
       short_description: "Short Description"
