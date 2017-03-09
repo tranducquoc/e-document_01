@@ -104,7 +104,7 @@ $(document).on('turbolinks:load', function() {
         alert(status);
         $('#organization-select-user').find('[value='+user_id+']').remove();
       }
-    })
-  })
+    });
+  });
 });
 

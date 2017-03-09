@@ -1295,7 +1295,7 @@ html,body {
   background-size:cover;
 }
 
-.icon-accept, .icon-decline{
+.icon-accept, .icon-decline, .guide-modal{
   cursor: pointer;
 }
 .icon-decline{
@@ -1325,11 +1325,6 @@ html,body {
 .select2-selection--single{
   width: 150px;
 }
-.share-content .box-docs{
-  margin-left: -190px;
-  margin-top: 16px;
-  margin-bottom: -25px;
-  border: solid 1px;
-  padding: 0px;
-  margin-right: 128px;
+embed{
+  margin: auto;
 }
