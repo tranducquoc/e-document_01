@@ -46,4 +46,12 @@ module ApplicationHelper
     user != host ? "<div class='message-left'>" +
       end_html : "<div class='message-right'>" + end_right_html
   end
+
+   def load_user_will_share_document document, organization
+    ids = Share.share_user.select(:share_id).where(document_id: document.id) +
+      [document.user.id]
+    user_in_organization_ids = GroupMember.select(:user_id).where(
+      group_id: organization.id, group_type: :organization)
+    User.where(id: user_in_organization_ids).where.not(id: ids)
+  end
 end

@@ -16,7 +16,7 @@
                 <% end %>
               </a>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
               <% if document.checked? %>
                 <h4>
                   <%= link_to document.name, document_path(document) %>
@@ -44,6 +44,30 @@
               </p>
             </div>
           </div>
+        </div>
+        <div>
+          <% if document.user == current_user || @organization.is_admin?(current_user) %>
+            <div class="col-md-2">
+              <a class="btn btn-default btn-share" id="<%= document.id %>">
+                <span class="fa fa-share-square-o"></span>
+              </a>
+              <div class="share-content" id="document_detail_<%= document.id %>">
+                <%= form_for document do |f| %>
+                  <%= hidden_field_tag :document_id, document.id %>
+                  <%= f.hidden_field :status_upload, value: :shared %>
+                  <%= select_tag "document[shares_attributes]", options_for_select(
+                    load_user_will_share_document(document, @organization).map {|user|
+                    [user.name, user.id]}), multiple: true, size: Settings.size_share,
+                    class: "select-share-document"%>
+                  <%= f.submit t(".send"), class: "btn btn-default" %>
+                <% end %>
+              </div>
+              <%= link_to document_path(document), method: :delete,
+                class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
+                <span class="fa fa-trash-o"></span>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
       <hr class="hr">

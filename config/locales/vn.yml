@@ -330,6 +330,8 @@ vn:
         all: "Tất cả"
         upload: "Tải lên"
         create_serie: "hoặc tạo mới"
+      documents:
+        send: "Chia sẻ"
     document:
       status: "Trạng thái"
       short_description: "Mô tả ngắn"
