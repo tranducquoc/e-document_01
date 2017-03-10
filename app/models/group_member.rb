@@ -12,6 +12,11 @@ class GroupMember < ApplicationRecord
 
   scope :team_user, ->{where group_type: GroupMember.group_types[:team]}
   scope :organization_user, ->{where group_type: GroupMember.group_types[:organization]}
+  scope :group_admin, ->(group_type, group_id) do
+    where group_type: group_type,
+      group_id: group_id,
+      role: GroupMember.roles[:admin]
+  end
   scope :admin, ->{where role: GroupMember.roles[:admin]}
   scope :member, ->{where confirm: true}
   scope :request, ->{where confirm: false}

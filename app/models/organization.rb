@@ -6,6 +6,11 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: Settings.organization.name.max_length}
 
+  def members
+    GroupMember.where group_id: self.id, group_type: GroupMember.group_types[:organization]
+  end
+
+
   def create_organization_owner user
     GroupMember.create!(user_id: user.id,
       group_id: self.id,
@@ -34,7 +39,7 @@ class Organization < ApplicationRecord
     GroupMember.organization_user.member.find_by user_id: user.id, group_id: self.id
   end
 
-  def is_admin? user
+  def has_admin? user
     GroupMember.organization_user.admin.find_by user_id: user.id, group_id: self.id
   end
 end

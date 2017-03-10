@@ -3,7 +3,7 @@ class OrganizationsController < ApplicationController
   load_and_authorize_resource
 
   def show
-    @member = @organization.group_members.find_by user_id: current_user.id
+    @member = @organization.members.find_by user_id: current_user.id
     @support = Supports::OrganizationSupport.new @organization
     if params[:tab_id].present?
       show_tab @support
@@ -22,7 +22,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    if @organization.is_admin? current_user
+    if @organization.has_admin? current_user
       if params[:guide_id].present?
         @organization.update_attributes guide_id: params[:guide_id]
         flash[:success] = t ".organization_was_edited"
@@ -43,7 +43,7 @@ class OrganizationsController < ApplicationController
   end
 
   def destroy
-    if @organization.is_admin? current_user
+    if @organization.has_admin? current_user
       if @organization.destroy
         flash[:success] = t ".organization_was_deleted"
         redirect_to organizations_path

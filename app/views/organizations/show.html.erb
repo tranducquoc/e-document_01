@@ -1,6 +1,6 @@
 <h1><%= @organization.name %></h1>
 <%= render "join_request" %>
-<% if @organization.is_admin?(current_user) %>
+<% if @organization.has_admin?(current_user) %>
   <div class="">
     <button class="btn btn-default">
       <%= link_to (t ".edit"), edit_organization_path %>
@@ -32,7 +32,7 @@
         <a id="members-tab" data-destination-id="members" data-toggle="tab"
            href="#members"><%= t "organizations.show.members" %></a>
       </li>
-      <% if @organization.is_admin? current_user %>
+      <% if @organization.has_admin? current_user %>
         <li class="tab-ajax">
           <a id="requests-tab" data-destination-id="requests" data-toggle="tab"
              href="#requests"><%= t "organizations.show.requests" %></a>
@@ -49,12 +49,12 @@
         <%= render "organizations/show_tpl/teams" %>
       </div>
       <div id="members" class="tab-pane fade "></div>
-      <% if @organization.is_admin? current_user %>
+      <% if @organization.has_admin? current_user %>
         <div id="requests" class="tab-pane fade "></div>
       <% end %>
     </div>
   </div>
-  <% if @organization.is_admin? current_user %>
+  <% if @organization.has_admin? current_user %>
     <div class="col-md-4 col-sm-4 col-xs-12">
       <%= select_tag "organization-select-user", options_for_select(
         user_not_in_organization(@organization).map {
