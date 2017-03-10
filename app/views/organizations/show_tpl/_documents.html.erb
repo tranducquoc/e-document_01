@@ -42,6 +42,12 @@
                   <span><%= link_to category.name, category_path(category) %></span>
                 <% end %>
               </p>
+              <% unless @organization.guide_id == document.id %>
+                <%= form_for @organization do |f| %>
+                  <%= hidden_field_tag :guide_id, document.id %>
+                  <%= f.submit t(".assign_guide"), class: "btn btn-default" %>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -62,9 +68,11 @@
                   <%= f.submit t(".send"), class: "btn btn-default" %>
                 <% end %>
               </div>
-              <%= link_to document_path(document), method: :delete,
-                class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
-                <span class="fa fa-trash-o"></span>
+              <% unless @organization.guide_id == document.id %>
+                <%= link_to document_path(document), method: :delete,
+                  class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
+                  <span class="fa fa-trash-o"></span>
+                <% end %>
               <% end %>
             </div>
           <% end %>

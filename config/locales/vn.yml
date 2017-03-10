@@ -323,6 +323,7 @@ vn:
       tab: "Tài liệu"
       tab1: "Thêm"
       added_member: "Thêm thanh viên thành công!"
+      guide: "Hướng dẫn"
     show_tpl:
       upload:
         upload_file: "Chia sẻ tài liệu"
@@ -332,6 +333,7 @@ vn:
         create_serie: "hoặc tạo mới"
       documents:
         send: "Chia sẻ"
+        assign_guide: "Chọn làm tài liệu hướng dẫn cho tổ chức"
     document:
       status: "Trạng thái"
       short_description: "Mô tả ngắn"

@@ -427,6 +427,7 @@ en:
       tab: "Documents"
       tab1: "Upload Document"
       added_member: "Member was added to your organization!"
+      guide: "Guide"
     show_tpl:
       upload:
         upload_file: "Upload Document"
@@ -436,6 +437,7 @@ en:
         create_serie: "Or create a new one"
       documents:
         send: "Share"
+        assign_guide: "Choose to be Setting Guide"
     document:
       status: "Status"
       short_description: "Short Description"

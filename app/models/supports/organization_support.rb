@@ -34,4 +34,8 @@ class Supports::OrganizationSupport
   def teams
     Team.where(organization_id: organization.id)
   end
+
+  def guide
+    Document.find_by id: organization.guide_id
+  end
 end

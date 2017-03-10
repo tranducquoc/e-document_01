@@ -14,6 +14,12 @@
 <% if @organization.has_member? current_user %>
   <div class="col-md-8 col-sm-8 col-xs-12">
     <ul class="nav nav-tabs" id="tabs">
+      <li>
+        <a data-toggle="modal" data-target="#my-Guide" class="guide-modal">
+          <%= t ".guide" %>
+        </a>
+        <%= render "organizations/show_tpl/guide" %>
+      </li>
       <li class="active">
         <a id="documents-tab" data-destination-id="documents" data-toggle="tab"
            href="#documents"><%= t "organizations.show.documents" %></a>
@@ -35,6 +41,7 @@
     </ul>
 
     <div class="tab-content">
+
       <div id="documents" class="tab-pane fade in active">
         <%= render "organizations/show_tpl/documents" %>
       </div>

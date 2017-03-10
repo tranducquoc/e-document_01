@@ -21,23 +21,25 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @organization.is_admin? current_user
-      if @organization.update_attributes organization_params
+      if params[:guide_id].present?
+        @organization.update_attributes guide_id: params[:guide_id]
         flash[:success] = t ".organization_was_edited"
-        redirect_to @organization
+        redirect_to :back
       else
-        flash[:danger] = t ".can_not_edit"
-        render :edit
+        if @organization.update_attributes organization_params
+          flash[:success] = t ".organization_was_edited"
+          redirect_to @organization
+        else
+          flash[:danger] = t ".can_not_edit"
+          render :edit
+        end
       end
     else
       flash[:danger] = t ".do_not_have_permission!"
       redirect_to @organization
     end
-
   end
 
   def destroy
