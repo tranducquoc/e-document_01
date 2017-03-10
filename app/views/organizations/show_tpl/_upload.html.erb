@@ -48,7 +48,7 @@
                 <%= f.label :status_upload, Settings.global, value: Settings.value_global %>
                 <%= f.radio_button :status_upload, Settings.value_shared %>
                 <%= f.label :status_upload, Settings.shared, value: Settings.value_shared %>
-                <% if @organization.is_admin? current_user %>
+                <% if @organization.has_admin? current_user %>
                   <%= f.radio_button :status_upload, Settings.value_individual %>
                   <%= f.label :status_upload, Settings.individual,
                     value: Settings.value_individual %>

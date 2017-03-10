@@ -4,12 +4,12 @@ class TeamsController < ApplicationController
   load_and_authorize_resource through: :organization
 
   def show
-    @member = @team.group_members.find_by user_id: current_user.id
+    @member = @team.members.find_by user_id: current_user.id
     @support = Supports::TeamSupport.new @team
   end
 
   def create
-    if @organization.is_admin? current_user
+    if @organization.has_admin? current_user
       @team = @organization.teams.build team_params
       if @team.save
         @team.create_team_owner current_user

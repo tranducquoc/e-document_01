@@ -9,9 +9,9 @@ class GroupMembersController < ApplicationController
     if @group_member.save
       case params[:group_members][:group_type]
       when "organization"
-        member = @organization.group_members.find_by user_id: current_user.id
+        member = @organization.members.find_by user_id: current_user.id
       when "team"
-        member = @team.group_members.find_by user_id: current_user.id
+        member = @team.members.find_by user_id: current_user.id
       end
       respond_to do |format|
         format.html do
@@ -23,20 +23,41 @@ class GroupMembersController < ApplicationController
   end
 
   def update
-    if @team.present?
-      update_team_member
-    elsif @organization.present?
-      update_organization_member
+
+    status = if @group_member.update_attributes group_member_params
+      t "team.admin.add"
+    else
+      t "team.admin.add_fail"
+    end
+    respond_to do |format|
+      format.json do
+        render json: {status: status}
+      end
     end
   end
 
   def destroy
-    if @group_member.destroy
-      object = eval "@#{params[:group_members][:group_type]}"
+    group_type = params[:group_members][:group_type]
+    admins = GroupMember.group_admin(GroupMember.group_types[eval ":#{group_type}"],
+      (eval "@#{group_type}").id)
+    is_admin = (eval "@#{group_type}").has_admin?(current_user).present?
+    action = params[:group_members][:action]
+
+    if (admins.length > 1 && action == "leave" && is_admin) || !is_admin
+      if @group_member.destroy
+        object = eval "@#{params[:group_members][:group_type]}"
+        respond_to do |format|
+          format.html do
+            render partial: "shared/join",
+              locals: {object: object}
+          end
+        end
+      end
+    else
+      status = t "organizations.destroy.can_cannot_leave"
       respond_to do |format|
-        format.html do
-          render partial: "shared/join",
-            locals: {object: object}
+        format.json do
+          render json: {status: status}
         end
       end
     end
@@ -45,42 +66,7 @@ class GroupMembersController < ApplicationController
   private
 
   def group_member_params
-    params.require(:group_members).permit :group_id, :group_type
+    params.require(:group_members).permit :group_id, :group_type, :role, :confirm
   end
 
-  def update_team_member
-    case @group_member.confirm
-    when true
-      @group_member.role = GroupMember.roles[:admin]
-      @group_member.save
-    when false
-      @group_member.confirm = true
-      if @group_member.save
-        flash[:success] = t "team.admin.add"
-      else
-        flash[:danger] = t "team.admin.add_fail"
-      end
-    end
-    respond_to do |format|
-      format.json do
-        render json: {status: status}
-      end
-    end
-  end
-
-  def update_organization_member
-    @group_member.confirm = true
-    if @group_member.save
-      flash[:success] = t "team.admin.add"
-      status = t "organizations.update.confirm"
-    else
-      flash[:danger] = t "team.admin.add_fail"
-      status = t "organizations.update.cannot_confirm"
-    end
-    respond_to do |format|
-      format.json do
-        render json: {status: status}
-      end
-    end
-  end
 end

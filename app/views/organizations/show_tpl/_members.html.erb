@@ -3,6 +3,7 @@
   <thead>
   <th><%= t "organizations.show.name" %></th>
   <th><%= t "organizations.show.email" %></th>
+  <th><%= t "organizations.show.assign_admin" %></th>
   <th><%= t "organizations.show.action" %></th>
   </thead>
   <tbody>
@@ -11,17 +12,30 @@
       <td><%= member.name %></td>
       <td><%= member.email %></td>
       <td>
-        <% if member.confirm? %>
-          <a id="<%= member.id %>" class="icon-decline">
-            <i class="fa fa-times" aria-hidden="true"></i>
-          </a>
-        <% else %>
-          <a id="<%= member.id %>" class="icon-accept">
+        <% if member.role == "member" && member.confirm %>
+          <button data-id="<%= member.id %>" data-action="admin"
+            class="btn btn-default btn-organization-assign">
             <i class="fa fa-check" aria-hidden="true"></i>
-          </a>
-          <a id="<%= member.id %>" class="icon-decline">
-            <i class="fa fa-times" aria-hidden="true"></i>
-          </a>
+          </button>
+        <% end %>
+      </td>
+
+      <td>
+        <% if member.confirm? %>
+          <% if member.role != "admin" %>
+            <button data-id="<%= member.id %>"
+              class="btn btn-default btn-organization-decline">
+              <i class="fa fa-ban" aria-hidden="true"></i>
+            </button>
+            <% end %>
+        <% else %>
+          <button data-id="<%= member.id %>" data-action="true"
+            class="btn btn-default btn-organization-accept">
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+          <button data-id="<%= member.id %>" class="btn btn-default btn-organization-decline">
+            <i class="fa fa-ban" aria-hidden="true"></i>
+          </button>
         <% end %>
       </td>
     </tr>

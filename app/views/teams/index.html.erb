@@ -43,7 +43,7 @@
       <% end %>
     </table>
   </div>
-  <% if @organization.is_admin? current_user %>
+  <% if @organization.has_admin? current_user %>
     <div>
       <%= link_to t("team.new"), new_organization_team_path(@organization) %>
     </div>

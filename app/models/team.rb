@@ -9,6 +9,10 @@ class Team < ApplicationRecord
   scope :team_in_organization, ->(organization_id){
     where organization_id: organization_id}
 
+  def members
+    GroupMember.where group_id: self.id, group_type: GroupMember.group_types[:team]
+  end
+
   def create_team_owner user
     GroupMember.create!(
       user_id: user.id,
