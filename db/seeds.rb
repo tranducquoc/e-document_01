@@ -83,8 +83,10 @@ Category.create!(name: "Natural Language Processing")
 #     user_id: user_id, status: :checked)
 # end
 
-Organization.create!(name: "Framgia 1")
-Organization.create!(name: "Framgia 2")
+Organization.create!(name: "Framgia 1",
+ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat purus vitae arcu ullamcorper cursus. Sed sit amet pharetra turpis. Etiam varius ut libero vel luctus. Etiam rutrum magna turpis, ut lacinia mi facilisis a. Vestibulum rutrum fermentum quam, vitae ultrices metus tristique eget. Morbi a sollicitudin tortor. Fusce facilisis sodales velit id cursus. Nunc nibh ligula, tempor sed eleifend id, fermentum nec ex. Ut ex arcu, mollis vitae pretium id, scelerisque eu velit.")
+Organization.create!(name: "Framgia 2",
+ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat purus vitae arcu ullamcorper cursus. Sed sit amet pharetra turpis. Etiam varius ut libero vel luctus.")
 Organization.create!(name: "Framgia 3")
 Organization.create!(name: "Framgia 4")
 Organization.create!(name: "Framgia 5")

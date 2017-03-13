@@ -388,6 +388,7 @@ en:
     create:
       invalid_email_password: "Invalid email or password"
   organizations:
+    members: "Members"
     join:
       join: "Join"
     leave:
@@ -398,6 +399,7 @@ en:
       sent_request: "Request was sent! Please wait admin confirm!"
     new:
       add_organization: "Add organization"
+      choose_file_smaller: "Maximum file size is 2MB. Please choose a smaller file"
     edit:
       edit_organization: "Edit organization"
     update:

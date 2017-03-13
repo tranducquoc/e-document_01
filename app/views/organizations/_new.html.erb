@@ -1,0 +1,19 @@
+<div class="organization-sidebar">
+  <div class="add-organization-sidebar">
+    <h2 class="sidebar-item-title"><%= t ".add_organization" %></h2>
+    <%= form_for @organization do |f| %>
+      <%= f.label :picture %>
+      <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png",
+       class: "btn-choose-picture" %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+
+      <%= f.submit (t ".add_organization"), class: "btn btn-default",
+        id: "btn-add-organization" %>
+    <% end %>
+  </div>
+</div>
