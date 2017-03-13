@@ -284,6 +284,7 @@ vn:
     create:
       invalid_email_password: "Sai tên tài khoản hoặc mật khẩu !"
   organizations:
+    members: "Thành viên"
     join:
       join: "Gia nhập"
     leave:
@@ -294,6 +295,7 @@ vn:
       sent_request: "Yêu cầu của bạn đã được gửi đi, vui lòng chờ admin chấp thuận"
     new:
       add_organization: "Thêm tổ chức"
+      choose_file_smaller: "Kích cỡ file vượt quá 2MB. Hãy chọn file nhỏ hơn!"
     edit:
       edit_organization: "Sửa"
     update:

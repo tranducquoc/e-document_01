@@ -2,6 +2,10 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
 
+  def index
+    @organization = Organization.new
+  end
+
   def show
     @member = @organization.members.find_by user_id: current_user.id
     @support = Supports::OrganizationSupport.new @organization
@@ -60,7 +64,7 @@ class OrganizationsController < ApplicationController
   private
 
   def organization_params
-    params.require(:organization).permit :name,
+    params.require(:organization).permit :name, :picture, :description,
       group_member_attributes: [:user_id, :group_id, :group_type, :role, :confirm]
   end
 
@@ -78,4 +82,5 @@ class OrganizationsController < ApplicationController
       end
     end
   end
+
 end

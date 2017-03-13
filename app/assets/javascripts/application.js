@@ -18,3 +18,4 @@
 //= require social-share-button
 //= require select2
 //= require_tree .
+//= require bootbox

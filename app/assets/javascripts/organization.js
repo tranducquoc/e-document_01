@@ -64,16 +64,19 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();
     var id = $(this).attr('data-id');
     var url = window.location.pathname + '/group_members/' + id;
-
-    $.ajax({
-      method: 'PUT',
-      url: url,
-      data: {group_members: {confirm: true}},
-      success: function () {
-        var request_item = '#accept-request-'+id;
-        if($(request_item) !== null){
-          $(request_item).remove();
-        }
+    bootbox.confirm("This is the default confirm!", function(result){
+      if (result){
+        $.ajax({
+          method: 'PUT',
+          url: url,
+          data: {group_members: {confirm: true}},
+          success: function () {
+            var request_item = '#accept-request-'+id;
+            if($(request_item) !== null){
+              $(request_item).remove();
+            }
+          }
+        });
       }
     });
   });
@@ -136,6 +139,12 @@ $(document).on('turbolinks:load', function() {
       alert(I18n.t("organizations.show.choose_user"))
     }
 
+  });
+  $('#organization_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 2) {
+      alert(I18n.t("organizations.new.choose_file_smaller"));
+    }
   });
 });
 

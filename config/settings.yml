@@ -47,6 +47,9 @@ global: "Global"
 shared: "Shared"
 individual: "Individual"
 organization:
+  description_size: 200
+  picture:
+    max_size: 2
   name:
     max_length: 100
   select_box_size: 15
@@ -54,3 +57,4 @@ value_global: "global"
 value_shared: "shared"
 value_individual: "individual"
 size_share: 10
+

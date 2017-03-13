@@ -54,3 +54,5 @@ config/application.yml
 /_dirname/*
 
 .idea
+node_modules
+gulpfile.js
