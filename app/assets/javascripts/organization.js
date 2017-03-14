@@ -19,26 +19,29 @@ $(document).on('turbolinks:load', function () {
     var group_type = $(this).attr('data-group-type');
     var url = window.location.pathname + '/group_members/' + group_id;
     var action = $('#leave-organization-request span').attr('id');
-
-    $.ajax({
-      url: url,
-      method: 'DELETE',
-      data: {
-        group_members: {
-          group_id: group_id,
-          group_type: group_type, action: action
-        }
-      },
-      success: function (data) {
-        if (action == 'leave') {
-          if (typeof (data.status) == 'string') {
-            alert(data.status);
+    bootbox.confirm(I18n.t("organizations.show.are_you_sure"), function (result) {
+      if (result) {
+        $.ajax({
+          url: url,
+          method: 'DELETE',
+          data: {
+            group_members: {
+              group_id: group_id,
+              group_type: group_type, action: action
+            }
+          },
+          success: function (data) {
+            if (action == 'leave') {
+              if (typeof (data.status) == 'string') {
+                alert(data.status);
+              }
+              location.reload();
+            } else if (action == 'unrequest') {
+              $('#leave-organization-request').empty();
+              $('#join-organization-request').html(data);
+            }
           }
-          location.reload();
-        } else if (action == 'unrequest') {
-          $('#leave-organization-request').empty();
-          $('#join-organization-request').html(data);
-        }
+        });
       }
     });
   });

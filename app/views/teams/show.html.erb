@@ -1,95 +1,103 @@
-<h1 class="col-md-2"><%= @team.name %></h1>
-<%= render "join_request" %>
-<% if @team.has_admin?(current_user) %>
-  <div class="">
-    <button class="btn btn-default">
-      <%= link_to (t "team.edit.edit"), edit_organization_team_path %>
-    </button>
-    <button class="btn btn-default">
-      <%= link_to (t "team.delete.delete"), [@team.organization, @team], method: :delete,
-        data: {confirm: (t "team.delete")} %>
-    </button>
-  </div>
-<% end %>
-<div class="col-md-8 col-sm-8 col-xs-12">
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a data-toggle="tab" href="#team-documents"><%= t "team.show.documents" %></a>
-    </li>
-    <li>
-      <a data-toggle="tab" href="#team-members"><%= t "team.show.members" %></a>
-    </li>
-    <% if @team.has_admin? current_user %>
-      <li>
-        <a data-toggle="tab" href="#team-requests"><%= t "team.show.requests" %></a>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="tab-content">
-    <div id="team-documents" class="tab-pane fade in active">
-      <h3><%= t "team.show.documents" %></h3>
-      <%= render "documents" %>
+<div class="teams-page">
+  <div class="left-sidebar col-md-2 col-sm-2">
+    <div class="page-title">
+      <% if @team.has_admin?(current_user) %>
+        <%= link_to edit_organization_team_path, class: "btn-edit" do %>
+          <h1 class="title">
+            <%= @team.name %>
+          </h1>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+      <% else %>
+        <h1 class="title">
+          <%= @team.name %>
+        </h1>
+      <% end %>
     </div>
-    <div id="team-members" class="tab-pane fade ">
-       <h3>
+    <div class="action">
+      <%= render "join_request" %>
+    </div>
+    <% if @team.has_member? current_user %>
+      <ul class="nav nav-tabs list-group">
+        <li class="active">
+          <a data-toggle="tab" href="#team-documents"><%= t "team.show.documents" %></a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#team-members"><%= t "team.show.members" %></a>
+        </li>
+        <% if @team.has_admin? current_user %>
+          <li>
+            <a data-toggle="tab" href="#team-requests"><%= t "team.show.requests" %></a>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <% if @team.has_member? current_user %>
+    <div class="tab-content col-md-7 col-sm-7">
+      <div id="team-documents" class="tab-pane fade in active documents">
+        <h3 class="team-documents-title"><%= t "team.show.documents" %></h3>
+        <%= render "documents" %>
+      </div>
+      <div id="team-members" class="tab-pane fade members">
+        <h3>
           <%= t "teams.show.members" %>
           (<%= @team.group_members.team_user.member.length %>)
         </h3>
-      <table class="table table-hover">
-        <thead>
+        <table class="table table-hover">
+          <thead>
+          <th><%= t "organizations.team.index" %></th>
           <th><%= t "team.show.name" %></th>
           <th><%= t "team.show.email" %></th>
-          <th><%= t "team.show.address" %></th>
           <% if @team.has_admin? current_user %>
             <th><%= t "team.assign" %></th>
             <th><%= t "team.remove" %></th>
           <% end %>
-        </thead>
-        <tbody>
-        <% @support.members.each do |member| %>
-          <tr id="accept-team-member-<%= member.id %>">
-            <td><%= link_to member.user.name, member.user %></td>
-            <td><%= member.user.email %></td>
-            <td><%= member.user.address %></td>
-            <% if @team.has_admin?(current_user) && !@team.has_admin?(member.user) %>
-              <td class="action-member-<%= member.id %>">
-                <button data-id="<%= member.id %>" data-action="admin"
-                  class="btn btn-team-assign btn-default">
-                  <span class="fa fa-check"></span>
-                </button>
-              </td>
-              <td class="action-member-<%= member.id %>">
-                <button data-id="<%= member.id %>" class="btn btn-team-remove btn-default">
-                  <span class="fa fa-ban"></span>
-                </button>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-    <% if @team.has_admin? current_user %>
-      <div id="team-requests" class="tab-pane fade">
-        <h3>
-          <%= t "team.show.requests" %>
-          (<%= @team.group_members.team_user.request.length %>)
-        </h3>
-        <table class="table table-hover">
-          <thead>
-            <th><%= t "team.show.name" %></th>
-            <th><%= t "team.show.email" %></th>
-            <th><%= t "team.show.address" %></th>
-            <th><%= t "team.accept" %></th>
-            <th><%= t "team.remove" %></th>
           </thead>
           <tbody>
-            <% @support.requests.each do |request| %>
+          <% @support.members.each_with_index do |member, index| %>
+            <tr id="accept-team-member-<%= member.id %>">
+              <td><%= index + 1 %></td>
+              <td><%= link_to member.user.name, member.user %></td>
+              <td><%= member.user.email %></td>
+              <% if @team.has_admin?(current_user) && !@team.has_admin?(member.user) %>
+                <td class="action-member-<%= member.id %>">
+                  <button data-id="<%= member.id %>" data-action="admin"
+                    class="btn btn-team-assign btn-default">
+                    <span class="fa fa-check"></span>
+                  </button>
+                </td>
+                <td class="action-member-<%= member.id %>">
+                  <button data-id="<%= member.id %>" class="btn btn-team-remove btn-default">
+                    <span class="fa fa-ban"></span>
+                  </button>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% if @team.has_admin? current_user %>
+        <div id="team-requests" class="tab-pane fade requests">
+          <h3>
+            <%= t "team.show.requests" %>
+            (<%= @team.group_members.team_user.request.length %>)
+          </h3>
+          <table class="table table-hover">
+            <thead>
+            <th><%= t "organizations.team.index" %></th>
+            <th><%= t "team.show.name" %></th>
+            <th><%= t "team.show.email" %></th>
+            <th><%= t "team.accept" %></th>
+            <th><%= t "team.remove" %></th>
+            </thead>
+            <tbody>
+            <% @support.requests.each_with_index do |request, index| %>
               <tr id="accept-team-request-<%= request.id %>">
+                <td><%= index + 1 %></td>
                 <td><%= link_to request.user.name, request.user %></td>
                 <td><%= request.user.email %></td>
-                <td><%= request.user.address %></td>
                 <td>
                   <button id="<%= request.id %>" data-action="true"
                     class="btn btn-team-accept btn-default">
@@ -103,23 +111,25 @@
                 </td>
               </tr>
             <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+    <% if @team.has_admin? current_user %>
+      <div class="right-sidebar col-md-3 col-sm-3 col-xs-12">
+        <label><%= t ".add_member" %></label>
+        <%= select_tag "team-select-user", options_for_select(
+          @support.add_member(@organization).map {
+          |user| [user.name, user.id] }),
+          multiple: false, size: Settings.organization.select_box_size,
+          class: "select-user-to-add", include_blank: true %>
+        <button id="add-team-member-btn" class="btn btn-team-add btn-default"
+          data-group-id="<%= @team.id %>"
+          data-group-type="<%= @team.class.name.downcase %>">
+          <%= t ".add_member" %>
+        </button>
       </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
-<% if @team.has_admin? current_user %>
-  <div class="col-md-4 col-sm-4 col-xs-12">
-    <%= select_tag "team-select-user", options_for_select(
-      @support.add_member(@organization).map {
-        |user| [user.name, user.id] }),
-                   multiple: false, size: Settings.organization.select_box_size,
-                   class: "select-user-to-add", include_blank: true %>
-    <button id="add-team-member-btn" class="btn btn-team-add btn-default"
-            data-group-id="<%= @team.id %>"
-            data-group-type="<%= @team.class.name.downcase %>">
-      <%= t ".add_member" %>
-    </button>
-  </div>
-<% end %>

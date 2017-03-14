@@ -1436,23 +1436,35 @@ embed {
   input {
     margin-bottom: 15px;
   }
-  .btn-choose-picture {
-    margin-bottom: 15px;
-    padding: 6px 0;
-    position: relative;
-    &::before {
-      padding: 7px 12px;
-      content: 'Choose file';
-      position: absolute;
-      top: 0px;
-      background: $dark-blue;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  }
+
   #btn-add-organization {
     margin-top: 15px;
+  }
+}
+
+.btn-choose-picture {
+  margin-bottom: 15px;
+  padding: 6px 0;
+  position: relative;
+  &:hover{
+    &::before{
+      background: $dark-blue-hover;
+    }
+  }
+  &::before {
+    padding: 7px 12px;
+    content: 'Choose file';
+    position: absolute;
+    top: 0px;
+    background: $dark-blue;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s ;
+    -ms-transition: 0.5s ;
+    -o-transition: 0.5s ;
+    transition: 0.5s ;
   }
 }
 
@@ -1461,6 +1473,12 @@ embed {
   li {
     float: none;
     display: block;
+  }
+}
+
+.left-sidebar {
+  .action {
+    overflow: auto;
   }
 }
 
@@ -1483,12 +1501,6 @@ embed {
     position: absolute;
     top: 0;
     right: 0;
-  }
-}
-
-.left-sidebar {
-  .action {
-    overflow: auto;
   }
 }
 
@@ -1543,7 +1555,7 @@ embed {
 .tab-content {
   padding-top: 100px;
   overflow: auto;
-  #documents {
+  .documents {
     position: relative;
     .upload {
       text-align: center;
@@ -1562,13 +1574,20 @@ embed {
       float: left;
       width: 100%;
     }
+    .team-documents-title{
+      margin: 0;
+      padding-bottom: 8px;
+    }
   }
-  #teams, #members, #requests{
+  .teams, .members, .requests{
     h3{
       margin: 5px 0;
     }
     table{
       margin-top: 50px;
+      td{
+        line-height: 35px;
+      }
     }
   }
 }
@@ -1588,3 +1607,47 @@ embed {
   }
 }
 
+.group-edit{
+  .title{
+    margin: 30px 0;
+  }
+  form{
+    padding-top: 30px;
+    label{
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    input{
+      margin-bottom: 30px;
+    }
+  }
+  .btn-delete, .btn-edit{
+    width: 100%;
+    font-weight: 600;
+    color: $btn-text;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .btn-edit{
+    background: $green;
+    &:hover{
+      background: $green-hover;
+    }
+  }
+  .btn-delete{
+    background: $red;
+    &:hover{
+      background: $red-hover;
+    }
+  }
+}
+
+#my-Guide{
+  text-align: center;
+  embed{
+    display: inline;
+  }
+}

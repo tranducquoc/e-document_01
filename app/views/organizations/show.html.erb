@@ -1,5 +1,5 @@
 <div class="organization-page">
-  <div class="left-sidebar col-md-2">
+  <div class="left-sidebar col-md-2 col-sm-2">
     <div class="page-title">
       <% if @organization.has_admin?(current_user) %>
         <%= link_to edit_organization_path, class: "btn-edit" do %>
@@ -47,20 +47,20 @@
     <% end %>
   </div>
   <% if @organization.has_member? current_user %>
-    <div class="tab-content col-md-8">
-      <div id="documents" class="tab-pane fade in active">
+    <div class="tab-content col-md-7 col-sm-7">
+      <div id="documents" class="tab-pane fade in active documents">
         <%= render "organizations/show_tpl/documents" %>
       </div>
-      <div id="teams" class="tab-pane fade">
+      <div id="teams" class="tab-pane fade teams">
         <%= render "organizations/show_tpl/teams" %>
       </div>
-      <div id="members" class="tab-pane fade "></div>
+      <div id="members" class="tab-pane fade members"></div>
       <% if @organization.has_admin? current_user %>
-        <div id="requests" class="tab-pane fade "></div>
+        <div id="requests" class="tab-pane fade requests"></div>
       <% end %>
     </div>
     <% if @organization.has_admin? current_user %>
-      <div class="right-sidebar  col-md-2">
+      <div class="right-sidebar  col-md-3 col-sm-3">
         <label><%= t ".add_member" %></label>
         <%= select_tag "organization-select-user", options_for_select(
           user_not_in_organization(@organization).map {
