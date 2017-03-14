@@ -1,47 +1,53 @@
-<h1><%= @organization.name %></h1>
-<%= render "join_request" %>
-<% if @organization.has_admin?(current_user) %>
-  <div class="">
-    <button class="btn btn-default">
-      <%= link_to (t ".edit"), edit_organization_path %>
-    </button>
-    <button class="btn btn-default">
-      <%= link_to (t ".delete"), @organization, method: :delete,
-        data: {confirm: (t ".are_you_sure")} %>
-    </button>
-  </div>
-<% end %>
-<% if @organization.has_member? current_user %>
-  <div class="col-md-8 col-sm-8 col-xs-12">
-    <ul class="nav nav-tabs" id="tabs">
-      <li>
-        <a data-toggle="modal" data-target="#my-Guide" class="guide-modal">
-          <%= t ".guide" %>
-        </a>
-        <%= render "organizations/show_tpl/guide" %>
-      </li>
-      <li class="active">
-        <a id="documents-tab" data-destination-id="documents" data-toggle="tab"
-           href="#documents"><%= t "organizations.show.documents" %></a>
-      </li>
-      <li>
-        <a id="teams-tab" data-destination-id="teams" data-toggle="tab"
-           href="#teams"><%= t "organizations.show.teams" %></a>
-      </li>
-      <li class="tab-ajax">
-        <a id="members-tab" data-destination-id="members" data-toggle="tab"
-           href="#members"><%= t "organizations.show.members" %></a>
-      </li>
-      <% if @organization.has_admin? current_user %>
-        <li class="tab-ajax">
-          <a id="requests-tab" data-destination-id="requests" data-toggle="tab"
-             href="#requests"><%= t "organizations.show.requests" %></a>
-        </li>
+<div class="organization-page">
+  <div class="left-sidebar col-md-2">
+    <div class="page-title">
+      <% if @organization.has_admin?(current_user) %>
+        <%= link_to edit_organization_path, class: "btn-edit" do %>
+          <h1 class="title">
+            <%= @organization.name %>
+          </h1>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+      <% else %>
+        <h1 class="title">
+          <%= @organization.name %>
+        </h1>
       <% end %>
-    </ul>
-
-    <div class="tab-content">
-
+    </div>
+    <div class="action">
+      <%= render "join_request" %>
+    </div>
+    <% if @organization.has_member? current_user %>
+      <ul class="nav nav-tabs list-group" id="tabs">
+        <li class="active">
+          <a id="documents-tab" data-destination-id="documents" data-toggle="tab"
+             href="#documents"><%= t "organizations.show.documents" %></a>
+        </li>
+        <li>
+          <a data-toggle="modal" data-target="#my-Guide" class="guide-modal">
+            <%= t ".guide" %>
+          </a>
+          <%= render "organizations/show_tpl/guide" %>
+        </li>
+        <li>
+          <a id="teams-tab" data-destination-id="teams" data-toggle="tab"
+             href="#teams"><%= t "organizations.show.teams" %></a>
+        </li>
+        <li class="tab-ajax">
+          <a id="members-tab" data-destination-id="members" data-toggle="tab"
+             href="#members"><%= t "organizations.show.members" %></a>
+        </li>
+        <% if @organization.has_admin? current_user %>
+          <li class="tab-ajax">
+            <a id="requests-tab" data-destination-id="requests" data-toggle="tab"
+               href="#requests"><%= t "organizations.show.requests" %></a>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <% if @organization.has_member? current_user %>
+    <div class="tab-content col-md-8">
       <div id="documents" class="tab-pane fade in active">
         <%= render "organizations/show_tpl/documents" %>
       </div>
@@ -53,19 +59,20 @@
         <div id="requests" class="tab-pane fade "></div>
       <% end %>
     </div>
-  </div>
-  <% if @organization.has_admin? current_user %>
-    <div class="col-md-4 col-sm-4 col-xs-12">
-      <%= select_tag "organization-select-user", options_for_select(
-        user_not_in_organization(@organization).map {
-          |user| [user.name, user.id] }),
-          multiple: false, size: Settings.organization.select_box_size,
-          class: "select-user-to-add", include_blank: true %>
-      <button id="add-organization-member-btn" class="btn btn-default"
-        data-group-id="<%= @organization.id %>"
-        data-group-type="<%= @organization.class.name.downcase %>">
-        <%= t ".add_member" %>
-      </button>
-    </div>
+    <% if @organization.has_admin? current_user %>
+      <div class="right-sidebar  col-md-2">
+        <label><%= t ".add_member" %></label>
+        <%= select_tag "organization-select-user", options_for_select(
+          user_not_in_organization(@organization).map {
+            |user| [user.name, user.id] }),
+              multiple: false, size: Settings.organization.select_box_size,
+              class: "select-user-to-add", include_blank: true %>
+        <button id="add-organization-member-btn" class="btn btn-default"
+          data-group-id="<%= @organization.id %>"
+          data-group-type="<%= @organization.class.name.downcase %>">
+          <%= t ".add_member" %>
+        </button>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

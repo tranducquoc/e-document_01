@@ -7,3 +7,5 @@
     <% end %>
   </div>
 </div>
+<%= link_to (t ".delete"), @organization, method: :delete,
+  data: {confirm: (t ".are_you_sure"), class: "btn btn-delete"} %>

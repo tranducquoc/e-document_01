@@ -464,7 +464,7 @@ en:
       delete: "Delete"
       success: "Team was deleted!"
     join: "Join"
-    unrequest: "Undo Request"
+    unrequest: "UnRequest"
     leave: "Leave"
     accept: "Accept"
     decline: "Decline"
