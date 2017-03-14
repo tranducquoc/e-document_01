@@ -1,84 +1,88 @@
-<div>
-  <button type="button" class="btn btn-default" data-toggle="modal"
-    data-target="#upload-modal"><%= t "upload" %></button>
-    <%= render "organizations/show_tpl/upload" %>
-  <% if @support.documents.any? %>
-    <% @support.documents.each do |document|%>
-      <div class="row document-user">
-        <div class="col-md-10">
-          <div class="row">
-            <div class="col-md-3" id="image_document">
-              <a href="<%= document_path(document) %>">
-                <% if document.attachment? %>
-                  <%= image_tag document.attachment.preview.url, class: "img-responsive" %>
-                <% else %>
-                  <%= image_tag Settings.image, class: "img-responsive" %>
-                <% end %>
-              </a>
-            </div>
-            <div class="col-md-7">
-              <% if document.checked? %>
-                <h4>
-                  <%= link_to document.name, document_path(document) %>
-                </h4>
+<div class="upload">
+  <button type="button" class="btn btn-upload" data-toggle="modal"
+          data-target="#upload-modal">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    <%= t "upload" %>
+  </button>
+</div>
+<%= render "organizations/show_tpl/upload" %>
+
+<% if @support.documents.any? %>
+  <% @support.documents.each do |document| %>
+    <div class="document-user">
+      <div class="col-md-10 col-sm-10 col-xs-10">
+        <div class="row">
+          <div class="col-md-3" id="image_document">
+            <a href="<%= document_path(document) %>">
+              <% if document.attachment? %>
+                <%= image_tag document.attachment.preview.url, class: "img-responsive" %>
               <% else %>
-                <h4><%= document.name %></h4>
+                <%= image_tag Settings.image, class: "img-responsive" %>
               <% end %>
-              <p>
-                <i class="fa fa-tag">
-                  <span>
-                    <%= link_to document.category.name, category_path(document.category) if document.category.present? %>
-                  </span>
-                  <span class="time">
+            </a>
+          </div>
+          <div class="col-md-7">
+            <% if document.checked? %>
+              <h4>
+                <%= link_to document.name, document_path(document) %>
+              </h4>
+            <% else %>
+              <h4><%= document.name %></h4>
+            <% end %>
+            <p>
+              <i class="fa fa-tag">
+                <span>
+                  <%= link_to document.category.name,
+                    category_path(document.category) if document.category.present? %>
+                </span>
+                <span class="time">
                     <%= document.created_at.strftime(Settings.format_date) %>
                   </span>
-                </i>
-              </p>
-              <h5><%= t ".short_description" %></h5>
-              <p><%= document.description %></p>
-              <p>
-                <% load_categories.each do |category| %>
-                  <i class="fa fa-tags"></i>
-                  <span><%= link_to category.name, category_path(category) %></span>
-                <% end %>
-              </p>
-              <% unless @organization.guide_id == document.id %>
-                <%= form_for @organization do |f| %>
-                  <%= hidden_field_tag :guide_id, document.id %>
-                  <%= f.submit t(".assign_guide"), class: "btn btn-default" %>
-                <% end %>
+              </i>
+            </p>
+            <h5><%= t ".short_description" %></h5>
+            <p><%= document.description %></p>
+            <p>
+              <% load_categories.each do |category| %>
+                <i class="fa fa-tags"></i>
+                <span><%= link_to category.name, category_path(category) %></span>
               <% end %>
-            </div>
+            </p>
+            <% unless @organization.guide_id == document.id %>
+              <%= form_for @organization do |f| %>
+                <%= hidden_field_tag :guide_id, document.id %>
+                <%= f.submit t(".assign_guide"), class: "btn btn-default" %>
+              <% end %>
+            <% end %>
           </div>
         </div>
-        <div>
-          <% if document.user == current_user || @organization.has_admin?(current_user) %>
-            <div class="col-md-2">
-              <a class="btn btn-default btn-share" id="<%= document.id %>">
-                <span class="fa fa-share-square-o"></span>
-              </a>
-              <div class="share-content" id="document_detail_<%= document.id %>">
-                <%= form_for document do |f| %>
-                  <%= hidden_field_tag :document_id, document.id %>
-                  <%= f.hidden_field :status_upload, value: :shared %>
-                  <%= select_tag "document[shares_attributes]", options_for_select(
-                    load_user_will_share_document(document, @organization).map {|user|
-                    [user.name, user.id]}), multiple: true, size: Settings.size_share,
-                    class: "select-share-document"%>
-                  <%= f.submit t(".send"), class: "btn btn-default" %>
-                <% end %>
-              </div>
-              <% unless @organization.guide_id == document.id %>
-                <%= link_to document_path(document), method: :delete,
-                  class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
-                  <span class="fa fa-trash-o"></span>
-                <% end %>
+      </div>
+      <div>
+        <% if document.user == current_user || @organization.has_admin?(current_user) %>
+          <div class="col-md-2 col-sm-2 col-xs-2">
+            <a class="btn btn-default btn-share" id="<%= document.id %>">
+              <span class="fa fa-share-square-o"></span>
+            </a>
+            <div class="share-content" id="document_detail_<%= document.id %>">
+              <%= form_for document do |f| %>
+                <%= hidden_field_tag :document_id, document.id %>
+                <%= f.hidden_field :status_upload, value: :shared %>
+                <%= select_tag "document[shares_attributes]", options_for_select(
+                  load_user_will_share_document(document, @organization).map { |user|
+                    [user.name, user.id] }), multiple: true, size: Settings.size_share,
+                      class: "select-share-document" %>
+                <%= f.submit t(".send"), class: "btn btn-default" %>
               <% end %>
             </div>
-          <% end %>
-        </div>
+            <% unless @organization.guide_id == document.id %>
+              <%= link_to document_path(document), method: :delete,
+                class: "btn btn-default", data: {confirm: t(".delete_confirm")} do %>
+                <span class="fa fa-trash-o"></span>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <hr class="hr">
-    <% end %>
+    </div>
   <% end %>
-</div>
+<% end %>

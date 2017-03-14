@@ -267,10 +267,6 @@ span#fav_count {
   margin-left: 2%;
 }
 
-i.fa.fa-thumbs-o-down {
-  font-size: 20px;
-}
-
 ul#comments {
   list-style: none;
 }
@@ -357,7 +353,6 @@ div#doc-user img {
 
 .row.document-user {
   background: white;
-  padding-left: 24px;
 }
 
 .top2.user-doc {
@@ -1415,10 +1410,10 @@ embed {
           margin: 0;
           font-size: 30px;
         }
-        .number-of-member{
+        .number-of-member {
           color: $info-text;
         }
-        .description{
+        .description {
           color: $text-color;
           margin-top: 20px;
         }
@@ -1431,20 +1426,21 @@ embed {
     }
   }
 }
-.organization-sidebar{
+
+.organization-sidebar {
   padding-left: 30px;
-  .sidebar-item-title{
+  .sidebar-item-title {
     margin-top: 0;
     margin-bottom: 30px;
   }
-  input{
+  input {
     margin-bottom: 15px;
   }
-  .btn-choose-picture{
+  .btn-choose-picture {
     margin-bottom: 15px;
     padding: 6px 0;
     position: relative;
-    &::before{
+    &::before {
       padding: 7px 12px;
       content: 'Choose file';
       position: absolute;
@@ -1455,7 +1451,140 @@ embed {
       cursor: pointer;
     }
   }
-  #btn-add-organization{
+  #btn-add-organization {
     margin-top: 15px;
   }
 }
+
+.list-group {
+  background: none;
+  li {
+    float: none;
+    display: block;
+  }
+}
+
+.page-title {
+  margin: 30px 0px;
+  position: relative;
+  a {
+    display: block;
+    width: 100%;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .title {
+    margin: 0;
+    display: inline-block;
+  }
+  .fa-pencil {
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.left-sidebar {
+  .action {
+    overflow: auto;
+  }
+}
+
+#organization-request {
+  display: inline-block;
+  float: left;
+  .btn-destroy, .btn-join {
+
+  }
+}
+
+.btn-join {
+  background: $green;
+  color: $btn-text;
+}
+
+.btn-destroy, .btn-edit, .btn-join {
+  font-weight: 600;
+}
+
+.list-group {
+  margin-top: 50px;
+  border: none;
+  li.active {
+    a {
+      border: none;
+      border-radius: 0;
+      background: $color_green;
+      color: $btn-text;
+      &:hover {
+        border: none;
+        background: $navbar-hover;
+      }
+      &:focus {
+        background: $color_green;
+        color: $btn-text;
+      }
+    }
+  }
+  li {
+    a {
+      padding: 10px 15px;
+      font-size: 16px;
+      &:hover {
+        border: none;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding-top: 100px;
+  overflow: auto;
+  #documents {
+    position: relative;
+    .upload {
+      text-align: center;
+      .btn-upload {
+        background: $green;
+        color: $btn-text;
+        display: inline;
+        &:hover {
+          background: $color_green;
+        }
+      }
+    }
+    .document-user {
+      padding-top: 50px;
+      overflow: auto;
+      float: left;
+      width: 100%;
+    }
+  }
+  #teams, #members, #requests{
+    h3{
+      margin: 5px 0;
+    }
+    table{
+      margin-top: 50px;
+    }
+  }
+}
+
+.right-sidebar {
+  padding-top: 100px;
+  label, button {
+    margin-bottom: 15px;
+  }
+  .select2 {
+    margin-bottom: 30px;
+    display: block;
+    width: 100% !important;
+  }
+  button {
+    float: right;
+  }
+}
+

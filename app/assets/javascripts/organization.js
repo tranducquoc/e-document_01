@@ -1,7 +1,7 @@
-$(document).on('turbolinks:load', function() {
-  $('#join-organization-request').on('click', function () {
-    var group_id = $(this).find('button').attr('data-group-id');
-    var group_type = $(this).find('button').attr('data-group-type');
+$(document).on('turbolinks:load', function () {
+  $('body').on('click', '.btn-join', function () {
+    var group_id = $(this).attr('data-group-id');
+    var group_type = $(this).attr('data-group-type');
     var url = window.location.pathname + '/group_members/';
     $.ajax({
       url: url,
@@ -14,24 +14,28 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  $('#leave-organization-request').on('click', function () {
-    var group_id = $(this).find('button').attr('data-group-id');
-    var group_type = $(this).find('button').attr('data-group-type');
+  $('body').on('click', '.btn-destroy', function () {
+    var group_id = $(this).attr('data-group-id');
+    var group_type = $(this).attr('data-group-type');
     var url = window.location.pathname + '/group_members/' + group_id;
     var action = $('#leave-organization-request span').attr('id');
 
     $.ajax({
       url: url,
       method: 'DELETE',
-      data: {group_members: {group_id: group_id,
-        group_type: group_type, action: action}},
+      data: {
+        group_members: {
+          group_id: group_id,
+          group_type: group_type, action: action
+        }
+      },
       success: function (data) {
-        if ( action == 'leave') {
+        if (action == 'leave') {
           if (typeof (data.status) == 'string') {
             alert(data.status);
           }
           location.reload();
-        } else if ( action == 'unrequest'){
+        } else if (action == 'unrequest') {
           $('#leave-organization-request').empty();
           $('#join-organization-request').html(data);
         }
@@ -45,7 +49,7 @@ $(document).on('turbolinks:load', function() {
       method: method,
       data: {tab_id: id},
       success: function (data) {
-        $('#'+id).html(data);
+        $('#' + id).html(data);
       }
     });
   }
@@ -54,7 +58,7 @@ $(document).on('turbolinks:load', function() {
     var id = $(this).attr('data-destination-id');
     var url = window.location.pathname;
     var method = 'GET';
-    if (id != 'documents'){
+    if (id != 'documents') {
       fetch_data(id, url, method);
     }
   });
@@ -64,15 +68,15 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();
     var id = $(this).attr('data-id');
     var url = window.location.pathname + '/group_members/' + id;
-    bootbox.confirm("This is the default confirm!", function(result){
-      if (result){
+    bootbox.confirm(I18n.t("organizations.show.are_you_sure"), function (result) {
+      if (result) {
         $.ajax({
           method: 'PUT',
           url: url,
           data: {group_members: {confirm: true}},
           success: function () {
-            var request_item = '#accept-request-'+id;
-            if($(request_item) !== null){
+            var request_item = '#accept-request-' + id;
+            if ($(request_item) !== null) {
               $(request_item).remove();
             }
           }
@@ -85,32 +89,39 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();
     var id = $(this).attr('data-id');
     var url = window.location.pathname + '/group_members/' + id + '/admin_add_members/' + id;
-    $.ajax({
-      method: 'DELETE',
-      url: url,
-      success: function () {
-        var request_item = '#accept-request-'+id;
-        if($(request_item) !== null){
-          $(request_item).remove();
-        }
+    bootbox.confirm(I18n.t("organizations.show.are_you_sure"), function (result) {
+      if (result) {
+        $.ajax({
+          method: 'DELETE',
+          url: url,
+          success: function () {
+            var request_item = '#accept-request-' + id;
+            if ($(request_item) !== null) {
+              $(request_item).remove();
+            }
+          }
+        });
       }
-    });
+    })
   });
 
   $('body').on('click', '.btn-organization-assign', function () {
     var id = $(this).attr('data-id');
     var url = window.location.pathname + '/group_members/' + id;
-
-    $.ajax({
-      method: 'PUT',
-      url: url,
-      data: {group_members: {role: "admin"}},
-      success: function () {
-        if ($('[data-id='+id+']') != null){
-          $('[data-id='+id+']').remove();
-        }
+    bootbox.confirm(I18n.t("organizations.show.are_you_sure"), function (result) {
+      if (result) {
+        $.ajax({
+          method: 'PUT',
+          url: url,
+          data: {group_members: {role: "admin"}},
+          success: function () {
+            if ($('[data-id=' + id + ']') != null) {
+              $('[data-id=' + id + ']').remove();
+            }
+          }
+        });
       }
-    });
+    })
   });
 
   $('.select-user-to-add').select2({
@@ -124,24 +135,29 @@ $(document).on('turbolinks:load', function() {
     var user_id = $('#organization-select-user').val();
     var group_id = $(this).attr('data-group-id');
     var group_type = $(this).attr('data-group-type');
-    if (user_id){
+    if (user_id) {
       $.ajax({
         url: url,
         method: 'POST',
-        data: {group_members: {user_id: user_id,
-          group_id: group_id, group_type: group_type, confirm: true}},
+        data: {
+          group_members: {
+            user_id: user_id,
+            group_id: group_id, group_type: group_type, confirm: true
+          }
+        },
         success: function (status) {
           alert(status.status);
-          $('#organization-select-user').find('[value='+user_id+']').remove();
+          $('#organization-select-user').find('[value=' + user_id + ']').remove();
+          location.reload();
         }
       });
-    } else{
+    } else {
       alert(I18n.t("organizations.show.choose_user"))
     }
 
   });
-  $('#organization_picture').bind('change', function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
+  $('#organization_picture').bind('change', function () {
+    var size_in_megabytes = this.files[0].size / 1024 / 1024;
     if (size_in_megabytes > 2) {
       alert(I18n.t("organizations.new.choose_file_smaller"));
     }
