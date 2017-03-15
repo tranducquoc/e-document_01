@@ -32,6 +32,6 @@ class Supports::TeamSupport
   def documents organization, int
     ids = Share.select(:document_id).share_organization.where(share_id: organization.id)
     Document.where(id: ids).order(created_at: :desc).page(int)
-      .per Settings.organs_per_page
+      .per Settings.dosc_per_team_page
   end
 end

@@ -1,73 +1,79 @@
-<div class="teams-page">
-  <div class="left-sidebar col-md-2 col-sm-2">
-    <div class="page-title">
-      <% if @team.has_admin?(current_user) %>
-        <%= link_to edit_organization_team_path, class: "btn-edit" do %>
+<% if @organization.has_member? current_user %>
+  <div class="teams-page">
+    <div class="left-sidebar col-md-2 col-sm-2">
+      <div class="page-title">
+        <% if @team.has_admin?(current_user) %>
+          <%= link_to edit_organization_team_path, class: "btn-edit" do %>
+            <h1 class="title">
+              <%= @team.name %>
+            </h1>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
           <h1 class="title">
             <%= @team.name %>
           </h1>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
         <% end %>
-      <% else %>
-        <h1 class="title">
-          <%= @team.name %>
-        </h1>
+      </div>
+      <div class="action">
+        <%= render "join_request" %>
+      </div>
+      <% if @team.has_member? current_user %>
+        <ul class="nav nav-tabs list-group">
+          <li class="active">
+            <a data-toggle="tab" href="#team-documents"><%= t "team.show.documents" %></a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#team-members"><%= t "team.show.members" %></a>
+          </li>
+          <% if @team.has_admin? current_user %>
+            <li>
+              <a data-toggle="tab" href="#team-requests"><%= t "team.show.requests" %></a>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
-    </div>
-    <div class="action">
-      <%= render "join_request" %>
     </div>
     <% if @team.has_member? current_user %>
-      <ul class="nav nav-tabs list-group">
-        <li class="active">
-          <a data-toggle="tab" href="#team-documents"><%= t "team.show.documents" %></a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#team-members"><%= t "team.show.members" %></a>
-        </li>
-        <% if @team.has_admin? current_user %>
-          <li>
-            <a data-toggle="tab" href="#team-requests"><%= t "team.show.requests" %></a>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-  <% if @team.has_member? current_user %>
-    <div class="tab-content col-md-7 col-sm-7">
-      <div id="team-documents" class="tab-pane fade in active documents">
-        <h3 class="team-documents-title"><%= t "team.show.documents" %></h3>
-        <%= render "documents" %>
-      </div>
-      <div id="team-members" class="tab-pane fade members">
-        <%= text_field_tag :search, params[:search], class: "form-control input-lg",
-          id: "search_team_member_ajax" %>
-        <%= hidden_field_tag :team_id, @team.id, id: "search_team_id" %>
-        <div id="table-team-member">
-          <%= render partial: "members", locals: {members: @support.members, team: @team} %>
+      <div class="tab-content col-md-7 col-sm-7">
+        <div id="team-documents" class="tab-pane fade in active documents">
+          <h3 class="team-documents-title"><%= t "team.show.documents" %></h3>
+          <%= render "documents" %>
         </div>
+        <div id="team-members" class="tab-pane fade members">
+          <%= text_field_tag :search, params[:search], class: "form-control input-lg",
+            id: "search_team_member_ajax" %>
+          <%= hidden_field_tag :team_id, @team.id, id: "search_team_id" %>
+          <div id="table-team-member">
+            <%= render partial: "members", locals: {members: @support.members, team: @team} %>
+          </div>
+        </div>
+        <% if @team.has_admin? current_user %>
+          <div id="team-requests" class="tab-pane fade requests">
+            <%= text_field_tag :search, params[:search], class: "form-control input-lg",
+              id: "search_team_request_ajax" %>
+            <div id="table-team-request">
+              <%= render partial: "requests",
+                locals: {requests: @support.requests, team: @team } %>
+            </div>
+          </div>
+        <% end %>
       </div>
       <% if @team.has_admin? current_user %>
-        <div id="team-requests" class="tab-pane fade requests">
-          <%= render partial: "requests",
-            locals: {requests: @support.requests, team: @team } %>
+        <div class="right-sidebar col-md-3 col-sm-3 col-xs-12">
+          <label><%= t ".add_member" %></label>
+          <%= select_tag "team-select-user", options_for_select(
+            @support.add_member(@organization).map {
+            |user| [user.name, user.id] }),
+            multiple: false, size: Settings.organization.select_box_size,
+            class: "select-user-to-add", include_blank: true %>
+          <button id="add-team-member-btn" class="btn btn-team-add btn-default"
+            data-group-id="<%= @team.id %>"
+            data-group-type="<%= @team.class.name.downcase %>">
+            <%= t ".add_member" %>
+          </button>
         </div>
       <% end %>
-    </div>
-    <% if @team.has_admin? current_user %>
-      <div class="right-sidebar col-md-3 col-sm-3 col-xs-12">
-        <label><%= t ".add_member" %></label>
-        <%= select_tag "team-select-user", options_for_select(
-          @support.add_member(@organization).map {
-          |user| [user.name, user.id] }),
-          multiple: false, size: Settings.organization.select_box_size,
-          class: "select-user-to-add", include_blank: true %>
-        <button id="add-team-member-btn" class="btn btn-team-add btn-default"
-          data-group-id="<%= @team.id %>"
-          data-group-type="<%= @team.class.name.downcase %>">
-          <%= t ".add_member" %>
-        </button>
-      </div>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

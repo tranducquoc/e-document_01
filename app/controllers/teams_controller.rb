@@ -43,7 +43,6 @@ class TeamsController < ApplicationController
 
   private
   def team_params
-    params.required(:team).permit :name,
-      group_members_attributes: [:user_id, :group_id, :group_type, :role]
+    params.required(:team).permit :name
   end
 end

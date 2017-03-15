@@ -23,7 +23,6 @@ class GroupMembersController < ApplicationController
   end
 
   def update
-
     status = if @group_member.update_attributes group_member_params
       t "team.admin.add"
     else

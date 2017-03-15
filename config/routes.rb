@@ -43,8 +43,8 @@ Rails.application.routes.draw do
         mount ActionCable.server => "/cable"
 
         namespace :api do
-          resources :documents, :users, :imageslides, :team_members, :organizations,
-            :teams, only: :index
+          resources :documents, :users, :imageslides, :team_members, :team_requests,
+            :organizations, :teams, only: :index
         end
 
         namespace :admin do

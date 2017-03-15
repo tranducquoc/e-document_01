@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function () {
-  $('body').on('click', '.btn-join', function () {
+  $('#join-organization-request').on('click', '.btn-join', function () {
     var group_id = $(this).attr('data-group-id');
     var group_type = $(this).attr('data-group-type');
     var url = window.location.pathname + '/group_members/';
