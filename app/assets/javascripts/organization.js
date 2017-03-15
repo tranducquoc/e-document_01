@@ -165,5 +165,25 @@ $(document).on('turbolinks:load', function () {
       alert(I18n.t("organizations.new.choose_file_smaller"));
     }
   });
+
+  $('#search_organization_ajax').keyup(function() {
+    var org_name = $('#search_organization_ajax').val();
+    load_organizations(org_name);
+  });
+
+  function load_organizations(org_name){
+    $.ajax({
+      url: '/api/organizations/',
+      method: "GET",
+      data: {
+        org_name: org_name
+      },
+      success: function(result){
+        if($('#list-organizations') !== null) $('#list-organizations').remove();
+        $('#table-organizations').append(result);
+      }
+    });
+  }
+
 });
 

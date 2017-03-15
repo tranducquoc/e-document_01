@@ -25,7 +25,7 @@
               <p><%= t ".category" %></p>
                 <%= f.select :category_id, options_for_select(load_categories.collect{
                   |category| [category.name, category.id]}),
-                  {class: "btn btn-default", include_blank: t(".all")} %>
+                  {class: "btn btn-default", include_blank: t(".all")}, required: true %>
               </div>
               <div class="col-md-6 serie_doc_upload">
                 <p>

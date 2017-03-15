@@ -52,7 +52,13 @@
         <%= render "organizations/show_tpl/documents" %>
       </div>
       <div id="teams" class="tab-pane fade teams">
-        <%= render "organizations/show_tpl/teams" %>
+        <%= text_field_tag :search, params[:search], class: "form-control input-lg",
+          id: "search_team_ajax" %>
+        <%= hidden_field_tag :id, @organization.id, id: "search_organization_id" %>
+        <div id="table-teams">
+          <%= render partial: "organizations/show_tpl/teams",
+            locals: {organization: @organization, teams: @support.teams}  %>
+        </div>
       </div>
       <div id="members" class="tab-pane fade members"></div>
       <% if @organization.has_admin? current_user %>

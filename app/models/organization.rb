@@ -48,4 +48,11 @@ class Organization < ApplicationRecord
       errors.add(:picture, "should be less than 5MB")
     end
   end
+
+  class << self
+    def search params_search
+      Organization.where("name LIKE ?", "%#{params_search}%")
+    end
+  end
+
 end

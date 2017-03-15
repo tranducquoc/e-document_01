@@ -57,4 +57,4 @@ value_global: "global"
 value_shared: "shared"
 value_individual: "individual"
 size_share: 10
-
+organs_per_page: 4

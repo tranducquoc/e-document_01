@@ -133,4 +133,26 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
+  $('#search_team_ajax').keyup(function() {
+    var team_name = $('#search_team_ajax').val();
+    var org_id = $('#search_organization_id').val();
+    load_organizations(team_name, org_id);
+  });
+
+  function load_organizations(team_name, org_id){
+    $.ajax({
+      url: '/api/teams/',
+      method: "GET",
+      data: {
+        team_name: team_name,
+        id: org_id
+      },
+      success: function(result){
+        if($('#list-teams') !== null) $('#list-teams').remove();
+        $('#table-teams').append(result);
+      }
+    });
+  }
+
+
 });

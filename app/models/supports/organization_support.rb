@@ -26,9 +26,10 @@ class Supports::OrganizationSupport
     Document.new
   end
 
-  def documents
+  def documents int
     ids = Share.select(:document_id).share_organization.where(share_id: organization.id)
-    Document.where(id: ids).order(created_at: :desc)
+    Document.where(id: ids).order(created_at: :desc).page(int)
+      .per Settings.organs_per_page
   end
 
   def teams

@@ -40,4 +40,11 @@ class Team < ApplicationRecord
   def has_admin? user
     GroupMember.team_user.admin.find_by user_id: user.id, group_id: self.id
   end
+
+  class << self
+    def search params_search
+      Team.where("name LIKE ?", "%#{params_search}%")
+    end
+  end
+
 end
