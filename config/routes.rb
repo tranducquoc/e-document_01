@@ -30,7 +30,7 @@ Rails.application.routes.draw do
             resources :admin_add_members, only: [:create, :destroy]
           end
           resources :documents
-          resources :teams do
+          resources :teams, except: [:index] do
             resources :admin_add_members, only: [:create, :destroy]
             resources :group_members, only: [:create, :destroy, :update] do
               resources :admin_add_members, only: [:create, :destroy]
@@ -43,7 +43,8 @@ Rails.application.routes.draw do
         mount ActionCable.server => "/cable"
 
         namespace :api do
-          resources :documents, :users, :imageslides, only: :index
+          resources :documents, :users, :imageslides, :team_members, :organizations,
+            :teams, only: :index
         end
 
         namespace :admin do

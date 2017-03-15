@@ -1,7 +1,8 @@
 $(document).on('turbolinks:load', function() {
   $('.carousel-inner .item').first().addClass('active');
-  $('#document_category_id').select2();
-  $('#document_serie_id').select2();
+  $('#document_category_id, #document_serie_id').select2({
+    width: 200
+  });
   $('.select-share-document').select2();
   $('.share-content').hide();
   $('.share-content-1').hide();

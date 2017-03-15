@@ -1,0 +1,35 @@
+<div>
+  <h3>
+    <%= t "team.show.requests" %>
+    (<%= team.group_members.team_user.request.length %>)
+  </h3>
+  <table class="table table-hover">
+    <thead>
+      <th><%= t "organizations.team.index" %></th>
+      <th><%= t "team.show.name" %></th>
+      <th><%= t "team.show.email" %></th>
+      <th><%= t "team.accept" %></th>
+      <th><%= t "team.remove" %></th>
+    </thead>
+    <tbody>
+      <% requests.each_with_index do |request, index| %>
+        <tr id="accept-team-request-<%= request.id %>">
+          <td><%= index + 1 %></td>
+          <td><%= link_to request.user.name, request.user %></td>
+          <td><%= request.user.email %></td>
+          <td>
+            <button id="<%= request.id %>" data-action="true"
+              class="btn btn-team-accept btn-default">
+              <span class="fa fa-check"></span>
+            </button>
+          </td>
+          <td>
+            <button id="<%= request.id %>" class="btn btn-team-decline btn-default">
+              <span class="fa fa-ban"></span>
+            </button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,47 +1,49 @@
-<h3><%= t ".teams" %></h3>
-<table class="table table-hover ">
-  <thead>
-    <tr>
-      <th class="col-md-2"><%= t ".index" %></th>
-      <th class="col-md-3"><%= t ".name" %></th>
-      <th class="col-md-3"><%= t "team.created" %></th>
-      <th class="col-md-1"><%= t ".edit" %></th>
-      <th class="col-md-1"><%= t ".delete" %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @organization.has_member? current_user %>
-      <% @support.teams.each_with_index do |team, index| %>
-        <tr>
-          <td class="col-md-2"><%= index + 1 %></td>
-          <td class="col-md-3"><b><%= link_to team.name,
-            [team.organization, team] %></b></td>
-          <td class="col-md-3">
-            <b><%= team.created_at.strftime("%b %d, %Y") %></b>
-          </td>
-          <% if team.has_admin? current_user %>
-            <td class="col-md-1">
-              <button class="btn btn-default">
-                <a href="<%= edit_organization_team_path(team.organization, team) %>">
-                <span class="fa fa-check"></span></a>
-              </button>
+<div id="list-teams">
+  <h3><%= t ".teams" %></h3>
+  <table class="table table-hover ">
+    <thead>
+      <tr>
+        <th class="col-md-2"><%= t ".index" %></th>
+        <th class="col-md-3"><%= t ".name" %></th>
+        <th class="col-md-3"><%= t "team.created" %></th>
+        <th class="col-md-1"><%= t ".edit" %></th>
+        <th class="col-md-1"><%= t ".delete" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if organization.has_member? current_user %>
+        <% teams.each_with_index do |team, index| %>
+          <tr>
+            <td class="col-md-2"><%= index + 1 %></td>
+            <td class="col-md-3"><b><%= link_to team.name,
+              [team.organization, team] %></b></td>
+            <td class="col-md-3">
+              <b><%= team.created_at.strftime("%b %d, %Y") %></b>
             </td>
-            <td class="col-md-1">
+            <% if team.has_admin? current_user %>
+              <td class="col-md-1">
                 <button class="btn btn-default">
-                <%= link_to t("delete"), [team.organization, team],
-                  method: :delete, data: {confirm: t("team.delete.delete")} %>
-                  <span class="fa fa-ban"></span>
+                  <a href="<%= edit_organization_team_path(team.organization, team) %>">
+                  <span class="fa fa-check"></span></a>
                 </button>
-            </td>
-          <% end %>
-        </tr>
+              </td>
+              <td class="col-md-1">
+                  <button class="btn btn-default">
+                  <%= link_to t("delete"), [team.organization, team],
+                    method: :delete, data: {confirm: t("team.delete.delete")} %>
+                    <span class="fa fa-ban"></span>
+                  </button>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<% if @organization.has_admin? current_user %>
-  <div>
-    <%= link_to t("team.new"), new_organization_team_path(@organization) %>
-  </div>
-<% end %>
+  <% if organization.has_admin? current_user %>
+    <div>
+      <%= link_to t("team.new"), new_organization_team_path(organization) %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,39 @@
+<div id="list-team-member">
+  <h3>
+    <%= t "teams.show.members" %>
+    (<%= team.group_members.team_user.member.length %>)
+  </h3>
+  <table class="table table-hover">
+    <thead>
+      <th><%= t "organizations.team.index" %></th>
+      <th><%= t "team.show.name" %></th>
+      <th><%= t "team.show.email" %></th>
+      <% if team.has_admin? current_user %>
+        <th><%= t "team.assign" %></th>
+        <th><%= t "team.remove" %></th>
+      <% end %>
+    </thead>
+    <tbody>
+      <% members.each_with_index do |member, index| %>
+        <tr id="accept-team-member-<%= member.id %>">
+          <td><%= index + 1 %></td>
+          <td><%= link_to member.user.name, member.user %></td>
+          <td><%= member.user.email %></td>
+          <% if team.has_admin?(current_user) && ! team.has_admin?(member.user) %>
+            <td class="action-member-<%= member.id %>">
+              <button data-id="<%= member.id %>" data-action="admin"
+                class="btn btn-team-assign btn-default">
+                <span class="fa fa-check"></span>
+              </button>
+            </td>
+            <td class="action-member-<%= member.id %>">
+              <button data-id="<%= member.id %>" class="btn btn-team-remove btn-default">
+                <span class="fa fa-ban"></span>
+              </button>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

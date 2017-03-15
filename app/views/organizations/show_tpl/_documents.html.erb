@@ -6,9 +6,13 @@
   </button>
 </div>
 <%= render "organizations/show_tpl/upload" %>
-
-<% if @support.documents.any? %>
-  <% @support.documents.each do |document| %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= paginate @support.documents(params[:page]) %>
+  </div>
+</div>
+<% if @support.documents(params[:page]).any? %>
+  <% @support.documents(params[:page]).each do |document| %>
     <div class="document-user">
       <div class="col-md-10 col-sm-10 col-xs-10">
         <div class="row">
@@ -86,3 +90,8 @@
     </div>
   <% end %>
 <% end %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= paginate @support.documents(params[:page]) %>
+  </div>
+</div>

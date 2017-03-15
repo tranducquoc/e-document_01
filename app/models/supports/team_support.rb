@@ -29,8 +29,9 @@ class Supports::TeamSupport
     User.where(id: organization_ids).where.not(id: team_ids)
   end
 
-  def documents organization
+  def documents organization, int
     ids = Share.select(:document_id).share_organization.where(share_id: organization.id)
-    Document.where(id: ids).order(created_at: :desc)
+    Document.where(id: ids).order(created_at: :desc).page(int)
+      .per Settings.organs_per_page
   end
 end
