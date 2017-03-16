@@ -1651,7 +1651,12 @@ embed {
     display: inline;
   }
 }
-#search_team_member_ajax, #search_organization_ajax, #search_team_ajax{
+#search_team_member_ajax, #search_team_request_ajax, #search_team_ajax,
+#search_docs_ajax{
   margin-left: 20px;
   width: 80%;
+}
+#search_organization_ajax{
+  margin-left: 100px;
+  width: 50%;
 }

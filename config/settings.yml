@@ -58,3 +58,4 @@ value_shared: "shared"
 value_individual: "individual"
 size_share: 10
 organs_per_page: 4
+dosc_per_team_page: 2
