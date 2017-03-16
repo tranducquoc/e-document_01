@@ -44,6 +44,9 @@ class GroupMembersController < ApplicationController
 
     if (admins.length > 1 && action == "leave" && is_admin) || !is_admin
       if @group_member.destroy
+        read_guide = ReadGuide.find_by Organization_id: @group_member.group_id,
+          User_id: @group_member.user_id
+        read_guide.destroy if read_guide
         object = eval "@#{params[:group_members][:group_type]}"
         respond_to do |format|
           format.html do

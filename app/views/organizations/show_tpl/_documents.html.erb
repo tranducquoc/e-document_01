@@ -1,17 +1,4 @@
-<div class="list-documents">
-  <div class="upload">
-    <button type="button" class="btn btn-upload" data-toggle="modal"
-      data-target="#upload-modal">
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      <%= t "upload" %>
-    </button>
-  </div>
-  <%= render "organizations/show_tpl/upload" %>
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <%= paginate documents %>
-    </div>
-  </div>
+<div id="list-documents">
   <% if documents.any? %>
     <% documents.each do |document| %>
       <div class="document-user">
@@ -91,9 +78,4 @@
       </div>
     <% end %>
   <% end %>
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <%= paginate documents %>
-    </div>
-  </div>
 </div>

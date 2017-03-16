@@ -24,10 +24,14 @@ class AdminAddMembersController < ApplicationController
         @group_member.user_id, @group_member.group_id).destroy_all
     end
     if (@organization.has_admin?(current_user) || @team.has_admin?(current_user)) &&
-      @group_member.destroy
-      respond_to do |format|
-        format.json do
-          render json: {status: status}
+      if @group_member.destroy
+        read_guide = ReadGuide.find_by Organization_id: @group_member.group_id,
+          User_id: @group_member.user_id
+        read_guide.destroy if read_guide
+        respond_to do |format|
+          format.json do
+            render json: {status: status}
+          end
         end
       end
     end

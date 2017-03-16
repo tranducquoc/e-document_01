@@ -18,6 +18,10 @@
       <%= render "join_request" %>
     </div>
     <% if @organization.has_member? current_user %>
+      <% if @support.read_guide(current_user).present? %>
+        <%= hidden_field_tag :id, @support.read_guide(current_user).id,
+          id: "read_setting_guide" %>
+      <% end %>
       <ul class="nav nav-tabs list-group" id="tabs">
         <li class="active">
           <a id="documents-tab" data-destination-id="documents" data-toggle="tab"
@@ -49,9 +53,20 @@
   <% if @organization.has_member? current_user %>
     <div class="tab-content col-md-7 col-sm-7">
       <div id="documents" class="tab-pane fade in active documents">
+        <div class="upload">
+          <button type="button" class="btn btn-upload" data-toggle="modal"
+            data-target="#upload-modal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <%= t "upload" %>
+          </button>
+        </div>
+        <%= render "organizations/show_tpl/upload" %>
         <div id="table-document">
+          <%= text_field_tag :search, params[:search], class: "form-control input-lg",
+            id: "search_organization_document_ajax" %>
+          <%= hidden_field_tag :id, params[:page], id: "search_params_id" %>
           <%= render partial: "organizations/show_tpl/documents",
-            locals: {documents: @support.documents(params[:page]),
+            locals: {documents: @support.documents,
               organization: @organization} %>
         </div>
       </div>

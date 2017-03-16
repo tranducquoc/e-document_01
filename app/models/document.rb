@@ -54,5 +54,9 @@ class Document < ApplicationRecord
       Document.where(id: document_ids).order(updated_at: :desc)
         .limit(Settings.document.limit_1)
     end
+
+    def search params_search
+      Document.where("name LIKE ?", "%#{params_search}%")
+    end
   end
 end

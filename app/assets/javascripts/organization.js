@@ -71,6 +71,8 @@ $(document).on('turbolinks:load', function () {
     event.preventDefault();
     var id = $(this).attr('data-id');
     var url = window.location.pathname + '/group_members/' + id;
+    var url2 = window.location.pathname + '/read_guide/';
+    var user_id = $('#find_user_id').val();
     bootbox.confirm(I18n.t("organizations.show.are_you_sure"), function (result) {
       if (result) {
         $.ajax({
@@ -78,6 +80,7 @@ $(document).on('turbolinks:load', function () {
           url: url,
           data: {group_members: {confirm: true}},
           success: function () {
+            create_read_guide(user_id, url2);
             var request_item = '#accept-request-' + id;
             if ($(request_item) !== null) {
               $(request_item).remove();
@@ -88,16 +91,38 @@ $(document).on('turbolinks:load', function () {
     });
   });
 
+  function create_read_guide(user_id, url2){
+    $.ajax({
+      method: "POST",
+      url: url2,
+      data: {
+        user_id: user_id
+      }
+    });
+  }
+
+  function destroy_read_guide(url2, id){
+    $.ajax({
+      method: "DELETE",
+      url: url2,
+      data: {
+        id: id
+      }
+    });
+  }
+
   $('body').on('click', '.btn-organization-decline', function () {
     event.preventDefault();
     var id = $(this).attr('data-id');
     var url = window.location.pathname + '/group_members/' + id + '/admin_add_members/' + id;
+    var url2 = window.location.pathname + '/read_guide/';
     bootbox.confirm(I18n.t("organizations.show.are_you_sure"), function (result) {
       if (result) {
         $.ajax({
           method: 'DELETE',
           url: url,
           success: function () {
+            destroy_read_guide(url2, id)
             var request_item = '#accept-request-' + id;
             if ($(request_item) !== null) {
               $(request_item).remove();
@@ -135,6 +160,7 @@ $(document).on('turbolinks:load', function () {
 
   $('#add-organization-member-btn').on('click', function () {
     var url = window.location.pathname + '/admin_add_members/';
+    var url2 = window.location.pathname + '/read_guide/';
     var user_id = $('#organization-select-user').val();
     var group_id = $(this).attr('data-group-id');
     var group_type = $(this).attr('data-group-type');
@@ -150,6 +176,7 @@ $(document).on('turbolinks:load', function () {
         },
         success: function (status) {
           alert(status.status);
+          create_read_guide(user_id, url2);
           $('#organization-select-user').find('[value=' + user_id + ']').remove();
           location.reload();
         }

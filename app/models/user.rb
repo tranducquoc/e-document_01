@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :reads
   has_many :comments
   has_many :reviews
+  has_many :read_guides, dependent: :destroy
   has_many :shares, foreign_key: :share_id
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :user_one_id, dependent: :destroy
