@@ -1,6 +1,7 @@
 class Organization < ApplicationRecord
   has_many :teams, dependent: :destroy
   has_many :group_members, foreign_key: :group_id, dependent: :destroy
+  has_many :read_guides, dependent: :destroy
 
   accepts_nested_attributes_for :group_members
   mount_uploader :picture, OrganizationPictureUploader
@@ -48,6 +49,11 @@ class Organization < ApplicationRecord
       errors.add(:picture, "should be less than 5MB")
     end
   end
+
+  def document_ids
+      Share.select(:document_id).where(share_type: Share.share_types[:organization],
+        share_id: self.id)
+    end
 
   class << self
     def search params_search

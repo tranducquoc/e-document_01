@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         resources :reviews
         resources :organizations do
           resources :admin_add_members, only: [:create, :destroy]
+          resources :read_guide , only: [:create, :update, :destroy]
           resources :group_members do
             resources :admin_add_members, only: [:create, :destroy]
           end
@@ -44,7 +45,7 @@ Rails.application.routes.draw do
 
         namespace :api do
           resources :documents, :users, :imageslides, :team_members, :team_requests,
-            :organizations, :teams, only: :index
+            :organizations, :organization_documents, :teams, only: :index
         end
 
         namespace :admin do

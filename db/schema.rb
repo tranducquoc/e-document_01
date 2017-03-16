@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313041933) do
+ActiveRecord::Schema.define(version: 20170316011557) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -147,6 +147,14 @@ ActiveRecord::Schema.define(version: 20170313041933) do
     t.datetime "updated_at",  null: false
     t.string   "picture"
     t.string   "description"
+  end
+
+  create_table "read_guides", force: :cascade do |t|
+    t.integer  "Organization_id"
+    t.integer  "User_id"
+    t.integer  "read",            default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "reads", force: :cascade do |t|
