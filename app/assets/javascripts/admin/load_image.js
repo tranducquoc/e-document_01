@@ -1,9 +1,16 @@
 $(document).on('turbolinks:load', function() {
   function readURL(input) {
+    var button = '<div class="form-group">';
+    button += '<input type="submit" name="commit" value="Save" class="btn btn-default" data-disable-with="Save">';
+    button += '</div>';
+
     if(input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
         $('#image-slide').attr('src', e.target.result);
+
+        $('#add-new-slider').hide();
+        $('#save-slider').append(button);
       }
       reader.readAsDataURL(input.files[0]);
     }

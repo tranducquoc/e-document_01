@@ -3,9 +3,13 @@ class Admin::ImageslidesController < ApplicationController
   before_action :authenticate_user!, :verify_admin
   load_and_authorize_resource
 
-  def new
+  def index
     @imageslide = Imageslide.new
   end
+
+  # def new
+  #   @imageslide = Imageslide.new
+  # end
 
   def create
     @imageslide = Imageslide.new imageslide_params
