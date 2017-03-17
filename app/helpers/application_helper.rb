@@ -7,8 +7,8 @@ module ApplicationHelper
     @categories = Category.all
   end
 
-  def load_series
-    @series = Serie.all
+  def load_series user, organization_id = nil
+    @series = user.series.where(organization_id: organization_id)
   end
 
   def load_image

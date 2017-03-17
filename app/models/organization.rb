@@ -2,6 +2,7 @@ class Organization < ApplicationRecord
   has_many :teams, dependent: :destroy
   has_many :group_members, foreign_key: :group_id, dependent: :destroy
   has_many :read_guides, dependent: :destroy
+  has_many :series, foreign_key: :organization_id, class_name: Serie.name
 
   accepts_nested_attributes_for :group_members
   mount_uploader :picture, OrganizationPictureUploader

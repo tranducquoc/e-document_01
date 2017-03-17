@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20170316011557) do
     t.string   "name"
     t.string   "description"
     t.string   "attachment"
-    t.integer  "status",        default: 0
+    t.integer  "status",        default: 1
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "view",          default: 0
@@ -182,8 +182,11 @@ ActiveRecord::Schema.define(version: 20170316011557) do
 
   create_table "series", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_series_on_user_id"
   end
 
   create_table "shares", force: :cascade do |t|

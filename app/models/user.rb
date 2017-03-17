@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:facebook]
+
   has_many :group_members
   has_many :documents
   has_many :downloads
@@ -29,6 +30,8 @@ class User < ApplicationRecord
     foreign_key: :guest_id, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :buycoins
+  has_many :series, foreign_key: :user_id, class_name: Serie.name
+
   scope :email_admin, -> () {
     self.select(:id, :email).where(role: :admin)
   }
