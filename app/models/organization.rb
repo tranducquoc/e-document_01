@@ -8,10 +8,10 @@ class Organization < ApplicationRecord
   mount_uploader :picture, OrganizationPictureUploader
   validates :name, presence: true, length: {maximum: Settings.organization.name.max_length}
   validate :picture_size
+
   def members
     GroupMember.where group_id: self.id, group_type: GroupMember.group_types[:organization]
   end
-
 
   def create_organization_owner user
     GroupMember.create!(user_id: user.id,
@@ -60,6 +60,11 @@ class Organization < ApplicationRecord
     def search params_search
       Organization.where("name LIKE ?", "%#{params_search}%")
     end
-  end
 
+    def find_members group_id, user_name, confirm
+      users = User.search(user_name)
+      GroupMember.where group_id: group_id, group_type: GroupMember.group_types[:organization],
+        user_id: users.ids, confirm: confirm
+    end
+  end
 end

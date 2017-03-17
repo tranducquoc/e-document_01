@@ -80,7 +80,7 @@ Team.create!(name: "FEDS", organization_id: 2)
 Team.create!(name: "FCSP", organization_id: 2)
 Team.create!(name: "CV Maker", organization_id: 2)
 
-GroupMember.create!(user_id: 2, group_id: 1, group_type: "organization", role: "admin", confirm: true)
+GroupMember.create!(user_id: 1, group_id: 1, group_type: "organization", role: "admin", confirm: true)
 GroupMember.create!(user_id: 3, group_id: 2, group_type: "organization", role: "admin", confirm: true)
 
 GroupMember.create!(user_id: 4, group_id: 1, group_type: "team", role: "admin", confirm: true)

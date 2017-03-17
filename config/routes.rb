@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
         namespace :api do
           resources :documents, :users, :imageslides, :team_members, :team_requests,
-            :organizations, :organization_documents, :teams, only: :index
+            :organization_members, :organizations, :organization_documents, :teams, only: :index
         end
 
         namespace :admin do

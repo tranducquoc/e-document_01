@@ -1,6 +1,12 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 group-edit">
-    <h1 class="title"><%= t ".edit_organization" + @organization.name %></h1>
+  <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 group-form">
+    <div class="outer-title">
+      <h1 class="title"><%= t "organizations.edit_organization" %> <%= @organization.name %></h1>
+      <%= link_to @organization, method: :delete,
+        data: {confirm: (t ".are_you_sure")} do %>
+        <i class="fa fa-trash icon-delete" aria-hidden="true" title="<%= t "delete" %>"></i>
+      <% end %>
+    </div>
     <%= form_for @organization do |f| %>
       <%= f.label :picture %>
       <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png",
@@ -12,12 +18,8 @@
       <%= f.label :description %>
       <%= f.text_field :description, class: "form-control" %>
 
-      <%= f.submit (t ".edit_organization"), class: "btn btn-edit",
+      <%= f.submit (t "save"), class: "btn btn-primary btn-edit",
         id: "btn-add-organization" %>
-    <% end %>
-    <%= link_to @organization, method: :delete,
-      data: {confirm: (t ".are_you_sure")} do %>
-      <button class="btn btn-delete"><%= t ".delete" %></button>
     <% end %>
   </div>
 </div>

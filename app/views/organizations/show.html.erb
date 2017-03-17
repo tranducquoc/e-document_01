@@ -63,7 +63,7 @@
         <%= render "organizations/show_tpl/upload" %>
         <div id="table-document">
           <%= text_field_tag :search, params[:search], class: "form-control input-lg",
-            id: "search_organization_document_ajax" %>
+            id: "search_organization_document_ajax", placeholder: (t "organizations.search") %>
           <%= hidden_field_tag :id, params[:page], id: "search_params_id" %>
           <%= render partial: "organizations/show_tpl/documents",
             locals: {documents: @support.documents,
@@ -72,16 +72,16 @@
       </div>
       <div id="teams" class="tab-pane fade teams">
         <%= text_field_tag :search, params[:search], class: "form-control input-lg",
-          id: "search_team_ajax" %>
+          id: "search_team_ajax", placeholder: (t "organizations.search") %>
         <%= hidden_field_tag :id, @organization.id, id: "search_organization_id" %>
         <div id="table-teams">
           <%= render partial: "organizations/show_tpl/teams",
             locals: {organization: @organization, teams: @support.teams}  %>
         </div>
       </div>
-      <div id="members" class="tab-pane fade members"></div>
+      <div id="members" class="tab-pane fade members" data-confirm="true"></div>
       <% if @organization.has_admin? current_user %>
-        <div id="requests" class="tab-pane fade requests"></div>
+        <div id="requests" class="tab-pane fade requests" data-confirm="false"></div>
       <% end %>
     </div>
     <% if @organization.has_admin? current_user %>

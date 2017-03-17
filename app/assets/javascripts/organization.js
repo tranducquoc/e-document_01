@@ -91,7 +91,7 @@ $(document).on('turbolinks:load', function () {
     });
   });
 
-  function create_read_guide(user_id, url2){
+  function create_read_guide(user_id, url2) {
     $.ajax({
       method: "POST",
       url: url2,
@@ -101,7 +101,7 @@ $(document).on('turbolinks:load', function () {
     });
   }
 
-  function destroy_read_guide(url2, id){
+  function destroy_read_guide(url2, id) {
     $.ajax({
       method: "DELETE",
       url: url2,
@@ -193,24 +193,42 @@ $(document).on('turbolinks:load', function () {
     }
   });
 
-  $('#search_organization_ajax').keyup(function() {
+  $('#search_organization_ajax').keyup(function () {
     var org_name = $('#search_organization_ajax').val();
     load_organizations(org_name);
   });
 
-  function load_organizations(org_name){
+  function load_organizations(org_name) {
     $.ajax({
       url: '/api/organizations/',
       method: "GET",
       data: {
         org_name: org_name
       },
-      success: function(result){
-        if($('#list-organizations') !== null) $('#list-organizations').remove();
+      success: function (result) {
+        if ($('#list-organizations') !== null) $('#list-organizations').remove();
         $('#table-organizations').append(result);
       }
     });
   }
+
+  $('body').on('keyup', '#search_organization_member_ajax', function () {
+    var user_name = $(this).val();
+    var group_id = $('#search_organization_id').val();
+    var confirm = $(this).parent().attr('data-confirm');
+    $.ajax({
+      url: '/api/organization_members/',
+      method: 'GET',
+      data: {
+        user_name: user_name,
+        group_id: group_id,
+        confirm: confirm
+      },
+      success: function (result) {
+        $('.list-members').html(result);
+      }
+    })
+  });
 
 });
 
