@@ -305,6 +305,7 @@ en:
         list_images: "List Image"
         stt: "STT"
         image_name: "Image Name"
+        save: "Save"
       imageslides:
         you_sure: "Are you sure ?"
         action_enable_image: "Enable Image"

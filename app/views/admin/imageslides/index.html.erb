@@ -13,7 +13,24 @@
     </div>
     <div class="row">
       <div class="btn-add-image">
-        <%= link_to "", new_admin_imageslide_path, class: "fa fa-plus btn btn-default" %>
+        <div class="row">
+          <div class="col-md-12">
+            <%= form_for [:admin, @imageslide], html: {multipart: true} do |f| %>
+              <%=  render "shared/error_messages", object: @imageslide %>
+              <div class="form-group">
+                <%= f.label :image %>
+                <%= image_tag  "", id: "image-slide", class: "img-responsive", size: "765x315" %>
+                <div class="btn btn-success fileinput-button", id="add-new-slider">
+                  <i class="fa fa-plus default" ></i>
+                  <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "img-responsive" %>
+                </div>
+              </div>
+
+              <div id="save-slider">
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
       <div id="table-images-admin">
         <%= render partial: "/admin/imageslides/imageslides",

@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20170316011557) do
 
   create_table "imageslides", force: :cascade do |t|
     t.string   "image"
-    t.integer  "status",     default: 0
+    t.integer  "status",     default: 1
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

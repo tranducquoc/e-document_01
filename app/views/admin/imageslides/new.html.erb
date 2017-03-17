@@ -4,7 +4,7 @@
       <%=  render "shared/error_messages", object: @imageslide %>
       <div class="form-group">
         <%= f.label :image %>
-        <%= image_tag  Settings.image, id: "image-slide", class: "img-responsive" %>
+        <%= image_tag  "", id: "image-slide", class: "img-responsive" %>
         <div class="btn btn-success fileinput-button">
           <i class="fa fa-pencil"></i>
           <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "img-responsive" %>
