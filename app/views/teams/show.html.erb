@@ -42,7 +42,7 @@
         </div>
         <div id="team-members" class="tab-pane fade members">
           <%= text_field_tag :search, params[:search], class: "form-control input-lg",
-            id: "search_team_member_ajax" %>
+            id: "search_team_member_ajax", placeholder: (t "organizations.search") %>
           <%= hidden_field_tag :team_id, @team.id, id: "search_team_id" %>
           <div id="table-team-member">
             <%= render partial: "members", locals: {members: @support.members, team: @team} %>
@@ -51,7 +51,7 @@
         <% if @team.has_admin? current_user %>
           <div id="team-requests" class="tab-pane fade requests">
             <%= text_field_tag :search, params[:search], class: "form-control input-lg",
-              id: "search_team_request_ajax" %>
+              id: "search_team_request_ajax", placeholder: (t "organizations.search") %>
             <div id="table-team-request">
               <%= render partial: "requests",
                 locals: {requests: @support.requests, team: @team } %>

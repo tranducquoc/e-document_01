@@ -38,36 +38,6 @@
         <a href="#"><%= t ".mail" %></a>
       </p>
     </div>
-    <div class="slide-header">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><span class="char-1">
-              <%= t ".fa" %></span><span class="char-2"><%= t ".medic" %></span>
-            </a>
-          </div>
-
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-              <li ><a href="#"><%= t ".home" %></a></li>
-              <li><a href="#"><%= t ".help" %></a></li>
-              <li><a href="#"><%= t ".about" %></a></li>
-              <li><a href="#"><%= t ".contact" %></a></li>
-              <li><%= link_to (t ".organization"), organizations_path %></li>
-              <% if current_user.present? && current_user.admin? %>
-                <li><%= link_to (t ".admin_site"), admin_root_path %></li>
-              <% end %>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div>
-      </nav>
-    </div>
     <div class="header-info">
       <div class="row">
         <div class="col-md-5 col-md-offset-1 text-center">
@@ -104,26 +74,7 @@
     <div class="row newest-product">
       <%= render @document_support.newest_documents if @document_support.newest_documents.present? %>
     </div>
-    <% if user_signed_in? %>
-      <h2 class="text-center">
-        <span class="letter"><i class="fa fa-address-book"></i></span>
-        <span class="letter"><%= t ".yi" %></span>
-        <span class="letter"><%= t ".o" %></span>
-        <span class="letter"><%= t ".u" %></span>
-        <span class="letter"><%= t ".r" %></span>
-        <span class="letter"><%= t ".d" %></span>
-        <span class="letter"><%= t ".o" %></span>
-        <span class="letter"><%= t ".c" %></span>
-        <span class="letter"><%= t ".u" %></span>
-        <span class="letter"><%= t ".m" %></span>
-        <span class="letter"><%= t ".e" %></span>
-        <span class="letter"><%= t ".ni" %></span>
-        <span class="letter"><%= t ".t" %></span>
-        <span class="letter"><%= t ".s" %></span>
-      </h2>
-      <div class="row best-product">
-        <%= render @document_support.own_documents(current_user) if @document_support.own_documents(current_user).present? %>
-      </div>
+    <% if user_signed_in? && @document_support.read_documents(current_user).present? %>
       <h2 class="text-center">
         <span class="letter"><i class="fa fa-bookmark"></i></span>
         <span class="letter"><%= t ".r" %></span>
@@ -141,7 +92,7 @@
         <span class="letter"><%= t ".s" %></span>
       </h2>
       <div class="row best-product">
-        <%= render @document_support.read_documents(current_user) if @document_support.read_documents(current_user).present? %>
+        <%= render @document_support.read_documents(current_user) %>
       </div>
     <% end %>
   </div>

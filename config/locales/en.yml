@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  delete: "Delete"
+  save: "Save"
   add: "Add"
   share: "Share for your friend !!!"
   access_denied: "Access Denied"
@@ -156,6 +158,7 @@ en:
   e_document_01: "EDocument01"
   layouts:
     header:
+      organization: "Organization"
       framgia: "F-Document"
       home: "Home"
       help: "Help"
@@ -388,6 +391,8 @@ en:
     create:
       invalid_email_password: "Invalid email or password"
   organizations:
+    edit_organization: "Edit organization"
+    search: "Search..."
     members: "Members"
     join:
       join: "Join"
@@ -448,6 +453,7 @@ en:
     team:
       index: "Index"
   team:
+    edit_team: "Edit team"
     submit: "Create"
     edit: "Save"
     delete: "Are you sure?"

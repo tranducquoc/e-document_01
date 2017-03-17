@@ -1,17 +1,18 @@
 <% if @team.has_admin? current_user %>
   <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 group-edit">
-      <h1 class="title"><%= t ".edit_team" + @team.name %></h1>
+    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 group-form">
+      <div class="outer-title">
+        <h1 class="title"><%= t "team.edit_team" %> <%= @team.name %></h1>
+        <%= link_to [@team.organization, @team], method: :delete,
+          data: {confirm: (t "team.delete")} do %>
+          <i class="fa fa-trash icon-delete" aria-hidden="true" title="<%= t "delete" %>"></i>
+        <% end %>
+      </div>
       <%= form_for [@team.organization, @team] do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>
-        <%= f.submit t("team.edit.edit"), class: "btn btn-edit" %>
-      <% end %>
-      <%= link_to [@team.organization, @team], method: :delete,
-        data: {confirm: (t "team.delete")} do%>
-      <button class="btn btn-delete"><%= t "team.delete.delete" %></button>
+        <%= f.submit t("save"), class: "btn btn-primary btn-edit" %>
       <% end %>
     </div>
   </div>
 <% end %>
-

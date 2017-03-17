@@ -148,8 +148,7 @@ ul.nav.navbar-nav li.navc {
   padding-top: 10px;
   padding-left: 0px;
   padding-right: 0px;
-  margin-left: 25px;
-  margin-right: -10px;
+
 }
 
 ul.nav.navbar-nav li.navc:hover {
@@ -181,7 +180,6 @@ li.dropdown.navc.open .dropdown-toggle {
 nav.navbar.navbar-default.navbar-fixed-top span {
   color: white;
   font-size: 14px;
-  margin-left: 24px;
 }
 
 .main-body {
@@ -1581,7 +1579,7 @@ embed {
   }
   .teams, .members, .requests{
     h3{
-      margin: 5px 0;
+      margin: 15px 0;
     }
     table{
       margin-top: 50px;
@@ -1607,9 +1605,15 @@ embed {
   }
 }
 
-.group-edit{
+.group-form{
+  .outer-title{
+    overflow: auto;
+    padding: 30px 0;
+  }
   .title{
-    margin: 30px 0;
+    margin: 0;
+    display: block;
+    float: left;
   }
   form{
     padding-top: 30px;
@@ -1621,8 +1625,7 @@ embed {
       margin-bottom: 30px;
     }
   }
-  .btn-delete, .btn-edit{
-    width: 100%;
+  .btn-delete, .btn-edit, .btn-add{
     font-weight: 600;
     color: $btn-text;
     -webkit-transition: 0.5s;
@@ -1631,16 +1634,21 @@ embed {
     -o-transition: 0.5s;
     transition: 0.5s;
   }
-  .btn-edit{
-    background: $green;
-    &:hover{
-      background: $green-hover;
-    }
-  }
   .btn-delete{
     background: $red;
     &:hover{
       background: $red-hover;
+    }
+  }
+  .btn-edit{
+    float: right;
+  }
+  .icon-delete{
+    color: $red;
+    font-size: 26px;
+    float: right;
+    &:hover{
+      color: $red-hover;
     }
   }
 }
@@ -1652,13 +1660,17 @@ embed {
   }
 }
 #search_team_member_ajax, #search_team_request_ajax, #search_team_ajax,
-#search_docs_ajax, #search_organization_document_ajax{
-  margin-left: 20px;
-  width: 80%;
+#search_docs_ajax, #search_organization_document_ajax, #search_organization_member_ajax{
+  margin: 50px 0 0 0;
+  width: 100%;
 }
 #search_organization_ajax{
   margin-left: 100px;
   width: 50%;
+}
+#search_organization_member_ajax{
+  margin: 0;
+  width: 100%;
 }
 #embed_guide{
   height: 100%;

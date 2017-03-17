@@ -1,4 +1,6 @@
 vn:
+  delete: "Xóa"
+  save: "Lưu lại"
   add: "Thêm"
   access_denied: "Truy cập bị từ chối"
   upload_success: "Upload thành công !"
@@ -112,6 +114,7 @@ vn:
   e_document_01: "EDocument01"
   layouts:
     header:
+      organization: "Organization"
       framgia: "F-Document"
       home: "Trang chủ"
       help: "Trợ giúp"
@@ -283,7 +286,10 @@ vn:
   sessions:
     create:
       invalid_email_password: "Sai tên tài khoản hoặc mật khẩu !"
+  organization: "Tổ chức"
   organizations:
+    edit_organization: "Sửa tổ chức"
+    search: "Tìm kiếm..."
     members: "Thành viên"
     join:
       join: "Gia nhập"
@@ -346,6 +352,7 @@ vn:
 
   confirm: "Bạn có chắc chắn không ?"
   team:
+    edit_team: "Sửa nhóm"
     submit: "Tạo"
     edit: "Lưu"
     delete: "Bạn có chắc không?"

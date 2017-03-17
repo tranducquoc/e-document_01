@@ -1,5 +1,5 @@
 <nav class="hea navbar navbar-default top navbar-fixed-top" role="navigation">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse"
         data-target=".navbar-ex1-collapse">
@@ -11,31 +11,26 @@
       <a class="navbar-brand" href="<%= root_path %>">
         <p class="logo_f"><%= t ".framgia" %></p>
       </a>
-      <ul class="nav navbar-nav">
-        <li class="dropdown navc">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <%= t(".categories") %><b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <% load_categories.each do |category| %>
-              <li><%= link_to category.name, category_path(category) %></li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="navc">
-          <%= link_to t(".upload"),
-            new_document_path, class: "fa fa-upload" %>
-        </li>
-        <li class="navc">
-          <%= link_to t(".users"), users_path, class: "fa fa-users" %>
-        </li>
         <% if user_signed_in? %>
           <li class="navc">
-            <%= link_to t(".documents"), user_path(current_user), class: "fa fa-book" %>
+            <%= link_to t(".upload"),
+              new_document_path, class: "fa fa-upload" %>
+          </li>
+          <li class="dropdown navc">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= t(".categories") %><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% load_categories.each do |category| %>
+                <li><%= link_to category.name, category_path(category) %></li>
+              <% end %>
+              <li>
+                <%= link_to t(".documents"), user_path(current_user), class: "fa fa-book" %>
+              </li>
+            </ul>
           </li>
           <li class="navc">
             <%= link_to t(".coins"), new_buycoin_path, class: "fa fa-money" %>
@@ -46,6 +41,10 @@
               <%= current_user.name %><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
+              <li><%= link_to (t ".organization"), organizations_path %></li>
+              <li class="">
+                <%= link_to t(".users"), users_path, class: "fa fa-users" %>
+              </li>
               <li>
                 <%= link_to t(".messenger"), chatrooms_path %>
               </li>
@@ -66,11 +65,6 @@
             new_user_session_path %></li>
           <li class="navc"><%= link_to t(".signup"),
             new_user_registration_path %></li>
-          <li class="navc">
-            <%= link_to user_facebook_omniauth_authorize_path do %>
-              <%= t "login_facebook" %>
-            <% end %>
-          </li>
         <% end %>
         <li class="dropdown navc language">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
