@@ -391,6 +391,8 @@ vn:
       email: "Thư điện tử"
       address: "Địa chỉ"
     add: "Thêm"
-  serie:
+  series:
     create:
       success: "Tạo thành công"
+    update:
+      success: "Thay đổi thành công"

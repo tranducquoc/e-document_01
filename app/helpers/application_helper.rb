@@ -20,9 +20,8 @@ module ApplicationHelper
   end
 
   def load_user_will_be_shared_by_document document
-    ids = Share.share_user.select(:share_id).where(document_id: document.id) +
-      [document.user.id]
-    User.where.not(id: ids)
+    ids = Share.share_user.select(:share_id).where(document_id: document.id)
+    User.where.not(id: ids).where.not(id: document.user.id)
   end
 
   def user_not_in_organization organization
@@ -47,11 +46,16 @@ module ApplicationHelper
       end_html : "<div class='message-right'>" + end_right_html
   end
 
-   def load_user_will_share_document document, organization
-    ids = Share.share_user.select(:share_id).where(document_id: document.id) +
-      [document.user.id]
+  def load_user_will_share_document document, organization
+    ids = Share.share_user.select(:share_id).where(document_id: document.id)
     user_in_organization_ids = GroupMember.select(:user_id).where(
       group_id: organization.id, group_type: :organization)
-    User.where(id: user_in_organization_ids).where.not(id: ids)
+    User.where(id: user_in_organization_ids).where.not(id: ids).where.not(id:
+      document.user.id)
+  end
+
+  def load_team_will_share_document document, organization
+    team_ids = Share.share_team.select(:share_id).where(document_id: document.id)
+    Team.where(id: organization.teams.ids).where.not(id: team_ids)
   end
 end

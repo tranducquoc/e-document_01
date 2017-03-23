@@ -79,7 +79,8 @@ class User < ApplicationRecord
       share_type: Share.share_types[:user]
     shares = Share.select(:share_id, :share_type).where(document_id: document.id)
     shares.each do |share|
-      return true if eval "in_#{share.share_type}? #{share.share_id}"
+      return true if in_team? share.share_id
+      return true if in_organization? share.share_id
     end
     return false
   end

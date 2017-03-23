@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20170316011557) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "view",          default: 0
-    t.integer  "status_upload", default: 0
+    t.integer  "status_upload", default: 1
     t.integer  "serie_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false

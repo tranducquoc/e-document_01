@@ -18,7 +18,9 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    serie = Serie.create!(name: params[:series_name]) if params[:series_name].present?
+    serie = Serie.create!(name: params[:series_name],
+      organization_id: params[:organization_id], user_id: current_user.id) if
+      params[:series_name].present?
     @document = current_user.documents.build document_params
     @document.serie_id = serie.id if serie.present?
     if @document.save
@@ -40,7 +42,11 @@ class DocumentsController < ApplicationController
       flash[:warning] = t ".user_shared_cannot_blank"
     else
       shares_attributes = []
-      convert_to_hash shares_attributes, Share.share_types[:user]
+      if params[:share_team].present?
+        convert_to_hash shares_attributes, Share.share_types[:team]
+      else
+        convert_to_hash shares_attributes, Share.share_types[:user]
+      end
       if @document.update_attributes document_params
         flash[:success] = t ".share_success"
       else

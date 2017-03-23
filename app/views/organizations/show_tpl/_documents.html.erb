@@ -40,7 +40,8 @@
                   <span><%= link_to category.name, category_path(category) %></span>
                 <% end %>
               </p>
-              <% unless organization.guide_id == document.id %>
+              <% if organization.has_admin?(current_user) &&
+                organization.guide_id != document.id %>
                 <%= form_for @organization do |f| %>
                   <%= hidden_field_tag :guide_id, document.id %>
                   <%= f.submit t(".assign_guide"), class: "btn btn-default" %>
@@ -53,7 +54,10 @@
           <% if document.user == current_user || organization.has_admin?(current_user) %>
             <div class="col-md-2 col-sm-2 col-xs-2">
               <a class="btn btn-default btn-share" id="<%= document.id %>">
-                <span class="fa fa-share-square-o"></span>
+                <span class="fa fa-share-square-o"><%= t ".member" %></span>
+              </a>
+              <a class="btn btn-default btn-share-team" id="<%= document.id %>">
+                <span class="fa fa-share-square-o"><%= t ".team" %></span>
               </a>
               <div class="share-content" id="document_detail_<%= document.id %>">
                 <%= form_for document do |f| %>
@@ -61,8 +65,19 @@
                   <%= f.hidden_field :status_upload, value: :shared %>
                   <%= select_tag "document[shares_attributes]", options_for_select(
                     load_user_will_share_document(document, organization).map { |user|
-                      [user.name, user.id] }), multiple: true, size: Settings.size_share,
-                        class: "select-share-document" %>
+                      [user.name, user.id] }), multiple: true,
+                      size: Settings.size_share, class: "select-share-document" %>
+                  <%= f.submit t(".send"), class: "btn btn-default" %>
+                <% end %>
+              </div>
+              <div class="share-team" id="share_team_detail_<%= document.id %>">
+                <%= form_for document do |f| %>
+                  <%= hidden_field_tag :document_id, document.id %>
+                  <%= f.hidden_field :status_upload, value: :shared %>
+                  <%= select_tag "document[shares_attributes]", options_for_select(
+                    load_team_will_share_document(document, organization).map { |team|
+                      [team.name, team.id] }), multiple: true,
+                      size: Settings.size_share, class: "select-share-team" %>
                   <%= f.submit t(".send"), class: "btn btn-default" %>
                 <% end %>
               </div>
