@@ -103,6 +103,14 @@ class User < ApplicationRecord
       group_type: GroupMember.group_types[:organization], confirm: true)
   end
 
+  def newest_documents
+    ids = Share.select(:document_id).where(share_id: self.id,
+      share_type: Share.share_types[:user])
+    Document.checked.where(status_upload: Document.status_uploads[:global]).or(
+      Document.checked.where(id: ids)).order(created_at: :desc).limit(
+      Settings.document.limit_1)
+  end
+
   class << self
     def send_mail_if_not_login
       User.where("last_sign_in_at < ?", Time.now - 1.hour)

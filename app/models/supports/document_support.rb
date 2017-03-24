@@ -2,8 +2,12 @@ class Supports::DocumentSupport
   def initialize
   end
 
-  def newest_documents
-    Document.newest
+  def newest_documents user
+    if user.nil?
+      Document.newest
+    else
+      user.newest_documents
+    end
   end
 
   def own_documents user

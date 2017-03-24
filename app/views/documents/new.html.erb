@@ -22,6 +22,20 @@
             |category| [category.name, category.id]}),
             {class: "btn btn-default", include_blank: t(".all")} %>
         </div>
+        <div class="col-md-6 serie_doc_upload">
+          <p>
+            <b id="series-current"><%= t ".series" %></b>
+            <a id="create-series"><%= t ".create_serie" %></a>
+          </p>
+          <div id="create-series-area">
+            <input type="text" name="series_name" class="form-control">
+          </div>
+          <div id="choose-series">
+            <%= f.select :serie_id, options_for_select(load_series(current_user).collect{
+              |serie| [serie.name, serie.id]}),
+              {class: "btn btn-default", include_blank: t(".all")} %>
+          </div>
+        </div>
       </div>
       <div class="row status_upload">
         <div class="col-md-12">
