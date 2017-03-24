@@ -34,6 +34,7 @@
                 </p>
                 <div id="create-series-area">
                   <input type="text" name="series_name" class="form-control">
+                  <%= hidden_field_tag :organization_id, @organization.id %>
                 </div>
                 <div id="choose-series">
                   <%= f.select :serie_id, options_for_select(load_series(current_user, @organization.id).collect{

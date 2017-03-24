@@ -8,7 +8,7 @@ class CreateDocuments < ActiveRecord::Migration[5.0]
       t.integer :category_id
       t.integer :user_id
       t.integer :view, default: 0
-      t.integer :status_upload, default: 0
+      t.integer :status_upload, default: 1
       t.integer :serie_id
       t.timestamps
     end

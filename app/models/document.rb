@@ -46,7 +46,6 @@ class Document < ApplicationRecord
 
     def newest
       Document.checked.order(created_at: :desc)
-        .limit(Settings.document.limit_1)
     end
 
     def get_read_document user
