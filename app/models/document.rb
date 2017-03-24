@@ -45,7 +45,8 @@ class Document < ApplicationRecord
     end
 
     def newest
-      Document.checked.order(created_at: :desc)
+      Document.checked.where(status_upload: Document.status_uploads[:global]).order(
+        created_at: :desc).limit(Settings.document.limit_1)
     end
 
     def get_read_document user
