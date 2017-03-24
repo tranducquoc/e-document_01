@@ -90,7 +90,7 @@
         <%= select_tag "organization-select-user", options_for_select(
           user_not_in_organization(@organization).map {
             |user| [user.name, user.id] }),
-              multiple: false, size: Settings.organization.select_box_size,
+              multiple: true, size: Settings.organization.select_box_size,
               class: "select-user-to-add", include_blank: true %>
         <button id="add-organization-member-btn" class="btn btn-default"
           data-group-id="<%= @organization.id %>"

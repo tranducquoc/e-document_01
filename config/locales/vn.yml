@@ -313,6 +313,7 @@ vn:
       organization_was_deleted: "Tổ chức đã được xóa thành công!"
       can_not_delete: "Không xóa được!"
     show:
+      cannot_add: "Thêm thành viên thất bại!"
       choose_user: "Hãy chọn thành viên bạn muốn thêm!"
       assign_admin: "Chỉ định làm Admin"
       select_user: "Thêm thành viên"

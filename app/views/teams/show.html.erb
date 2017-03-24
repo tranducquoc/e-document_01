@@ -65,7 +65,7 @@
           <%= select_tag "team-select-user", options_for_select(
             @support.add_member(@organization).map {
             |user| [user.name, user.id] }),
-            multiple: false, size: Settings.organization.select_box_size,
+            multiple: true, size: Settings.organization.select_box_size,
             class: "select-user-to-add", include_blank: true %>
           <button id="add-team-member-btn" class="btn btn-team-add btn-default"
             data-group-id="<%= @team.id %>"

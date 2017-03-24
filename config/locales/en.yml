@@ -417,6 +417,7 @@ en:
       organization_was_deleted: "Organization was deleted!"
       can_not_delete: "Can not delete!"
     show:
+      cannot_add: "Cannot add!"
       choose_user: "Please choose user!"
       assign_admin: "Assign admin"
       select_user: "Select user"
@@ -436,7 +437,7 @@ en:
       manage: "Manage"
       tab: "Documents"
       tab1: "Upload Document"
-      added_member: "Member was added to your organization!"
+      added_member: "Member was added to your group!"
       guide: "Guide"
     show_tpl:
       upload:
