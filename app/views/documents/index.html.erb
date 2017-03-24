@@ -9,14 +9,16 @@
           <li data-target="#my_carousel" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-          <% load_image.each do |image| %>
-            <div class="item">
-              <% if image.image.present? %>
-                <%= image_tag image.image.url, class: "img-responsive" %>
-              <% else %>
-                <%= image_tag Setting.image, class: "img-responsive" %>
-              <% end %>
-            </div>
+          <% if load_image.any? %>
+            <% load_image.each do |image| %>
+              <div class="item">
+                <% if image.image.present? %>
+                  <%= image_tag image.image.url, class: "img-responsive" %>
+                <% else %>
+                  <%= image_tag Setting.image, class: "img-responsive" %>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <a class="left carousel-control" href="#my_carousel" role="button"
