@@ -20,8 +20,10 @@ function load_organization_documents(name, id){
       $('.select-share-document').select2({
         width: 100
       });
-      $('.share-content').hide();
-      $('.share-content-1').hide();
+      $('.select-share-document, .select-share-team').select2({
+        width: 100
+      });
+      $('.share-content, .share-team').hide();
       $('.btn-default.btn-share').click(function(){
         document_id = $(this).attr('id');
         $('#document_detail_'+document_id).slideToggle(500);
