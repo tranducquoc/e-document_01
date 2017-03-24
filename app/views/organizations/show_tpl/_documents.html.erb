@@ -4,7 +4,7 @@
       <div class="document-user">
         <div class="col-md-8 col-sm-8 col-xs-8">
           <div class="row">
-            <div class="col-md-3" id="image_document">
+            <div class="col-md-4" id="image_document">
               <a href="<%= document_path(document) %>">
                 <% if document.attachment? %>
                   <%= image_tag document.attachment.preview.url, class: "img-responsive" %>
@@ -13,7 +13,7 @@
                 <% end %>
               </a>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
               <% if document.checked? %>
                 <h4>
                   <%= link_to document.name, document_path(document) %>
@@ -32,8 +32,7 @@
                     </span>
                 </i>
               </p>
-              <h5><%= t ".short_description" %></h5>
-              <p><%= document.description %></p>
+              <p><%= truncate document.description, length: Settings.organization.description_size %></p>
               <p>
                 <% load_categories.each do |category| %>
                   <i class="fa fa-tags"></i>
