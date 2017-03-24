@@ -114,6 +114,7 @@ vn:
   e_document_01: "EDocument01"
   layouts:
     header:
+      admin_site: "Trang quản trị"
       organization: "Organization"
       framgia: "F-Document"
       home: "Trang chủ"

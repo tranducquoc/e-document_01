@@ -51,16 +51,8 @@
     <% end %>
   </div>
   <% if @organization.has_member? current_user %>
-    <div class="tab-content col-md-7 col-sm-7">
+    <div class="tab-content col-md-8 col-sm-8">
       <div id="documents" class="tab-pane fade in active documents">
-        <div class="upload">
-          <button type="button" class="btn btn-upload" data-toggle="modal"
-            data-target="#upload-modal">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <%= t "upload" %>
-          </button>
-        </div>
-        <%= render "organizations/show_tpl/upload" %>
         <div id="table-document">
           <%= text_field_tag :search, params[:search], class: "form-control input-lg",
             id: "search_organization_document_ajax", placeholder: (t "organizations.search") %>
@@ -85,7 +77,15 @@
       <% end %>
     </div>
     <% if @organization.has_admin? current_user %>
-      <div class="right-sidebar  col-md-3 col-sm-3">
+      <div class="right-sidebar col-md-2 col-sm-2">
+        <div class="upload">
+          <button type="button" class="btn btn-upload" data-toggle="modal"
+            data-target="#upload-modal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <%= t "upload" %>
+          </button>
+        </div>
+        <%= render "organizations/show_tpl/upload" %>
         <label><%= t ".add_member" %></label>
         <%= select_tag "organization-select-user", options_for_select(
           user_not_in_organization(@organization).map {

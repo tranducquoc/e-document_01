@@ -63,7 +63,7 @@ class DocumentsController < ApplicationController
     else
       flash[:danger] = t ".destroy_error"
     end
-    redirect_to user_path(@user)
+    redirect_to :back
   end
 
   def show

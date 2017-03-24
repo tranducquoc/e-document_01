@@ -1444,8 +1444,8 @@ embed {
   margin-bottom: 15px;
   padding: 6px 0;
   position: relative;
-  &:hover{
-    &::before{
+  &:hover {
+    &::before {
       background: $dark-blue-hover;
     }
   }
@@ -1459,10 +1459,10 @@ embed {
     border-radius: 4px;
     cursor: pointer;
     -webkit-transition: 0.5s;
-    -moz-transition: 0.5s ;
-    -ms-transition: 0.5s ;
-    -o-transition: 0.5s ;
-    transition: 0.5s ;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
   }
 }
 
@@ -1555,35 +1555,24 @@ embed {
   overflow: auto;
   .documents {
     position: relative;
-    .upload {
-      text-align: center;
-      .btn-upload {
-        background: $green;
-        color: $btn-text;
-        display: inline;
-        &:hover {
-          background: $color_green;
-        }
-      }
-    }
     .document-user {
       padding-top: 50px;
       overflow: auto;
       float: left;
       width: 100%;
     }
-    .team-documents-title{
+    .team-documents-title {
       margin: 0;
       padding-bottom: 8px;
     }
   }
-  .teams, .members, .requests{
-    h3{
+  .teams, .members, .requests {
+    h3 {
       margin: 15px 0;
     }
-    table{
+    table {
       margin-top: 50px;
-      td{
+      td {
         line-height: 35px;
       }
     }
@@ -1592,6 +1581,17 @@ embed {
 
 .right-sidebar {
   padding-top: 100px;
+  .upload {
+    text-align: center;
+    .btn-upload {
+      background: $green;
+      color: $btn-text;
+      display: inline;
+      &:hover {
+        background: $color_green;
+      }
+    }
+  }
   label, button {
     margin-bottom: 15px;
   }
@@ -1600,32 +1600,32 @@ embed {
     display: block;
     width: 100% !important;
   }
-  button {
+  #add-organization-member-btn {
     float: right;
   }
 }
 
-.group-form{
-  .outer-title{
+.group-form {
+  .outer-title {
     overflow: auto;
     padding: 30px 0;
   }
-  .title{
+  .title {
     margin: 0;
     display: block;
     float: left;
   }
-  form{
+  form {
     padding-top: 30px;
-    label{
+    label {
       margin-bottom: 10px;
       font-size: 16px;
     }
-    input{
+    input {
       margin-bottom: 30px;
     }
   }
-  .btn-delete, .btn-edit, .btn-add{
+  .btn-delete, .btn-edit, .btn-add {
     font-weight: 600;
     color: $btn-text;
     -webkit-transition: 0.5s;
@@ -1634,60 +1634,110 @@ embed {
     -o-transition: 0.5s;
     transition: 0.5s;
   }
-  .btn-delete{
+  .btn-delete {
     background: $red;
-    &:hover{
+    &:hover {
       background: $red-hover;
     }
   }
-  .btn-edit{
+  .btn-edit {
     float: right;
   }
-  .icon-delete{
+  .icon-delete {
     color: $red;
     font-size: 26px;
     float: right;
-    &:hover{
+    &:hover {
       color: $red-hover;
     }
   }
 }
 
-#my-Guide{
+#my-Guide {
   text-align: center;
-  embed{
+  embed {
     display: inline;
   }
 }
+
 #search_team_member_ajax, #search_team_request_ajax, #search_team_ajax,
-#search_docs_ajax, #search_organization_document_ajax, #search_organization_member_ajax{
+#search_docs_ajax, #search_organization_document_ajax, #search_organization_member_ajax {
   margin: 50px 0 0 0;
   width: 100%;
 }
-#search_organization_ajax{
+
+#search_organization_ajax {
   margin-left: 100px;
   width: 50%;
 }
-#search_organization_member_ajax{
+
+#search_organization_member_ajax {
   margin: 0;
   width: 100%;
 }
-#embed_guide{
+
+#embed_guide {
   height: 100%;
   width: 70%;
   margin-left: 15%;
 }
-.close_guide{
+
+.close_guide {
   margin-left: 15%;
   width: 70%;
-  button{
+  button {
     float: right;
     margin-right: 20px;
   }
 }
-#serie-name{
+
+#serie-name {
   cursor: pointer;
 }
-#edit_serie{
-  margin-left:100px;
+
+#edit_serie {
+  margin-left: 100px;
+}
+
+.setting {
+  .setting-bars-btn {
+    float: right;
+    background: transparent;
+    &:hover {
+      i {
+        color: $color_green;
+      }
+    }
+  }
+  .setting-bars {
+    margin-right: 15px;
+    .fa-share-square-o, .fa-trash-o {
+      &:before {
+        margin-right: 5px;
+      }
+    }
+
+  }
+}
+
+.share-member, .share-team {
+  form {
+    padding: 30px;
+    label, select, input {
+      display: block;
+      margin-bottom: 15px;
+    }
+    .select2 {
+      margin-bottom: 30px;
+      display: block;
+      width: 100% !important;
+      height: auto !important;
+    }
+    .btn-share {
+      text-align: right;
+      input {
+        display: inline-block;
+      }
+    }
+  }
 }
