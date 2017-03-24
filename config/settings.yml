@@ -27,7 +27,7 @@ time_delay: 2
 coin_down: 10
 coin_free: 0
 coin_up: 1
-priority: 1
+priority: 2
 buycoins:
   per_page: 5
 count_free_download: 3

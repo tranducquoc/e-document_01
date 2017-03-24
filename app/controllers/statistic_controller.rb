@@ -3,9 +3,7 @@ class Admin::StatisticController < ApplicationController
     @customer_uploads = []
     @customer_downloads = []
     @categories = []
-    upload_count
-    download_count
-    categories
+    statistic
     respond_to do |format|
       format.json do
         render json: [
@@ -21,6 +19,13 @@ class Admin::StatisticController < ApplicationController
   end
 
   private
+
+  def statistic
+    upload_count
+    download_count
+    categories
+  end
+
   def upload_count
     current_date = Time.now - Settings.number_seven_1
     Settings.number_seven.times.each do

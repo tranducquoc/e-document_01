@@ -29,7 +29,7 @@ class DocumentsController < ApplicationController
       end
       upload_document = UploadDocument.new @document, current_user
       Delayed::Job.enqueue upload_document, Settings.priority,
-        Settings.time_delay.seconds.from_now
+        Settings.time_delay.hours.from_now
       flash[:success] = t ".create_success"
       @organization.present? ? (redirect_to :back) : (redirect_to root_url)
     else
