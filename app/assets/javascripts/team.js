@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(document).on('turbolinks:load', function () {
   $('#join-team-request').on('click', function () {
     var group_id = $(this).find('button').attr('data-group-id');
     var group_type = $(this).find('button').attr('data-group-type');
@@ -22,15 +22,19 @@ $(document).on('turbolinks:load', function(){
     $.ajax({
       url: url,
       method: 'DELETE',
-      data: {group_members: {group_id: group_id,
-        group_type: group_type, action: action}},
+      data: {
+        group_members: {
+          group_id: group_id,
+          group_type: group_type, action: action
+        }
+      },
       success: function (data) {
-        if ( action == 'leave') {
+        if (action == 'leave') {
           if (typeof (data.status) == 'string') {
             alert(data.status);
           }
           location.reload();
-        } else if ( action == 'unrequest'){
+        } else if (action == 'unrequest') {
           $('#leave-team-request').empty();
           $('#join-team-request').html(data);
         }
@@ -48,8 +52,8 @@ $(document).on('turbolinks:load', function(){
       url: url,
       data: {group_members: {confirm: true}},
       success: function () {
-        var request_item = '#accept-team-request-'+id;
-        if($(request_item) !== null){
+        var request_item = '#accept-team-request-' + id;
+        if ($(request_item) !== null) {
           $(request_item).remove();
         }
       }
@@ -65,8 +69,8 @@ $(document).on('turbolinks:load', function(){
       method: 'DELETE',
       url: url,
       success: function () {
-        var request_item = '#accept-team-request-'+id;
-        if($(request_item) !== null){
+        var request_item = '#accept-team-request-' + id;
+        if ($(request_item) !== null) {
           $(request_item).remove();
         }
       }
@@ -82,8 +86,8 @@ $(document).on('turbolinks:load', function(){
       method: 'DELETE',
       url: url,
       success: function () {
-        var request_item = '#accept-team-member-'+id;
-        if($(request_item) !== null){
+        var request_item = '#accept-team-member-' + id;
+        if ($(request_item) !== null) {
           $(request_item).remove();
         }
       }
@@ -100,8 +104,8 @@ $(document).on('turbolinks:load', function(){
       url: url,
       data: {group_members: {role: "admin"}},
       success: function () {
-        if ($('[data-id='+id+']') != null){
-          $('[data-id='+id+']').remove();
+        if ($('[data-id=' + id + ']') != null) {
+          $('[data-id=' + id + ']').remove();
         }
       }
     });
@@ -125,21 +129,24 @@ $(document).on('turbolinks:load', function(){
         },
         success: function (status) {
           alert(status.status);
-          $('#team-select-user').find('[value=' + user_id + ']').remove();
+          for (var i = 0; i < user_id.length; i++) {
+            $('#team-select-user').find('[value=' + user_id[i] + ']').remove();
+          }
+          location.reload();
         }
       });
-    } else{
+    } else {
       alert(I18n.t("organizations.show.choose_user"))
     }
   });
 
-  $('#search_team_ajax').keyup(function() {
+  $('#search_team_ajax').keyup(function () {
     var team_name = $('#search_team_ajax').val();
     var org_id = $('#search_organization_id').val();
     load_organizations(team_name, org_id);
   });
 
-  function load_organizations(team_name, org_id){
+  function load_organizations(team_name, org_id) {
     $.ajax({
       url: '/api/teams/',
       method: "GET",
@@ -147,8 +154,8 @@ $(document).on('turbolinks:load', function(){
         team_name: team_name,
         id: org_id
       },
-      success: function(result){
-        if($('#list-teams') !== null) $('#list-teams').remove();
+      success: function (result) {
+        if ($('#list-teams') !== null) $('#list-teams').remove();
         $('#table-teams').append(result);
       }
     });

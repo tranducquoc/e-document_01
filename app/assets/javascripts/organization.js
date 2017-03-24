@@ -177,7 +177,9 @@ $(document).on('turbolinks:load', function () {
         success: function (status) {
           alert(status.status);
           create_read_guide(user_id, url2);
-          $('#organization-select-user').find('[value=' + user_id + ']').remove();
+          for (var i = 0; i < user_id.length; i++) {
+            $('#organization-select-user').find('[value=' + user_id[i] + ']').remove();
+          }
           location.reload();
         }
       });

@@ -6,13 +6,21 @@ class AdminAddMembersController < ApplicationController
 
   def create
     if @organization.has_admin?(current_user) || @team.has_admin?(current_user)
-      @group_member = GroupMember.new add_member_params
-      if @group_member.save
-        status = t "organizations.show.added_member"
-        respond_to do |format|
-          format.json do
-            render json: {status: status}
-          end
+      params[:group_members][:user_id].each do |user_id|
+        @group_member = GroupMember.new user_id: user_id,
+          group_id: params[:group_members][:group_id],
+          group_type: params[:group_members][:group_type],
+          confirm: params[:group_members][:confirm]
+        if @group_member.save
+          status = t "organizations.show.added_member"
+        else
+          status = t "organizations.show.cannot_add"
+          break
+        end
+      end
+      respond_to do |format|
+        format.json do
+          render json: {status: status}
         end
       end
     end
@@ -35,13 +43,6 @@ class AdminAddMembersController < ApplicationController
         end
       end
     end
-  end
-
-  private
-
-  def add_member_params
-    params.require(:group_members).permit :user_id,
-      :group_id, :group_type, :confirm
   end
 
 end
