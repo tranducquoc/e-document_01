@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  admin_site: "Admin site"
   delete: "Delete"
   save: "Save"
   add: "Add"
@@ -158,6 +159,7 @@ en:
   e_document_01: "EDocument01"
   layouts:
     header:
+      admin_site: "Admin site"
       organization: "Organization"
       framgia: "F-Document"
       home: "Home"

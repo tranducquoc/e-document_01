@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function() {
   });
   $('.share-content, .share-team').hide();
   $('.share-content-1, .share-team-1').hide();
-  $('.btn-default.btn-share').click(function(){
+  $('.btn-share').click(function(){
     document_id = $(this).attr('id');
     $('.signal').remove();
     $('.share-team, .share-team-1').hide();
@@ -17,7 +17,8 @@ $(document).on('turbolinks:load', function() {
     })
     $('#document_detail_'+document_id).slideToggle(500);
   });
-  $('.btn-default.btn-share-team').click(function(){
+
+  $('.btn-share-team').click(function(){
     id = $(this).attr('id');
     $('.share-content, .share-content-1').hide();
     $('.share-content li').each(function(){

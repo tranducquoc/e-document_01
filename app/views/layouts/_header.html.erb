@@ -28,7 +28,7 @@
                 <li><%= link_to category.name, category_path(category) %></li>
               <% end %>
               <li>
-                <%= link_to t(".documents"), user_path(current_user), class: "fa fa-book" %>
+                <%= link_to t(".documents"), user_path(current_user), class: "fa" %>
               </li>
             </ul>
           </li>
@@ -43,7 +43,7 @@
             <ul class="dropdown-menu">
               <li><%= link_to (t ".organization"), organizations_path %></li>
               <li class="">
-                <%= link_to t(".users"), users_path, class: "fa fa-users" %>
+                <%= link_to t(".users"), users_path, class: "" %>
               </li>
               <li>
                 <%= link_to t(".messenger"), chatrooms_path %>
@@ -52,6 +52,9 @@
               <li>
                 <%= link_to t(".settings"),
                   edit_user_registration_path(current_user) %>
+              </li>
+              <li>
+                <%= link_to t(".admin_site"), admin_root_path %>
               </li>
               <li class="divider"></li>
               <li>
