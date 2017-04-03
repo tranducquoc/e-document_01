@@ -79,6 +79,7 @@ GEM
     connection_pool (2.2.1)
     daemons (1.2.4)
     database_cleaner (1.5.3)
+    database_yml (0.0.4)
     debug_inspector (0.0.2)
     deep_merge (1.1.1)
     delayed_job (4.1.2)
@@ -476,6 +477,7 @@ DEPENDENCIES
   config (~> 1.0)
   daemons
   database_cleaner
+  database_yml
   delayed_job
   delayed_job_active_record
   devise
