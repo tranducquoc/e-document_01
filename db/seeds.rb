@@ -70,9 +70,9 @@ Category.create!(name: "Natural Language Processing")
 # end
 
 Organization.create!(name: "Framgia Vietnam",
- description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat purus vitae arcu ullamcorper cursus. Sed sit amet pharetra turpis. Etiam varius ut libero vel luctus. Etiam rutrum magna turpis, ut lacinia mi facilisis a. Vestibulum rutrum fermentum quam, vitae ultrices metus tristique eget. Morbi a sollicitudin tortor. Fusce facilisis sodales velit id cursus. Nunc nibh ligula, tempor sed eleifend id, fermentum nec ex. Ut ex arcu, mollis vitae pretium id, scelerisque eu velit.")
+ description: "We make IT Awesome")
 Organization.create!(name: "Framgia Education",
- description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat purus vitae arcu ullamcorper cursus. Sed sit amet pharetra turpis. Etiam varius ut libero vel luctus.")
+ description: "From Asia To The World")
 
 Team.create!(name: "Ruby Developer", organization_id: 1)
 Team.create!(name: "Trainer", organization_id: 2)
